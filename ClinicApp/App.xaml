@@ -1,14 +1,14 @@
-﻿<Application x:Class="ClinicApp.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
-    StartupUri="MainWindow.xaml">
+﻿<Application x:Class="ClinicApp.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" StartupUri="MainWindow.xaml">
+
     <Application.Resources>
-      <ResourceDictionary>
-          <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="/Telerik.Windows.Themes.Office2013;component/Themes/System.Windows.xaml"/>
-            <ResourceDictionary Source="/Telerik.Windows.Themes.Office2013;component/Themes/Telerik.Windows.Controls.xaml"/>
-          </ResourceDictionary.MergedDictionaries>
-      </ResourceDictionary>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/theme/System.Windows.xaml" />
+                <ResourceDictionary Source="/theme/Telerik.Windows.Controls.xaml" />
+                <ResourceDictionary Source="/theme/Telerik.Windows.Controls.Input.xaml" />
+                <ResourceDictionary Source="/theme/Telerik.Windows.Controls.Navigation.xaml" />
+                <ResourceDictionary Source="/theme/Telerik.ReportViewer.Wpf.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

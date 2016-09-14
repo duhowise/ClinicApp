@@ -1,0 +1,66 @@
+﻿<Window x:Class="ClinicApp.DocPatientPrescription"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClinicApp"
+        mc:Ignorable="d"
+        Title="KUMASI POLYTECHNIC CLINIC APP" Height="630" Width="650" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="media/Health-Care.png" Closing="Window_Closing" ShowInTaskbar="False" Topmost="True">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"></Setter>
+        </Style>
+
+        <!--<Style TargetType="TextBox">
+         <Setter Property="Margin" Value="10"></Setter>
+     </Style>-->
+    </Window.Resources>
+
+    <Grid>
+        <!--<StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FFA03636" Margin="1,0,0,35" Height="35" Grid.ColumnSpan="2">
+           <Label Content="Add New Drug" FontSize="20" Padding="5,5,4,5" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFFBF9F9" Height="45" Width="155"></Label>
+       </StackPanel>-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="49.802"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Provided Id" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="124,140,0,0"/>
+        <TextBox Name="ProvidedId" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,17" Width="394" Height="56" IsReadOnlyCaretVisible="True" TextChanged="ProvidedId_TextChanged" IsReadOnly="True" FontSize="16" FontWeight="Bold"/>
+
+        <TextBlock Grid.Row="2" Text="Complaint" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,5,64"/>
+        <TextBox x:Name="Complaint" Grid.Row="2"  Grid.Column="1" Width="400" HorizontalAlignment="Left"
+                     VerticalAlignment="Bottom" Margin="5,0,0,5" Height="150" VerticalScrollBarVisibility="Auto" TextChanged="Complaint_TextChanged" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap"/>
+
+
+        <TextBlock Text="Prescription" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                       Margin="0,0,5,71" Grid.Row="3" Grid.Column="0" />
+        <TextBox  x:Name="Prescription" Grid.Column="1"  Width="400" HorizontalAlignment="Left"
+                      VerticalAlignment="Bottom" Margin="5,0,0,5" Grid.Row="3" Height="150" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap" />
+
+
+
+
+
+
+        <Button Background="#FF00186B" Foreground="White" FontSize="16" Content="Save" Grid.Row="4" Grid.Column="1" Margin="5,1,0,0" 
+                HorizontalAlignment="Left" Name="Save" Width="149" FontWeight="Bold" Grid.RowSpan="8" Click="Save_Click" Height="35"/>
+        <Rectangle Grid.ColumnSpan="2" Fill="#FF00186B" Stroke="Black" Margin="0,0,0,154"/>
+        <Label x:Name="PatientComplaint" Content="Patient Complaint and Prescription" Margin="0,0,244,155" Foreground="#FFF7F3F3" FontSize="25" Grid.ColumnSpan="2" Width="400" Grid.RowSpan="2"/>
+        <Button x:Name="ComplaintCancel" Content="Cancel" Grid.Column="1" Margin="160,2,125,0" Grid.Row="5" FontSize="16" FontWeight="Bold" Background="#FFD6D5D5" Grid.RowSpan="6" Click="ComplaintCancel_Click" Height="35" Width="149"/>
+    </Grid>
+</Window>

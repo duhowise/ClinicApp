@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicApp", "ClinicApp\ClinicApp.csproj", "{DEE2440C-A029-4CA2-9BDF-7CC0DCCA5D89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicReport", "ClinicReport\ClinicReport.csproj", "{F31CC55C-5E5B-4D6E-B3FB-D18BFEB925E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicReport", "ClinicReport\ClinicReport\ClinicReport.csproj", "{F31CC55C-5E5B-4D6E-B3FB-D18BFEB925E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicApp", "..\ClinicApp\ClinicApp.csproj", "{DEE2440C-A029-4CA2-9BDF-7CC0DCCA5D89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,12 +15,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DEE2440C-A029-4CA2-9BDF-7CC0DCCA5D89}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{DEE2440C-A029-4CA2-9BDF-7CC0DCCA5D89}.Debug|x86.ActiveCfg = Debug|x86
-		{DEE2440C-A029-4CA2-9BDF-7CC0DCCA5D89}.Debug|x86.Build.0 = Debug|x86
-		{DEE2440C-A029-4CA2-9BDF-7CC0DCCA5D89}.Release|Any CPU.ActiveCfg = Release|x86
-		{DEE2440C-A029-4CA2-9BDF-7CC0DCCA5D89}.Release|x86.ActiveCfg = Release|x86
-		{DEE2440C-A029-4CA2-9BDF-7CC0DCCA5D89}.Release|x86.Build.0 = Release|x86
 		{F31CC55C-5E5B-4D6E-B3FB-D18BFEB925E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F31CC55C-5E5B-4D6E-B3FB-D18BFEB925E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F31CC55C-5E5B-4D6E-B3FB-D18BFEB925E4}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -29,6 +23,12 @@ Global
 		{F31CC55C-5E5B-4D6E-B3FB-D18BFEB925E4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F31CC55C-5E5B-4D6E-B3FB-D18BFEB925E4}.Release|x86.ActiveCfg = Release|Any CPU
 		{F31CC55C-5E5B-4D6E-B3FB-D18BFEB925E4}.Release|x86.Build.0 = Release|Any CPU
+		{DEE2440C-A029-4CA2-9BDF-7CC0DCCA5D89}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{DEE2440C-A029-4CA2-9BDF-7CC0DCCA5D89}.Debug|x86.ActiveCfg = Debug|x86
+		{DEE2440C-A029-4CA2-9BDF-7CC0DCCA5D89}.Debug|x86.Build.0 = Debug|x86
+		{DEE2440C-A029-4CA2-9BDF-7CC0DCCA5D89}.Release|Any CPU.ActiveCfg = Release|x86
+		{DEE2440C-A029-4CA2-9BDF-7CC0DCCA5D89}.Release|x86.ActiveCfg = Release|x86
+		{DEE2440C-A029-4CA2-9BDF-7CC0DCCA5D89}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

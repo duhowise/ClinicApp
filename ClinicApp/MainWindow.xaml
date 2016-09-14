@@ -4,7 +4,7 @@
                 xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
                Title="KUMASI POLYTECHNIC CLINIC APP" Height="600" Width="525" WindowState="Maximized"
                 VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center"
-                FontWeight="Bold" VerticalContentAlignment="Center" Closing="Window_Closing" >
+                FontWeight="Bold" VerticalContentAlignment="Center" Closing="Window_Closing" Icon="media/Health-Care.png" Loaded="Window_Loaded" >
    
     <Grid>
         <!--<StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Background="#FFBD0C0C" Height="2">
@@ -15,26 +15,26 @@
                 <Image Source="media/kpoly2.png" HorizontalAlignment="Center" Width="340" Height="165" />
 
             </StackPanel>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Background="#FFBD0C0C" Height="1">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Background="#FF00186B" Height="1">
 
             </StackPanel>
         </StackPanel>
 
 
-        <StackPanel MinWidth="150" MaxWidth="600" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock HorizontalAlignment="Center" FontSize="30" Margin="0,0,0,10" Foreground="#FFBD0C0C" FontWeight="ExtraBold" FontFamily="Yu Gothic UI Semibold">Login</TextBlock>
-            <TextBlock HorizontalAlignment="Center" FontSize="14" Margin="120,0,0,5" Foreground="#FFBD0C0C" FontWeight="Bold">STAFF-MEMBER LOGIN PANEL</TextBlock>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+        <StackPanel MinWidth="150" MaxWidth="600" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
+            <TextBlock HorizontalAlignment="Center" FontSize="30" Margin="0,0,0,10" Foreground="#FF00186B" FontWeight="ExtraBold" FontFamily="Yu Gothic UI Semibold">Login</TextBlock>
+            <TextBlock HorizontalAlignment="Center" FontSize="14" Margin="120,0,0,5" Foreground="#FF00186B" FontWeight="Bold">STAFF-MEMBER LOGIN PANEL</TextBlock>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5" HorizontalAlignment="Center">
                 <!--<TextBlock FontSize="20" MinWidth="100" Margin="10,0,20,0"> Username</TextBlock>-->
                 <Image Source="media/User-icon.png" MinWidth="100" Margin="10,0,20,0" HorizontalAlignment="Right"/>
-                <TextBox Name="userName" Width="210" HorizontalAlignment=" Stretch"/>
+                <TextBox Name="userName" Width="210" HorizontalAlignment="Center" ToolTip="Enter User name" KeyDown="userName_KeyDown"/>
             </StackPanel>
                     
             <!-- main login input forms -->
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,5" Name="sk">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5" Name="sk" HorizontalAlignment="Center">
                 <!--<TextBlock FontSize="20" MinWidth="100" Margin="10,0,20,0"> Password</TextBlock>-->
                 <Image Source="media/pass.png" MinWidth="100" Margin="10,0,20,0" HorizontalAlignment="Right"/>
-                <PasswordBox Name="Password" Width="210"  HorizontalAlignment="Stretch"/>
+                <PasswordBox Name="Password" Width="210"  HorizontalAlignment="Stretch" ToolTip="Enter Password" KeyDown="Password_KeyDown"/>
             </StackPanel>
 
             <!-- main login input forms ends here-->
@@ -42,16 +42,16 @@
             <!--button click to login -->
             <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                 <TextBlock FontSize="15" MinWidth="100" Margin="10,0,20,0"></TextBlock>
-                <Button Content="Sign in" Width="210" Height="30"  HorizontalAlignment="Stretch" Background="#FFBD0C0C" Foreground="White" FontFamily="Arial" Click="Button_Click"></Button>
+                <Button Content="Sign in" Width="210" Height="30" Background="#FF00186B" Foreground="White" FontFamily="Arial" Click="Button_Click"/>
             </StackPanel>
             
          
 
-            <TextBlock HorizontalAlignment="Center" FontSize="15" TextDecorations="underline" Margin="78,0,0,10" Foreground="#FFBD0C0C" FontWeight="Bold" FontFamily="Yu Gothic UI Semibold">
+            <TextBlock HorizontalAlignment="Center" FontSize="15" TextDecorations="underline" Margin="78,0,0,10" Foreground="#FF00186B" FontWeight="Bold" FontFamily="Yu Gothic UI Semibold" ToolTip="Please contact system Administrator">
                 Can't login? click Here.</TextBlock>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Background="#FFBD0C0C" Height="30">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Background="#FF00186B" Height="30">
             <TextBlock TextAlignment="Justify" HorizontalAlignment="Right" Foreground="White" FontWeight="Bold" FontSize="15" Padding="10" FontFamily="Yu Gothic UI Semibold" VerticalAlignment="Center">Powered By: Kumasi Polytechnic- ICT Directorate</TextBlock>
         </StackPanel>
     </Grid>

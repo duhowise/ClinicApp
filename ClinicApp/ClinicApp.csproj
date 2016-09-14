@@ -35,9 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,14 +52,63 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="Telerik.Reporting, Version=10.1.16.615, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Telerik.Reporting.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.ReportViewer.Wpf, Version=10.1.16.615, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\Reporting R2 2016\Bin\Telerik.ReportViewer.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Telerik.WinControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.GridView, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.UI, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Telerik.WinControls.UI.dll</HintPath>
+    </Reference>
     <Reference Include="Telerik.Windows.Controls, Version=2016.1.112.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
       <HintPath>..\lib\RCWPF\2016.1.112.45.NoXaml\Telerik.Windows.Controls.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data">
+      <HintPath>..\lib\RCWPF\2016.1.112.45.NoXaml\Telerik.Windows.Controls.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Diagrams">
+      <HintPath>C:\Program Files (x86)\Telerik\UI for WPF Q1 2016\Binaries\WPF45\Telerik.Windows.Controls.Diagrams.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Diagrams.Extensions">
+      <HintPath>C:\Program Files (x86)\Telerik\UI for WPF Q1 2016\Binaries\WPF45\Telerik.Windows.Controls.Diagrams.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Docking, Version=2016.1.112.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2016.1.112.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for WPF Q1 2016\Binaries\WPF45\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input">
+      <HintPath>..\lib\RCWPF\2016.1.112.45.NoXaml\Telerik.Windows.Controls.Input.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation">
+      <HintPath>C:\Program Files (x86)\Telerik\UI for WPF Q1 2016\Binaries\WPF45\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data">
+      <HintPath>..\lib\RCWPF\2016.1.112.45.NoXaml\Telerik.Windows.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Diagrams.Core">
+      <HintPath>C:\Program Files (x86)\Telerik\UI for WPF Q1 2016\Binaries\WPF45\Telerik.Windows.Diagrams.Core.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Windows.Themes.Office2013">
       <HintPath>..\lib\RCWPF\2016.1.112.45.NoXaml\Telerik.Windows.Themes.Office2013.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="TelerikCommon, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -64,36 +118,96 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddPatient.xaml.cs">
-      <DependentUpon>AddPatient.xaml</DependentUpon>
-    </Compile>
-    <Page Include="ClinicAdmin.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Clinic.cs" />
-    <Compile Include="ClinicAdmin.xaml.cs">
-      <DependentUpon>ClinicAdmin.xaml</DependentUpon>
+    <Compile Include="appSettings.cs" />
+    <Compile Include="CMB.xaml.cs">
+      <DependentUpon>CMB.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DoctorDashBoard.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="ConfirmBox.xaml.cs">
+      <DependentUpon>ConfirmBox.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddPatient.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="CurrentUserLoggedInData.cs" />
+    <Compile Include="DocAddPatient.xaml.cs">
+      <DependentUpon>DocAddPatient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DocContextMenu.xaml.cs">
+      <DependentUpon>DocContextMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DocPatientPrescription.xaml.cs">
+      <DependentUpon>DocPatientPrescription.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DocUpdatePatient.xaml.cs">
+      <DependentUpon>DocUpdatePatient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DocViewPatientHistory.xaml.cs">
+      <DependentUpon>DocViewPatientHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DrugAutoCompleteData.cs" />
+    <Compile Include="DrugsAutoCompleteModel.cs" />
+    <Compile Include="IRefreshDataGridView.cs" />
+    <Compile Include="Patient.cs" />
+    <Compile Include="PharContextMenu.xaml.cs">
+      <DependentUpon>PharContextMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PharDispenseDrug.xaml.cs">
+      <DependentUpon>PharDispenseDrug.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PharDispenseDrugWin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PharDispenseDrugWin.Designer.cs">
+      <DependentUpon>PharDispenseDrugWin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PharUpdateDrug.xaml.cs">
+      <DependentUpon>PharUpdateDrug.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SingleDrugData.cs" />
+    <Compile Include="stockTakingReportOne.xaml.cs">
+      <DependentUpon>stockTakingReportOne.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewDrugs.xaml.cs">
+      <DependentUpon>ViewDrugs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="viewDrugWin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="viewDrugWin.Designer.cs">
+      <DependentUpon>viewDrugWin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPatient.xaml.cs">
+      <DependentUpon>ViewPatient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="viewPatientWin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="viewPatientWin.Designer.cs">
+      <DependentUpon>viewPatientWin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WindowExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PharmacyDashBoard.cs" />
+    <Compile Include="DocAdmin.xaml.cs">
+      <DependentUpon>DocAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Drug.cs" />
+    <Compile Include="GetPatientData.cs" />
+    <Compile Include="Logic\Clinic.cs" />
+    <Compile Include="Logic\DoctorDashBoard.cs" />
+    <Compile Include="Logic\Pharmacy.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PharAddDrug.xaml.cs">
+      <DependentUpon>PharAddDrug.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PharAddSupplier.xaml.cs">
+      <DependentUpon>PharAddSupplier.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PharAdmin.xaml.cs">
+      <DependentUpon>PharAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -107,9 +221,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="PharDispenseDrugWin.resx">
+      <DependentUpon>PharDispenseDrugWin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="viewDrugWin.resx">
+      <DependentUpon>viewDrugWin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="viewPatientWin.resx">
+      <DependentUpon>viewPatientWin.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -118,7 +242,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="media\pass.png" />
@@ -131,6 +257,129 @@
   </ItemGroup>
   <ItemGroup>
     <SplashScreen Include="media\clinic-splaash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="CMB.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConfirmBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DocAddPatient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DocAdmin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DocContextMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DocPatientPrescription.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DocUpdatePatient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DocViewPatientHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PharAddDrug.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PharAddSupplier.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PharAdmin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PharContextMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PharDispenseDrug.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PharUpdateDrug.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="stockTakingReportOne.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="theme\System.Windows.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="theme\Telerik.ReportViewer.Wpf.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="theme\Telerik.Windows.Controls.Input.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="theme\Telerik.Windows.Controls.Navigation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="theme\Telerik.Windows.Controls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewDrugs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewPatient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="media\Health-Care.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClinicApp.csproj.DotSettings.user" />
+    <Resource Include="media\drug-history.png" />
+    <Resource Include="media\patient-history-1.png" />
+    <Resource Include="media\patient-history-2.png" />
+    <Resource Include="media\clogout.png" />
+    <Resource Include="media\complaint.png" />
+    <Resource Include="media\diagnosis.png" />
+    <Resource Include="media\add-drug.png" />
+    <Resource Include="media\add-patient.png" />
+    <Resource Include="media\add-supplier.png" />
+    <Resource Include="media\dispense-drugs.png" />
+    <Resource Include="media\drugs.png" />
+    <Resource Include="media\view-patient.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Doctor\" />
+    <Folder Include="Nurse\" />
+    <Folder Include="Pharmacist\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClinicReport\ClinicReport\ClinicReport.csproj">
+      <Project>{f31cc55c-5e5b-4d6e-b3fb-d18bfeb925e4}</Project>
+      <Name>ClinicReport</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
