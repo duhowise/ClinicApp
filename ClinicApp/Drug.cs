@@ -183,34 +183,39 @@ namespace ClinicApp
         {
             int remaining = 0;
             //fetch drugId by passing drugName as a parameter to the query
-            using (
-                SqlConnection connection =
-                    new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
+            if (drugName!="")
             {
-                try
+                using (
+               SqlConnection connection =
+                   new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    try
                     {
-                        connection.Open();
-                        string query = "select Quantity from Drugs  where  Name='" + drugName + "'";
-                        var command = new SqlCommand(query, connection);
-                        var reader = command.ExecuteReader();
-                        while (reader.Read())
+                        if (connection.State == ConnectionState.Closed)
                         {
-                            remaining = reader.GetInt32(0);
+                            connection.Open();
+                            string query = $"SELECT dbo.RemainingDrugs('{drugName}')";
+                            var command = new SqlCommand(query, connection);
+                            var reader = command.ExecuteReader();
+                            while (reader.Read())
+                            {
+                                remaining = reader.GetInt32(0);
+                            }
+                            connection.Close();
                         }
-                        connection.Close();
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show(exception.Message.ToString(), "Error", MessageBoxButton.OK,
+                            MessageBoxImage.Exclamation);
                     }
                 }
-                catch (Exception exception)
-                {
-                    MessageBox.Show(exception.Message.ToString(), "Error", MessageBoxButton.OK,
-                        MessageBoxImage.Exclamation);
-                }
 
 
-                return remaining;
+
+               
             }
+            return remaining;
         }
     }
 }

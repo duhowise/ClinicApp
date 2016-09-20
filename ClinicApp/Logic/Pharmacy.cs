@@ -390,10 +390,7 @@ namespace ClinicApp.Logic
                         if (connection.State == ConnectionState.Closed)
                         {
                             connection.Open();
-                            string query = "INSERT INTO dbo.PrescribedDrugs(PatientId,DrugId,Quantity,UserId)VALUES(" +
-                                           "(select id from patient where providedid='" + patientId + "' )," +
-                                           "(select top 1 id from drugs where Name='" + drugname + "' ),'" + quantity +
-                                           "','"+userId+"')";
+                            string query = $"INSERT INTO dbo.PrescribedDrugs(PatientId,DrugId,Quantity,UserId)VALUES((select id from patient where providedid='{patientId}' ),(select top 1 id from drugs where Name='{drugname}'),'{quantity}','{userId}')";
                             var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
                             if (command.ExecuteNonQuery() > 0)
                             {
