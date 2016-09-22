@@ -2,13 +2,14 @@
 using System.ComponentModel;
 using System.Windows;
 using ClinicApp.Logic;
+using MahApps.Metro.Controls;
 
 namespace ClinicApp
 {
     /// <summary>
     /// Interaction logic for PharAddSupplier.xaml
     /// </summary>
-    public partial class PharAddSupplier : Window
+    public partial class PharAddSupplier : MetroWindow
     {
         CMB cmb = new CMB();
         public PharAddSupplier()
