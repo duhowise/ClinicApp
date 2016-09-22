@@ -1,3 +1,6 @@
+using System.Diagnostics;
+using Telerik.Reporting;
+
 namespace ClinicReport
 {
     partial class ClinicReport
@@ -454,39 +457,39 @@ namespace ClinicReport
         }
         #endregion
 
-        private Telerik.Reporting.SqlDataSource MonthlyReport;
-        private Telerik.Reporting.GroupHeaderSection labelsGroupHeaderSection;
-        private Telerik.Reporting.TextBox textBox1;
-        private Telerik.Reporting.TextBox textBox2;
-        private Telerik.Reporting.TextBox textBox3;
-        private Telerik.Reporting.TextBox textBox4;
-        private Telerik.Reporting.GroupFooterSection labelsGroupFooterSection;
-        private Telerik.Reporting.PageHeaderSection pageHeader;
-        private Telerik.Reporting.TextBox reportNameTextBox;
-        private Telerik.Reporting.PageFooterSection pageFooter;
-        private Telerik.Reporting.TextBox currentTimeTextBox;
-        private Telerik.Reporting.TextBox pageInfoTextBox;
-        private Telerik.Reporting.ReportHeaderSection reportHeader;
-        private Telerik.Reporting.ReportFooterSection reportFooter;
-        private Telerik.Reporting.DetailSection detail;
-        private Telerik.Reporting.TextBox textBox5;
-        private Telerik.Reporting.TextBox textBox6;
-        private Telerik.Reporting.TextBox textBox7;
-        private Telerik.Reporting.TextBox textBox8;
-        private Telerik.Reporting.TextBox textBox9;
-        private Telerik.Reporting.PictureBox pictureBox1;
-        private Telerik.Reporting.TextBox textBox11;
-        private Telerik.Reporting.TextBox textBox12;
-        private Telerik.Reporting.TextBox textBox13;
-        private Telerik.Reporting.TextBox textBox14;
-        private Telerik.Reporting.TextBox textBox10;
-        private System.Diagnostics.EventLog eventLog1;
-        private Telerik.Reporting.TextBox textBox15;
-        private Telerik.Reporting.TextBox textBox16;
-        private Telerik.Reporting.TextBox textBox17;
-        private Telerik.Reporting.TextBox textBox18;
-        private Telerik.Reporting.TextBox textBox19;
-        private Telerik.Reporting.TextBox textBox20;
-        private Telerik.Reporting.TextBox textBox21;
+        private SqlDataSource MonthlyReport;
+        private GroupHeaderSection labelsGroupHeaderSection;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private TextBox textBox3;
+        private TextBox textBox4;
+        private GroupFooterSection labelsGroupFooterSection;
+        private PageHeaderSection pageHeader;
+        private TextBox reportNameTextBox;
+        private PageFooterSection pageFooter;
+        private TextBox currentTimeTextBox;
+        private TextBox pageInfoTextBox;
+        private ReportHeaderSection reportHeader;
+        private ReportFooterSection reportFooter;
+        private DetailSection detail;
+        private TextBox textBox5;
+        private TextBox textBox6;
+        private TextBox textBox7;
+        private TextBox textBox8;
+        private TextBox textBox9;
+        private PictureBox pictureBox1;
+        private TextBox textBox11;
+        private TextBox textBox12;
+        private TextBox textBox13;
+        private TextBox textBox14;
+        private TextBox textBox10;
+        private EventLog eventLog1;
+        private TextBox textBox15;
+        private TextBox textBox16;
+        private TextBox textBox17;
+        private TextBox textBox18;
+        private TextBox textBox19;
+        private TextBox textBox20;
+        private TextBox textBox21;
     }
 }

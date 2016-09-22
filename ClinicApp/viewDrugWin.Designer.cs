@@ -1,11 +1,14 @@
-﻿namespace ClinicApp
+﻿using System.ComponentModel;
+using Telerik.WinControls.UI;
+
+namespace ClinicApp
 {
     partial class viewDrugWin
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -77,6 +80,6 @@
 
         #endregion
 
-        private Telerik.WinControls.UI.RadGridView DrugView;
+        private RadGridView DrugView;
     }
 }

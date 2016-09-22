@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClinicApp.Logic;
+using Telerik.WinControls.UI;
 
 namespace ClinicApp
 {
@@ -50,7 +45,7 @@ namespace ClinicApp
             //}
         }
 
-        private void DrugView_CellDoubleClick(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
+        private void DrugView_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
             var item = DrugView.CurrentCell.Value;
 

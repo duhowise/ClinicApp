@@ -4,8 +4,6 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
-using System.Windows.Forms;
-using MessageBox = System.Windows.MessageBox;
 
 namespace ClinicApp
 {

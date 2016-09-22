@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using ClinicApp.Logic;
+using MessageBox = System.Windows.MessageBox;
 
 namespace ClinicApp
 {
@@ -84,7 +79,7 @@ namespace ClinicApp
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            var response = System.Windows.MessageBox.Show("Do you really want to close this window", "Exit",
+            var response = MessageBox.Show("Do you really want to close this window", "Exit",
                MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
 
             if (response == MessageBoxResult.No)

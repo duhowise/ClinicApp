@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="ClinicApp.PharAdminDashboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ClinicApp"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <materialDesign:Card Grid.Row="0" HorizontalAlignment="Stretch" Grid.ColumnSpan="5"
+                  Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                  Padding="10">
+            <Label FontSize="18"
+                       FontFamily="{DynamicResource HeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="{DynamicResource AccentColorBrush}">DASHBOARD</Label>
+        </materialDesign:Card>
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Stretch" Margin="0 0 8 8" ItemWidth="200">
+        <materialDesign:Card Margin="4 4 0 0">
+           <Grid>
+               <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="lbTotalDrugs" Grid.Row="0" Content="10,000" Height="60" 
+                           Width="140" FontSize="40" Foreground="{DynamicResource AccentColorBrush}"/>
+                    <Separator Grid.Row="1" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                    <Button Grid.Row="2" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolForegroundButton}" Width="30" Padding="2 0 2 0"
+                            materialDesign:RippleAssist.IsCentered="True">
+                        <materialDesign:PackIcon Kind="Phone" />
+                    </Button>
+                </Grid>
+        </materialDesign:Card>
+            <materialDesign:Card Margin="4 4 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="lbDispensedDrugs" Grid.Row="0" Content="10,000" Height="60" 
+                           Width="140" FontSize="40" Foreground="{DynamicResource AccentColorBrush}"/>
+                    <Separator Grid.Row="1" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                    <Button Grid.Row="2" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolForegroundButton}" Width="30" Padding="2 0 2 0"
+                            materialDesign:RippleAssist.IsCentered="True">
+                        <materialDesign:PackIcon Kind="Phone" />
+                    </Button>
+                </Grid>
+            </materialDesign:Card>
+            <materialDesign:Card Margin="4 4 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="lbAvailableDrugs" Grid.Row="0" Content="10,000" Height="60" 
+                           Width="140" FontSize="40" Foreground="{DynamicResource AccentColorBrush}"/>
+                    <Separator Grid.Row="1" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                    <Button Grid.Row="2" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolForegroundButton}" Width="30" Padding="2 0 2 0"
+                            materialDesign:RippleAssist.IsCentered="True">
+                        <materialDesign:PackIcon Kind="Phone" />
+                    </Button>
+                </Grid>
+            </materialDesign:Card>
+        </WrapPanel>
+    </Grid>
+</UserControl>

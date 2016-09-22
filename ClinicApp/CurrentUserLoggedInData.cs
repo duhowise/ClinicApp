@@ -1,6 +1,4 @@
-﻿using System.Windows.Markup;
-
-namespace ClinicApp
+﻿namespace ClinicApp
 {
     public class CurrentUserLoggedInData
     {

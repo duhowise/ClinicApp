@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ClinicApp.Logic;
 
 namespace ClinicApp
@@ -74,9 +65,9 @@ namespace ClinicApp
           
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
-            var response = System.Windows.MessageBox.Show("Do you really want to close this window", "Exit",
+            var response = MessageBox.Show("Do you really want to close this window", "Exit",
                MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
 
             if (response == MessageBoxResult.No)
@@ -94,7 +85,7 @@ namespace ClinicApp
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
 
-            var response = System.Windows.MessageBox.Show("Do you really want to close this window", "Exit",
+            var response = MessageBox.Show("Do you really want to close this window", "Exit",
                 MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
 
             if (response == MessageBoxResult.No)

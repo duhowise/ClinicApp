@@ -1,22 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ClinicApp.Logic;
+using MahApps.Metro.Controls;
 using MessageBox = System.Windows.MessageBox;
 
 namespace ClinicApp
@@ -24,7 +15,7 @@ namespace ClinicApp
     /// <summary>
     /// Interaction logic for PharAddDrug.xaml
     /// </summary>
-    public partial class PharAddDrug : Window
+    public partial class PharAddDrug : MetroWindow
     { 
         CMB cmb =new CMB();
       
@@ -33,13 +24,13 @@ namespace ClinicApp
             InitializeComponent();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
             //DialogResult dr= new DialogResult();
 
             //call confirmBox here
 
-            var response = System.Windows.MessageBox.Show("Do you really want to Stop adding new drug", "Exit",
+            var response = MessageBox.Show("Do you really want to Stop adding new drug", "Exit",
                 MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
 
             if (response == MessageBoxResult.No)
@@ -52,7 +43,7 @@ namespace ClinicApp
         {
 
 
-            var response = System.Windows.MessageBox.Show("Do you really want to close this window", "Exit",
+            var response = MessageBox.Show("Do you really want to close this window", "Exit",
                 MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
 
             if (response == MessageBoxResult.No)
@@ -179,31 +170,31 @@ namespace ClinicApp
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(DrugName.Text)|| string.IsNullOrEmpty(BoxQuantity.Text)|| string.IsNullOrEmpty(NumberInBox.Text)|| string.IsNullOrEmpty(TotalQuantity.Text)|| string.IsNullOrEmpty(Supplier.SelectedItem.ToString())|| string.IsNullOrEmpty(ExpiryDate.Text))
-            {
-                cmb.Message = "All Fields Are Required";
-                cmb.Show();
-                //MessageBox.Show("All Feild Are Required", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            else
-            {
-                if (Pharmacy.AddNewDrug(DrugName.Text, Convert.ToInt32(BoxQuantity.Text),
-                    Convert.ToInt32(NumberInBox.Text),
-                    Convert.ToInt32(TotalQuantity.Text), Supplier.SelectedItem.ToString(),
-                    Convert.ToDateTime(ExpiryDate.SelectedDate.Value.ToShortDateString())))
-                {
-                    cmb.Message = "Drug Saved Successfully";
-                    cmb.Show();
-                    //MessageBox.Show("Drug saved Saved Successfully", "Ok", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Hide();
-                    new PharAddDrug().ShowDialog();
-                }
-                else
-                {
-                    cmb.Message = " ERROR!!! Drug Could not be Saved Successfully";
-                    cmb.Show();
-                }
-            }
+        //    if (string.IsNullOrEmpty(DrugName.Text)|| string.IsNullOrEmpty(BoxQuantity.Text)|| string.IsNullOrEmpty(NumberInBox.Text)|| string.IsNullOrEmpty(TotalQuantity.Text)|| string.IsNullOrEmpty(Supplier.SelectedItem.ToString())|| string.IsNullOrEmpty(ExpiryDate.Text))
+        //    {
+        //        cmb.Message = "All Fields Are Required";
+        //        cmb.Show();
+        //        //MessageBox.Show("All Feild Are Required", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+        //    }
+        //    else
+        //    {
+        //        if (Pharmacy.AddNewDrug(DrugName.Text, Convert.ToInt32(BoxQuantity.Text),
+        //            Convert.ToInt32(NumberInBox.Text),
+        //            Convert.ToInt32(TotalQuantity.Text), Supplier.SelectedItem.ToString(),
+        //            Convert.ToDateTime(ExpiryDate.SelectedDate.Value.ToShortDateString())))
+        //        {
+        //            cmb.Message = "Drug Saved Successfully";
+        //            cmb.Show();
+        //            //MessageBox.Show("Drug saved Saved Successfully", "Ok", MessageBoxButton.OK, MessageBoxImage.Information);
+        //            Hide();
+        //            new PharAddDrug().ShowDialog();
+        //        }
+        //        else
+        //        {
+        //            cmb.Message = " ERROR!!! Drug Could not be Saved Successfully";
+        //            cmb.Show();
+        //        }
+           //}
         }
 
         private void BoxQuantity_TextChanged(object sender, TextChangedEventArgs e)
@@ -215,21 +206,21 @@ namespace ClinicApp
         //calculating total quantity on  textChanged
         private void NumberInBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            int num;
-            if (string.IsNullOrEmpty(BoxQuantity.Text) == false)
-            {
-                if (int.TryParse(BoxQuantity.Text, out num))
-                {
-                    TotalQuantity.Text =
-                        Convert.ToString(Convert.ToInt64(BoxQuantity.Text)*Convert.ToInt64(NumberInBox.Text));
-                }
-                else
-                {
-                    cmb.Message = "Can't Have Letters";
-                    cmb.Show();
-                   // MessageBox.Show("Cant have letters", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-            }
+            //int num;
+            //if (string.IsNullOrEmpty(BoxQuantity.Text) == false)
+            //{
+            //    if (int.TryParse(BoxQuantity.Text, out num))
+            //    {
+            //        TotalQuantity.Text =
+            //            Convert.ToString(Convert.ToInt64(BoxQuantity.Text)*Convert.ToInt64(NumberInBox.Text));
+            //    }
+            //    else
+            //    {
+            //        cmb.Message = "Can't Have Letters";
+            //        cmb.Show();
+            //       // MessageBox.Show("Cant have letters", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+            //    }
+            //}
 
         }
         public void DrugNames()

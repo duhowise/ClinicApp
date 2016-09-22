@@ -1,7 +1,8 @@
-﻿using System;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using ClinicApp.Logic;
+using MahApps.Metro.Controls;
 
 namespace ClinicApp
 {
@@ -33,12 +34,12 @@ namespace ClinicApp
             set { fullname = value; }
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
             //DialogResult dr= new DialogResult();
             //call confirmBox Here
 
-            var response = System.Windows.MessageBox.Show("Do you really want to close the Application", "Exit",
+            var response = MessageBox.Show("Do you really want to close the Application", "Exit",
                 MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
 
             if (response == MessageBoxResult.No)
@@ -91,7 +92,7 @@ namespace ClinicApp
                 }
                 else
                 {
-                    System.Windows.MessageBox.Show("Please Check Username or Password", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Please Check Username or Password", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                     Password.Password = "";
                     userName.Text = "";
                     userName.Focus();
@@ -105,7 +106,7 @@ namespace ClinicApp
             userName.Focus();
         }
 
-        private void Password_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void Password_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
             {

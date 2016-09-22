@@ -1,33 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using MahApps.Metro.Controls;
+using Package_Manager.View;
 
 namespace ClinicApp
 {
     /// <summary>
     /// Interaction logic for PharAdmin.xaml
     /// </summary>
-    public partial class PharAdmin : Window
+    public partial class PharAdmin : MetroWindow
     {
        
         //PharAddSupplier ps = new PharAddSupplier();
         //PharAddDrug pd = new PharAddDrug();
        Drug drug = new Drug();
-        
+        private MainContentView navigator;
+
+
 
         public PharAdmin()
         {
             InitializeComponent();
+            this.Loaded += OnLoaded;
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
+        {
+            this.DataContext = new MainContentView(NavigateToView);
+             navigator = new MainContentView(NavigateToView);
+        }
+
+        private void NavigateToView(UserControl view)
+        {
+            MainArea.Content = view;
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -46,12 +53,12 @@ namespace ClinicApp
             int a, b;
             ViewPatient.cMenu = 0;
             LoginUserName.Text = CurrentUserLoggedInData.FirstName + " " + CurrentUserLoggedInData.LastName;
-            lbTotalDrugs.Content = a = drug.TotalDrugsInStock("Drugs");
-            lbDispensedDrugs.Content = b = drug.TotalDrugsInStock("PrescribedDrugs");
-            lbAvailableDrugs.Content = a - b;
+            //lbTotalDrugs.Content = a = drug.TotalDrugsInStock("Drugs");
+            //lbDispensedDrugs.Content = b = drug.TotalDrugsInStock("PrescribedDrugs");
+            //lbAvailableDrugs.Content = a - b;
 
 
-            frequentdataGrid.ItemsSource = Drug.LoadFrequentDrugs().DefaultView;
+            //frequentdataGrid.ItemsSource = Drug.LoadFrequentDrugs().DefaultView;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -90,7 +97,7 @@ namespace ClinicApp
         private void LogUserOut()
         {
 
-            var response = System.Windows.MessageBox.Show("Do you really want to Logout", "Exit",
+            var response = MessageBox.Show("Do you really want to Logout", "Exit",
                 MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
 
             if (response == MessageBoxResult.No)
@@ -115,14 +122,14 @@ namespace ClinicApp
         private void Window_MouseEnter(object sender, MouseEventArgs e)
         {
             int a, b;
-            lbTotalDrugs.Content = a = drug.TotalDrugsInStock("Drugs");
-            lbDispensedDrugs.Content = b = drug.TotalDrugsInStock("PrescribedDrugs");
-            lbAvailableDrugs.Content = a - b;
+            //lbTotalDrugs.Content = a = drug.TotalDrugsInStock("Drugs");
+           // lbDispensedDrugs.Content = b = drug.TotalDrugsInStock("PrescribedDrugs");
+            //lbAvailableDrugs.Content = a - b;
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
-            var response = System.Windows.MessageBox.Show("Please be sure to Logout first", "Exit",
+            var response = MessageBox.Show("Please be sure to Logout first", "Exit",
                MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
 
             if (response == MessageBoxResult.No)
@@ -141,6 +148,17 @@ namespace ClinicApp
         {
             stockTakingReportOne repotOne=new stockTakingReportOne();
             repotOne.Show();
+        }
+
+        private void btnPharAdminDashboard(object sender, RoutedEventArgs e)
+        {
+            navigator.NavigateTopharAdminDashboardControl();
+        }
+
+        private void btnAddDrug(object sender, RoutedEventArgs e)
+        {
+            //navigator.NavigateToAddNewDrugControl();
+            new PharAddDrug().ShowDialog();
         }
     }
 }

@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Telerik.Windows;
 
 namespace ClinicApp
 {
@@ -70,7 +60,7 @@ namespace ClinicApp
         private void LogUserOut()
         {
 
-            var response = System.Windows.MessageBox.Show("Do you really want to Logout", "Exit",
+            var response = MessageBox.Show("Do you really want to Logout", "Exit",
                 MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
 
             if (response == MessageBoxResult.No)
@@ -103,9 +93,9 @@ namespace ClinicApp
             lbAvailableDrugs.Content = a - b;
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
-            var response = System.Windows.MessageBox.Show("Please be sure to Logout first", "Exit",
+            var response = MessageBox.Show("Please be sure to Logout first", "Exit",
                MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
 
             if (response == MessageBoxResult.No)

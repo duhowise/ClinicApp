@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls.UI;
 
 namespace ClinicApp
 {
@@ -63,7 +58,7 @@ namespace ClinicApp
             
         }
 
-        private void PatientView_CellDoubleClick(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
+        private void PatientView_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
             cmb = new CMB();
             var item = PatientView.CurrentCell.Value;

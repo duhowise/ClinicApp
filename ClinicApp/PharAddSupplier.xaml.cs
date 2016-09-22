@@ -1,19 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ClinicApp.Logic;
-using MessageBox = System.Windows.MessageBox;
 
 namespace ClinicApp
 {
@@ -28,9 +16,9 @@ namespace ClinicApp
             InitializeComponent();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
-            var response = System.Windows.MessageBox.Show("Do you really want to close the Application", "Exit",
+            var response = MessageBox.Show("Do you really want to close the Application", "Exit",
                  MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
             if (response == MessageBoxResult.Yes)
             {
@@ -71,7 +59,7 @@ namespace ClinicApp
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            var response = System.Windows.MessageBox.Show("Do you really want to close this Window", "Exit",
+            var response = MessageBox.Show("Do you really want to close this Window", "Exit",
                  MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
             if (response==MessageBoxResult.Yes)
             {

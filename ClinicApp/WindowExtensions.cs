@@ -1,9 +1,9 @@
-﻿namespace ClinicApp
-{
-    using System;
-    using System.Runtime.InteropServices;
-    using System.Windows;
+﻿using System;
+using System.Runtime.InteropServices;
+using System.Windows;
 
+namespace ClinicApp
+{
     public static class WindowExtensions
     {
         #region Public Methods
