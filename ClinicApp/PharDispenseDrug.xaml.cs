@@ -2,13 +2,14 @@
 using System.Windows;
 using System.Windows.Controls;
 using ClinicApp.Logic;
+using MahApps.Metro.Controls;
 
 namespace ClinicApp
 {
     /// <summary>
     /// Interaction logic for PharDispenseDrug.xaml
     /// </summary>
-    public partial class PharDispenseDrug : Window
+    public partial class PharDispenseDrug : MetroWindow
     {
         CMB cmb = new CMB();
         Drug availableDrug = new Drug();
@@ -57,7 +58,7 @@ namespace ClinicApp
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DispenseProvidedId.Text = ViewPatient.PatientList1[2];
+            //DispenseProvidedId.Text = ViewPatient.PatientList1[2];
         }
 
         private void DispenseDrugName_LostFocus(object sender, RoutedEventArgs e)
@@ -65,7 +66,7 @@ namespace ClinicApp
             //compute availables here
             if (!string.IsNullOrEmpty(this.DispenseDrugName.SearchText))
             {
-                lbRemainingDrugs.Content = availableDrug.GetDrugRemaining(DispenseDrugName.SearchText) + "";
+                lbRemainingDrugs.Text = availableDrug.GetDrugRemaining(DispenseDrugName.SearchText) + "";
             }
 
         }
@@ -79,7 +80,7 @@ namespace ClinicApp
                 {
                     if (availableDrug.GetDrugRemaining(DispenseDrugName.SearchText) > Convert.ToInt32(DispenseDrugQuantity.Text))
                     {
-                        lbRemainingDrugs.Content =
+                        lbRemainingDrugs.Text =
                             Convert.ToInt32(availableDrug.GetDrugRemaining(DispenseDrugName.SearchText)) -
                             Convert.ToInt32(DispenseDrugQuantity.Text) + "";
                     }
@@ -98,7 +99,7 @@ namespace ClinicApp
             }
             else
             {
-                lbRemainingDrugs.Content = availableDrug.GetDrugRemaining("") + "";
+                lbRemainingDrugs.Text = availableDrug.GetDrugRemaining("") + "";
             }
         }
     }

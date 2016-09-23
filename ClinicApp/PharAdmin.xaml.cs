@@ -83,8 +83,9 @@ namespace ClinicApp
             //ViewPatient viewPatient = new ViewPatient { MenuAction = "phar" };
             //viewPatient.ShowDialog();
 
-            var ViewPatient=new viewPatientWin() { MenuAction = "phar" };
-            ViewPatient.ShowDialog();
+            //var ViewPatient=new viewPatientWin() { MenuAction = "phar" };
+            //ViewPatient.ShowDialog();
+            new PharSearchPatient().ShowDialog();
 
         }
 

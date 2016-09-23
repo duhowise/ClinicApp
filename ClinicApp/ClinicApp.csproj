@@ -168,6 +168,10 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFTextBoxAutoComplete, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFTextBoxAutoComplete.1.0.2\lib\net40\WPFTextBoxAutoComplete.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -205,6 +209,8 @@
     <Compile Include="IRefreshDataGridView.cs" />
     <Compile Include="MainContentView.cs" />
     <Compile Include="Patient.cs" />
+    <Compile Include="PatientIdsAutoCompleteData.cs" />
+    <Compile Include="PatientIdsAutoCompleteModel.cs" />
     <Compile Include="PharAdminDashboard.xaml.cs">
       <DependentUpon>PharAdminDashboard.xaml</DependentUpon>
     </Compile>
@@ -220,10 +226,14 @@
     <Compile Include="PharDispenseDrugWin.Designer.cs">
       <DependentUpon>PharDispenseDrugWin.cs</DependentUpon>
     </Compile>
+    <Compile Include="PharSearchPatient.xaml.cs">
+      <DependentUpon>PharSearchPatient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PharUpdateDrug.xaml.cs">
       <DependentUpon>PharUpdateDrug.xaml</DependentUpon>
     </Compile>
     <Compile Include="SingleDrugData.cs" />
+    <Compile Include="SinglePatientId.cs" />
     <Compile Include="stockTakingReportOne.xaml.cs">
       <DependentUpon>stockTakingReportOne.xaml</DependentUpon>
     </Compile>
@@ -377,6 +387,10 @@
     <Page Include="PharDispenseDrug.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PharSearchPatient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PharUpdateDrug.xaml">
       <Generator>MSBuild:Compile</Generator>
