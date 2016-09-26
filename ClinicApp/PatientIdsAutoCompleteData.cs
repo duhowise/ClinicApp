@@ -51,22 +51,7 @@ namespace ClinicApp
         public ObservableCollection<SinglePatientId> GetPatientIdAutoCompleteData()
         {
             patientIds.Clear();
-           // LoadPatientIdData();
-            patientIds.Add(
-                              new SinglePatientId()
-                              {
-                                  ProvidedId = "8888"
-                              });
-            patientIds.Add(
-                             new SinglePatientId()
-                             {
-                                 ProvidedId = "7788"
-                             });
-            patientIds.Add(
-                             new SinglePatientId()
-                             {
-                                 ProvidedId = "9988"
-                             });
+           LoadPatientIdData();
             return patientIds;
         }
     }

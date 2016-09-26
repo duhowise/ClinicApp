@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Forms;
 using ClinicApp.Logic;
 using MahApps.Metro.Controls;
+using MaterialDesignThemes.Wpf;
 using MessageBox = System.Windows.MessageBox;
 
 namespace ClinicApp
@@ -258,13 +259,24 @@ namespace ClinicApp
            
         }
 
-        private void DrugName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
 
         private void Window_Closed(object sender, EventArgs e)
         {
+        }
+
+        private void AddNewDosageForm_Click(object sender, RoutedEventArgs e)
+        {
+            new PharAddDosageForm().ShowDialog();
+        }
+
+        private void AddNewCategory_Click(object sender, RoutedEventArgs e)
+        {
+            new PharAddCategory().ShowDialog();
+        }
+
+        private void AddNewType_Click(object sender, RoutedEventArgs e)
+        {
+            new PharAddType().ShowDialog();
         }
     }
 }

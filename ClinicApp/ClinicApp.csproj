@@ -211,6 +211,15 @@
     <Compile Include="Patient.cs" />
     <Compile Include="PatientIdsAutoCompleteData.cs" />
     <Compile Include="PatientIdsAutoCompleteModel.cs" />
+    <Compile Include="PharAddCategory.xaml.cs">
+      <DependentUpon>PharAddCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PharAddDosageForm.xaml.cs">
+      <DependentUpon>PharAddDosageForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PharAddType.xaml.cs">
+      <DependentUpon>PharAddType.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PharAdminDashboard.xaml.cs">
       <DependentUpon>PharAdminDashboard.xaml</DependentUpon>
     </Compile>
@@ -364,6 +373,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="PharAddCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PharAddDosageForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PharAddDrug.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -371,6 +388,10 @@
     <Page Include="PharAddSupplier.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PharAddType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PharAdmin.xaml">
       <Generator>MSBuild:Compile</Generator>
