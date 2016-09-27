@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
+using ClinicApp.Doctor;
 using ClinicApp.Logic;
+using ClinicApp.Pharmacist;
 using MahApps.Metro.Controls;
 
 namespace ClinicApp

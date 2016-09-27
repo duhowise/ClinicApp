@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using ClinicApp.Data;
 using ClinicApp.Logic;
 using Telerik.WinControls.UI;
 
@@ -17,7 +18,7 @@ namespace ClinicApp
 
         private void viewDrugWin_Load(object sender, EventArgs e)
         {
-            DrugView.DataSource = new Drug().RetrieveAll();
+            DrugView.DataSource = new DrugRepository().GetAllDrugs();
         }
 
         private void DrugView_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -27,7 +28,7 @@ namespace ClinicApp
             //if (item is string)
             //{
             //    //MessageBox.Show(item.ToString());
-            //    newInstance = Drug.FetchByName(item.ToString());
+            //    newInstance = DrugsOld.FetchByName(item.ToString());
             //    var updateDrugs = new PharUpdateDrug();
             //    var cmd = new CMB();
             //    cmd.Message = "";
@@ -52,8 +53,8 @@ namespace ClinicApp
             if (item is string)
             {
                 //MessageBox.Show(item.ToString());
-                newInstance = Drug.FetchByName(item.ToString());
-                var updateDrugs = new PharUpdateDrug();
+                newInstance = (List<string>) DrugRepository.FetchByName(item.ToString());
+                var updateDrugs = new Pharmacist.PharUpdateDrug();
                 var cmd = new CMB();
                 cmd.Message = "";
                 updateDrugs.Show();

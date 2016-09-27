@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using ClinicApp.Data;
+using ClinicApp.Doctor;
+using ClinicApp.Pharmacist;
+using ClinicModel;
 using Telerik.WinControls.UI;
 
 namespace ClinicApp
@@ -45,7 +49,7 @@ namespace ClinicApp
 
         private void viewPatientWin_Load(object sender, EventArgs e)
         {
-            PatientView.DataSource = new Patient().RetrieveAll();
+            PatientView.DataSource = new PatientRepository().GetAllPatients();
         }
 
         private void viewPatientWin_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -65,7 +69,7 @@ namespace ClinicApp
             if (item is string)
             {
                 //MessageBox.Show(item.ToString());
-                PatientList1 = Patient.FetchPatientById(item.ToString());
+                //PatientList1 = Patient.FetchPatientById(item.ToString());
 
                 if (PatientList1.Count > 0)
                 {

@@ -1,0 +1,237 @@
+﻿<controls:MetroWindow x:Class="ClinicApp.Pharmacist.PharAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Background="{DynamicResource MaterialDesignPaper}"
+                TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+                TextElement.FontWeight="Medium"
+                TextElement.FontSize="14"
+                FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+       Title="KUMASI POLYTECHNIC CLINIC APP" Height="500" Width="1000" 
+                      WindowState="Maximized" Icon="/media/Health-Care.png" 
+                      Loaded="Window_Loaded" MouseEnter="Window_MouseEnter" 
+                      Closing="Window_Closing">
+    <Window.Resources>
+        <Style x:Key="StackP"
+               TargetType="StackPanel">
+        </Style>
+        <Style  TargetType="Button">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Black"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" DockPanel.Dock="Top" Background="{StaticResource PrimaryColorBrush}" Height="40">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Pharmacy Department" FontSize="18" Grid.Column="0" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="Welcome!" FontSize="16" Foreground="#FFFFD205" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="LoginUserName" Margin="0" FontSize="16" FontWeight="Bold" Foreground="#FFFBF4F4" FontFamily="Arial" VerticalAlignment="Center"/>
+                    <Image Source="media/clogout.png" Height="37"/>
+                    <Label x:Name="Logout" Content="Logout" FontSize="16" Foreground="{StaticResource WhiteColorBrush}" VerticalAlignment="Center" FontWeight="Bold" MouseDoubleClick="Logout_MouseDoubleClick" ToolTip="Double click to Log out"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <Grid>
+                <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" Orientation="Horizontal" VerticalAlignment="Stretch">
+                    <Expander IsExpanded="True" HorizontalAlignment="Left" Width="350" ExpandDirection="Right">
+                        <Expander.Header>
+                            <TextBlock Text="Main Menu" FontSize="18" FontFamily="{DynamicResource HeaderFontFamily}"
+                                       Foreground="{DynamicResource WhiteColorBrush}"
+                                       RenderTransformOrigin=".5,.5">
+                                <TextBlock.LayoutTransform>
+                                    <RotateTransform Angle="90" />
+                                </TextBlock.LayoutTransform>
+                            </TextBlock>
+                        </Expander.Header>
+                        <StackPanel Orientation="Vertical">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Grid.Column="0" Source="media/add-supplier.png" Width="32" Height="32"/>
+                                <Button  Grid.Row="0" Grid.Column="1"
+                            Content="DashBoard" FontSize="18"  FontFamily="Arial Unicode MS" 
+                                 FontWeight="Normal" Margin="6,5,0,10"  HorizontalAlignment="Stretch" 
+                                 Background="{x:Null}" BorderThickness="0" SnapsToDevicePixels="False" Cursor="Hand" 
+                                 HorizontalContentAlignment="Stretch" Click="btnPharAdminDashboard" 
+                                 >
+                                    <Button.ContextMenu>
+                                        <ContextMenu AllowDrop="True"/>
+                                    </Button.ContextMenu>
+                                </Button>
+
+                                <Image Grid.Row="1" Grid.Column="0" Source="media/add-supplier.png" Width="32" Height="32"/>
+                                <Button  Grid.Row="1" Grid.Column="1"
+                            Content="Add Supplier" FontSize="18"  FontFamily="{DynamicResource HeaderFontFamily}"
+                                         Foreground="{DynamicResource AccentColorBrush}"
+                                 FontWeight="Normal" Margin="6,5,0,10"  HorizontalAlignment="Stretch" 
+                                 Background="{x:Null}" BorderThickness="0" SnapsToDevicePixels="False" Cursor="Hand" 
+                                 HorizontalContentAlignment="Stretch" Click="Button_Click_3" 
+                                 >
+                                    <Button.ContextMenu>
+                                        <ContextMenu AllowDrop="True"/>
+                                    </Button.ContextMenu>
+                                </Button>
+                                <Image Grid.Row="2" Grid.Column="0" 
+                            Source="media/add-drug.png" Width="32" Height="32"  Margin="10,0,5,0" 
+                               HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                                <Button Grid.Row="2" Grid.Column="1" FontWeight="Normal" Foreground="{DynamicResource AccentColorBrush}"
+                            Content="Add Drug" FontSize="18"   FontFamily="{DynamicResource HeaderFontFamily}"
+                                 Margin="5,5,0,10"  HorizontalAlignment="Stretch" Background="{x:Null}" BorderThickness="0" 
+                                 SnapsToDevicePixels="False" Cursor="Hand" HorizontalContentAlignment="Stretch" Click="btnAddDrug"
+                                 RenderTransformOrigin="0.141,0.596" 
+                                 >
+                                    <Button.ContextMenu>
+                                        <ContextMenu AllowDrop="True"/>
+                                    </Button.ContextMenu>
+                                </Button>
+
+                                <Image Grid.Row="3" Grid.Column="0" 
+                                Source="media/drugs.png" Width="32" Height="32"  Margin="10,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                                <Button Grid.Row="3" Grid.Column="1" HorizontalContentAlignment="Stretch" FontWeight="Normal"
+                                        Foreground="{DynamicResource AccentColorBrush}" 
+                                Content="View Drug" FontSize="18"   FontFamily="{DynamicResource HeaderFontFamily}" Margin="5,5,0,10"
+                        	Background="{x:Null}" BorderThickness="0" Cursor="Hand" Click="Button_Click_2"/>
+                                <Image Grid.Row="4" Grid.Column="0" 
+                                Source="media/dispense-drugs.png" Width="32" Height="32"  Margin="10,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                                <Button Grid.Row="4" Grid.Column="1" Name="Dispense" HorizontalContentAlignment="Stretch"
+                                        Content="Dispense Drug" FontSize="18"  FontFamily="{DynamicResource HeaderFontFamily}" Foreground="{DynamicResource AccentColorBrush}"
+                               Background="{x:Null}" BorderThickness="0" FontWeight="Normal" Margin="5,5,0,10"  HorizontalAlignment="Stretch" Cursor="Hand" Click="Dispense_Click">
+                                </Button>
+                                <Image Grid.Row="5" Grid.Column="0" 
+                               Source="media/dispense-drugs.png" Width="32" Height="32"  Margin="10,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                                <Button Grid.Row="5" Grid.Column="1" Name="reporting" HorizontalContentAlignment="Stretch"
+                                        Content="View Report" FontSize="18"  FontFamily="{DynamicResource HeaderFontFamily}" Foreground="{DynamicResource AccentColorBrush}"
+                               Background="{x:Null}" BorderThickness="0" FontWeight="Normal" Margin="5,5,0,10"  HorizontalAlignment="Stretch" Cursor="Hand" Click="reporting_Click" >
+                                </Button>
+                                <TreeView Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
+                                <TreeViewItem 
+                                              FontFamily="{DynamicResource HeaderFontFamily}"
+                                              Header="Other menu" IsExpanded="True">
+                                    <TreeViewItem Padding="10">
+                                        <TreeViewItem.Header>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Viewbox Width="24" Height="24">
+                                                    <materialDesign:PackIcon Foreground="{DynamicResource PrimaryColorBrush}" Kind="Server" />
+                                                </Viewbox>
+                                                <TextBlock FontSize="16" Foreground="{DynamicResource AccentColorBrush}" 
+                                                            FontFamily="{DynamicResource HeaderFontFamily}"
+                                                           VerticalAlignment="Center" Margin="5 0 0 0">Drug category</TextBlock>
+                                            </StackPanel>
+                                        </TreeViewItem.Header>
+                                            <StackPanel Orientation="Horizontal" Margin="24 0 0 0">
+                                                <Viewbox Width="24" Height="24">
+                                                    <materialDesign:PackIcon  Foreground="{DynamicResource PrimaryColorBrush}" Kind="PlusCircleOutline" />
+                                                </Viewbox>
+                                                <TextBlock Foreground="{DynamicResource AccentColorBrush}" Padding="5" VerticalAlignment="Center"
+                                                   FontFamily="{DynamicResource HeaderFontFamily}" >Add new category</TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal" Margin="24 0 0 0">
+                                                <Viewbox Width="24" Height="24">
+                                                    <materialDesign:PackIcon  Foreground="{DynamicResource PrimaryColorBrush}" Kind="Binoculars" />
+                                                </Viewbox>
+                                                <TextBlock Foreground="{DynamicResource AccentColorBrush}" Padding="5" VerticalAlignment="Center"
+                                                   FontFamily="{DynamicResource HeaderFontFamily}">view existing categories</TextBlock>
+                                        </StackPanel>
+                                    </TreeViewItem>
+                                    <TreeViewItem Padding="10">
+                                        <TreeViewItem.Header>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Viewbox Width="24" Height="24">
+                                                    <materialDesign:PackIcon  Foreground="{DynamicResource PrimaryColorBrush}" Kind="ContentCopy"/>
+                                                </Viewbox>
+                                                <TextBlock FontSize="16" Foreground="{DynamicResource AccentColorBrush}"  FontFamily="{DynamicResource HeaderFontFamily}"
+                                                           VerticalAlignment="Center" Margin="5 0 0 0">Drug type</TextBlock>
+                                            </StackPanel>
+                                        </TreeViewItem.Header>
+                                            <StackPanel Orientation="Horizontal" Margin="24 0 0 0">
+                                                <Viewbox Width="24" Height="24">
+                                                    <materialDesign:PackIcon  Foreground="{DynamicResource PrimaryColorBrush}" Kind="PlusCircleOutline" />
+                                                </Viewbox>
+                                                <TextBlock Foreground="{DynamicResource AccentColorBrush}" Padding="5"
+                                                   FontFamily="{DynamicResource HeaderFontFamily}">Add new type</TextBlock></StackPanel>
+                                            <StackPanel Orientation="Horizontal" Margin="24 0 0 0">
+                                                <Viewbox Width="24" Height="24">
+                                                    <materialDesign:PackIcon  Foreground="{DynamicResource PrimaryColorBrush}" Kind="Binoculars" />
+                                                </Viewbox>
+                                                <TextBlock Foreground="{DynamicResource AccentColorBrush}" Padding="5"
+                                                   FontFamily="{DynamicResource HeaderFontFamily}">view existing types</TextBlock>
+                                            </StackPanel>
+                                    </TreeViewItem>
+                                    <TreeViewItem Padding="10">
+                                        <TreeViewItem.Header>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Viewbox Width="24" Height="24">
+                                                    <materialDesign:PackIcon  Foreground="{DynamicResource PrimaryColorBrush}" Kind="TestTube" />
+                                                </Viewbox>
+                                                <TextBlock FontSize="16" 
+                                                           Foreground="{DynamicResource AccentColorBrush}"  FontFamily="{DynamicResource HeaderFontFamily}"
+                                                           VerticalAlignment="Center" Margin="5 0 0 0">Drug dosage form</TextBlock>
+                                            </StackPanel>
+                                        </TreeViewItem.Header>
+                                            <StackPanel Orientation="Horizontal" Margin="24 0 0 0">
+                                            <Viewbox Width="24" Height="24">
+                                                    <materialDesign:PackIcon  Foreground="{DynamicResource PrimaryColorBrush}" Kind="PlusCircleOutline" />
+                                            </Viewbox>
+                                            <TextBlock FontSize="14" Foreground="{DynamicResource AccentColorBrush}" 
+                                                   Padding="5" VerticalAlignment="Center" 
+                                                   FontFamily="{DynamicResource HeaderFontFamily}">Add new dosage form</TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal" Margin="24 0 0 0">
+                                                <Viewbox Width="24" Height="24">
+                                                    <materialDesign:PackIcon  Foreground="{DynamicResource PrimaryColorBrush}" Kind="Binoculars" />
+                                                </Viewbox>
+                                                <TextBlock FontSize="14" Foreground="{DynamicResource AccentColorBrush}"
+                                                   Padding="5" VerticalAlignment="Center"
+                                                   FontFamily="{DynamicResource HeaderFontFamily}">view existing dosage form</TextBlock>
+                                            </StackPanel>
+                                                
+                                    </TreeViewItem>
+                                </TreeViewItem>
+                                </TreeView>
+                            </Grid>
+                        </StackPanel>
+                    </Expander>
+                    <controls:TransitioningContentControl Margin="40,0,0,0" Transition="Down" 
+                                                         
+                                                  HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                              x:Name="MainArea"></controls:TransitioningContentControl>
+                    
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</controls:MetroWindow>

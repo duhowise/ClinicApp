@@ -207,7 +207,7 @@ namespace ClinicApp.Logic
                     if (connection.State == ConnectionState.Closed)
                     {
                         connection.Open();
-                        string query ="INSERT INTO dbo.Drugs(Name,Box,NumberInBox,Quantity,ExpiryDate,SupplierId)VALUES('"+drugname+"','"+boxquantity+"','"+numberinbox+"','"+totalquantity+"','"+expirydate+"',(select id from supplier where name='"+supplier+"'))";
+                        string query ="INSERT INTO dbo.DrugsOld(Name,Box,NumberInBox,Quantity,ExpiryDate,SupplierId)VALUES('"+drugname+"','"+boxquantity+"','"+numberinbox+"','"+totalquantity+"','"+expirydate+"',(select id from supplier where name='"+supplier+"'))";
                         var command = new SqlCommand(query, connection) { CommandType = CommandType.Text };
                         command.ExecuteNonQuery();
                         result = true;
@@ -238,7 +238,7 @@ namespace ClinicApp.Logic
                     if (connection.State == ConnectionState.Closed)
                     {
                         connection.Open();
-                        string query = "update dbo.Drugs set Box='" + (boxquantity + OldBoxValue)+ "'," +
+                        string query = "update dbo.DrugsOld set Box='" + (boxquantity + OldBoxValue)+ "'," +
                                        " NumberInBox='" + (numberinbox + OldNumberInBoxValue) + "'," +
                                        " Quantity='" + ((OldBoxValue+boxquantity) * (OldNumberInBoxValue+numberinbox)) + "' where " +
                                        "Name='"+drugName+"'";
@@ -266,7 +266,7 @@ namespace ClinicApp.Logic
                     if (connection.State == ConnectionState.Closed)
                     {
                         connection.Open();
-                        string query = "UPDATE dbo.Patient SET  FirstName ='"+ firstname + "' , LastName ='"+ lastname + "'," +
+                        string query = "UPDATE dbo.OldPatient SET  FirstName ='"+ firstname + "' , LastName ='"+ lastname + "'," +
                                        " Designation ='"+ designation + "', PhoneNumber ='"+ phonenumber + "'"   + " WHERE  ProvidedId ='"+providedid+"' ";
                         var command = new SqlCommand(query, connection) { CommandType = CommandType.Text };
                         command.ExecuteNonQuery();
@@ -324,7 +324,7 @@ namespace ClinicApp.Logic
                     if (connection.State == ConnectionState.Closed)
                     {
                         connection.Open();
-                        string query = "INSERT INTO dbo.Patient(FirstName,LastName,ProvidedId,Designation,PhoneNumber)VALUES('"+firstname+"','"+lastname+"','"+providedid+"','"+designation+"','"+phonenumber+"')";
+                        string query = "INSERT INTO dbo.OldPatient(FirstName,LastName,ProvidedId,Designation,PhoneNumber)VALUES('"+firstname+"','"+lastname+"','"+providedid+"','"+designation+"','"+phonenumber+"')";
                         var command = new SqlCommand(query, connection) { CommandType = CommandType.Text };
                         command.ExecuteNonQuery();
                         connection.Close();
@@ -352,7 +352,7 @@ namespace ClinicApp.Logic
                     if (connection.State == ConnectionState.Closed)
                     {
                         connection.Open();
-                        string query = "select Name from Drugs where Name='"+drug+"'";
+                        string query = "select Name from DrugsOld where Name='"+drug+"'";
                         var command = new SqlCommand(query, connection);
                         var reader = command.ExecuteReader();
                         if(reader.Read())
@@ -394,7 +394,7 @@ namespace ClinicApp.Logic
                             var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
                             if (command.ExecuteNonQuery() > 0)
                             {
-                                cmb.Message = "Drug Dispensed Successfully";
+                                cmb.Message = "DrugsOld Dispensed Successfully";
                                 cmb.Show();
                             }
                             connection.Close();
@@ -410,7 +410,7 @@ namespace ClinicApp.Logic
             }
             else
             {
-                cmb.Message = "OOPS!!! Drug not found in stock";
+                cmb.Message = "OOPS!!! DrugsOld not found in stock";
                 cmb.Show();
             }
         }

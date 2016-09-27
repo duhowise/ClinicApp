@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
+using ClinicApp.Data;
+using ClinicApp.Logic;
 
 namespace ClinicApp
 {
@@ -52,7 +54,7 @@ namespace ClinicApp
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //PatientList.ItemsSource = GetPatientData.All();
-            PatientList.ItemsSource = new Patient().RetrieveAll();
+            PatientList.ItemsSource = new PatientRepository().GetAllPatients();
           
            
 
@@ -66,18 +68,18 @@ namespace ClinicApp
             if (item is string)
             {
                 //MessageBox.Show(item.ToString());
-                PatientList1 = Patient.FetchPatientById(item.ToString());
+                PatientList1 = OldPatient.FetchPatientById(item.ToString());
 
                 if (PatientList1.Count > 0)
                 {
                     if (_MenuAction == "doc")
                     {
-                        var c = new DocContextMenu();
+                        var c = new Doctor.DocContextMenu();
                         c.ShowCenteredToMouse();
                     }
                     else if(_MenuAction == "phar")
                     {
-                        var p = new PharContextMenu();
+                        var p = new Pharmacist.PharContextMenu();
                         p.ShowCenteredToMouse();
                     }
 

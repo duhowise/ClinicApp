@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
 
+
 namespace ClinicApp.Logic
 {
     public static class Clinic
@@ -97,7 +98,7 @@ namespace ClinicApp.Logic
                     {
                         connection.Open();
                         string query =
-                            "INSERT INTO dbo.Patient(FirstName , LastName , ProvidedId, Designation, PhoneNumber)values('" +
+                            "INSERT INTO dbo.OldPatient(FirstName , LastName , ProvidedId, Designation, PhoneNumber)values('" +
                             @firstname + "','" + @lastName + "','" + @providedId + "','" + @designation + "','" +
                             @phoneNumber + "')";
                         var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
