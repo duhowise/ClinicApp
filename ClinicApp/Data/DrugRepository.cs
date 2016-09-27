@@ -17,14 +17,14 @@ namespace ClinicApp.Data
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
                 if (connection.State == Closed)
-                        connection.Open();
+                    connection.Open();
                 return connection.Query<Drug>("select * from Drugs");
             }
 
         }
         public Drug GetDrugById(int id)
         {
-          using (var connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            using (var connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
                 if (connection.State == Closed)
                     connection.Open();
@@ -33,18 +33,18 @@ namespace ClinicApp.Data
         }
         public Drug GetDrugByName(string name)
         {
-           
+
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
                 if (connection.State == Closed)
-                      connection.Open();
-                  return connection.Query<Drug>($"select * from Drugs where brandName={name}").SingleOrDefault();
-               
+                    connection.Open();
+                return connection.Query<Drug>($"select * from Drugs where brandName={name}").SingleOrDefault();
+
             }
-          }
+        }
         public Drug GetDispensedDrugs(string name)
         {
-           using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
                 if (connection.State == Closed)
                     connection.Open();
@@ -53,12 +53,12 @@ namespace ClinicApp.Data
         }
         public int GetRemainingDrugs(Drug drugses)
         {
-           using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
                 if (connection.State == Closed)
                     connection.Open();
                 return connection.Query<int>($"select dbo.RemainingDrugs('{drugses.brandName}')").First();
-     
+
             }
         }
         public void SaveDrug(Drug drugs)

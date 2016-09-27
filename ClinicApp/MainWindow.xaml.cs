@@ -13,7 +13,7 @@ namespace ClinicApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
         CMB cmb = new CMB();
         public static int Id;
         public static string fullname = null;
@@ -53,7 +53,7 @@ namespace ClinicApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           LogUserIn();
+            LogUserIn();
         }
 
         public void LogUserIn()

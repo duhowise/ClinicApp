@@ -5,21 +5,21 @@ using Package_Manager.View;
 
 namespace ClinicApp.Logic
 {
-    public class MainContentView: ViewModelBase
+    public class MainContentView : ViewModelBase
     {
         private readonly Action<UserControl> navigateToView;
-       
+
         public MainContentView(Action<UserControl> navigateToView)
         {
             this.navigateToView = navigateToView;
             Initializate();
         }
 
-    
+
 
         public void Initializate()
         {
-           
+
         }
 
         public void NavigateTopharAdminDashboardControl()

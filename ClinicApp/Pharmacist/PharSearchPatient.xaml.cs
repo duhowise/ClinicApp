@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -14,9 +15,9 @@ namespace ClinicApp.Pharmacist
     /// </summary>
     public partial class PharSearchPatient : MetroWindow
     {
-        private BackgroundWorker patientSearchWorker=new BackgroundWorker();
-        List<Patient>patients=new List<Patient>();
-        List<Patient> result=new List<Patient>();
+        private BackgroundWorker patientSearchWorker = new BackgroundWorker();
+        List<Patient> patients = new List<Patient>();
+        List<Patient> result = new List<Patient>();
         public PharSearchPatient()
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace ClinicApp.Pharmacist
 
         private void PatientSearchWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            patients =(List<Patient>) e.Result;
+            patients = (List<Patient>)e.Result;
         }
 
 
@@ -51,7 +52,7 @@ namespace ClinicApp.Pharmacist
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-           result = patients.FindAll(p => p.ProvidedId.Contains(TbPatientSearch.Text));
+            result = patients.FindAll(p => p.ProvidedId.Contains(TbPatientSearch.Text));
             PatientsSearchList.ItemsSource = result;
             //foreach (var items in result)
             //{
@@ -60,6 +61,6 @@ namespace ClinicApp.Pharmacist
 
         }
 
-        
+
     }
 }
