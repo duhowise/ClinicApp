@@ -28,7 +28,7 @@ namespace ClinicApp
             //if (item is string)
             //{
             //    //MessageBox.Show(item.ToString());
-            //    newInstance = DrugsOld.FetchByName(item.ToString());
+            //    newInstance = DrugsOld.FetchByBrandName(item.ToString());
             //    var updateDrugs = new PharUpdateDrug();
             //    var cmd = new CMB();
             //    cmd.Message = "";
@@ -53,7 +53,7 @@ namespace ClinicApp
             if (item is string)
             {
                 //MessageBox.Show(item.ToString());
-                newInstance = (List<string>) DrugRepository.FetchByName(item.ToString());
+                newInstance = (List<string>) new DrugRepository().FetchByBrandName(item.ToString());
                 var updateDrugs = new Pharmacist.PharUpdateDrug();
                 var cmd = new CMB();
                 cmd.Message = "";

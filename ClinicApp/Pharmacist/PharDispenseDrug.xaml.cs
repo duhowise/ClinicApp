@@ -1,6 +1,9 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using ClinicApp.Data;
 using ClinicApp.Logic;
 using ClinicModel;
@@ -13,12 +16,49 @@ namespace ClinicApp.Pharmacist
     /// </summary>
     public partial class PharDispenseDrug : MetroWindow
     {
+        BackgroundWorker _remainingDrugsBackgroundWorker=new BackgroundWorker();
+        
         CMB cmb = new CMB();
         public PharDispenseDrug()
         {
             InitializeComponent();
+            _remainingDrugsBackgroundWorker.WorkerSupportsCancellation = false;
+            _remainingDrugsBackgroundWorker.WorkerReportsProgress = true;
+            _remainingDrugsBackgroundWorker.WorkerSupportsCancellation = true;
+            _remainingDrugsBackgroundWorker.DoWork += _remainingDrugsBackgroundWorker_DoWork;
+            _remainingDrugsBackgroundWorker.RunWorkerCompleted += _remainingDrugsBackgroundWorker_RunWorkerCompleted;
+
         }
 
+        private string drugName;
+
+        public string DrugName
+        {
+            get { return drugName; }
+            set {drugName = value;}
+        }
+
+        private void _remainingDrugsBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            LbRemainingDrugs.Text = e.Result.ToString();
+        }
+
+        private void _remainingDrugsBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+               e.Result=new DrugRepository().GetRemainingDrugs(new Drug {brandName = drugName});
+
+        }
+
+        private void TextValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^a-zA-Z]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             // TODO save patinent complaint
@@ -47,14 +87,12 @@ namespace ClinicApp.Pharmacist
             var response = MessageBox.Show("Do you really want to close this window", "Exit",
                 MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
 
-            if (response == MessageBoxResult.No)
-            {
-
-            }
-            else
+            if (response == MessageBoxResult.Yes)
             {
                 Hide();
+                _remainingDrugsBackgroundWorker.CancelAsync();
             }
+            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -67,7 +105,7 @@ namespace ClinicApp.Pharmacist
             //compute availables here
             if (!string.IsNullOrEmpty(this.DispenseDrugName.SearchText))
             {
-                lbRemainingDrugs.Text =new DrugRepository().GetDrugByName(DispenseDrugName.SearchText) + "";
+                LbRemainingDrugs.Text= new DrugRepository().GetRemainingDrugs(new Drug {brandName = DispenseDrugName.SearchText }).ToString();
             }
 
         }
@@ -77,30 +115,25 @@ namespace ClinicApp.Pharmacist
             int num;
             if (!string.IsNullOrEmpty(DispenseDrugQuantity.Text))
             {
-                if (int.TryParse(DispenseDrugQuantity.Text, out num))
-                {
-                    if (new DrugRepository().GetRemainingDrugs(new Drug {brandName = DispenseDrugName.SearchText }) > Convert.ToInt32(DispenseDrugQuantity.Text))
-                    {
-                        lbRemainingDrugs.Text =
-                            Convert.ToInt32(new DrugRepository().GetRemainingDrugs(new Drug {brandName = DispenseDrugName.SearchText })) -
-                            Convert.ToInt32(DispenseDrugQuantity.Text) + "";
-                    }
-                    else
-                    {
-                        cmb.Message = "DrugsOld available is less than \nthe quantity specified";
-                        cmb.Show();
-                    }
-                }
+                if (new DrugRepository().GetRemainingDrugs(new Drug {brandName = DispenseDrugName.SearchText }) > Convert.ToInt32(DispenseDrugQuantity.Text))
+                    LbRemainingDrugs.Text =Convert.ToInt32(new DrugRepository().GetRemainingDrugs(new Drug {brandName = DispenseDrugName.SearchText })) - Convert.ToInt32(DispenseDrugQuantity.Text) + "";
                 else
                 {
-                    cmb.Message = "Cant have letters";
-                    cmb.Show();
-                    //MessageBox.Show("Cant have letters", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                        cmb.Message = "DrugsOld available is less than \nthe quantity specified";
+                        cmb.Show();
                 }
+                
             }
-            else
-            {
-                lbRemainingDrugs.Text = new DrugRepository().GetRemainingDrugs(new Drug {brandName = ""}) + "";
+           
+        }
+
+        private void DispenseDrugName_SearchTextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(this.DispenseDrugName.SearchText))
+            { 
+                drugName = DispenseDrugName.SearchText;
+                if (!_remainingDrugsBackgroundWorker.IsBusy)
+                    _remainingDrugsBackgroundWorker.RunWorkerAsync();
             }
         }
     }

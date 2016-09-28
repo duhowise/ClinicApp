@@ -15,8 +15,8 @@
                        Background="{DynamicResource MaterialDesignPaper}" Height="300" Width="780"
                       NonActiveGlowBrush="{DynamicResource PrimaryColorBrush}"
                       WindowStartupLocation="CenterScreen" ResizeMode="NoResize" 
-                      Icon="media/Health-Care.png" ShowInTaskbar="False" 
-                      Topmost="True" Loaded="Window_Loaded">
+                      Icon="../media/Health-Care.png" ShowInTaskbar="False" 
+                      Topmost="False" Loaded="Window_Loaded">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="16"></Setter>
@@ -97,7 +97,7 @@
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Drug Name</Label>
                         <Grid Grid.Column="1" Grid.Row="2" DataContext="{StaticResource DrugModel}">
-                            <telerik:RadAutoCompleteBox x:Name="DispenseDrugName"  
+                            <telerik:RadAutoCompleteBox PreviewTextInput="TextValidationTextBox" x:Name="DispenseDrugName" 
                                     Width="350" HorizontalAlignment="Left"
                       VerticalAlignment="Bottom"  Height="35" 
                                      WatermarkContent="Enter Drug name..." 
@@ -109,8 +109,7 @@
                                      DropDownItemTemplate="{StaticResource DrugsAutoComplete}"
                                                     BorderBrush="{DynamicResource AccentColorBrush}"
                                      BorderThickness="1"
-                         Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"
-                                                    LostFocus="DispenseDrugName_LostFocus"></telerik:RadAutoCompleteBox>
+                         Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" LostFocus="DispenseDrugName_LostFocus" SearchTextChanged="DispenseDrugName_SearchTextChanged"/>
                         </Grid>
 
                         <Label FontSize="16"
@@ -120,7 +119,7 @@
                           Margin="0,10,0,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Remaining quatity</Label>
 
-                        <TextBox Name="lbRemainingDrugs"
+                        <TextBox Name="LbRemainingDrugs"
                   Grid.Column="0" Grid.Row="6"
                                  IsEnabled="False"
                          ToolTip="Drug Remaining"
@@ -143,7 +142,7 @@
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Quantity</Label>
 
-                        <TextBox Name="DispenseDrugQuantity"
+                        <TextBox Name="DispenseDrugQuantity" PreviewTextInput="NumberValidationTextBox"
                   Grid.Column="1" Grid.Row="6"
                          ToolTip="Type drug quantity"
                     Margin="0,10,10,0" 
@@ -155,7 +154,7 @@
                          controls:TextBoxHelper.ButtonFontFamily="wingdings"
                      BorderBrush="{DynamicResource AccentColorBrush}"
                      BorderThickness="1"
-                         Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
+                         Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" TextChanged="DispenseDrugQuantity_TextChanged"/>
                         
                         <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,0,0" 
                                 Height="30" Width="130" Grid.Column="0" Grid.Row="12" TabIndex="12"

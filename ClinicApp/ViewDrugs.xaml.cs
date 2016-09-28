@@ -67,7 +67,7 @@ namespace ClinicApp
             //if (item is string)
             //{
             //    //MessageBox.Show(item.ToString());
-            //   newInstance= DrugsOld.FetchByName(item.ToString());
+            //   newInstance= DrugsOld.FetchByBrandName(item.ToString());
             //    var updateDrugs=new PharUpdateDrug();
             //    updateDrugs.Show();
             //    updateDrugs.DrugName.Text = newInstance[0];

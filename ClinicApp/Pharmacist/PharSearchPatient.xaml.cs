@@ -17,7 +17,6 @@ namespace ClinicApp.Pharmacist
     {
         private BackgroundWorker patientSearchWorker = new BackgroundWorker();
         List<Patient> patients = new List<Patient>();
-        List<Patient> result = new List<Patient>();
         public PharSearchPatient()
         {
             InitializeComponent();
@@ -52,15 +51,26 @@ namespace ClinicApp.Pharmacist
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            result = patients.FindAll(p => p.ProvidedId.Contains(TbPatientSearch.Text));
-            PatientsSearchList.ItemsSource = result;
-            //foreach (var items in result)
-            //{
-            //    PatientsSearchList.Items.Add(items);
-            //}
+            PatientsSearchList.ItemsSource = patients.FindAll(p => p.ProvidedId.Contains(TbPatientSearch.Text));
+            
+           
 
         }
 
+        private void PatientsSearchList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var info = PatientsSearchList.SelectedItem as Patient;
+          var dispensary=new PharDispenseDrug();
+            dispensary.DispenseProvidedId.Text = info?.ProvidedId;
+            dispensary.ShowDialog();
 
+
+            //if (info != null)
+            //{
+            //    info.DispensedDrugs = new PatientRepository().PatientDrugHistory(info);
+            //    info.Consultations = new PatientRepository().PatientHistory(info);
+            //}
+
+        }
     }
 }

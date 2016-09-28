@@ -12,7 +12,7 @@ namespace ClinicApp.Doctor
     /// </summary>
     public partial class DocAddPatient : Window
     {
-        CMB cmb = new CMB();
+       CMB cmb = new CMB();
         public DocAddPatient()
         {
             InitializeComponent();

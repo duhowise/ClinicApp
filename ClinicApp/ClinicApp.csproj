@@ -217,6 +217,7 @@
     <Compile Include="Data\DrugRepository.cs" />
     <Compile Include="Data\PatientRepository.cs" />
     <Compile Include="Data\SupplierRepository.cs" />
+    <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Doctor\DocAddPatient.xaml.cs">
       <DependentUpon>DocAddPatient.xaml</DependentUpon>
     </Compile>
@@ -369,8 +370,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ConfirmBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Doctor\DocAddPatient.xaml">
       <Generator>MSBuild:Compile</Generator>

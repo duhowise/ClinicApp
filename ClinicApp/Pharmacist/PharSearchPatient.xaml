@@ -11,7 +11,7 @@
         mc:Ignorable="d"
         Title="KUMASI POLYTECHNIC CLINIC APP" 
                        GlowBrush="{DynamicResource AccentColorBrush}"
-                       Background="{DynamicResource MaterialDesignPaper}" Height="300" Width="500"
+                       Background="{DynamicResource MaterialDesignPaper}" Height="404.02" Width="616.08"
                       NonActiveGlowBrush="{DynamicResource PrimaryColorBrush}"
                       WindowStartupLocation="CenterScreen" ResizeMode="NoResize" 
                       Icon="../media/Health-Care.png" ShowInTaskbar="False">
@@ -30,7 +30,7 @@
     <Grid>
         <WrapPanel HorizontalAlignment="Center">
             <materialDesign:Card Margin="5" Padding="10"
-                                 Background="{DynamicResource MaterialDesignBackground}">
+                                 Background="{DynamicResource MaterialDesignBackground}" Height="362" Width="581">
                 <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -60,7 +60,7 @@
                         </Grid>
                         <GroupBox Header="Search result" Grid.Column="0" Grid.Row="2"
                                Margin="0,10,0,0" >
-                            <ListView Name="PatientsSearchList">
+                            <ListView Name="PatientsSearchList" MouseDoubleClick="PatientsSearchList_MouseDoubleClick">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}"  Width="150"></GridViewColumn>

@@ -51,13 +51,13 @@ namespace ClinicApp.Data
                 return connection.Query<Drug>($"select * from Drugs where brandName={name}").SingleOrDefault();
             }
         }
-        public int GetRemainingDrugs(Drug drugses)
+        public int GetRemainingDrugs(Drug drug)
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
                 if (connection.State == Closed)
                     connection.Open();
-                return connection.Query<int>($"select dbo.RemainingDrugs('{drugses.brandName}')").First();
+                return connection.Query<int>($"select dbo.RemainingDrugs('{drug.brandName}')").First();
 
             }
         }
@@ -72,13 +72,13 @@ namespace ClinicApp.Data
             }
         }
 
-        public static IEnumerable FetchByName(string name)
+        public  IEnumerable<string> FetchByBrandName(string brandname)
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
                 if (connection.State == Closed)
                     connection.Open();
-                return connection.Query<string>($"select * from Drugs  where  brandName={name}");
+                return connection.Query<string>($"select * from Drugs  where  brandName={brandname}");
             }
         }
         public int TotalDrugsQuantity(string tableName)

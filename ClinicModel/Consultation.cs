@@ -11,5 +11,7 @@ namespace ClinicModel
         public string Diagnosis { get; set; }
         public string Prescription { get; set; }
         public DateTime Date { get; set; }
+
     }
+    
 }
