@@ -236,6 +236,9 @@
     <Compile Include="Doctor\DocViewPatientHistory.xaml.cs">
       <DependentUpon>DocViewPatientHistory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Doctor\PatientDetailsForm.xaml.cs">
+      <DependentUpon>PatientDetailsForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Logic\DrugsAutoCompleteModel.cs" />
     <Compile Include="Logic\GetPatientData.cs" />
     <Compile Include="Logic\IRefreshDataGridView.cs" />
@@ -396,6 +399,10 @@
     <Page Include="Doctor\DocViewPatientHistory.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Doctor\PatientDetailsForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

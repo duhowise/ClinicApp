@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using ClinicApp.Doctor;
 using ClinicApp.Logic;
 using MahApps.Metro.Controls;
 using Package_Manager.View;
@@ -80,7 +81,7 @@ namespace ClinicApp.Pharmacist
 
         private void Dispense_Click(object sender, RoutedEventArgs e)
         {
-            new PharSearchPatient().ShowDialog();
+            new PatientDetailsForm().Show();
 
         }
 
