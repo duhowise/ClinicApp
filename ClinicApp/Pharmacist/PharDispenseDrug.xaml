@@ -33,8 +33,7 @@
                 <TextBlock Text="{Binding DrugName}" Style="{StaticResource AutoCompleteStyle}"></TextBlock>
             </StackPanel>
         </DataTemplate>
-        <logic:DrugsAutoCompleteModel x:Key="DrugModel"></logic:DrugsAutoCompleteModel>
-    </Window.Resources>
+        </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -96,7 +95,7 @@
                        HorizontalAlignment="Right"
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Drug Name</Label>
-                        <Grid Grid.Column="1" Grid.Row="2" DataContext="{StaticResource DrugModel}">
+                        <Grid Grid.Column="1" Grid.Row="2" DataContext="">
                             <telerik:RadAutoCompleteBox PreviewTextInput="TextValidationTextBox" x:Name="DispenseDrugName" 
                                     Width="350" HorizontalAlignment="Left"
                       VerticalAlignment="Bottom"  Height="35" 

@@ -1,26 +1,41 @@
 ﻿using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 using ClinicModel;
+using Dapper;
 
 namespace ClinicApp.Data
 {
     public class SupplierRepository
     {
-        public List<Supplier> GetAllSuppliers()
+        public IEnumerable<Supplier> GetAllSuppliers()
         {
-            return GetAllSuppliers();
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State ==ConnectionState.Closed)
+                    connection.Open();
+                return connection.Query<Supplier>("select * from Supplier");
+            }
         }
         public Supplier GetSupplier(int id)
         {
-            return GetSupplier(id);
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+                return connection.Query<Supplier>($"select * from where id={id} Supplier").SingleOrDefault();
+            }
         }
         public Supplier GetSupplier(string name)
         {
-            return GetSupplier(name);
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+                return connection.Query<Supplier>($"select * from where name={name} Supplier").SingleOrDefault();
+            }
         }
 
-        public void AddNewPatient(Supplier supplier)
-        {
-
-        }
     }
 }

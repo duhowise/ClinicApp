@@ -150,7 +150,7 @@
                                 Name="Save" Click="Save_Click" HorizontalAlignment="Right"
                                  FontFamily="{DynamicResource HeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14">
+                                FontSize="14" VerticalAlignment="Top">
                             Save
                         </Button>
                     </Grid>
