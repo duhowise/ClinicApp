@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Windows;
 using ClinicModel;
 using Dapper;
 using static System.Data.ConnectionState;
@@ -102,37 +104,75 @@ namespace ClinicApp.Data
 
             }
         }
-        //TODO ADD SAVEDRUG QUERY
         public void SaveDrug(Drug drugs)
         {
-            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            try
             {
-                if (connection.State == Closed)
-                    connection.Open();
-                connection.Execute("");
+                using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+                {
+                    if (connection.State == Closed)
+                        connection.Open();
+                    var query = @"INSERT INTO dbo.Drugs(GenericName,brandName,Box,NumberPackInBox,Quantity,ExpiryDate,NumberinPack,DosageFormId,DrugFormId,CategoryId,SupplierId) Values(@gen,@bn,@box,@npbx,@Qty,@exp,@npk,@df,@drf,@cid,@sid)";
+                    var command = new SqlCommand(query, connection);
+                    command.Parameters.Add("gen", SqlDbType.NVarChar).Value = drugs.GenericName;
+                    command.Parameters.Add("bn", SqlDbType.NVarChar).Value = drugs.brandName;
+                    command.Parameters.Add("box", SqlDbType.Int).Value = drugs.Box;
+                    command.Parameters.Add("npbx", SqlDbType.Int).Value = drugs.NumberPackInBox;
+                    command.Parameters.Add("Qty", SqlDbType.Int).Value = drugs.Quantity;
+                    command.Parameters.Add("exp", SqlDbType.DateTime).Value = drugs.ExpiryDate;
+                    command.Parameters.Add("npk", SqlDbType.Int).Value = drugs.NumberinPack;
+                    command.Parameters.Add("df", SqlDbType.Int).Value = drugs.DosageFormId;
+                    command.Parameters.Add("drf", SqlDbType.Int).Value = drugs.DrugFormId;
+                    command.Parameters.Add("cid", SqlDbType.Int).Value = drugs.CategoryId;
+                    command.Parameters.Add("sid", SqlDbType.Int).Value = drugs.SupplierId;
+                    command.ExecuteNonQuery();
 
+                }
+            }
+            catch (Exception exception)
+            {
+
+                MessageBox.Show(exception.Message);
             }
         }
-        //TODO ADD CATEGORY QUERY
-        public void AddNewDrugCategory(DrugCategory drugCategory)
+         public void AddNewDrugCategory(DrugCategory drugCategory)
         {
-            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            try
             {
-                if (connection.State == Closed)
-                    connection.Open();
-                connection.Execute("");
+                using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+                {
+                    if (connection.State == Closed)
+                        connection.Open();
+                    var query = @"INSERT INTO dbo.DrugCategory(name)VALUES(@name)";
+                    var command = new SqlCommand(query, connection);
+                    command.Parameters.Add("name", SqlDbType.NVarChar).Value = drugCategory.name;
+                    command.ExecuteNonQuery();
 
+                }
+            }
+            catch (Exception exception)
+            {
+               MessageBox.Show(exception.Message);
             }
         }
-       //TODO ADD CATEGORYTYPE QUERY
         public void AddNewDrugType(DrugForm drugForm)
         {
-            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            try
             {
-                if (connection.State == Closed)
-                    connection.Open();
-                connection.Execute("");
+                using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+                {
+                    if (connection.State == Closed)
+                        connection.Open();
+                    var query = @"INSERT INTO dbo.drugForm(name)VALUES(@name)";
+                    var command = new SqlCommand(query, connection);
+                    command.Parameters.Add("name", SqlDbType.NVarChar).Value = drugForm.name;
+                    command.ExecuteNonQuery();
 
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
 

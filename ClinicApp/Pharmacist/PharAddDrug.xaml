@@ -11,7 +11,7 @@
                       WindowStartupLocation="CenterScreen"
                       Background="{DynamicResource MaterialDesignPaper}"
                       ResizeMode="NoResize" Height="600" Width="800"
-                      Icon="../media/Health-Care.png" Loaded="Window_Loaded" ShowInTaskbar="False" Closed="Window_Closed">
+                      Icon="../media/Health-Care.png" Loaded="Window_Loaded" ShowInTaskbar="False" >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />

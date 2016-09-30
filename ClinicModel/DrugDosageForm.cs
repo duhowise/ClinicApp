@@ -4,7 +4,7 @@ namespace ClinicModel
 {
     public class DrugDosageForm
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string name { get; set; }
        
     }

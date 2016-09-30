@@ -5,7 +5,6 @@ using System.Windows.Input;
 using ClinicApp.Doctor;
 using ClinicApp.Logic;
 using MahApps.Metro.Controls;
-using Package_Manager.View;
 
 namespace ClinicApp.Pharmacist
 {

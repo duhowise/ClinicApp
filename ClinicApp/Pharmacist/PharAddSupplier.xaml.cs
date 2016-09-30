@@ -1,7 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Input;
+using ClinicApp.Data;
 using ClinicApp.Logic;
+using ClinicModel;
 using MahApps.Metro.Controls;
 
 namespace ClinicApp.Pharmacist
@@ -16,10 +20,23 @@ namespace ClinicApp.Pharmacist
         {
             InitializeComponent();
         }
-
+        private void TextValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex("[^a-zA-Z]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }private void EmailValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
+            e.Handled = regex.IsMatch(e.Text);
+        }
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            var response = MessageBox.Show("Do you really want to close the Application", "Exit",
+            var response = MessageBox.Show("Do you really want to close the window?", "Exit",
                  MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
             if (response == MessageBoxResult.Yes)
                 Hide();
@@ -28,26 +45,27 @@ namespace ClinicApp.Pharmacist
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (SupplierName.Text==""||Adress.Text=="" ||Phone.Text=="")
+            if (string.IsNullOrWhiteSpace(SupplierName.Text) 
+                ||string.IsNullOrWhiteSpace(Adress.Text) 
+                ||string.IsNullOrWhiteSpace(Email.Text) 
+                ||string.IsNullOrWhiteSpace(Phone.Text))
             {
-                MessageBox.Show("All Feild Are Required","Info",MessageBoxButton.OK,MessageBoxImage.Information);
-                SupplierName.Focus();
+                cmb.Message = "All feilds are Required";
+                cmb.Show();
             }
             else
             {
-                if (new Pharmacy().AddSupplier(SupplierName.Text, Adress.Text, Phone.Text))
+                new SupplierRepository().AddNewSupplier(new Supplier
                 {
-                    //MessageBox.Show("Data successfully saved", "Success", MessageBoxButton.OK,
-                    //    MessageBoxImage.Information);
-                    Hide();
-                    cmb.Message = "Supplier Saved Successfully";
+                    Name = SupplierName.Text,
+                    Address = Adress.Text,
+                    Email = Email.Text,
+                    Phone = Phone.Text
+                });
+                    cmb.Message = $"Supplier {SupplierName} Saved Successfully";
                     cmb.Show();
-                }
-                else
-                {
-                    cmb.Message = " ERROR!!! Supplier Could not be Saved Successfully";
-                    cmb.Show();
-                }
+               
+                
             }
         }
 

@@ -1,9 +1,7 @@
 ﻿
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using ClinicApp.Data;
 using ClinicModel;
 using MahApps.Metro.Controls;

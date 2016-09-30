@@ -52,7 +52,7 @@
                        HorizontalAlignment="Left"
                           Margin="10,10,0,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Supplier Name</Label>
-                        <TextBox TabIndex="0"
+                        <TextBox TabIndex="0" PreviewTextInput="TextValidationTextBox"
                   Grid.Column="0" Grid.Row="1" Name="SupplierName"
                          ToolTip="Type Supplier name here"
                     Margin="10,10,0,0" 
@@ -70,7 +70,7 @@
                        HorizontalAlignment="Left"
                           Margin="10,10,0,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Address</Label>
-                        <TextBox TabIndex="1"
+                        <TextBox TabIndex="1" PreviewTextInput="TextValidationTextBox"
                   Grid.Column="0" Grid.Row="3" Name="Adress"
                          ToolTip="Type supplier location"
                     Margin="10,10,0,0" 
@@ -90,7 +90,7 @@
                           Margin="10,10,0,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Phone</Label>
 
-                        <TextBox Name="Phone" TabIndex="2"
+                        <TextBox Name="Phone" TabIndex="2" PreviewTextInput="NumberValidationTextBox"
                   Grid.Column="0" Grid.Row="6"
                          ToolTip="Type supplier contact number"
                     Margin="10,10,10,0" 
@@ -112,7 +112,7 @@
                           Margin="10,10,0,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Email</Label>
 
-                        <TextBox Name="Email" TabIndex="3"
+                        <TextBox Name="Email" TabIndex="3" PreviewTextInput="EmailValidationTextBox"
                   Grid.Column="0" Grid.Row="8"
                          ToolTip="Type supplier email"
                     Margin="10,10,10,0" 
@@ -141,7 +141,7 @@
                                 Name="Cancel" Click="Cancel_Click" HorizontalAlignment="Left"
                                  FontFamily="{DynamicResource HeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14">
+                                FontSize="14" VerticalAlignment="Top">
                             Cancel
                         </Button>
 
