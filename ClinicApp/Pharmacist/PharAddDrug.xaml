@@ -190,7 +190,9 @@
                          controls:TextBoxHelper.ButtonFontFamily="wingdings"
                      BorderBrush="{DynamicResource AccentColorBrush}"
                      BorderThickness="1"
-                         controls:TextBoxHelper.UseFloatingWatermark="False" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
+                         controls:TextBoxHelper.UseFloatingWatermark="False" 
+                                  Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16">
+                        </ComboBox>
                         <Label FontSize="16"
                    Grid.Column="1" Grid.Row="5"
                        FontFamily="{DynamicResource HeaderFontFamily}"
