@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -17,8 +18,13 @@ namespace ClinicApp.Pharmacist
     public partial class PharDispenseDrug : MetroWindow
     {
         BackgroundWorker _remainingDrugsBackgroundWorker=new BackgroundWorker();
+
+        private IEnumerable<String> drugNames;
         
-        CMB cmb = new CMB();
+
+        public IEnumerable<String> DrugNames { get; set; }
+
+            CMB cmb = new CMB();
         public PharDispenseDrug()
         {
             InitializeComponent();
@@ -27,6 +33,8 @@ namespace ClinicApp.Pharmacist
             _remainingDrugsBackgroundWorker.WorkerSupportsCancellation = true;
             _remainingDrugsBackgroundWorker.DoWork += _remainingDrugsBackgroundWorker_DoWork;
             _remainingDrugsBackgroundWorker.RunWorkerCompleted += _remainingDrugsBackgroundWorker_RunWorkerCompleted;
+            DrugNames = new DrugRepository().DrugAutoComplete();
+           
 
         }
 

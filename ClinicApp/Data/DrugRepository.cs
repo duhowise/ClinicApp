@@ -22,6 +22,17 @@ namespace ClinicApp.Data
             }
 
         }
+        public IEnumerable<string> DrugAutoComplete()
+        {
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == Closed)
+                    connection.Open();
+                return connection.Query<string>("select brandname from Drugs");
+            }
+
+        }
+
         public IEnumerable<DrugDosageForm> GetDosageForms()
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
