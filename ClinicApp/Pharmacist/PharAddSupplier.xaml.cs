@@ -22,9 +22,8 @@ namespace ClinicApp.Pharmacist
             var response = MessageBox.Show("Do you really want to close the Application", "Exit",
                  MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
             if (response == MessageBoxResult.Yes)
-            {
                 Hide();
-            }
+           
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)

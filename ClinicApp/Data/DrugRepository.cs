@@ -22,6 +22,47 @@ namespace ClinicApp.Data
             }
 
         }
+        public IEnumerable<DrugDosageForm> GetDosageForms()
+        {
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == Closed)
+                    connection.Open();
+                return connection.Query<DrugDosageForm>("select * from DrugDosageForms");
+            }
+
+        }
+        public IEnumerable<DrugCategory> GetDrugCategories()
+        {
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == Closed)
+                    connection.Open();
+                return connection.Query<DrugCategory>("SELECT * FROM dbo.DrugCategory");
+            }
+
+        }
+        public IEnumerable<DrugForm> GetDrugForms()
+        {
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == Closed)
+                    connection.Open();
+                return connection.Query<DrugForm>("SELECT * FROM dbo.drugForm");
+            }
+
+        }
+        public IEnumerable<DrugDosageForm> GetDrugDosageForms()
+        {
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == Closed)
+                    connection.Open();
+                return connection.Query<DrugDosageForm>("SELECT * FROM dbo.DrugDosageForms");
+            }
+
+        }
+
         public Drug GetDrugById(int id)
         {
             using (var connection = new SqlConnection(new ConnectionHelper().ConnectionString))
@@ -42,13 +83,13 @@ namespace ClinicApp.Data
 
             }
         }
-        public Drug GetDispensedDrugs(string name)
+        public IEnumerable<DispensedDrug> GetDispensedDrugs()
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
                 if (connection.State == Closed)
                     connection.Open();
-                return connection.Query<Drug>($"select * from Drugs where brandName={name}").SingleOrDefault();
+                return connection.Query<DispensedDrug>($"select * from Drugs");
             }
         }
         public int GetRemainingDrugs(Drug drug)
@@ -61,7 +102,30 @@ namespace ClinicApp.Data
 
             }
         }
+        //TODO ADD SAVEDRUG QUERY
         public void SaveDrug(Drug drugs)
+        {
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == Closed)
+                    connection.Open();
+                connection.Execute("");
+
+            }
+        }
+        //TODO ADD CATEGORY QUERY
+        public void AddNewDrugCategory(DrugCategory drugCategory)
+        {
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == Closed)
+                    connection.Open();
+                connection.Execute("");
+
+            }
+        }
+       //TODO ADD CATEGORYTYPE QUERY
+        public void AddNewDrugType(DrugForm drugForm)
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
