@@ -1,12 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms;
 using System.Windows.Input;
 using ClinicApp.Data;
 using ClinicModel;
@@ -24,7 +20,6 @@ namespace ClinicApp.Pharmacist
         private int Packnumber = 1;
         private int NumberInPack = 1;
         BackgroundWorker preliminaryBackgroundWorker=new BackgroundWorker();
-        
         public PharAddDrug()
         {
             InitializeComponent();
@@ -41,7 +36,6 @@ namespace ClinicApp.Pharmacist
 
 
         }
-
         private void PreliminaryBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             DrugRepository result =(DrugRepository) e.Result;
@@ -57,7 +51,6 @@ namespace ClinicApp.Pharmacist
            e.Result=new DrugRepository(); 
 
         }
-
         public void GetTotalNumber()
         {
            tbTotalQuantity.Text= (boxnumber * Packnumber * NumberInPack).ToString();
@@ -66,15 +59,9 @@ namespace ClinicApp.Pharmacist
         {
             var response = MessageBox.Show("Do you really want to stop Adding new drug\n All your changes will be discarded", "Exit",
                  MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-
-            if (response == MessageBoxResult.Yes)
-               Hide();
-            e.Cancel = true;
+            if (response == MessageBoxResult.Yes) { Hide(); } else { e.Cancel = true; }
         }
-
-
         
-     
         private void TextValidation(object sender, TextCompositionEventArgs e)
         {
             var regex = new Regex("[^a-zA-Z]+");
@@ -117,33 +104,36 @@ namespace ClinicApp.Pharmacist
             }
             else
             {
-                new DrugRepository().SaveDrug(new Drug
-            {
-                GenericName = tbGenericName.Text,
-                brandName = tbBrandName.Text,
-                NumberPackInBox = Convert.ToInt32(tbNumberInBox.Text),
-                Box = Convert.ToInt32(tbNumberInPack.Text),
-                NumberinPack = Convert.ToInt32(tbBox.Text),
-                DosageFormId = (int)cbDosageForm.SelectedValue,
-                DrugFormId = (int)cbDrugType.SelectedValue,
-                CategoryId = (int)cbDrugCategory.SelectedValue,
-                ExpiryDate = tbExpiringDate.DisplayDate,
-                SupplierId = (int)cbSupplier.SelectedValue
-            });
+                Drug medicine=new Drug();
+                medicine.GenericName = tbGenericName.Text;
+                medicine.brandName = tbBrandName.Text;
+                medicine.NumberPackInBox = Convert.ToInt32(tbNumberInBox.Text);
+                medicine.Box = Convert.ToInt32(tbNumberInPack.Text);
+                medicine.NumberinPack = Convert.ToInt32(tbBox.Text);
+                medicine.DosageFormId = (int)cbDosageForm.SelectedValue;
+                medicine.DrugFormId = (int)cbDrugType.SelectedValue;
+                medicine.CategoryId = (int)cbDrugCategory.SelectedValue;
+                medicine.ExpiryDate = tbExpiringDate.DisplayDate;
+                medicine.SupplierId = (int) cbSupplier.SelectedValue;
+                medicine.Quantity = Convert.ToInt32(tbTotalQuantity.Text);
+                new DrugRepository().SaveDrug(medicine);
             cmb.Message = $"succefully added {tbBrandName.Text}";
             cmb.Show();
             }
         }
-        //calculating total quantity on  textChanged
-        
-        private void Window_Closed(object sender, EventArgs e)
+        private void AddNewDosageForm_Click(object sender, RoutedEventArgs e)
         {
+            new PharAddDosageForm().ShowDialog();
         }
-
 
         private void AddNewCategory_Click(object sender, RoutedEventArgs e)
         {
             new PharAddCategory().ShowDialog();
+        }
+
+        private void AddNewType_Click(object sender, RoutedEventArgs e)
+        {
+            new PharAddType().ShowDialog();
         }
 
         private void tbBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -194,16 +184,6 @@ namespace ClinicApp.Pharmacist
             NumberInPack = no <= 1 ? 1 : no;
             GetTotalNumber();
             
-        }
-
-        private void AddNewDosageForm_Click(object sender, RoutedEventArgs e)
-        {
-            new PharAddDosageForm().ShowDialog();
-        }
-
-        private void AddNewDosageType_Click(object sender, RoutedEventArgs e)
-        {
-            new PharAddType().ShowDialog();
         }
     }
 }

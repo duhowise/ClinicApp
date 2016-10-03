@@ -10,9 +10,8 @@
                       NonActiveGlowBrush="{DynamicResource PrimaryColorBrush}"
                       WindowStartupLocation="CenterScreen"
                       Background="{DynamicResource MaterialDesignPaper}"
-                      ResizeMode="NoResize"  Height="600" Width="800"
-                      Icon="../media/Health-Care.png" Loaded="Window_Loaded" 
-                      Topmost="True" ShowInTaskbar="False" Closed="Window_Closed">
+                      ResizeMode="NoResize" Height="600" Width="800"
+                      Icon="../media/Health-Care.png" Loaded="Window_Loaded" ShowInTaskbar="False" >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -46,289 +45,317 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Label FontSize="16"
-                    		Grid.Column="0" Grid.Row="1"
-                    		FontFamily="{DynamicResource HeaderFontFamily}"
-                    		HorizontalAlignment="Left"
-                    		Margin="0,10,0,0"
-                    		Foreground="{DynamicResource AccentColorBrush}" Content="Generic Name"/>
+                               Grid.Column="0" Grid.Row="1"
+                               FontFamily="{DynamicResource HeaderFontFamily}"
+                               HorizontalAlignment="Left"
+                               Margin="0,10,0,0"
+                               Foreground="{DynamicResource AccentColorBrush}">
+                            Generic Name
+                        </Label>
                         <TextBox TabIndex="0"
-                    		Grid.Column="0" Grid.Row="2" x:Name="tbGenericName"
-                    		ToolTip="Type drug name here"
-                    		Margin="0,10,60,0"
-                    		Width="300" PreviewTextInput="TextValidation"
-                    		Height="35"
-                    		HorizontalAlignment="Left"
-                    		controls:TextBoxHelper.Watermark=""
-                    		controls:TextBoxHelper.IsWaitingForData="True"
-                    		BorderBrush="{DynamicResource AccentColorBrush}"
-                    		BorderThickness="1"
-                    		Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" />
+                                 Grid.Column="0" Grid.Row="2" Name="tbGenericName"
+                                 ToolTip="Type drug name here"
+                                 Margin="0,10,60,0"
+                                 Width="300" PreviewTextInput="TextValidation"
+                                 Height="35"
+                                 HorizontalAlignment="Left"
+                                 controls:TextBoxHelper.Watermark=""
+                                 controls:TextBoxHelper.IsWaitingForData="True"
+                                 BorderBrush="{DynamicResource AccentColorBrush}"
+                                 BorderThickness="1"
+                                 Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" />
 
                         <Label FontSize="16"
-                    		Grid.Column="1" Grid.Row="1"
-                    		FontFamily="{DynamicResource HeaderFontFamily}"
-                    		HorizontalAlignment="Right"
-                    		Margin="0,10,50,0"
-                    		Foreground="{DynamicResource AccentColorBrush}" Content="Brand Name"/>
+                               Grid.Column="1" Grid.Row="1"
+                               FontFamily="{DynamicResource HeaderFontFamily}"
+                               HorizontalAlignment="Right"
+                               Margin="0,10,50,0"
+                               Foreground="{DynamicResource AccentColorBrush}">
+                            Brand Name
+                        </Label>
 
                         <TextBox TabIndex="1"
-                    		Grid.Column="1" Grid.Row="2" x:Name="tbBrandName"
-                    		ToolTip="Type username here" PreviewTextInput="TextValidation"
-                    		Margin="10,10,0,0"
-                    		Width="300"
-                    		Height="35"
-                    		HorizontalAlignment="Left"
-                    		controls:TextBoxHelper.Watermark=""
-                    		controls:TextBoxHelper.IsWaitingForData="True"
-                    		BorderBrush="{DynamicResource AccentColorBrush}"
-                    		BorderThickness="1"
+                                 Grid.Column="1" Grid.Row="2" Name="tbBrandName"
+                                 ToolTip="Type username here" PreviewTextInput="TextValidation"
+                                 Margin="10,10,0,0"
+                                 Width="300"
+                                 Height="35"
+                                 HorizontalAlignment="Left"
+                                 controls:TextBoxHelper.Watermark=""
+                                 controls:TextBoxHelper.IsWaitingForData="True"
+                                 BorderBrush="{DynamicResource AccentColorBrush}"
+                                 BorderThickness="1"
 
-                    		Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" />
+                                 Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" />
 
                         <Label FontSize="16"
-                    		Grid.Column="0" Grid.Row="3"
-                    		FontFamily="{DynamicResource HeaderFontFamily}"
-                    		HorizontalAlignment="Left"
-                    		Margin="0,10,0,0"
-                    		Foreground="{DynamicResource AccentColorBrush}" Content="Supplier"/>
-                        <ComboBox x:Name="cbSupplier" TabIndex="2" DisplayMemberPath="Name"
-                    		SelectedValuePath="Id"
-                    		Grid.Column="0" Grid.Row="4"
-                    		ToolTip="Select drug Supplier"
-                    		Margin="0,10,10,0"
-                    		Width="300"
-                    		Height="35"
-                    		HorizontalAlignment="Left"
-                    		controls:TextBoxHelper.Watermark=""
-                    		controls:TextBoxHelper.IsWaitingForData="True"
-                    		controls:TextBoxHelper.ButtonFontFamily="wingdings"
-                    		BorderBrush="{DynamicResource AccentColorBrush}"
-                    		BorderThickness="1"
-                    		controls:TextBoxHelper.UseFloatingWatermark="False"
-                    		Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"
-                    		FontSize="16" />
+                               Grid.Column="0" Grid.Row="3"
+                               FontFamily="{DynamicResource HeaderFontFamily}"
+                               HorizontalAlignment="Left"
+                               Margin="0,10,0,0"
+                               Foreground="{DynamicResource AccentColorBrush}">
+                            Supplier
+                        </Label>
+                        <ComboBox Name="cbSupplier" TabIndex="2" DisplayMemberPath="Name"
+                                  SelectedValuePath="Id"
+                                  Grid.Column="0" Grid.Row="4"
+                                  ToolTip="Select drug Supplier"
+                                  Margin="0,10,10,0"
+                                  Width="300"
+                                  Height="35"
+                                  HorizontalAlignment="Left"
+                                  controls:TextBoxHelper.Watermark=""
+                                  controls:TextBoxHelper.IsWaitingForData="True"
+                                  controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                                  BorderBrush="{DynamicResource AccentColorBrush}"
+                                  BorderThickness="1"
+                                  controls:TextBoxHelper.UseFloatingWatermark="False"
+                                  Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"
+                                  FontSize="16" />
                         <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
-                    		Background="{StaticResource PrimaryColorBrush}"
-                    		Foreground="{StaticResource WhiteColorBrush}"
-                    		ToolTip="Click to add new supplier"
-                    		Width="40" Height="40" x:Name="AddNewSupplier" Click="AddNewSupplier_Click"
-                    		Margin="0 10 10 0" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="4">
+                                Background="{StaticResource PrimaryColorBrush}"
+                                Foreground="{StaticResource WhiteColorBrush}"
+                                ToolTip="Click to add new supplier"
+                                Width="40" Height="40" Name="AddNewSupplier" Click="AddNewSupplier_Click"
+                                Margin="0 10 10 0" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="4">
                             <materialDesign:PackIcon Kind="Plus" Height="30" Width="30" />
                         </Button>
                         <Label FontSize="16"
-                    		Grid.Column="0" Grid.Row="5"
-                    		FontFamily="{DynamicResource HeaderFontFamily}"
-                    		HorizontalAlignment="Left"
-                    		Margin="0,10,0,0"
-                    		Foreground="{DynamicResource AccentColorBrush}" Content="Category"/>
+                               Grid.Column="0" Grid.Row="5"
+                               FontFamily="{DynamicResource HeaderFontFamily}"
+                               HorizontalAlignment="Left"
+                               Margin="0,10,0,0"
+                               Foreground="{DynamicResource AccentColorBrush}">
+                            Category
+                        </Label>
 
-                        <ComboBox x:Name="cbDrugCategory" TabIndex="4" DisplayMemberPath="name"
-                    		SelectedValuePath="Id"
-                    		Grid.Column="0" Grid.Row="6"
-                    		ToolTip="Select drug category"
-                    		Margin="0,10,10,0"
-                    		Width="300"
-                    		Height="35"
-                    		HorizontalAlignment="Left"
-                    		controls:TextBoxHelper.Watermark=""
-                    		controls:TextBoxHelper.IsWaitingForData="True"
-                    		controls:TextBoxHelper.ButtonFontFamily="wingdings"
-                    		BorderBrush="{DynamicResource AccentColorBrush}"
-                    		BorderThickness="1"
-                    		controls:TextBoxHelper.UseFloatingWatermark="False"
-                    		Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"
-                    		FontSize="16" />
+                        <ComboBox Name="cbDrugCategory" TabIndex="4" DisplayMemberPath="name"
+                                  SelectedValuePath="Id"
+                                  Grid.Column="0" Grid.Row="6"
+                                  ToolTip="Select drug category"
+                                  Margin="0,10,10,0"
+                                  Width="300"
+                                  Height="35"
+                                  HorizontalAlignment="Left"
+                                  controls:TextBoxHelper.Watermark=""
+                                  controls:TextBoxHelper.IsWaitingForData="True"
+                                  controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                                  BorderBrush="{DynamicResource AccentColorBrush}"
+                                  BorderThickness="1"
+                                  controls:TextBoxHelper.UseFloatingWatermark="False"
+                                  Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"
+                                  FontSize="16" />
                         <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
-                    		Background="{StaticResource PrimaryColorBrush}"
-                    		Foreground="{StaticResource WhiteColorBrush}"
-                    		ToolTip="Click to add new Category"
-                    		Width="40" Height="40" x:Name="AddNewCategory"
-                    		Margin="0 10 10 0" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="6"
-                    		Click="AddNewCategory_Click">
+                                Background="{StaticResource PrimaryColorBrush}"
+                                Foreground="{StaticResource WhiteColorBrush}"
+                                ToolTip="Click to add new Category"
+                                Width="40" Height="40" Name="AddNewCategory"
+                                Margin="0 10 10 0" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="6"
+                                Click="AddNewCategory_Click">
                             <materialDesign:PackIcon Kind="Plus" Height="30" Width="30" />
                         </Button>
                         <Label FontSize="16"
-                    		Grid.Column="1" Grid.Row="3"
-                    		FontFamily="{DynamicResource HeaderFontFamily}"
-                    		HorizontalAlignment="Right"
-                    		Margin="0,11,50,49"
-                    		Foreground="{DynamicResource AccentColorBrush}" Grid.RowSpan="2" Content="Drug Form"/>
-                        <ComboBox x:Name="cbDrugType" TabIndex="3" DisplayMemberPath="name"
-                    		SelectedValuePath="Id"
-                    		Grid.Column="1" Grid.Row="4"
-                    		ToolTip="Select drug type"
-                    		Margin="10,10,0,0"
-                    		Width="300"
-                    		Height="35"
-                    		HorizontalAlignment="Left" 
-                    		controls:TextBoxHelper.Watermark=""
-                    		controls:TextBoxHelper.IsWaitingForData="True"
-                    		controls:TextBoxHelper.ButtonFontFamily="wingdings"
-                    		BorderBrush="{DynamicResource AccentColorBrush}"
-                    		BorderThickness="1"
-                    		controls:TextBoxHelper.UseFloatingWatermark="False"
-                    		Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"
-                    		FontSize="16" />
+                               Grid.Column="1" Grid.Row="3"
+                               FontFamily="{DynamicResource HeaderFontFamily}"
+                               HorizontalAlignment="Right"
+                               Margin="0,11,50,49"
+                               Foreground="{DynamicResource AccentColorBrush}" Grid.RowSpan="2">
+                            Drug Form
+                        </Label>
+                        <ComboBox Name="cbDrugType" TabIndex="3" DisplayMemberPath="name"
+                                  SelectedValuePath="Id"
+                                  Grid.Column="1" Grid.Row="4"
+                                  ToolTip="Select drug type"
+                                  Margin="10,10,0,0"
+                                  Width="300"
+                                  Height="35"
+                                  HorizontalAlignment="Left" 
+                                  controls:TextBoxHelper.Watermark=""
+                                  controls:TextBoxHelper.IsWaitingForData="True"
+                                  controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                                  BorderBrush="{DynamicResource AccentColorBrush}"
+                                  BorderThickness="1"
+                                  controls:TextBoxHelper.UseFloatingWatermark="False"
+                                  Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"
+                                  FontSize="16" />
                         <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
-                    		Background="{StaticResource PrimaryColorBrush}"
-                    		Foreground="{StaticResource WhiteColorBrush}"
-                    		ToolTip="Click to add new type"
-                    		Width="40" Height="40" x:Name="AddNewDosageForm"
-                    		Margin="0 10 0 0" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="4" Click="AddNewDosageForm_Click">
+                                Background="{StaticResource PrimaryColorBrush}"
+                                Foreground="{StaticResource WhiteColorBrush}"
+                                ToolTip="Click to add new type"
+                                Width="40" Height="40" Name="AddNewType"
+                                Margin="0 10 0 0" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="4"
+                                Click="AddNewType_Click">
                             <materialDesign:PackIcon Kind="Plus" Height="30" Width="30" />
                         </Button>
                         <Label FontSize="16"
-                    		Grid.Column="0" Grid.Row="7"
-                    		FontFamily="{DynamicResource HeaderFontFamily}"
-                    		HorizontalAlignment="Left"
-                    		Margin="0,10,0,0"
-                    		Foreground="{DynamicResource AccentColorBrush}" Content="Packaging Type"/>
+                               Grid.Column="0" Grid.Row="7"
+                               FontFamily="{DynamicResource HeaderFontFamily}"
+                               HorizontalAlignment="Left"
+                               Margin="0,10,0,0"
+                               Foreground="{DynamicResource AccentColorBrush}">
+                            Packaging Type
+                        </Label>
 
                         <ComboBox TabIndex="6"
-                    		Grid.Column="0" Grid.Row="8" x:Name="cbPackaging"
-                    		ToolTip="Select packaging"
-                    		Margin="0,10,10,0"
-                    		Width="300"
-                    		Height="35"
-                    		HorizontalAlignment="Left"
-                    		controls:TextBoxHelper.Watermark=""
-                    		controls:TextBoxHelper.IsWaitingForData="True"
-                    		controls:TextBoxHelper.ButtonContent=""
-                    		controls:TextBoxHelper.ButtonFontFamily="wingdings"
-                    		BorderBrush="{DynamicResource AccentColorBrush}"
-                    		BorderThickness="1"
-                    		controls:TextBoxHelper.UseFloatingWatermark="False"
-                    		Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" />
+                                  Grid.Column="0" Grid.Row="8" Name="cbPackaging"
+                                  ToolTip="Select packaging"
+                                  Margin="0,10,10,0"
+                                  Width="300"
+                                  Height="35"
+                                  HorizontalAlignment="Left"
+                                  controls:TextBoxHelper.Watermark=""
+                                  controls:TextBoxHelper.IsWaitingForData="True"
+                                  controls:TextBoxHelper.ButtonContent=""
+                                  controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                                  BorderBrush="{DynamicResource AccentColorBrush}"
+                                  BorderThickness="1"
+                                  controls:TextBoxHelper.UseFloatingWatermark="False"
+                                  Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" />
                         <Label FontSize="16"
-                    		Grid.Column="1" Grid.Row="5"
-                    		FontFamily="{DynamicResource HeaderFontFamily}"
-                    		HorizontalAlignment="Right"
-                    		Margin="0,10,50,0"
-                    		Foreground="{DynamicResource AccentColorBrush}" Content="Dosage Type"/>
+                               Grid.Column="1" Grid.Row="5"
+                               FontFamily="{DynamicResource HeaderFontFamily}"
+                               HorizontalAlignment="Right"
+                               Margin="0,10,50,0"
+                               Foreground="{DynamicResource AccentColorBrush}">
+                            Dosage Type
+                        </Label>
 
-                        <ComboBox x:Name="cbDosageForm" TabIndex="5" DisplayMemberPath="name"
-                    		SelectedValuePath="Id"
-                    		Grid.Column="1" Grid.Row="6"
-                    		Margin="10,10,0,0"
-                    		Width="300"
-                    		Height="35"
-                    		HorizontalAlignment="Left"
-                    		controls:TextBoxHelper.Watermark=""
-                    		controls:TextBoxHelper.IsWaitingForData="True"
-                    		controls:TextBoxHelper.ButtonContent=""
-                    		controls:TextBoxHelper.ButtonFontFamily="wingdings"
-                    		BorderBrush="{DynamicResource AccentColorBrush}"
-                    		BorderThickness="1"
-                    		controls:TextBoxHelper.UseFloatingWatermark="False"
-                    		Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"
-                    		FontSize="16" />
+                        <ComboBox Name="cbDosageForm" TabIndex="5" DisplayMemberPath="name"
+                                  SelectedValuePath="Id"
+                                  Grid.Column="1" Grid.Row="6"
+                                  Margin="10,10,0,0"
+                                  Width="300"
+                                  Height="35"
+                                  HorizontalAlignment="Left"
+                                  controls:TextBoxHelper.Watermark=""
+                                  controls:TextBoxHelper.IsWaitingForData="True"
+                                  controls:TextBoxHelper.ButtonContent=""
+                                  controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                                  BorderBrush="{DynamicResource AccentColorBrush}"
+                                  BorderThickness="1"
+                                  controls:TextBoxHelper.UseFloatingWatermark="False"
+                                  Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"
+                                  FontSize="16" />
                         <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
-                    		Background="{StaticResource PrimaryColorBrush}"
-                    		Foreground="{StaticResource WhiteColorBrush}"
-                    		ToolTip="Click to add new Dosage Form"
-                    		Width="40" Height="40" x:Name="AddNewDosageType"
-                    		Margin="0 10 0 0" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="6" Click="AddNewDosageType_Click">
+                                Background="{StaticResource PrimaryColorBrush}"
+                                Foreground="{StaticResource WhiteColorBrush}"
+                                ToolTip="Click to add new Dosage Form"
+                                Width="40" Height="40" Name="AddNewDosageForm"
+                                Margin="0 10 0 0" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="6"
+                                Click="AddNewDosageForm_Click">
                             <materialDesign:PackIcon Kind="Plus" Height="30" Width="30" />
                         </Button>
                         <TextBlock TextWrapping="Wrap" Width="100" FontSize="16"
-                    		Grid.Column="1" Grid.Row="7"
-                    		FontFamily="{DynamicResource HeaderFontFamily}"
-                    		HorizontalAlignment="Left"
-                    		Margin="10,10,0,0"
-                    		Foreground="{DynamicResource AccentColorBrush}"><Run Text="Number Of Carton(s)"/></TextBlock>
+                                   Grid.Column="1" Grid.Row="7"
+                                   FontFamily="{DynamicResource HeaderFontFamily}"
+                                   HorizontalAlignment="Left"
+                                   Margin="10,10,0,0"
+                                   Foreground="{DynamicResource AccentColorBrush}">
+                            Number Of Carton(s)
+                        </TextBlock>
 
-                        <TextBox x:Name="tbBox" TabIndex="7" PreviewTextInput="NumberValidation"
-                    		Grid.Column="1" Grid.Row="8"
-                    		ToolTip="Type username here"
-                    		Margin="10,10,10,0"
-                    		Width="140"
-                    		Height="35"
-                    		HorizontalAlignment="Left"
-                    		controls:TextBoxHelper.IsWaitingForData="True"
-                    		BorderBrush="{DynamicResource AccentColorBrush}"
-                    		BorderThickness="1"
-                    		Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" TextChanged="tbBox_TextChanged" />
+                        <TextBox Name="tbBox" TabIndex="7" PreviewTextInput="NumberValidation"
+                                 Grid.Column="1" Grid.Row="8"
+                                 ToolTip="Type username here"
+                                 Margin="10,10,10,0"
+                                 Width="140"
+                                 Height="35"
+                                 HorizontalAlignment="Left"
+                                 controls:TextBoxHelper.IsWaitingForData="True"
+                                 BorderBrush="{DynamicResource AccentColorBrush}"
+                                 BorderThickness="1"
+                                 Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" TextChanged="tbBox_TextChanged" />
 
                         <TextBlock TextWrapping="Wrap" Width="163" FontSize="16"
-                    		Grid.Column="1" Grid.Row="7"
-                    		FontFamily="{DynamicResource HeaderFontFamily}"
-                    		HorizontalAlignment="Left"
-                    		Margin="170,10,0,0"
-                    		Foreground="{DynamicResource AccentColorBrush}"><Run Text="Number of packages in Carton"/></TextBlock>
+                                   Grid.Column="1" Grid.Row="7"
+                                   FontFamily="{DynamicResource HeaderFontFamily}"
+                                   HorizontalAlignment="Left"
+                                   Margin="170,10,0,0"
+                                   Foreground="{DynamicResource AccentColorBrush}">
+                            Number of packages in Carton
+                        </TextBlock>
 
-                        <TextBox x:Name="tbNumberInBox" TabIndex="8" PreviewTextInput="NumberValidation"
-                    		Grid.Column="1" Grid.Row="8"
-                    		ToolTip="Type number here"
-                    		Margin="10,10,50,0"
-                    		Width="140"
-                    		Height="35"
-                    		HorizontalAlignment="Right"
-                    		controls:TextBoxHelper.IsWaitingForData="True"
-                    		BorderBrush="{DynamicResource AccentColorBrush}"
-                    		BorderThickness="1"
-                    		Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" TextChanged="tbNumberInBox_TextChanged" />
+                        <TextBox Name="tbNumberInBox" TabIndex="8" PreviewTextInput="NumberValidation"
+                                 Grid.Column="1" Grid.Row="8"
+                                 ToolTip="Type number here"
+                                 Margin="10,10,50,0"
+                                 Width="140"
+                                 Height="35"
+                                 HorizontalAlignment="Right"
+                                 controls:TextBoxHelper.IsWaitingForData="True"
+                                 BorderBrush="{DynamicResource AccentColorBrush}"
+                                 BorderThickness="1"
+                                 Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" TextChanged="tbNumberInBox_TextChanged" />
                         <TextBlock TextWrapping="Wrap" FontSize="16"
-                    		Grid.Column="1" Grid.Row="9" Width="150"
-                    		FontFamily="{DynamicResource HeaderFontFamily}"
-                    		HorizontalAlignment="Left"
-                    		Margin="10,15,0,40"
-                    		Foreground="{DynamicResource AccentColorBrush}" Grid.RowSpan="2"><Run Text="Number per Package"/></TextBlock>
+                                   Grid.Column="1" Grid.Row="9" Width="150"
+                                   FontFamily="{DynamicResource HeaderFontFamily}"
+                                   HorizontalAlignment="Left"
+                                   Margin="10,15,0,40"
+                                   Foreground="{DynamicResource AccentColorBrush}" Grid.RowSpan="2">
+                            Number per Package
+                        </TextBlock>
 
-                        <TextBox x:Name="tbNumberInPack" TabIndex="10" PreviewTextInput="NumberValidation"
-                    		Grid.Column="1" Grid.Row="10"
-                    		ToolTip="Type number here"
-                    		Margin="10,10,0,0"
-                    		Width="140"
-                    		Height="35"
-                    		HorizontalAlignment="Left"
-                    		controls:TextBoxHelper.IsWaitingForData="True"
-                    		BorderBrush="{DynamicResource AccentColorBrush}"
-                    		BorderThickness="1"
-                    		Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" TextChanged="tbNumberInPack_TextChanged" />
+                        <TextBox Name="tbNumberInPack" TabIndex="10" PreviewTextInput="NumberValidation"
+                                 Grid.Column="1" Grid.Row="10"
+                                 ToolTip="Type number here"
+                                 Margin="10,10,0,0"
+                                 Width="140"
+                                 Height="35"
+                                 HorizontalAlignment="Left"
+                                 controls:TextBoxHelper.IsWaitingForData="True"
+                                 BorderBrush="{DynamicResource AccentColorBrush}"
+                                 BorderThickness="1"
+                                 Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" TextChanged="tbNumberInPack_TextChanged" />
                         <Label FontSize="16"
-                    		Grid.Column="0" Grid.Row="9"
-                    		FontFamily="{DynamicResource HeaderFontFamily}"
-                    		HorizontalAlignment="Left"
-                    		Margin="0,10,0,0"
-                    		Foreground="{DynamicResource AccentColorBrush}" Content="Expiring date"/>
+                               Grid.Column="0" Grid.Row="9"
+                               FontFamily="{DynamicResource HeaderFontFamily}"
+                               HorizontalAlignment="Left"
+                               Margin="0,10,0,0"
+                               Foreground="{DynamicResource AccentColorBrush}">
+                            Expiring date
+                        </Label>
 
-                        <DatePicker x:Name="tbExpiringDate" TabIndex="9"
-                    		Grid.Column="0" Grid.Row="10"
-                    		Margin="0,10,0,0"
-                    		Width="300"
-                    		Height="35"
-                    		HorizontalAlignment="Left"
-                    		controls:TextBoxHelper.IsWaitingForData="True"
-                    		controls:TextBoxHelper.ButtonContent=""
-                    		controls:TextBoxHelper.ButtonFontFamily="wingdings"
-                    		BorderBrush="{DynamicResource PrimaryColorBrush}"
-                    		BorderThickness="1"
-                    		Foreground="{DynamicResource PrimaryColorBrush}" FontSize="16" />
+                        <DatePicker Name="tbExpiringDate" TabIndex="9"
+                                    Grid.Column="0" Grid.Row="10"
+                                    Margin="0,10,0,0"
+                                    Width="300"
+                                    Height="35"
+                                    HorizontalAlignment="Left"
+                                    controls:TextBoxHelper.IsWaitingForData="True"
+                                    controls:TextBoxHelper.ButtonContent=""
+                                    controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                                    BorderBrush="{DynamicResource PrimaryColorBrush}"
+                                    BorderThickness="1"
+                                    Foreground="{DynamicResource PrimaryColorBrush}" FontSize="16" />
                         <TextBlock TextWrapping="Wrap" Width="100" FontSize="16"
-                    		Grid.Column="1" Grid.Row="9"
-                    		FontFamily="{DynamicResource HeaderFontFamily}"
-                    		HorizontalAlignment="Right"
-                    		Margin="0,10,50,0"
-                    		Foreground="{DynamicResource AccentColorBrush}"><Run Text="Total Quantity"/></TextBlock>
-                        <TextBox x:Name="tbTotalQuantity"
-                    		Grid.Column="1" Grid.Row="10" TabIndex="11" PreviewTextInput="NumberValidation"
-                    		Margin="-10,10,50,0"
-                    		Width="140"
-                    		Height="35"
-                    		HorizontalAlignment="Right"
+                                   Grid.Column="1" Grid.Row="9"
+                                   FontFamily="{DynamicResource HeaderFontFamily}"
+                                   HorizontalAlignment="Right"
+                                   Margin="0,10,50,0"
+                                   Foreground="{DynamicResource AccentColorBrush}">
+                            Total Quantity
+                        </TextBlock>
+                        <TextBox Name="tbTotalQuantity"
+                                 Grid.Column="1" Grid.Row="10" TabIndex="11" PreviewTextInput="NumberValidation"
+                                 Margin="-10,10,50,0"
+                                 Width="140"
+                                 Height="35"
+                                 HorizontalAlignment="Right"
 
-                    		controls:TextBoxHelper.IsWaitingForData="True"
-                    		BorderBrush="{DynamicResource AccentColorBrush}"
-                    		BorderThickness="1"
-                    		Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" />
+                                 controls:TextBoxHelper.IsWaitingForData="True"
+                                 BorderBrush="{DynamicResource AccentColorBrush}"
+                                 BorderThickness="1"
+                                 Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" />
                         <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,50,0"
-                    		Height="30" Width="130" Grid.Column="1" Grid.Row="12" TabIndex="12"
-                    		x:Name="Save" Click="Save_Click" HorizontalAlignment="Right"
-                    		FontFamily="{DynamicResource HeaderFontFamily}"
-                    		Background="{DynamicResource PrimaryColorBrush}"
-                    		Foreground="{StaticResource WhiteColorBrush}"
-                    		controls:ButtonHelper.PreserveTextCase="True"
-                    		FontSize="14" Content="Save"/>
+                                Height="30" Width="130" Grid.Column="1" Grid.Row="12" TabIndex="12"
+                                Name="Save" Click="Save_Click" HorizontalAlignment="Right"
+                                FontFamily="{DynamicResource HeaderFontFamily}"
+                                Background="{DynamicResource PrimaryColorBrush}"
+                                Foreground="{StaticResource WhiteColorBrush}"
+                                controls:ButtonHelper.PreserveTextCase="True"
+                                FontSize="14">
+                            Save
+                        </Button>
                     </Grid>
                 </StackPanel>
             </materialDesign:Card>
