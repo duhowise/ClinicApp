@@ -175,6 +175,26 @@ namespace ClinicApp.Data
                 MessageBox.Show(exception.Message);
             }
         }
+        public void AddNewDrugDosage(DrugDosageForm drugForm)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+                {
+                    if (connection.State == Closed)
+                        connection.Open();
+                    var query = @"INSERT INTO dbo.DrugDosageForms(name)VALUES(@name)";
+                    var command = new SqlCommand(query, connection);
+                    command.Parameters.Add("name", SqlDbType.NVarChar).Value = drugForm.name;
+                    command.ExecuteNonQuery();
+
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
 
         public  IEnumerable<string> FetchByBrandName(string brandname)
         {

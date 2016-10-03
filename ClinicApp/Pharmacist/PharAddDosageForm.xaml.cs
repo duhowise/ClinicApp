@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using ClinicApp.Data;
@@ -36,12 +37,21 @@ namespace ClinicApp.Pharmacist
         }
         private void Save_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            List<DrugDosageForm> suppliers = (List<DrugDosageForm>)new DrugRepository().GetDosageForms();
+            var result = suppliers.FindAll(s => s.name.Equals(dosageFormName.Text));
             if (!string.IsNullOrWhiteSpace(dosageFormName.Text))
             {
-              new DrugRepository().AddNewDrugType(new DrugForm
-              {
-                  name = dosageFormName.Text
-              });  
+                if (result.Count==0)
+                {
+                    new DrugRepository().AddNewDrugDosage(new DrugDosageForm
+                    {
+                        name = dosageFormName.Text
+                    });
+                    CMB Cmb = new CMB();
+                    Cmb.Message = $"Successfully Added new Dosage Form {dosageFormName.Text}";
+                    Cmb.ShowDialog();
+                    dosageFormName.Text = "";
+                }
             }
         }
     }

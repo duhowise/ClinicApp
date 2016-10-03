@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Windows;
 using ClinicModel;
@@ -46,20 +47,19 @@ namespace ClinicApp.Data
                 {
                     if (connection.State ==ConnectionState.Closed)
                         connection.Open();
-                    var query = @"INSERT INTO dbo.Supplie(Name,Address,Email,Phone)VALUES
-                        (@name,@address,@companyName,@phone)";
+                    var query = @"INSERT INTO dbo.Supplier(Name,Address,Email,Phone)VALUES
+                        (@name,@address,@email,@phone)";
                     var command = new SqlCommand(query, connection);
                     command.Parameters.Add("name", SqlDbType.NVarChar).Value =supplier.Name;
                     command.Parameters.Add("address", SqlDbType.NVarChar).Value = supplier.Address;
-                    command.Parameters.Add("companyName", SqlDbType.NVarChar).Value = supplier.Email;
+                    command.Parameters.Add("email", SqlDbType.NVarChar).Value = supplier.Email;
                     command.Parameters.Add("phone", SqlDbType.NVarChar).Value = supplier.Phone;
                     command.ExecuteNonQuery();
-
-                }
+                    }
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message);
+              
             }
         }
     }

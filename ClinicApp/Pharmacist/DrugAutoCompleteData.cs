@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
+using ClinicApp.Data;
 
 namespace ClinicApp.Pharmacist
 {
@@ -49,7 +50,7 @@ namespace ClinicApp.Pharmacist
         public ObservableCollection<SingleDrugData> GetDrugAutoCompleteData()
         {
             drugs.Clear();
-            LoadDrugsData();
+            new DrugRepository().GetAllDrugs();
             return drugs;
         } 
 

@@ -1,6 +1,8 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using ClinicApp.Data;
 using ClinicModel;
 using MahApps.Metro.Controls;
@@ -11,7 +13,7 @@ namespace ClinicApp.Pharmacist
     /// Interaction logic for PharAddCategory.xaml
     /// </summary>
     public partial class PharAddCategory : MetroWindow
-    {
+    { CMB Cmb=new CMB();
         public PharAddCategory()
         {
             InitializeComponent();
@@ -34,12 +36,20 @@ namespace ClinicApp.Pharmacist
 
         private void Save_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            List<DrugCategory> suppliers = (List<DrugCategory>)new DrugRepository().GetAllDrugs();
+            var result = suppliers.FindAll(s => s.name.Equals(categoryName.Text));
             if (!string.IsNullOrWhiteSpace(categoryName.Text))
             {
-               new DrugRepository().AddNewDrugCategory(new DrugCategory
-               {
-                   name = categoryName.Text
-               }); 
+                if (result.Count == 0)
+                {
+                    new DrugRepository().AddNewDrugCategory(new DrugCategory
+                    {
+                        name = categoryName.Text.ToUpper()
+                    });
+                    Cmb.Message = $"Successfully Added new Category {categoryName.Text}";
+                    Cmb.ShowDialog();
+                    categoryName.Text = "";
+                }
             }
         }
 

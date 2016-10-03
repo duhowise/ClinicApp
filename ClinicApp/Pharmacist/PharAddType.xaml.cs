@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using ClinicApp.Data;
@@ -33,14 +34,20 @@ namespace ClinicApp.Pharmacist
 
         private void Save_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            List<DrugForm> drugForms = (List<DrugForm>)new DrugRepository().GetDrugForms();
+            var result = drugForms.FindAll(s => s.name.Equals(typeName.Name));
             if (!string.IsNullOrWhiteSpace(typeName.Text))
             {
-              new DrugRepository().AddNewDrugType(new DrugForm
-              {
-                  name = typeName.Text
-              });
-                cmb.Message = $"Succcessfully Added {typeName.Text}";
-                cmb.Show();
+                if (result.Count==0)
+                {
+                    new DrugRepository().AddNewDrugType(new DrugForm
+                    {
+                        name = typeName.Text
+                    });
+                    cmb.Message = $"Succcessfully Added {typeName.Text}";
+                    cmb.Show();
+                    typeName.Text = "";
+                }
 
             }
         }
