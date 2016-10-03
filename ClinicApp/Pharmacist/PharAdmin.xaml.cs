@@ -32,6 +32,7 @@ namespace ClinicApp.Pharmacist
         {
             this.DataContext = new MainContentView(NavigateToView);
              navigator = new MainContentView(NavigateToView);
+            navigator.NavigateTopharAdminDashboardControl();
         }
 
         private void NavigateToView(UserControl view)
@@ -81,7 +82,8 @@ namespace ClinicApp.Pharmacist
 
         private void Dispense_Click(object sender, RoutedEventArgs e)
         {
-            new PatientDetailsForm().Show();
+           // new PatientDetailsForm().Show();
+            new PharDispenseDrug().ShowDialog();
 
         }
 
@@ -145,11 +147,6 @@ namespace ClinicApp.Pharmacist
         {
             stockTakingReportOne repotOne=new stockTakingReportOne();
             repotOne.Show();
-        }
-
-        private void btnPharAdminDashboard(object sender, RoutedEventArgs e)
-        {
-            navigator.NavigateTopharAdminDashboardControl();
         }
 
         private void btnAddDrug(object sender, RoutedEventArgs e)

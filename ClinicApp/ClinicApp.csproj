@@ -499,6 +499,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClinicApp.csproj.DotSettings.user" />
+    <Resource Include="media\medical-report-icon.png" />
     <Resource Include="Resources\Entypo-license.txt" />
     <Resource Include="Resources\WindowsIcons-license.txt" />
     <Resource Include="media\drug-history.png" />

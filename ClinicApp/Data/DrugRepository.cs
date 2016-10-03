@@ -12,6 +12,7 @@ namespace ClinicApp.Data
 {
     public class DrugRepository
     {
+       
         public IEnumerable<Drug> GetAllDrugs()
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))

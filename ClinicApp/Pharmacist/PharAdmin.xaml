@@ -46,7 +46,7 @@
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Text="Welcome!" FontSize="16" Foreground="#FFFFD205" VerticalAlignment="Center"/>
                     <TextBlock x:Name="LoginUserName" Margin="0" FontSize="16" FontWeight="Bold" Foreground="#FFFBF4F4" FontFamily="Arial" VerticalAlignment="Center"/>
-                    <Image Source="media/clogout.png" Height="37"/>
+                    <Image Source="../media/clogout.png" Height="37"/>
                     <Label x:Name="Logout" Content="Logout" FontSize="16" Foreground="{StaticResource WhiteColorBrush}" VerticalAlignment="Center" FontWeight="Bold" MouseDoubleClick="Logout_MouseDoubleClick" ToolTip="Double click to Log out"/>
                 </StackPanel>
             </Grid>
@@ -80,19 +80,8 @@
                                     <ColumnDefinition Width="50"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0" Grid.Column="0" Source="media/add-supplier.png" Width="32" Height="32"/>
-                                <Button  Grid.Row="0" Grid.Column="1"
-                            Content="DashBoard" FontSize="18"  FontFamily="Arial Unicode MS" 
-                                 FontWeight="Normal" Margin="6,5,0,10"  HorizontalAlignment="Stretch" 
-                                 Background="{x:Null}" BorderThickness="0" SnapsToDevicePixels="False" Cursor="Hand" 
-                                 HorizontalContentAlignment="Stretch" Click="btnPharAdminDashboard" 
-                                 >
-                                    <Button.ContextMenu>
-                                        <ContextMenu AllowDrop="True"/>
-                                    </Button.ContextMenu>
-                                </Button>
-
-                                <Image Grid.Row="1" Grid.Column="0" Source="media/add-supplier.png" Width="32" Height="32"/>
+                               
+                                <Image Grid.Row="1" Grid.Column="0" Source="../media/add-supplier.png" Width="32" Height="32"/>
                                 <Button  Grid.Row="1" Grid.Column="1"
                             Content="Add Supplier" FontSize="18"  FontFamily="{DynamicResource HeaderFontFamily}"
                                          Foreground="{DynamicResource AccentColorBrush}"
@@ -105,7 +94,7 @@
                                     </Button.ContextMenu>
                                 </Button>
                                 <Image Grid.Row="2" Grid.Column="0" 
-                            Source="media/add-drug.png" Width="32" Height="32"  Margin="10,0,5,0" 
+                            Source="../media/add-drug.png" Width="32" Height="32"  Margin="10,0,5,0" 
                                HorizontalAlignment="Right" VerticalAlignment="Top"/>
                                 <Button Grid.Row="2" Grid.Column="1" FontWeight="Normal" Foreground="{DynamicResource AccentColorBrush}"
                             Content="Add Drug" FontSize="18"   FontFamily="{DynamicResource HeaderFontFamily}"
@@ -119,19 +108,19 @@
                                 </Button>
 
                                 <Image Grid.Row="3" Grid.Column="0" 
-                                Source="media/drugs.png" Width="32" Height="32"  Margin="10,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                                Source="../media/drugs.png" Width="32" Height="32"  Margin="10,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
                                 <Button Grid.Row="3" Grid.Column="1" HorizontalContentAlignment="Stretch" FontWeight="Normal"
                                         Foreground="{DynamicResource AccentColorBrush}" 
                                 Content="View Drug" FontSize="18"   FontFamily="{DynamicResource HeaderFontFamily}" Margin="5,5,0,10"
                         	Background="{x:Null}" BorderThickness="0" Cursor="Hand" Click="Button_Click_2"/>
                                 <Image Grid.Row="4" Grid.Column="0" 
-                                Source="media/dispense-drugs.png" Width="32" Height="32"  Margin="10,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                                Source="../media/dispense-drugs.png" Width="32" Height="32"  Margin="10,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
                                 <Button Grid.Row="4" Grid.Column="1" Name="Dispense" HorizontalContentAlignment="Stretch"
                                         Content="Dispense Drug" FontSize="18"  FontFamily="{DynamicResource HeaderFontFamily}" Foreground="{DynamicResource AccentColorBrush}"
                                Background="{x:Null}" BorderThickness="0" FontWeight="Normal" Margin="5,5,0,10"  HorizontalAlignment="Stretch" Cursor="Hand" Click="Dispense_Click">
                                 </Button>
                                 <Image Grid.Row="5" Grid.Column="0" 
-                               Source="media/dispense-drugs.png" Width="32" Height="32"  Margin="10,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                               Source="../media/medical-report-icon.png" Width="32" Height="32"  Margin="10,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
                                 <Button Grid.Row="5" Grid.Column="1" Name="reporting" HorizontalContentAlignment="Stretch"
                                         Content="View Report" FontSize="18"  FontFamily="{DynamicResource HeaderFontFamily}" Foreground="{DynamicResource AccentColorBrush}"
                                Background="{x:Null}" BorderThickness="0" FontWeight="Normal" Margin="5,5,0,10"  HorizontalAlignment="Stretch" Cursor="Hand" Click="reporting_Click" >

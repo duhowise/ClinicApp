@@ -8,7 +8,7 @@
         xmlns:behaviors="clr-namespace:WPFTextBoxAutoComplete;assembly=WPFTextBoxAutoComplete"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:logic="clr-namespace:ClinicApp.Logic"
+        xmlns:data="clr-namespace:ClinicApp.Data"
         mc:Ignorable="d"
         Title="KUMASI POLYTECHNIC CLINIC APP" 
                        GlowBrush="{DynamicResource AccentColorBrush}"
@@ -111,12 +111,12 @@
                                      BorderThickness="1"
                          Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" LostFocus="DispenseDrugName_LostFocus" SearchTextChanged="DispenseDrugName_SearchTextChanged"/>
                         </Grid>
-                        <Grid Grid.Row="2" Grid.Column="1" Name="dGrid" >
+                        <Grid Grid.Row="2" Grid.Column="1" Name="dGrid" DataContext="data:DrugRepository" >
                         <TextBox 
                                 Width="350" Height="35"
-                                 HorizontalAlignment="Center"
-                                Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}" 
-                                 behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Path=DrugNames}" 
+                                 HorizontalAlignment="Center" DataContext="data:DrugRepository"
+                                Text="{Binding DrugName, UpdateSourceTrigger=PropertyChanged}" 
+                                 behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding}" 
                                 />
                         </Grid>
 

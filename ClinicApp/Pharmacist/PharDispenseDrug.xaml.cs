@@ -18,11 +18,7 @@ namespace ClinicApp.Pharmacist
     public partial class PharDispenseDrug : MetroWindow
     {
         BackgroundWorker _remainingDrugsBackgroundWorker=new BackgroundWorker();
-
-        private IEnumerable<String> drugNames;
         
-
-        public IEnumerable<String> DrugNames { get; set; }
 
             CMB cmb = new CMB();
         public PharDispenseDrug()
@@ -33,8 +29,8 @@ namespace ClinicApp.Pharmacist
             _remainingDrugsBackgroundWorker.WorkerSupportsCancellation = true;
             _remainingDrugsBackgroundWorker.DoWork += _remainingDrugsBackgroundWorker_DoWork;
             _remainingDrugsBackgroundWorker.RunWorkerCompleted += _remainingDrugsBackgroundWorker_RunWorkerCompleted;
-            DrugNames = new DrugRepository().DrugAutoComplete();
-           
+
+            DataContext = new DrugRepository().DrugAutoComplete();
 
         }
 

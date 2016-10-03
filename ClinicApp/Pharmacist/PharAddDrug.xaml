@@ -173,9 +173,8 @@
                     		Background="{StaticResource PrimaryColorBrush}"
                     		Foreground="{StaticResource WhiteColorBrush}"
                     		ToolTip="Click to add new type"
-                    		Width="40" Height="40" x:Name="AddNewType"
-                    		Margin="0 10 0 0" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="4"
-                    		Click="AddNewType_Click">
+                    		Width="40" Height="40" x:Name="AddNewDosageForm"
+                    		Margin="0 10 0 0" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="4" Click="AddNewDosageForm_Click">
                             <materialDesign:PackIcon Kind="Plus" Height="30" Width="30" />
                         </Button>
                         <Label FontSize="16"
@@ -227,9 +226,8 @@
                     		Background="{StaticResource PrimaryColorBrush}"
                     		Foreground="{StaticResource WhiteColorBrush}"
                     		ToolTip="Click to add new Dosage Form"
-                    		Width="40" Height="40" x:Name="AddNewDosageForm"
-                    		Margin="0 10 0 0" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="6"
-                    		Click="AddNewDosageForm_Click">
+                    		Width="40" Height="40" x:Name="AddNewDosageType"
+                    		Margin="0 10 0 0" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="6" Click="AddNewDosageType_Click">
                             <materialDesign:PackIcon Kind="Plus" Height="30" Width="30" />
                         </Button>
                         <TextBlock TextWrapping="Wrap" Width="100" FontSize="16"

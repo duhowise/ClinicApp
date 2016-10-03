@@ -140,19 +140,10 @@ namespace ClinicApp.Pharmacist
         {
         }
 
-        private void AddNewDosageForm_Click(object sender, RoutedEventArgs e)
-        {
-            new PharAddDosageForm().ShowDialog();
-        }
 
         private void AddNewCategory_Click(object sender, RoutedEventArgs e)
         {
             new PharAddCategory().ShowDialog();
-        }
-
-        private void AddNewType_Click(object sender, RoutedEventArgs e)
-        {
-            new PharAddType().ShowDialog();
         }
 
         private void tbBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -203,6 +194,16 @@ namespace ClinicApp.Pharmacist
             NumberInPack = no <= 1 ? 1 : no;
             GetTotalNumber();
             
+        }
+
+        private void AddNewDosageForm_Click(object sender, RoutedEventArgs e)
+        {
+            new PharAddDosageForm().ShowDialog();
+        }
+
+        private void AddNewDosageType_Click(object sender, RoutedEventArgs e)
+        {
+            new PharAddType().ShowDialog();
         }
     }
 }
