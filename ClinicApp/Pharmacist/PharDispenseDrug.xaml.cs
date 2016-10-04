@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -18,7 +19,8 @@ namespace ClinicApp.Pharmacist
     {
         BackgroundWorker _remainingDrugsBackgroundWorker=new BackgroundWorker();
         
-        CMB cmb = new CMB();
+
+            CMB cmb = new CMB();
         public PharDispenseDrug()
         {
             InitializeComponent();
@@ -27,6 +29,8 @@ namespace ClinicApp.Pharmacist
             _remainingDrugsBackgroundWorker.WorkerSupportsCancellation = true;
             _remainingDrugsBackgroundWorker.DoWork += _remainingDrugsBackgroundWorker_DoWork;
             _remainingDrugsBackgroundWorker.RunWorkerCompleted += _remainingDrugsBackgroundWorker_RunWorkerCompleted;
+
+            DataContext = new DrugRepository().DrugAutoComplete();
 
         }
 

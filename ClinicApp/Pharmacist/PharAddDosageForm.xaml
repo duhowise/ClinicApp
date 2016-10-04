@@ -11,7 +11,7 @@
                       WindowStartupLocation="CenterScreen" 
                       Background="{DynamicResource MaterialDesignPaper}"
                       ResizeMode="NoResize" Height="200" Width="350"
-                      Icon="media/Health-Care.png" 
+                      Icon="../media/Health-Care.png" 
                       Topmost="True" ShowInTaskbar="False">
     <Grid HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
@@ -27,9 +27,9 @@
                        FontFamily="{DynamicResource HeaderFontFamily}"
                        HorizontalAlignment="Left"
                           Margin="10,10,0,0" 
-                           Foreground="{DynamicResource AccentColorBrush}">Dosage form</Label>
+                           Foreground="{DynamicResource AccentColorBrush}">New Dosage form</Label>
         <TextBox TabIndex="0"
-                  Grid.Column="0" Grid.Row="1" Name="dosageFormName"
+                  Grid.Column="0" Grid.Row="1" Name="dosageFormName" PreviewTextInput="TextValidationTextBox"
                             ToolTip="Type category name here"
                     Margin="10,10,0,0" 
                          Width="300"
@@ -45,7 +45,7 @@
                                 Name="Save" HorizontalAlignment="Right"
                                  FontFamily="{DynamicResource HeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14">
+                                FontSize="14" Click="Save_Click">
             Save
         </Button>
         <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10,20,0,0" 
@@ -53,7 +53,7 @@
                                 Name="Cancel"  HorizontalAlignment="Left"
                                  FontFamily="{DynamicResource HeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14">
+                                FontSize="14" Click="Cancel_Click">
             Cancel
         </Button>
     </Grid>

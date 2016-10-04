@@ -8,7 +8,7 @@
         xmlns:behaviors="clr-namespace:WPFTextBoxAutoComplete;assembly=WPFTextBoxAutoComplete"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:logic="clr-namespace:ClinicApp.Logic"
+        xmlns:data="clr-namespace:ClinicApp.Data"
         mc:Ignorable="d"
         Title="KUMASI POLYTECHNIC CLINIC APP" 
                        GlowBrush="{DynamicResource AccentColorBrush}"
@@ -33,8 +33,8 @@
                 <TextBlock Text="{Binding DrugName}" Style="{StaticResource AutoCompleteStyle}"></TextBlock>
             </StackPanel>
         </DataTemplate>
-        <logic:DrugsAutoCompleteModel x:Key="DrugModel"></logic:DrugsAutoCompleteModel>
-    </Window.Resources>
+        </Window.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -96,7 +96,7 @@
                        HorizontalAlignment="Right"
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Drug Name</Label>
-                        <Grid Grid.Column="1" Grid.Row="2" DataContext="{StaticResource DrugModel}">
+                        <Grid Grid.Column="1" Grid.Row="2" DataContext="">
                             <telerik:RadAutoCompleteBox PreviewTextInput="TextValidationTextBox" x:Name="DispenseDrugName" 
                                     Width="350" HorizontalAlignment="Left"
                       VerticalAlignment="Bottom"  Height="35" 
@@ -110,6 +110,14 @@
                                                     BorderBrush="{DynamicResource AccentColorBrush}"
                                      BorderThickness="1"
                          Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" LostFocus="DispenseDrugName_LostFocus" SearchTextChanged="DispenseDrugName_SearchTextChanged"/>
+                        </Grid>
+                        <Grid Grid.Row="2" Grid.Column="1" Name="dGrid" DataContext="data:DrugRepository" >
+                        <TextBox 
+                                Width="350" Height="35"
+                                 HorizontalAlignment="Center" DataContext="data:DrugRepository"
+                                Text="{Binding DrugName, UpdateSourceTrigger=PropertyChanged}" 
+                                 behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding}" 
+                                />
                         </Grid>
 
                         <Label FontSize="16"

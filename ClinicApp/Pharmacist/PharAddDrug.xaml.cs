@@ -1,14 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms;
+using System.Windows.Input;
+using ClinicApp.Data;
+using ClinicModel;
 using MahApps.Metro.Controls;
 using MessageBox = System.Windows.MessageBox;
-
 namespace ClinicApp.Pharmacist
 {
     /// <summary>
@@ -17,44 +16,63 @@ namespace ClinicApp.Pharmacist
     public partial class PharAddDrug : MetroWindow
     { 
         CMB cmb =new CMB();
-      
+        private int boxnumber = 1;
+        private int Packnumber = 1;
+        private int NumberInPack = 1;
+        BackgroundWorker preliminaryBackgroundWorker=new BackgroundWorker();
         public PharAddDrug()
         {
             InitializeComponent();
-        }
+            this.Closing += PharAddDrug_Closing;
+            preliminaryBackgroundWorker.WorkerSupportsCancellation = false;
+            preliminaryBackgroundWorker.WorkerReportsProgress = false;
+            preliminaryBackgroundWorker.DoWork += PreliminaryBackgroundWorker_DoWork;
+            preliminaryBackgroundWorker.RunWorkerCompleted += PreliminaryBackgroundWorker_RunWorkerCompleted; ;
+            
+            if (!preliminaryBackgroundWorker.IsBusy)
+            {
+                preliminaryBackgroundWorker.RunWorkerAsync();
+            }
 
-        private void Window_Closing(object sender, CancelEventArgs e)
+
+        }
+        private void PreliminaryBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            //DialogResult dr= new DialogResult();
+            DrugRepository result =(DrugRepository) e.Result;
+            cbSupplier.ItemsSource = new SupplierRepository().GetAllSuppliers();
+            cbDosageForm.ItemsSource = result.GetDosageForms();
+            cbDrugCategory.ItemsSource = result.GetDrugCategories();
+            cbDrugType.ItemsSource = result.GetDrugForms();
 
-            //call confirmBox here
-
-            var response = MessageBox.Show("Do you really want to Stop adding new drug", "Exit",
-                MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-
-            if (response == MessageBoxResult.No)
-            {
-                e.Cancel = true;
-            }
         }
 
-        private void Cancel_Click(object sender, RoutedEventArgs e)
+        private void PreliminaryBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+           e.Result=new DrugRepository(); 
 
-
-            var response = MessageBox.Show("Do you really want to close this window", "Exit",
-                MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-
-            if (response == MessageBoxResult.No)
-            {
-
-            }
-            else
-            {
-                Close();
-            }
+        }
+        public void GetTotalNumber()
+        {
+           tbTotalQuantity.Text= (boxnumber * Packnumber * NumberInPack).ToString();
+        }
+        private void PharAddDrug_Closing(object sender, CancelEventArgs e)
+        {
+            var response = MessageBox.Show("Do you really want to stop Adding new drug\n All your changes will be discarded", "Exit",
+                 MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            if (response == MessageBoxResult.Yes) { Hide(); } else { e.Cancel = true; }
+        }
+        
+        private void TextValidation(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex("[^a-zA-Z]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
+        private  void NumberValidation(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
         private void AddNewSupplier_Click(object sender, RoutedEventArgs e)
         {
             PharAddSupplier ps= new PharAddSupplier();
@@ -64,204 +82,45 @@ namespace ClinicApp.Pharmacist
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DrugName.Focus();
-            Supplier.Items.Clear();
-            using (
-               SqlConnection connection =
-                   new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
-            {
-                try
-                {
-                    if (connection.State == ConnectionState.Closed)
-                    {
-                        connection.Open();
-                        string query = "select name from dbo.supplier";
-                        var command = new SqlCommand(query, connection) { CommandType = CommandType.Text };
-                        var reader = command.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            Supplier.Items.Add(reader.GetString(0));
-                        }
-                        reader.Close();
-                        connection.Close();
-                    }
-
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show(exception.Message.ToString(), "Error", MessageBoxButton.OK,
-                        MessageBoxImage.Exclamation);
-                }
-
+            tbGenericName.Focus();
+            cbSupplier.Items.Clear();
             }
-        }
-
-        private void Supplier_Initialized(object sender, EventArgs e)
-        {
-            Supplier.SelectedItem = "Select Supplier";
-        }
-
-        private void Supplier_Loaded(object sender, RoutedEventArgs e)
-        {
-            Supplier.Items.Clear();
-            using (
-               SqlConnection connection =
-                   new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
-            {
-                try
-                {
-                    if (connection.State == ConnectionState.Closed)
-                    {
-                        connection.Open();
-                        string query = "select name from dbo.supplier";
-                        var command = new SqlCommand(query, connection) { CommandType = CommandType.Text };
-                        var reader = command.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            Supplier.Items.Add(reader.GetString(0));
-                        }
-                        reader.Close();
-                        connection.Close();
-                    }
-
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show(exception.Message.ToString(), "Error", MessageBoxButton.OK,
-                        MessageBoxImage.Exclamation);
-                }
-
-            }
-        }
-
-        private void Supplier_DropDownOpened(object sender, EventArgs e)
-        {
-            Supplier.Items.Clear();
-            using (
-               SqlConnection connection =
-                   new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
-            {
-                try
-                {
-                    if (connection.State == ConnectionState.Closed)
-                    {
-                        connection.Open();
-                        string query = "select name from dbo.supplier";
-                        var command = new SqlCommand(query, connection) { CommandType = CommandType.Text };
-                        var reader = command.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            Supplier.Items.Add(reader.GetString(0));
-                        }
-                        reader.Close();
-                        connection.Close();
-                    }
-
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show(exception.Message.ToString(), "Error", MessageBoxButton.OK,
-                        MessageBoxImage.Exclamation);
-                }
-
-            }
-        }
-
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-        //    if (string.IsNullOrEmpty(DrugName.Text)|| string.IsNullOrEmpty(BoxQuantity.Text)|| string.IsNullOrEmpty(NumberInBox.Text)|| string.IsNullOrEmpty(TotalQuantity.Text)|| string.IsNullOrEmpty(Supplier.SelectedItem.ToString())|| string.IsNullOrEmpty(ExpiryDate.Text))
-        //    {
-        //        cmb.Message = "All Fields Are Required";
-        //        cmb.Show();
-        //        //MessageBox.Show("All Feild Are Required", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-        //    }
-        //    else
-        //    {
-        //        if (Pharmacy.AddNewDrug(DrugName.Text, Convert.ToInt32(BoxQuantity.Text),
-        //            Convert.ToInt32(NumberInBox.Text),
-        //            Convert.ToInt32(TotalQuantity.Text), Supplier.SelectedItem.ToString(),
-        //            Convert.ToDateTime(ExpiryDate.SelectedDate.Value.ToShortDateString())))
-        //        {
-        //            cmb.Message = "Drug Saved Successfully";
-        //            cmb.Show();
-        //            //MessageBox.Show("Drug saved Saved Successfully", "Ok", MessageBoxButton.OK, MessageBoxImage.Information);
-        //            Hide();
-        //            new PharAddDrug().ShowDialog();
-        //        }
-        //        else
-        //        {
-        //            cmb.Message = " ERROR!!! Drug Could not be Saved Successfully";
-        //            cmb.Show();
-        //        }
-           //}
-        }
-
-        private void BoxQuantity_TextChanged(object sender, TextChangedEventArgs e)
-        {
-           
-                        
-        }
-        
-        //calculating total quantity on  textChanged
-        private void NumberInBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //int num;
-            //if (string.IsNullOrEmpty(BoxQuantity.Text) == false)
-            //{
-            //    if (int.TryParse(BoxQuantity.Text, out num))
-            //    {
-            //        TotalQuantity.Text =
-            //            Convert.ToString(Convert.ToInt64(BoxQuantity.Text)*Convert.ToInt64(NumberInBox.Text));
-            //    }
-            //    else
-            //    {
-            //        cmb.Message = "Can't Have Letters";
-            //        cmb.Show();
-            //       // MessageBox.Show("Cant have letters", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-            //    }
-            //}
-
-        }
-        public void DrugNames()
-        {
-            AutoCompleteStringCollection nameSource = new AutoCompleteStringCollection();
-            using (
-                SqlConnection connection =
-                    new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
+            if (string.IsNullOrWhiteSpace(tbGenericName.Text) ||
+                string.IsNullOrWhiteSpace(tbBrandName.Text)
+                || string.IsNullOrWhiteSpace(tbNumberInBox.Text) ||
+                string.IsNullOrWhiteSpace(cbSupplier.SelectedItem.ToString()) ||
+                string.IsNullOrWhiteSpace(tbNumberInPack.Text) ||
+                string.IsNullOrWhiteSpace(tbExpiringDate.Text)
+                || string.IsNullOrWhiteSpace(tbBox.Text)
+                || string.IsNullOrWhiteSpace(cbDosageForm.SelectedItem.ToString())
+                || string.IsNullOrWhiteSpace(cbDrugType.SelectedItem.ToString())
+                || string.IsNullOrWhiteSpace(cbDrugCategory.SelectedItem.ToString())
+                || string.IsNullOrWhiteSpace(cbSupplier.SelectedItem.ToString()))
             {
-                try
-                {
-                    if (connection.State == ConnectionState.Closed)
-                    {
-                        connection.Open();
-                        string query = "select name from dbo.drugs";
-                        var command = new SqlCommand(query, connection) { CommandType = CommandType.Text };
-                        var reader = command.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            nameSource.Add(reader.GetString(0));
-                        }
-                        reader.Close();
-                        connection.Close();
-                    }
-
-                }
-                catch (Exception exception)
-                {
-                    cmb.Message = exception.Message;
-                    cmb.Show();
-                   // MessageBox.Show(exception.Message.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                }
-
+                cmb.Message = "All Fields Are Required";
+                cmb.Show();
             }
-           
+            else
+            {
+                Drug medicine=new Drug();
+                medicine.GenericName = tbGenericName.Text;
+                medicine.brandName = tbBrandName.Text;
+                medicine.NumberPackInBox = Convert.ToInt32(tbNumberInBox.Text);
+                medicine.Box = Convert.ToInt32(tbNumberInPack.Text);
+                medicine.NumberinPack = Convert.ToInt32(tbBox.Text);
+                medicine.DosageFormId = (int)cbDosageForm.SelectedValue;
+                medicine.DrugFormId = (int)cbDrugType.SelectedValue;
+                medicine.CategoryId = (int)cbDrugCategory.SelectedValue;
+                medicine.ExpiryDate = tbExpiringDate.DisplayDate;
+                medicine.SupplierId = (int) cbSupplier.SelectedValue;
+                medicine.Quantity = Convert.ToInt32(tbTotalQuantity.Text);
+                new DrugRepository().SaveDrug(medicine);
+            cmb.Message = $"succefully added {tbBrandName.Text}";
+            cmb.Show();
+            }
         }
-
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-        }
-
         private void AddNewDosageForm_Click(object sender, RoutedEventArgs e)
         {
             new PharAddDosageForm().ShowDialog();
@@ -275,6 +134,56 @@ namespace ClinicApp.Pharmacist
         private void AddNewType_Click(object sender, RoutedEventArgs e)
         {
             new PharAddType().ShowDialog();
+        }
+
+        private void tbBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var no = 0;
+            if (string.IsNullOrWhiteSpace(tbBox.Text))
+            {
+                no = 1;
+            }
+            else
+            {
+                no = Convert.ToInt32(tbBox.Text);
+            }
+            boxnumber = no <= 1 ? 1 : no;
+                GetTotalNumber();
+            
+        }
+
+        private void tbNumberInBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+
+            var no = 0;
+            if (string.IsNullOrWhiteSpace(tbNumberInBox.Text))
+            {
+                no = 1;
+            }
+            else
+            {
+                no = Convert.ToInt32(tbNumberInBox.Text);
+            }
+            Packnumber = no <= 1 ? 1 : no;
+                GetTotalNumber();
+            
+        }
+
+        private void tbNumberInPack_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var no = 0;
+            if (string.IsNullOrWhiteSpace(tbNumberInPack.Text))
+            {
+                no = 1;
+            }
+            else
+            {
+                no = Convert.ToInt32(tbNumberInPack.Text);
+            }
+            NumberInPack = no <= 1 ? 1 : no;
+            GetTotalNumber();
+            
         }
     }
 }

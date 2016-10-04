@@ -1,8 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.SqlTypes;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using ClinicApp.Data;
 using ClinicApp.Logic;
+using ClinicModel;
 using MahApps.Metro.Controls;
+using Telerik.Windows.Controls;
+using Control = System.Windows.Forms.Control;
+using MessageBox = System.Windows.MessageBox;
 
 namespace ClinicApp.Pharmacist
 {
@@ -16,39 +28,96 @@ namespace ClinicApp.Pharmacist
         {
             InitializeComponent();
         }
-
+        private void TextValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex("[^a-zA-Z]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        private Regex EmailValidation()
+        {
+         return new Regex(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
+        }
+        private Regex AddressValidation()
+        {
+            return new Regex(@"(?i)\b(?:p(?:ost)?\.?\s*[o0](?:ffice)?\.?\s*b(?:[o0]x)?|b[o0]x)");
+        }
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            var response = MessageBox.Show("Do you really want to close the Application", "Exit",
+            var response = MessageBox.Show("Do you really want to close the window?", "Exit",
                  MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
             if (response == MessageBoxResult.Yes)
-            {
                 Hide();
+           
+        }
+
+        public void Clear(Visual myMainWindow)
+        {
+            int childrenCount = VisualTreeHelper.GetChildrenCount(myMainWindow);
+            for (int i = 0; i < childrenCount; i++)
+            {
+                var visualChild = (Visual)VisualTreeHelper.GetChild(myMainWindow, i);
+                if (visualChild is TextBox)
+                {
+                    TextBox tb = (TextBox)visualChild;
+                    tb.Text="";
+                }
+                Clear(visualChild);
             }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (SupplierName.Text==""||Adress.Text=="" ||Phone.Text=="")
+            if (string.IsNullOrWhiteSpace(SupplierName.Text)||string.IsNullOrWhiteSpace(Adress.Text) 
+                ||string.IsNullOrWhiteSpace(Email.Text)||string.IsNullOrWhiteSpace(Phone.Text))
             {
-                MessageBox.Show("All Feild Are Required","Info",MessageBoxButton.OK,MessageBoxImage.Information);
-                SupplierName.Focus();
+                cmb.Message = "All feilds are Required";
+                cmb.Show();
             }
             else
             {
-                if (new Pharmacy().AddSupplier(SupplierName.Text, Adress.Text, Phone.Text))
+                if (!AddressValidation().IsMatch(Adress.Text))
                 {
-                    //MessageBox.Show("Data successfully saved", "Success", MessageBoxButton.OK,
-                    //    MessageBoxImage.Information);
-                    Hide();
-                    cmb.Message = "Supplier Saved Successfully";
-                    cmb.Show();
+                    MessageBox.Show("Please check your address");
+                    Adress.Foreground = Brushes.OrangeRed;
+
+                }
+                else if(!EmailValidation().IsMatch(Email.Text))
+                {
+                    MessageBox.Show("Please check your  email");
+                    Email.Foreground = Brushes.OrangeRed;
                 }
                 else
                 {
-                    cmb.Message = " ERROR!!! Supplier Could not be Saved Successfully";
-                    cmb.Show();
+                    var suppplier = new Supplier();
+                    suppplier.Name = SupplierName.Text;
+                    suppplier.Address = Adress.Text;
+                    suppplier.Email = Email.Text;
+                    suppplier.Phone = Phone.Text;
+
+                    List<Supplier> suppliers=(List<Supplier>)new SupplierRepository().GetAllSuppliers();
+                    var result = suppliers.FindAll(s=>s.Name.Equals(suppplier.Name));
+                   
+                    if (result.Count==0)
+                    {
+                            new SupplierRepository().AddNewSupplier(suppplier);
+                            cmb.Message = $"Supplier {SupplierName.Text} Saved Successfully";
+                            cmb.Show();
+                            Clear(this);
+                    
+                    }
+                    else
+                    {
+                        MessageBox.Show($"{SupplierName.Text} already exists");
+                    }
+                    
                 }
+
+
             }
         }
 
@@ -60,12 +129,7 @@ namespace ClinicApp.Pharmacist
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            var response = MessageBox.Show("Do you really want to close this Window", "Exit",
-                 MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-            if (response==MessageBoxResult.Yes)
-            {
-                Close();
-            }
+          Close();
         }
 
         private void Window_Closed(object sender, EventArgs e)
