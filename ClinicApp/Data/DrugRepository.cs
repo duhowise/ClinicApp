@@ -35,7 +35,6 @@ namespace ClinicApp.Data
             }
 
         }
-
         public IEnumerable<DrugDosageForm> GetDosageForms()
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
@@ -76,7 +75,6 @@ namespace ClinicApp.Data
             }
 
         }
-
         public Drug GetDrugById(int id)
         {
             using (var connection = new SqlConnection(new ConnectionHelper().ConnectionString))
@@ -207,7 +205,6 @@ namespace ClinicApp.Data
                 MessageBox.Show(exception.Message);
             }
         }
-
         public  IEnumerable<string> FetchByBrandName(string brandname)
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))

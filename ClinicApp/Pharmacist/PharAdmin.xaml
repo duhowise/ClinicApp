@@ -218,7 +218,6 @@
                                                   HorizontalAlignment="Center" VerticalAlignment="Top" 
                                                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                                               x:Name="MainArea"></controls:TransitioningContentControl>
-                    
                 </StackPanel>
             </Grid>
         </StackPanel>

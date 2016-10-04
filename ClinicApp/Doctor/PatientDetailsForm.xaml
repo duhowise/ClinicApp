@@ -11,7 +11,7 @@
                        GlowBrush="{DynamicResource AccentColorBrush}"
                        Background="{DynamicResource MaterialDesignPaper}" 
                       NonActiveGlowBrush="{DynamicResource PrimaryColorBrush}"
-                      Icon="../media/Health-Care.png" ShowInTaskbar="False" WindowState="Maximized">
+                      Icon="../media/Health-Care.png" ShowInTaskbar="False" WindowState="Maximized" Loaded="MetroWindow_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -47,54 +47,29 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <materialDesign:Card Margin="1" Padding="1" Grid.Row="0" Grid.Column="0"
+            <materialDesign:Card Margin="1" Padding="1" Grid.Row="0" Grid.ColumnSpan="2"  Grid.Column="0"
                                  Background="{DynamicResource MaterialDesignBackground}">
                 <GroupBox Header="Search result" Grid.Column="0" Grid.Row="0"
                                Margin="0,0,0,0" >
                     <ListView Name="PatientsSearchList">
                         <ListView.View>
                             <GridView>
+                                <GridViewColumn Header="Patient Id" DisplayMemberBinding="{Binding ProvidedId}"  Width="200"></GridViewColumn>
                                 <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}"  Width="200"></GridViewColumn>
                                 <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" Width="200"></GridViewColumn>
-                                <GridViewColumn Header="Identification" DisplayMemberBinding="{Binding ProvidedId}" Width="200"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
                 </GroupBox>
             </materialDesign:Card>
-            <materialDesign:Card Margin="1" Padding="1" Grid.Row="0" Grid.Column="1"
-                                 Background="{DynamicResource MaterialDesignBackground}">
-                <GroupBox Header="Patient prescriptions" Grid.Column="0" Grid.Row="0"
-                               Margin="0,0,0,0" >
-                    <ListView>
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}"  Width="150"></GridViewColumn>
-                                <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" Width="150"></GridViewColumn>
-                                <GridViewColumn Header="Identification" DisplayMemberBinding="{Binding ProvidedId}" Width="150"></GridViewColumn>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </GroupBox>
-            </materialDesign:Card>
-            <materialDesign:Card Margin="1" Padding="1" Grid.Row="1" Grid.Column="0"
-                                 Background="{DynamicResource MaterialDesignBackground}">
-                <GroupBox Header="Examination findings" Grid.Column="0" Grid.Row="0"
-                               Margin="0,0,0,0" >
-                    <ListView>
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}"  Width="150"></GridViewColumn>
-                                <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" Width="150"></GridViewColumn>
-                                <GridViewColumn Header="Identification" DisplayMemberBinding="{Binding ProvidedId}" Width="150"></GridViewColumn>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </GroupBox>
-            </materialDesign:Card>
+            <controls:TransitioningContentControl Margin="0,0,0,0" Transition="Down"  Grid.Row="1" Grid.ColumnSpan="2"  Grid.Column="0"
+                                                         
+                                                  HorizontalAlignment="Stretch" VerticalAlignment="Top" 
+                                                  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center"
+                                              x:Name="MainArea"></controls:TransitioningContentControl>
         </Grid>
     </Grid>
 </controls:MetroWindow>

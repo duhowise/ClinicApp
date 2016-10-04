@@ -281,6 +281,9 @@
     <Compile Include="Pharmacist\PharDispenseDrugWin.Designer.cs">
       <DependentUpon>PharDispenseDrugWin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pharmacist\PharPatientDetailsDispensary.xaml.cs">
+      <DependentUpon>PharPatientDetailsDispensary.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pharmacist\PharSearchPatient.xaml.cs">
       <DependentUpon>PharSearchPatient.xaml</DependentUpon>
     </Compile>
@@ -445,6 +448,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pharmacist\PharPatientDetailsDispensary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pharmacist\PharSearchPatient.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -499,6 +506,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClinicApp.csproj.DotSettings.user" />
+    <Resource Include="media\user.png" />
     <Resource Include="media\medical-report-icon.png" />
     <Resource Include="Resources\Entypo-license.txt" />
     <Resource Include="Resources\WindowsIcons-license.txt" />

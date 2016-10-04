@@ -29,10 +29,10 @@ namespace ClinicApp.Logic
             navigateToView(pharAdminDashboard);
         }
 
-        public void NavigateToAddNewDrugControl()
+        public void NavigateToPharPatientDetailDispensaryControl()
         {
-            //var addDrugControl = new AddDrugControl();
-            //navigateToView(addDrugControl);
+            var pharPatientDetailDispensary = new PharPatientDetailsDispensary();
+            navigateToView(pharPatientDetailDispensary);
         }
     }
 }

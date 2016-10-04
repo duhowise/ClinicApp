@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ClinicApp.Data;
+using ClinicApp.Logic;
 using ClinicModel;
 using MahApps.Metro.Controls;
 
@@ -24,6 +25,7 @@ namespace ClinicApp.Doctor
     public partial class PatientDetailsForm : MetroWindow
     {
         private BackgroundWorker patientSearchWorker = new BackgroundWorker();
+        private MainContentView navigator;
         List<Patient> patients = new List<Patient>();
         List<Patient> result = new List<Patient>();
         public PatientDetailsForm()
@@ -64,6 +66,18 @@ namespace ClinicApp.Doctor
             {
                 patientSearchWorker.CancelAsync();
             }
+        }
+
+        private void NavigateToView(UserControl view)
+        {
+            MainArea.Content = view;
+        }
+
+        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = new MainContentView(NavigateToView);
+            navigator = new MainContentView(NavigateToView);
+            navigator.NavigateToPharPatientDetailDispensaryControl();
         }
     }
 }
