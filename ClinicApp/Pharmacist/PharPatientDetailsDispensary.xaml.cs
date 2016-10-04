@@ -26,7 +26,7 @@ namespace ClinicApp.Pharmacist
     public partial class PharPatientDetailsDispensary : UserControl
     {
         BackgroundWorker _remainingDrugsBackgroundWorker = new BackgroundWorker();
-
+       static Patient patient=new Patient();
 
         CMB cmb = new CMB();
         public PharPatientDetailsDispensary()
@@ -39,6 +39,7 @@ namespace ClinicApp.Pharmacist
             _remainingDrugsBackgroundWorker.RunWorkerCompleted += _remainingDrugsBackgroundWorker_RunWorkerCompleted;
 
             DataContext = new DrugRepository().DrugAutoComplete();
+            patient = PharSearchPatient.Patient;
         }
 
         private string drugName;
@@ -140,6 +141,11 @@ namespace ClinicApp.Pharmacist
         {
             Regex regex = new Regex("[^a-zA-Z]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            PatientName.Content = (patient.FirstName + " " + patient.LastName).ToUpper();
         }
     }
 }

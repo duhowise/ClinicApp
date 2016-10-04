@@ -9,7 +9,7 @@
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
              xmlns:wpfTextBoxAutoComplete="clr-namespace:WPFTextBoxAutoComplete;assembly=WPFTextBoxAutoComplete"
-             d:DesignHeight="800" d:DesignWidth="1000">
+             d:DesignHeight="800" d:DesignWidth="1000" Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="16"></Setter>
@@ -36,21 +36,21 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <ScrollViewer CanContentScroll="True" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch">
-        <WrapPanel Margin="0 0 0 0" ItemWidth="900">
-            <materialDesign:Card  Margin="4 4 0 0"  Background="{DynamicResource MaterialDesignBackground}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Label x:Name="PatientName" Grid.Row="0" Content="Patient name" Grid.ColumnSpan="2" Height="30" HorizontalAlignment="Center"
+            <WrapPanel Margin="0 0 0 0" ItemWidth="900">
+                <materialDesign:Card  Margin="4 4 0 0"  Background="{DynamicResource MaterialDesignBackground}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="PatientName"  Grid.Row="0" Content="Patient name" Grid.ColumnSpan="2" Height="30" HorizontalAlignment="Center"
                            Width="160" FontSize="18" Foreground="{DynamicResource AccentColorBrush}"/>
-                    <DatePicker Name="DatePicker" TabIndex="9"
+                        <DatePicker Name="DatePicker" TabIndex="9"
                                     Grid.Column="1"  Grid.Row="0"
                                     Margin="0,10,10,0"
                                     Width="250"
@@ -62,63 +62,63 @@
                                     BorderBrush="{DynamicResource PrimaryColorBrush}"
                                     BorderThickness="1"
                                     Foreground="{DynamicResource PrimaryColorBrush}" FontSize="16" />
-                    
-                    <Image Grid.Row="1" Name="PatientImage" Width="120" Height="120"
+
+                        <Image Grid.Row="1" Name="PatientImage" Width="120" Height="120"
                           Source="../media/User.png" Grid.Column="0" HorizontalAlignment="Left" />
-                    <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="130,0,0,0" Grid.Row="1">
-                        <Label Content="Prescription" Height="25" HorizontalAlignment="Left"
+                        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="130,0,0,0" Grid.Row="1">
+                            <Label Content="Prescription" Height="25" HorizontalAlignment="Left"
                            Width="160" FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
-                        <Separator Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
-                        <TextBlock Width="500" Margin="5,1,1,1" HorizontalAlignment="Left" 
+                            <Separator Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                            <TextBlock Width="500" Margin="5,1,1,1" HorizontalAlignment="Left" 
                                   TextWrapping="Wrap" 
                                    Text="textblock showing prescription The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
                             FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
-                    </StackPanel>
-                </Grid>
-            </materialDesign:Card>
-            <materialDesign:Card Margin="4 4 0 0"  Background="{DynamicResource MaterialDesignBackground}">
-                <StackPanel>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="120"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Label Content="Diagnosis" Grid.Row="0" Grid.Column="0" Height="30" HorizontalAlignment="Left"
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Margin="4 4 0 0"  Background="{DynamicResource MaterialDesignBackground}">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Content="Diagnosis" Grid.Row="0" Grid.Column="0" Height="30" HorizontalAlignment="Left"
                            Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}"/>
-                        <TextBlock Name="tbDiagnosis"  
+                            <TextBlock Name="tbDiagnosis"  
                                   TextWrapping="Wrap" Width="500"
                                    Grid.Row="0" Grid.Column="1" Margin="5,1,1,1" HorizontalAlignment="Left" 
                                    Text="textblock showing Diagnosis it is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing"
                             FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
-                        <Separator Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                            <Separator Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
 
-                        <Label Content="Lab Findings" Grid.Row="2" Grid.Column="0" Height="30" HorizontalAlignment="Left"
+                            <Label Content="Lab Findings" Grid.Row="2" Grid.Column="0" Height="30" HorizontalAlignment="Left"
                            Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}"/>
-                        <TextBlock Name="tbLabFindings" TextWrapping="Wrap" Width="500"
+                            <TextBlock Name="tbLabFindings" TextWrapping="Wrap" Width="500"
                                    Grid.Row="2" Grid.Column="1" Margin="5,1,1,1" HorizontalAlignment="Left" 
                                    Text="textblock showing Lab Findings Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic"
                             FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
-                        <Separator Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                            <Separator Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
 
-                        <Label Content="Dispensary" Grid.Row="4" Grid.Column="0" Height="30" HorizontalAlignment="Left"
+                            <Label Content="Dispensary" Grid.Row="4" Grid.Column="0" Height="30" HorizontalAlignment="Left"
                            Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}"/>
-                        <TextBlock Name="tbDispensary" Grid.Row="4" Grid.Column="1" Margin="5,1,1,1" TextWrapping="Wrap" Width="500"
+                            <TextBlock Name="tbDispensary" Grid.Row="4" Grid.Column="1" Margin="5,1,1,1" TextWrapping="Wrap" Width="500"
                                    HorizontalAlignment="Left" 
                                    Text="textblock showing Dispensary Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum"
                           FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
-                        <Separator Grid.Row="5" Grid.ColumnSpan="2" Grid.Column="0" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
-                    </Grid>
-                </StackPanel>
-            </materialDesign:Card>
-        </WrapPanel>
+                            <Separator Grid.Row="5" Grid.ColumnSpan="2" Grid.Column="0" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                        </Grid>
+                    </StackPanel>
+                </materialDesign:Card>
+            </WrapPanel>
         </ScrollViewer>
         <WrapPanel Grid.Column="1" ItemWidth="380" HorizontalAlignment="Stretch" Grid.Row="0">
             <Grid>
