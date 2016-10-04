@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -51,13 +52,13 @@ namespace ClinicApp.Data
             }
         }
 
-        public IEnumerable<Consultation> PatientHistory(Patient patient)
+        public Consultation PatientHistory(Patient patient)
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                return connection.Query<Consultation>($"select * from Patient where id={patient}");
+                return connection.Query<Consultation>($"select * from Consultation where patientid={patient.Id}").SingleOrDefault();
 
             }
         }

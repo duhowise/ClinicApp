@@ -121,7 +121,7 @@
                             <Separator Grid.Row="5" Grid.ColumnSpan="2" Grid.Column="0" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
                             <Label Content="Prescription" Grid.Row="6" Grid.Column="0" Height="30" HorizontalAlignment="Left"
                            Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}"/>
-                            <TextBlock Width="500" Grid.Row="6" Grid.Column="1" Margin="5,1,1,1" HorizontalAlignment="Left" 
+                            <TextBlock Width="500" Name="tbPrescription" Grid.Row="6" Grid.Column="1" Margin="5,1,1,1" HorizontalAlignment="Left" 
                                   TextWrapping="Wrap" 
                                    Text="textblock showing prescription The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
                             FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>

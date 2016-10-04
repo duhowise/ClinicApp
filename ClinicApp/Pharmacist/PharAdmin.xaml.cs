@@ -145,7 +145,7 @@ namespace ClinicApp.Pharmacist
         private void reporting_Click(object sender, RoutedEventArgs e)
         {
             stockTakingReportOne repotOne=new stockTakingReportOne();
-            repotOne.Show();
+            //repotOne.Show();
         }
 
         private void btnAddDrug(object sender, RoutedEventArgs e)

@@ -10,6 +10,10 @@ namespace ClinicModel
         public string Symptoms { get; set; }
         public string Diagnosis { get; set; }
         public string Prescription { get; set; }
+        public string Temperature { get; set; }
+        public string BloodPressure { get; set; }
+        public string LabFindings { get; set; }
+
         public DateTime Date { get; set; }
 
     }
