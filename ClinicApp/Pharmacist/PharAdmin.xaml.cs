@@ -82,8 +82,7 @@ namespace ClinicApp.Pharmacist
         private void Dispense_Click(object sender, RoutedEventArgs e)
         {
            // new PatientDetailsForm().Show();
-           // new PatientDetailsForm().ShowDialog();
-            new PharSearchPatient().ShowDialog();
+            new PatientDetailsForm().ShowDialog();
 
         }
 
