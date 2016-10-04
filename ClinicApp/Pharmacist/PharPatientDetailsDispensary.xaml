@@ -41,7 +41,7 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"></RowDefinition>
@@ -65,15 +65,19 @@
                     
                     <Image Grid.Row="1" Name="PatientImage" Width="120" Height="120"
                           Source="../media/User.png" Grid.Column="0" HorizontalAlignment="Left" />
-                    <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="130,0,0,0" Grid.Row="1">
-                        <Label Content="Prescription" Height="25" HorizontalAlignment="Left"
-                           Width="160" FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
+                    <StackPanel Grid.Column="0" Margin="130,0,0,10" Grid.Row="1">
+                        <Label Content="Info" Height="25" HorizontalAlignment="Left"
+                           FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
                         <Separator Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
-                        <TextBlock Width="500" Margin="5,1,1,1" HorizontalAlignment="Left" 
-                                  TextWrapping="Wrap" 
-                                   Text="textblock showing prescription The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
+                            <Label Content="Designation : student" Height="25" HorizontalAlignment="Left" Name="PatientDesignation"
                             FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
-                    </StackPanel>
+                            <Label Content="Temperature : 30 degrees Celsius" Height="25" HorizontalAlignment="Left" Name="PatientTemperature"
+                            FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
+                            <Label Content="Blood pressure : 120/80 mm Hg" Height="25" HorizontalAlignment="Left" Name="PatientBloodPressure"
+                            FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
+                            <Label Content="Last seen : 2 years ago" Height="25" HorizontalAlignment="Left" Name="PatientLastVisited"
+                            FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
+                        </StackPanel>
                 </Grid>
             </materialDesign:Card>
             <materialDesign:Card Margin="4 4 0 0"  Background="{DynamicResource MaterialDesignBackground}">
@@ -90,7 +94,8 @@
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
                         <Label Content="Diagnosis" Grid.Row="0" Grid.Column="0" Height="30" HorizontalAlignment="Left"
                            Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}"/>
                         <TextBlock Name="tbDiagnosis"  
@@ -115,7 +120,13 @@
                                    Text="textblock showing Dispensary Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum"
                           FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
                         <Separator Grid.Row="5" Grid.ColumnSpan="2" Grid.Column="0" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
-                    </Grid>
+                            <Label Content="Prescription" Grid.Row="6" Grid.Column="0" Height="30" HorizontalAlignment="Left"
+                           Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}"/>
+                            <TextBlock Width="500" Grid.Row="6" Grid.Column="1" Margin="5,1,1,1" HorizontalAlignment="Left" 
+                                  TextWrapping="Wrap" 
+                                   Text="textblock showing prescription The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
+                            FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
+                        </Grid>
                 </StackPanel>
             </materialDesign:Card>
         </WrapPanel>

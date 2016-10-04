@@ -20,27 +20,6 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <materialDesign:Card Margin="1" Padding="10,0,10,10" Grid.Row="0" Grid.Column="0"
-                                 Background="{DynamicResource MaterialDesignBackground}">
-            <StackPanel>
-                <Label FontSize="16"
-                       FontFamily="{DynamicResource HeaderFontFamily}"
-                       HorizontalAlignment="Left"
-                          Margin="0,0,0,0" 
-                           Foreground="{DynamicResource AccentColorBrush}">Search for patient by id</Label>
-                <Grid>
-                    <TextBox Name="TbPatientSearch" Width="500" HorizontalAlignment="Left" Margin="0,10,0,0"></TextBox>
-                    <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10,10,0,0" 
-                                Height="30" Width="130" Grid.Column="0" Grid.Row="0" TabIndex="1"
-                                Name="Search" HorizontalAlignment="Right"
-                                 FontFamily="{DynamicResource HeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
-                                Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14" VerticalAlignment="Top" Click="Search_Click">
-                        Search
-                    </Button>
-                </Grid>
-            </StackPanel>
-        </materialDesign:Card>
         <Grid Grid.Column="0" HorizontalAlignment="Stretch" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -50,22 +29,7 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <materialDesign:Card Margin="1" Padding="1" Grid.Row="0" Grid.ColumnSpan="2"  Grid.Column="0"
-                                 Background="{DynamicResource MaterialDesignBackground}">
-                <GroupBox Header="Search result" Grid.Column="0" Grid.Row="0"
-                               Margin="0,0,0,0" >
-                    <ListView Name="PatientsSearchList">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Patient Id" DisplayMemberBinding="{Binding ProvidedId}"  Width="200"></GridViewColumn>
-                                <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}"  Width="200"></GridViewColumn>
-                                <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" Width="200"></GridViewColumn>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </GroupBox>
-            </materialDesign:Card>
-            <controls:TransitioningContentControl Margin="0,0,0,0" Transition="Down"  Grid.Row="1" Grid.ColumnSpan="2"  Grid.Column="0"
+            <controls:TransitioningContentControl Margin="0,0,0,0" Transition="Down"  Grid.Row="0" Grid.ColumnSpan="2"  Grid.Column="0"
                                                          
                                                   HorizontalAlignment="Stretch" VerticalAlignment="Top" 
                                                   HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center"
