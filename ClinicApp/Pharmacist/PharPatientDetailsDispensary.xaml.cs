@@ -138,13 +138,15 @@ namespace ClinicApp.Pharmacist
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+       
+
+        private void PharPatientDetailsDispensary_OnLoaded(object sender, RoutedEventArgs e)
         {
             PatientName.Content = (patient.FirstName + " " + patient.LastName).ToUpper();
             PatientDesignation.Content = $"Designation: {patient.Designation}";
             PatientTemperature.Content = $"{consultation.Temperature} °C";
             PatientBloodPressure.Content = $"Blood pressure : {consultation.BloodPressure}";
-            PatientLastVisited.Content = $"Consultation Date: {consultation.Date.Date}";
+            PatientLastVisited.Content = $"Consultation Date: {consultation.Date.ToShortDateString()}";
             tbDiagnosis.Text = $"{consultation.Diagnosis}";
             tbLabFindings.Text = $"{consultation.Symptoms}";
             tbDispensary.Text = $"{consultation.Prescription}";
