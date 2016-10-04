@@ -58,9 +58,9 @@ namespace ClinicApp.Pharmacist
         private void PatientsSearchList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var info = PatientsSearchList.SelectedItem as Patient;
-          var dispensary=new PharDispenseDrug();
-            dispensary.DispenseProvidedId.Text = info?.ProvidedId;
-            dispensary.ShowDialog();
+          //var dispensary=new PharDispenseDrug();
+          //  dispensary.DispenseProvidedId.Text = info?.ProvidedId;
+          //  dispensary.ShowDialog();
 
 
             //if (info != null)
