@@ -82,7 +82,7 @@ namespace ClinicApp.Pharmacist
         private void Dispense_Click(object sender, RoutedEventArgs e)
         {
            // new PatientDetailsForm().Show();
-            new PatientDetailsForm().ShowDialog();
+            new PharSearchPatient().ShowDialog();
 
         }
 
@@ -145,7 +145,7 @@ namespace ClinicApp.Pharmacist
         private void reporting_Click(object sender, RoutedEventArgs e)
         {
             stockTakingReportOne repotOne=new stockTakingReportOne();
-            repotOne.Show();
+            //repotOne.Show();
         }
 
         private void btnAddDrug(object sender, RoutedEventArgs e)
