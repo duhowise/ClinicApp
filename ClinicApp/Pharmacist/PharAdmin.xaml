@@ -9,7 +9,6 @@
                 TextElement.FontSize="14"
                 FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
        Title="KUMASI POLYTECHNIC CLINIC APP" Height="500" Width="1000" 
                       WindowState="Maximized" Icon="/media/Health-Care.png" 
