@@ -43,10 +43,28 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Pharmacy Department" FontSize="18" Grid.Column="0" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center"/>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Text="Welcome!" FontSize="16" Foreground="#FFFFD205" VerticalAlignment="Center"/>
-                    <TextBlock x:Name="LoginUserName" Margin="0" FontSize="16" FontWeight="Bold" Foreground="#FFFBF4F4" FontFamily="Arial" VerticalAlignment="Center"/>
-                    <Image Source="../media/clogout.png" Height="37"/>
-                    <Label x:Name="Logout" Content="Logout" FontSize="16" Foreground="{StaticResource WhiteColorBrush}" VerticalAlignment="Center" FontWeight="Bold" MouseDoubleClick="Logout_MouseDoubleClick" ToolTip="Double click to Log out"/>
+                    <Label FontSize="16" Margin="0 0 50 0"
+                       FontFamily="{DynamicResource HeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="{DynamicResource WhiteColorBrush}">Welcome!</Label>
+                    <Label FontSize="16" Margin="0 0 20 0"
+                       FontFamily="{DynamicResource HeaderFontFamily}"
+                       HorizontalAlignment="Center" Name="LoginUserName"
+                           Foreground="{DynamicResource WhiteColorBrush}"></Label>
+                    
+                    <Button Name="btnLogout" ToolTip="click to Log out"
+                             FontSize="16"  FontFamily="{DynamicResource HeaderFontFamily}"
+                                         Foreground="{DynamicResource AccentColorBrush}"
+                                 FontWeight="Normal"   HorizontalAlignment="Center" 
+                                 Background="{x:Null}" BorderThickness="0" SnapsToDevicePixels="False" Cursor="Hand" 
+                                 HorizontalContentAlignment="Stretch" Click="btnLogout_Click"
+                                 >
+                        <Image Source="../media/clogout.png" Height="37"/>
+                    </Button>
+                    <Label x:Name="Logout" Content="Logout" 
+                           FontSize="16" Foreground="{StaticResource WhiteColorBrush}" 
+                           VerticalAlignment="Center" FontWeight="Bold"
+                           />
                 </StackPanel>
             </Grid>
         </StackPanel>
