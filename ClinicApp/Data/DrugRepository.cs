@@ -31,7 +31,7 @@ namespace ClinicApp.Data
             {
                 if (connection.State == Closed)
                     connection.Open();
-                return connection.Query<string>("select brandname from Drugs");
+                return connection.Query<string>("select brandName from Drugs");
             }
 
         }
