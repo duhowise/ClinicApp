@@ -78,8 +78,8 @@
       <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MahApps.Metro.IconPacks, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.IconPacks.1.0.0\lib\net452\MahApps.Metro.IconPacks.dll</HintPath>
+    <Reference Include="MahApps.Metro.IconPacks, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.1.1.0\lib\net45\MahApps.Metro.IconPacks.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MahApps.Metro.IconPacks.Material, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -247,6 +247,12 @@
     <Compile Include="Logic\PatientIdsAutoCompleteData.cs" />
     <Compile Include="Logic\PatientIdsAutoCompleteModel.cs" />
     <Compile Include="Logic\SinglePatientId.cs" />
+    <Compile Include="Nurse\NurAddPatient.xaml.cs">
+      <DependentUpon>NurAddPatient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nurse\NurAdmin.xaml.cs">
+      <DependentUpon>NurAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pharmacist\DrugAutoCompleteData.cs" />
     <Compile Include="Pharmacist\PharAddCategory.xaml.cs">
       <DependentUpon>PharAddCategory.xaml</DependentUpon>
@@ -412,6 +418,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Nurse\NurAddPatient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nurse\NurAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pharmacist\PharAddCategory.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -523,9 +537,7 @@
     <Resource Include="media\drugs.png" />
     <Resource Include="media\view-patient.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Nurse\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ClinicModel\ClinicModel.csproj">
       <Project>{bda4e455-6955-42b2-8467-513adc44dfc1}</Project>

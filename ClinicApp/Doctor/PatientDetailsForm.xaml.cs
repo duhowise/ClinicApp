@@ -54,11 +54,6 @@ namespace ClinicApp.Doctor
             e.Result = new PatientRepository().GetAllPatients();
         }
 
-        private void Search_Click(object sender, RoutedEventArgs e)
-        {
-            result = patients.FindAll(p => p.ProvidedId.Contains(TbPatientSearch.Text));
-            PatientsSearchList.ItemsSource = result;
-        }
 
         private void PatientDetailsForm_Closing(object sender, CancelEventArgs e)
         {
