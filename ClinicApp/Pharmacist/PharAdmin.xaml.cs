@@ -153,5 +153,7 @@ namespace ClinicApp.Pharmacist
             //navigator.NavigateToAddNewDrugControl();
             new PharAddDrug().ShowDialog();
         }
+
+       
     }
 }
