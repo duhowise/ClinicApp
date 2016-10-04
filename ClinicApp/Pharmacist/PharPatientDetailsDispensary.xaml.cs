@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ClinicApp.Data;
 using ClinicApp.Logic;
 using ClinicModel;
@@ -27,6 +17,7 @@ namespace ClinicApp.Pharmacist
     {
         BackgroundWorker _remainingDrugsBackgroundWorker = new BackgroundWorker();
        static Patient patient=new Patient();
+        Consultation consultation=new Consultation();
 
         CMB cmb = new CMB();
         public PharPatientDetailsDispensary()
@@ -40,6 +31,10 @@ namespace ClinicApp.Pharmacist
 
             DataContext = new DrugRepository().DrugAutoComplete();
             patient = PharSearchPatient.Patient;
+            if (patient!=null)
+            {
+                consultation = new PatientRepository().PatientHistory(patient);
+            }
         }
 
         private string drugName;
@@ -146,6 +141,14 @@ namespace ClinicApp.Pharmacist
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             PatientName.Content = (patient.FirstName + " " + patient.LastName).ToUpper();
+            PatientDesignation.Content = $"Designation: {patient.Designation}";
+            PatientTemperature.Content = $"{consultation.Temperature} °C";
+            PatientBloodPressure.Content = $"Blood pressure : {consultation.BloodPressure}";
+            PatientLastVisited.Content = $"Consultation Date: {consultation.Date.Date}";
+            tbDiagnosis.Text = $"{consultation.Diagnosis}";
+            tbLabFindings.Text = $"{consultation.Symptoms}";
+            tbDispensary.Text = $"{consultation.Prescription}";
+            tbPrescription.Text = $"{consultation.Prescription}";
         }
     }
 }
