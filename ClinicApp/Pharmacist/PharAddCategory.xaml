@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
         <Label FontSize="16"
                    Grid.Column="0" Grid.Row="0"
-                       FontFamily="{DynamicResource HeaderFontFamily}"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Left"
                           Margin="10,10,0,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Category</Label>
@@ -43,7 +43,7 @@
         <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,0,0" 
                                 Height="30" Width="130" Grid.Column="0" Grid.Row="2" TabIndex="1"
                                 Name="Save" HorizontalAlignment="Right"
-                                 FontFamily="{DynamicResource HeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
+                                 FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
                                 FontSize="14" Click="Save_Click">
             Save
@@ -51,7 +51,7 @@
         <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10,20,0,0" 
                                 Height="30" Width="130" Grid.Column="0" Grid.Row="2" TabIndex="2"
                                 Name="Cancel"  HorizontalAlignment="Left"
-                                 FontFamily="{DynamicResource HeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
+                                 FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
                                 FontSize="14" Click="Cancel_Click">
             Cancel
