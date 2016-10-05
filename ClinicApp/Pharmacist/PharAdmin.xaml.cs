@@ -5,6 +5,7 @@ using System.Windows.Input;
 using ClinicApp.Doctor;
 using ClinicApp.Logic;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace ClinicApp.Pharmacist
 {
@@ -54,7 +55,7 @@ namespace ClinicApp.Pharmacist
         {
             int a, b;
             ViewPatient.cMenu = 0;
-            LoginUserName.Text = CurrentUserLoggedInData.FirstName + " " + CurrentUserLoggedInData.LastName;
+            LoginUserName.Content = CurrentUserLoggedInData.FirstName + " " + CurrentUserLoggedInData.LastName;
             //lbTotalDrugs.Content = a = drug.TotalDrugsInStock("Drugs");
             //lbDispensedDrugs.Content = b = drug.TotalDrugsInStock("PrescribedDrugs");
             //lbAvailableDrugs.Content = a - b;
@@ -86,29 +87,9 @@ namespace ClinicApp.Pharmacist
 
         }
 
-        private void Logout_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private async void LogUserOut()
         {
-            //TODO Logout
-            LogUserOut();
-        }
-
-        private void LogUserOut()
-        {
-
-            var response = MessageBox.Show("Do you really want to Logout", "Exit",
-                MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-
-            if (response == MessageBoxResult.No)
-            {
-
-            }
-            else
-            {
-
-                CurrentUserLoggedInData.ClearUserData();
-                new MainWindow().Show();
-                Hide();
-            }
+           
         }
 
         //private void DrugHistory_Click(object sender, RoutedEventArgs e)
@@ -125,14 +106,14 @@ namespace ClinicApp.Pharmacist
             //lbAvailableDrugs.Content = a - b;
         }
 
-        private void Window_Closing(object sender, CancelEventArgs e)
+        private async void Window_Closing(object sender, CancelEventArgs e)
         {
-            var response = MessageBox.Show("Please be sure to Logout first", "Exit",
-               MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-
-            if (response == MessageBoxResult.No)
+            e.Cancel = true;
+            MessageDialogResult result = await this.ShowMessageAsync("Exit Application", "Do You really want to Exit?", MessageDialogStyle.AffirmativeAndNegative);
+            if (result == MessageDialogResult.Negative)
             {
-                e.Cancel = true;
+                e.Cancel = false;
+
             }
             else
             {
@@ -140,6 +121,7 @@ namespace ClinicApp.Pharmacist
                 new MainWindow().Show();
                 Hide();
             }
+
         }
 
         private void reporting_Click(object sender, RoutedEventArgs e)
@@ -154,6 +136,9 @@ namespace ClinicApp.Pharmacist
             new PharAddDrug().ShowDialog();
         }
 
-       
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

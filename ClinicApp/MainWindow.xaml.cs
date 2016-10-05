@@ -5,6 +5,7 @@ using ClinicApp.Doctor;
 using ClinicApp.Logic;
 using ClinicApp.Pharmacist;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace ClinicApp
 {
@@ -36,17 +37,18 @@ namespace ClinicApp
             set { fullname = value; }
         }
 
-        private void Window_Closing(object sender, CancelEventArgs e)
+        private async void Window_Closing(object sender, CancelEventArgs e)
         {
-            //DialogResult dr= new DialogResult();
-            //call confirmBox Here
-
-            var response = MessageBox.Show("Do you really want to close the Application", "Exit",
-                MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-
-            if (response == MessageBoxResult.No)
+            e.Cancel = true;
+            MessageDialogResult result = await this.ShowMessageAsync("Exit Application", "Do You really want to Exit?", MessageDialogStyle.AffirmativeAndNegative);
+            if (result == MessageDialogResult.Negative)
             {
-                e.Cancel = true;
+                e.Cancel = false;
+
+            }
+            else
+            {
+                Application.Current.Shutdown();
             }
 
         }
@@ -121,6 +123,21 @@ namespace ClinicApp
             if (e.Key == Key.Return)
             {
                 LogUserIn();
+            }
+        }
+
+        private async void btnCantLogin_Click(object sender, RoutedEventArgs routedEventArgs)
+        {
+            routedEventArgs.Handled = true;
+            MessageDialogResult result = await this.ShowMessageAsync("Can't login with existing password?", "please contact the administrator at the ICT Directorate", MessageDialogStyle.AffirmativeAndNegative);
+            
+            if (result == MessageDialogResult.Negative)
+            {
+                routedEventArgs.Handled = false;
+            }
+            else
+            {
+                
             }
         }
     }
