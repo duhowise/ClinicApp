@@ -19,7 +19,7 @@
                   Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                   Padding="10">
             <Label FontSize="20"
-                       FontFamily="{DynamicResource HeaderFontFamily}"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center"
                            Foreground="{DynamicResource AccentColorBrush}">DASHBOARD</Label>
         </materialDesign:Card>
