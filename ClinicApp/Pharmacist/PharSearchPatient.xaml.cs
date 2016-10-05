@@ -6,7 +6,6 @@ using ClinicApp.Data;
 using ClinicApp.Doctor;
 using ClinicModel;
 using MahApps.Metro.Controls;
-using MaterialDesignThemes.Wpf;
 
 namespace ClinicApp.Pharmacist
 {

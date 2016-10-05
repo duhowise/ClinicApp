@@ -1,4 +1,4 @@
-﻿<Window x:Class="ClinicApp.Nurse.NurAddPatient"
+﻿<controls:MetroWindow x:Class="ClinicApp.Nurse.NurAddPatient"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -54,7 +54,7 @@
                            Foreground="{DynamicResource AccentColorBrush}">First name</Label>
                     <TextBox Grid.Column="0" Grid.Row="3" Name="PatientFirstName"
                              TabIndex="0"
-                                 IsEnabled="False"
+                                 IsEnabled="True"
                          ToolTip="Patient first name"
                     Margin="0,10,10,0" 
                          Width="300"
@@ -74,7 +74,7 @@
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Last name</Label>
                     <TextBox Grid.Column="0" Grid.Row="5" Name="PatientLastName" TabIndex="1"
-                                 IsEnabled="False"
+                                 IsEnabled="True"
                          ToolTip="Patient last name"
                     Margin="0,10,10,0" 
                          Width="300"
@@ -160,11 +160,11 @@
                         Cancel
                     </Button>
                     <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,10,0" 
-                                Height="30" Width="130" Grid.Column="1" Grid.Row="12" TabIndex="12"
-                                Name="Save" HorizontalAlignment="Right"
+                                Height="Auto" Width="130" Grid.Row="12" TabIndex="12"
+                                Name="SavePatient" HorizontalAlignment="Right"
                                  FontFamily="{DynamicResource HeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14">
+                                FontSize="14" Click="Save_Click">
                         Save
                     </Button>
 
@@ -326,12 +326,12 @@
                      BorderThickness="1"
                          Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
                     <Rectangle Grid.Column="0" Height="42" Grid.ColumnSpan="2" Grid.Row="12"></Rectangle>
-                    <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,10,0" 
-                                Height="30" Width="140" Grid.Row="13" TabIndex="12"
+                    <Button Name="SaveConsultation"  Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,10,0" 
+                                Height="Auto" Width="140" Grid.Row="13" TabIndex="12"
                                  HorizontalAlignment="Right" Grid.Column="1"
                                  FontFamily="{DynamicResource HeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14">
+                                FontSize="14" Click="Button_Click">
                         Save Consultation
                     </Button>
                 </Grid>
@@ -339,4 +339,4 @@
         </materialDesign:Card>
 
     </Grid>
-</Window>
+</controls:MetroWindow>

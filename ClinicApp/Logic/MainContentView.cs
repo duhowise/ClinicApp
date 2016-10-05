@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Controls;
 using ClinicApp.Pharmacist;
-using Package_Manager.View;
 using ViewModelBase = Package_Manager.View.ViewModelBase;
 
 namespace ClinicApp.Logic

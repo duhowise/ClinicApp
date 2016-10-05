@@ -2,7 +2,6 @@
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
 using ClinicApp.Data;
 using ClinicModel;
 using MahApps.Metro.Controls;

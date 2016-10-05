@@ -10,7 +10,7 @@
                 TextElement.FontSize="14"
                 FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
                 VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center"
-                FontWeight="Bold" VerticalContentAlignment="Center" Closing="Window_Closing" Icon="media/Health-Care.png" Loaded="Window_Loaded" >
+                FontWeight="Bold" VerticalContentAlignment="Center" Icon="media/Health-Care.png" Loaded="Window_Loaded" >
 
     <Grid>
         <StackPanel>

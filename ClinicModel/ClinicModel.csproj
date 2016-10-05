@@ -62,13 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Consultation.cs" />
-    <Compile Include="ConsultationDetails.cs" />
     <Compile Include="DispensedDrug.cs" />
-    <Compile Include="DispensedDrugDetails.cs" />
     <Compile Include="Drug.cs" />
     <Compile Include="DrugCategory.cs" />
-    <Compile Include="DrugCategoryDetails.cs" />
-    <Compile Include="DrugDetails.cs" />
     <Compile Include="DrugDosageForm.cs" />
     <Compile Include="DrugForm.cs" />
     <Compile Include="Patient.cs" />
@@ -76,7 +72,6 @@
     <Compile Include="Role.cs" />
     <Compile Include="Supplier.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="UserDetails.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
