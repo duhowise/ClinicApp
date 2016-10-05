@@ -151,6 +151,7 @@ namespace ClinicApp.Pharmacist
             tbLabFindings.Text = $"{consultation.Symptoms}";
             tbDispensary.Text = $"{consultation.Prescription}";
             tbPrescription.Text = $"{consultation.Prescription}";
+            DispenseProvidedId.Text = patient.ProvidedId;
         }
     }
 }
