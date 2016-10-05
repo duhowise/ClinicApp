@@ -9,6 +9,7 @@
                 TextElement.FontSize="14"
                 FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
        Title="KUMASI POLYTECHNIC CLINIC APP" Height="500" Width="1000" 
                       WindowState="Maximized" Icon="/media/Health-Care.png" 
@@ -43,17 +44,17 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Pharmacy Department" FontSize="18" Grid.Column="0" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center"/>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Label FontSize="16" Margin="0 0 50 0"
-                       FontFamily="{DynamicResource HeaderFontFamily}"
+                    <Label FontSize="16" Margin="0 0 50 0" VerticalAlignment="Center"
+                      FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center"
                            Foreground="{DynamicResource WhiteColorBrush}">Welcome!</Label>
-                    <Label FontSize="16" Margin="0 0 20 0"
-                       FontFamily="{DynamicResource HeaderFontFamily}"
+                    <Label FontSize="16" Margin="0 0 20 0" VerticalAlignment="Center"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center" Name="LoginUserName"
                            Foreground="{DynamicResource WhiteColorBrush}"></Label>
                     
                     <Button Name="btnLogout" ToolTip="click to Log out"
-                             FontSize="16"  FontFamily="{DynamicResource HeaderFontFamily}"
+                             FontSize="16"  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                                          Foreground="{DynamicResource AccentColorBrush}"
                                  FontWeight="Normal"   HorizontalAlignment="Center" 
                                  Background="{x:Null}" BorderThickness="0" SnapsToDevicePixels="False" Cursor="Hand" 
@@ -73,7 +74,7 @@
                 <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" Orientation="Horizontal" VerticalAlignment="Stretch" Margin="-10,0,10,0">
                     <Expander IsExpanded="True" HorizontalAlignment="Left" Width="310" ExpandDirection="Right">
                         <Expander.Header>
-                            <TextBlock Text="Main Menu" FontSize="18" FontFamily="{DynamicResource HeaderFontFamily}"
+                            <TextBlock Text="Main Menu" FontSize="18" FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                                        Foreground="{DynamicResource WhiteColorBrush}"
                                        RenderTransformOrigin=".5,.5">
                                 <TextBlock.LayoutTransform>
@@ -86,10 +87,13 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"></RowDefinition>
                                     <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
                                     <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
                                     <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
                                     <RowDefinition Height="*"></RowDefinition>
-                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
 
@@ -98,9 +102,10 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                
-                                <Image Grid.Row="1" Grid.Column="0" Source="../media/add-supplier.png" Width="32" Height="32"/>
+                                <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="32" Foreground="{DynamicResource AccentColorBrush}" 
+                                                         Grid.Row="1" Grid.Column="0" Kind="Ambulance" />
                                 <Button  Grid.Row="1" Grid.Column="1"
-                            Content="Add Supplier" FontSize="18"  FontFamily="{DynamicResource HeaderFontFamily}"
+                            Content="Add Supplier" FontSize="18"  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                                          Foreground="{DynamicResource AccentColorBrush}"
                                  FontWeight="Normal" Margin="6,5,0,10"  HorizontalAlignment="Stretch" 
                                  Background="{x:Null}" BorderThickness="0" SnapsToDevicePixels="False" Cursor="Hand" 
@@ -110,11 +115,12 @@
                                         <ContextMenu AllowDrop="True"/>
                                     </Button.ContextMenu>
                                 </Button>
-                                <Image Grid.Row="2" Grid.Column="0" 
-                            Source="../media/add-drug.png" Width="32" Height="32"  Margin="10,0,5,0" 
-                               HorizontalAlignment="Right" VerticalAlignment="Top"/>
-                                <Button Grid.Row="2" Grid.Column="1" FontWeight="Normal" Foreground="{DynamicResource AccentColorBrush}"
-                            Content="Add Drug" FontSize="18"   FontFamily="{DynamicResource HeaderFontFamily}"
+                                <Separator Grid.Column="1" Grid.Row="2" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                                
+                                <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="32" Foreground="{DynamicResource AccentColorBrush}" 
+                                                         Grid.Row="3" Grid.Column="0" Kind="Pill" />
+                                <Button Grid.Row="3" Grid.Column="1" FontWeight="Normal" Foreground="{DynamicResource AccentColorBrush}"
+                            Content="Add Drug" FontSize="18"   FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                                  Margin="5,5,0,10"  HorizontalAlignment="Stretch" Background="{x:Null}" BorderThickness="0" 
                                  SnapsToDevicePixels="False" Cursor="Hand" HorizontalContentAlignment="Stretch" Click="btnAddDrug"
                                  RenderTransformOrigin="0.141,0.596" 
@@ -123,26 +129,30 @@
                                         <ContextMenu AllowDrop="True"/>
                                     </Button.ContextMenu>
                                 </Button>
+                                <Separator Grid.Column="1" Grid.Row="4" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
 
-                                <Image Grid.Row="3" Grid.Column="0" 
-                                Source="../media/drugs.png" Width="32" Height="32"  Margin="10,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
-                                <Button Grid.Row="3" Grid.Column="1" HorizontalContentAlignment="Stretch" FontWeight="Normal"
+                                <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="32" Foreground="{DynamicResource AccentColorBrush}" 
+                                                         Grid.Row="5" Grid.Column="0" Kind="Binoculars" />
+                                <Button Grid.Row="5" Grid.Column="1" HorizontalContentAlignment="Stretch" FontWeight="Normal"
                                         Foreground="{DynamicResource AccentColorBrush}" 
-                                Content="View Drug" FontSize="18"   FontFamily="{DynamicResource HeaderFontFamily}" Margin="5,5,0,10"
+                                Content="View Drug" FontSize="18"  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Margin="5,5,0,10"
                         	Background="{x:Null}" BorderThickness="0" Cursor="Hand" Click="Button_Click_2"/>
-                                <Image Grid.Row="4" Grid.Column="0" 
-                                Source="../media/dispense-drugs.png" Width="32" Height="32"  Margin="10,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
-                                <Button Grid.Row="4" Grid.Column="1" Name="Dispense" HorizontalContentAlignment="Stretch"
-                                        Content="Dispense Drug" FontSize="18"  FontFamily="{DynamicResource HeaderFontFamily}" Foreground="{DynamicResource AccentColorBrush}"
+                                <Separator Grid.Column="1" Grid.Row="6" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+
+                                <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="32" Foreground="{DynamicResource AccentColorBrush}" 
+                                                         Grid.Row="7" Grid.Column="0" Kind="Stackoverflow" />
+                                <Button Grid.Row="7" Grid.Column="1" Name="Dispense" HorizontalContentAlignment="Stretch"
+                                        Content="Dispense Drug" FontSize="18"  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Foreground="{DynamicResource AccentColorBrush}"
                                Background="{x:Null}" BorderThickness="0" FontWeight="Normal" Margin="5,5,0,10"  HorizontalAlignment="Stretch" Cursor="Hand" Click="Dispense_Click">
                                 </Button>
-                                <Image Grid.Row="5" Grid.Column="0" 
-                               Source="../media/medical-report-icon.png" Width="32" Height="32"  Margin="10,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
-                                <Button Grid.Row="5" Grid.Column="1" Name="reporting" HorizontalContentAlignment="Stretch"
-                                        Content="View Report" FontSize="18"  FontFamily="{DynamicResource HeaderFontFamily}" Foreground="{DynamicResource AccentColorBrush}"
+                                <Separator Grid.Column="1" Grid.Row="8" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+
+                                <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="32" Foreground="{DynamicResource AccentColorBrush}" 
+                                                         Grid.Row="9" Grid.Column="0" Kind="Receipt" />
+                                <Button Grid.Row="9" Grid.Column="1" Name="reporting" HorizontalContentAlignment="Stretch"
+                                        Content="View Report" FontSize="18" FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Foreground="{DynamicResource AccentColorBrush}"
                                Background="{x:Null}" BorderThickness="0" FontWeight="Normal" Margin="5,5,0,10"  HorizontalAlignment="Stretch" Cursor="Hand" Click="reporting_Click" >
                                 </Button>
-                                <TreeView Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"/>
                             </Grid>
                         </StackPanel>
                     </Expander>

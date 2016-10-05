@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using ClinicApp.Data;
 using ClinicApp.Logic;
-using ClinicModel;
 using Telerik.Windows.Controls;
 
 namespace ClinicApp

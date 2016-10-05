@@ -10,7 +10,7 @@
                 TextElement.FontSize="14"
                 FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
                 VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center"
-                FontWeight="Bold" VerticalContentAlignment="Center" Closing="Window_Closing" Icon="media/Health-Care.png" Loaded="Window_Loaded" >
+                FontWeight="Bold" VerticalContentAlignment="Center" Icon="media/Health-Care.png" Loaded="Window_Loaded" >
 
     <Grid>
         <StackPanel>
@@ -38,7 +38,7 @@
                     </Grid.RowDefinitions>
                     <Label FontSize="30" Grid.ColumnSpan="2"
                    Grid.Column="0" Grid.Row="1"
-                       FontFamily="{DynamicResource HeaderFontFamily}"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center"
                           Margin="0,10,0,0" 
                            Foreground="{DynamicResource AccentColorBrush}">STAFF-MEMBER LOGIN PANEL</Label>
@@ -76,14 +76,14 @@
                         <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,40,10" 
                                 Height="30" Width="130" TabIndex="12"
                                 Click="Button_Click" HorizontalAlignment="Right"
-                                 FontFamily="{DynamicResource HeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
+                                 FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
                                 FontSize="14">
                             Sign in
                         </Button>
                         
                         <Button Name="btnCantLogin"
-                            Content="Can't login? click Here." FontSize="18"  FontFamily="{DynamicResource HeaderFontFamily}"
+                            Content="Can't login? click Here." FontSize="18"  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                                          Foreground="{DynamicResource AccentColorBrush}"
                                  FontWeight="Normal" Margin="6,5,0,10"  HorizontalAlignment="Center" 
                                  Background="{x:Null}" BorderThickness="0" SnapsToDevicePixels="False" Cursor="Hand" 

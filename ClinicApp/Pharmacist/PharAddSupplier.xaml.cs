@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data.SqlTypes;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using ClinicApp.Data;
-using ClinicApp.Logic;
 using ClinicModel;
 using MahApps.Metro.Controls;
-using Telerik.Windows.Controls;
-using Control = System.Windows.Forms.Control;
 using MessageBox = System.Windows.MessageBox;
 
 namespace ClinicApp.Pharmacist

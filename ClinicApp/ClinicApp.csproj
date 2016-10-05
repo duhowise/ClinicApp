@@ -300,7 +300,7 @@
     <Compile Include="stockTakingReportOne.xaml.cs">
       <DependentUpon>stockTakingReportOne.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RegexUtil.cs" />
+    <Compile Include="Util.cs" />
     <Compile Include="ViewDrugs.xaml.cs">
       <DependentUpon>ViewDrugs.xaml</DependentUpon>
     </Compile>

@@ -11,24 +11,18 @@ namespace ClinicApp.Doctor
     /// </summary>
     public partial class DocAdmin : Window
     {
-      OldPatient p = new OldPatient();
+      //OldPatient p = new OldPatient();
         public DocAdmin()
         {
             InitializeComponent();
         }
-
-        private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
-        {
-           
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             int a, b;
             LoginUserName.Text = CurrentUserLoggedInData.FirstName + " " + CurrentUserLoggedInData.LastName;
             lbTotalDrugs.Content = a = new DrugRepository().TotalDrugsQuantity("Drugs");
-            lbRegisteredPatients.Content = p.TotalRegisteredPatient();
-                b = new DrugRepository().TotalDrugsQuantity("PrescribedDrugs");
+            //lbRegisteredPatients.Content = p.TotalRegisteredPatient();
+                b = new DrugRepository().TotalDrugsQuantity("DispensedDrugs");
              lbAvailableDrugs.Content = a - b;
         }
 
@@ -40,16 +34,12 @@ namespace ClinicApp.Doctor
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //ViewPatient viewPatient = new ViewPatient {MenuAction = "doc"};
-            //viewPatient.ShowDialog();  
             viewPatientWin view = new viewPatientWin { MenuAction = "doc" };
             view.ShowDialog();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            //ViewPatient viewPatient = new ViewPatient {MenuAction = "doc" };
-            //viewPatient.ShowDialog();
             viewPatientWin view = new viewPatientWin { MenuAction = "doc" };
             view.ShowDialog();
         }
@@ -79,8 +69,6 @@ namespace ClinicApp.Doctor
 
         private void historyBnt_Click(object sender, RoutedEventArgs e)
         {
-            //ViewPatient viewPatient = new ViewPatient { MenuAction = "History" };
-            //viewPatient.ShowDialog();
             viewPatientWin view = new viewPatientWin();
             view.ShowDialog();
         }
@@ -88,9 +76,9 @@ namespace ClinicApp.Doctor
         private void Window_MouseEnter(object sender, MouseEventArgs e)
         {
             int a, b;
-            lbTotalDrugs.Content = a = new DrugRepository().TotalDrugsQuantity("DrugsOld");
-            lbRegisteredPatients.Content = p.TotalRegisteredPatient();
-            b = new DrugRepository().TotalDrugsQuantity("PrescribedDrugs");
+            lbTotalDrugs.Content = a = new DrugRepository().TotalDrugsQuantity("Drugs");
+          //  lbRegisteredPatients.Content = p.TotalRegisteredPatient();
+            b = new DrugRepository().TotalDrugsQuantity("DispensedDrugs");
             lbAvailableDrugs.Content = a - b;
         }
 

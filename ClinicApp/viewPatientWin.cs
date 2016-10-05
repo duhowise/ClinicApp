@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using ClinicApp.Data;
 using ClinicApp.Doctor;
 using ClinicApp.Pharmacist;
-using ClinicModel;
 using Telerik.WinControls.UI;
 
 namespace ClinicApp

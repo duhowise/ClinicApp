@@ -50,7 +50,7 @@
                 </Button>
                 <Label FontSize="18"
                            Grid.Row="1" Grid.Column="0"
-                       FontFamily="{DynamicResource HeaderFontFamily}"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center"
                            Foreground="#CCFFFFFF">Admit New Patient</Label>
 
@@ -65,9 +65,9 @@
                 </Button>
                 <Label FontSize="18"
                            Grid.Row="1" Grid.Column="1"
-                       FontFamily="{DynamicResource HeaderFontFamily}"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center"
-                           Foreground="#CCFFFFFF">View Existing patients</Label>
+                           Foreground="#CCFFFFFF">Existing patients</Label>
 
                 <Button Name="btnLogout" Width="80" Height="80" Foreground="{StaticResource WhiteColorBrush}" Grid.Column="5" Grid.Row="0" Style="{DynamicResource MetroCircleButtonStyle}">
                     <Rectangle Width="40" Height="40"
@@ -80,7 +80,7 @@
                 </Button>
                 <Label Name="lbLoginLogout" FontSize="18"
                            Grid.Row="1" Grid.Column="5"
-                       FontFamily="{DynamicResource HeaderFontFamily}"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center"
                            Foreground="#CCFFFFFF">Log Out</Label>
             </Grid>

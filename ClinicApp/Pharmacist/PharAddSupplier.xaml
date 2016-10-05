@@ -48,7 +48,7 @@
                         </Grid.RowDefinitions>
                         <Label FontSize="16"
                    Grid.Column="0" Grid.Row="0"
-                       FontFamily="{DynamicResource HeaderFontFamily}"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Left"
                           Margin="10,10,0,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Supplier Name</Label>
@@ -66,7 +66,7 @@
                          Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
                         <Label FontSize="16"
                    Grid.Column="0" Grid.Row="2"
-                       FontFamily="{DynamicResource HeaderFontFamily}"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Left"
                           Margin="10,10,0,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Address</Label>
@@ -85,7 +85,7 @@
                          Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
                         <Label FontSize="16"
                    Grid.Column="0" Grid.Row="5"
-                       FontFamily="{DynamicResource HeaderFontFamily}"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Left"
                           Margin="10,10,0,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Phone</Label>
@@ -107,7 +107,7 @@
 
                         <Label FontSize="16"
                    Grid.Column="0" Grid.Row="7"
-                       FontFamily="{DynamicResource HeaderFontFamily}"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Left"
                           Margin="10,10,0,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Email</Label>
@@ -130,7 +130,7 @@
                         <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10,20,0,0" 
                                 Height="30" Width="130" Grid.Column="0" Grid.Row="12" TabIndex="12"
                                 Name="cancel" Click="Save_Click" HorizontalAlignment="Left"
-                                 FontFamily="{DynamicResource HeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
+                                 FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
                                 FontSize="14">
                             Cancel
@@ -139,7 +139,7 @@
                         <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10,20,0,0" 
                                 Height="30" Width="130" Grid.Column="0" Grid.Row="12" TabIndex="5"
                                 Name="Cancel" Click="Cancel_Click" HorizontalAlignment="Left"
-                                 FontFamily="{DynamicResource HeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
+                                 FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
                                 FontSize="14" VerticalAlignment="Top">
                             Cancel
@@ -148,7 +148,7 @@
                         <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,10,0" 
                                 Height="30" Width="130" Grid.Column="0" Grid.Row="12" TabIndex="4"
                                 Name="Save" Click="Save_Click" HorizontalAlignment="Right"
-                                 FontFamily="{DynamicResource HeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
+                                 FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
                                 FontSize="14" VerticalAlignment="Top">
                             Save
