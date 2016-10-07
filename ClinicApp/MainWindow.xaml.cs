@@ -1,8 +1,8 @@
-﻿using System.ComponentModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using ClinicApp.Doctor;
 using ClinicApp.Logic;
+using ClinicApp.Nurse;
 using ClinicApp.Pharmacist;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
@@ -22,6 +22,7 @@ namespace ClinicApp
         public MainWindow()
         {
             InitializeComponent();
+          
 
         }
 
@@ -37,35 +38,16 @@ namespace ClinicApp
             set { fullname = value; }
         }
 
-        private async void Window_Closing(object sender, CancelEventArgs e)
-        {
-            e.Cancel = true;
-            MessageDialogResult result = await this.ShowMessageAsync("Exit Application", "Do You really want to Exit?", MessageDialogStyle.AffirmativeAndNegative);
-            if (result == MessageDialogResult.Negative)
-            {
-                e.Cancel = false;
-
-            }
-            else
-            {
-                Application.Current.Shutdown();
-            }
-
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             LogUserIn();
         }
 
-        public void LogUserIn()
+        public async void LogUserIn()
         {
             if (string.IsNullOrEmpty(userName.Text) || string.IsNullOrEmpty(Password.Password))
             {
-                cmb.Message = "All Details Are Required";
-                cmb.Show();
-
-                ////System.Windows.MessageBox.Show("All Details Are Required", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                await this.ShowMessageAsync("Sorry 'bou that !", "All details are required");
                 Password.Password = "";
                 userName.Text = "";
                 userName.Focus();
@@ -81,12 +63,18 @@ namespace ClinicApp
                     FullName = Clinic.Username(userName.Text, Password.Password);
                     PharAdmin pharmacist = new PharAdmin();
                     DocAdmin doctor = new DocAdmin();
+                    NurAdmin nurse=new NurAdmin();
                     if (Id == 1)
                     { doctor.Show(); }
-                    else if (Id == 3)
+                    else if (Id == 2)
+                    {
+                       nurse.Show(); 
+                    }
+                    else if (Id==3)
                     {
                         pharmacist.Show();
                     }
+                  
 
                     Hide();
                     //System.Windows.MessageBox.Show("Login Sucessful", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -96,7 +84,7 @@ namespace ClinicApp
                 }
                 else
                 {
-                    MessageBox.Show("Please Check Username or Password", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                    await this.ShowMessageAsync("Please Check Username or Password", "Login Failed");
                     Password.Password = "";
                     userName.Text = "";
                     userName.Focus();

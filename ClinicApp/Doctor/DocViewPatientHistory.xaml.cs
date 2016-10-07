@@ -1,6 +1,4 @@
 ﻿using System.Windows;
-using ClinicApp.Logic;
-using ClinicModel;
 using Telerik.Windows.Controls;
 
 namespace ClinicApp.Doctor
