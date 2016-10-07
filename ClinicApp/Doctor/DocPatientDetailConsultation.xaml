@@ -135,10 +135,10 @@
                                     </StackPanel>
                                     <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,0,5" 
                                 Height="30" Width="130" Grid.Column="1" Grid.Row="1" TabIndex="12"
-                                Name="DiagnosisSave" HorizontalAlignment="Right"
+                                Name="btnDiagnosisSave" HorizontalAlignment="Right"
                                  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14">
+                                FontSize="14" Click="btnDiagnosisSave_Click">
                                         Save
                                     </Button>
                                 </Grid>
@@ -162,7 +162,7 @@
                                     <TextBox Grid.Column="1" Grid.Row="0" Name="tbPrescriptions" TabIndex="7" 
                                  IsEnabled="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalAlignment="Center"
                                  VerticalScrollBarVisibility="Visible" TextAlignment="Left" MaxLength="700"
-                                 ToolTip="Patient Diagnosis"  Margin="0,10,0,0" Width="350" Height="120" HorizontalAlignment="Center"
+                                 ToolTip="Patient Prescription"  Margin="0,10,0,0" Width="350" Height="120" HorizontalAlignment="Center"
                                  Text="textblock showing Diagnosis it is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing"  
                          controls:TextBoxHelper.Watermark="type diagnosis seperated with commas(,)"
                          controls:TextBoxHelper.IsWaitingForData="True"
@@ -192,13 +192,13 @@
                                                           HorizontalAlignment="Center"
                                                           ToolTip="Click to set diagnosis private"/>
                                                 <Button Grid.Column="0" Grid.Row="1" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                                                    Margin="10" HorizontalAlignment="Center"
-                                                    ToolTip="Click to edit diagnosis">
+                                                    Margin="10" HorizontalAlignment="Center" Name="btnEditPrescription" IsEnabled="False"
+                                                    ToolTip="Click to edit diagnosis" Click="btnEditPrescription_Click">
                                                     <materialDesign:PackIcon Kind="Pencil" Height="24" Width="24" />
                                                 </Button>
                                                 <Button Grid.Column="0" Grid.Row="2" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                                                    Margin="10" HorizontalAlignment="Center"
-                                                    ToolTip="Click to clear diagnosis">
+                                                    Margin="10" HorizontalAlignment="Center" Name="btnClearPrescription"
+                                                    ToolTip="Click to clear diagnosis" Click="btnClearPrescription_Click">
                                                     <materialDesign:PackIcon Kind="DeleteSweep" Height="24" Width="24" />
                                                 </Button>
                                             </Grid>
@@ -206,10 +206,10 @@
                                     </StackPanel>
                                     <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,0,5" 
                                 Height="30" Width="130" Grid.Column="1" Grid.Row="1" TabIndex="12"
-                                Name="PrescriptionsSave" HorizontalAlignment="Right"
+                                Name="btnPrescriptionsSave" HorizontalAlignment="Right"
                                  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14">
+                                FontSize="14" Click="btnPrescriptionsSave_Click">
                                         Save
                                     </Button>
                                 </Grid>
@@ -231,7 +231,7 @@
                                            HorizontalContentAlignment="Center"
                            Width="150" FontSize="16" Foreground="{DynamicResource AccentColorBrush}"/>
                                     <TextBox Grid.Column="1" Grid.Row="0" Name="tbFindings" TabIndex="7" 
-                                 IsEnabled="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalAlignment="Center"
+                                 IsEnabled="False" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalAlignment="Center"
                                  VerticalScrollBarVisibility="Visible" TextAlignment="Left" MaxLength="700"
                                  ToolTip="Patient Diagnosis"  Margin="0,10,0,0" Width="350" Height="120" HorizontalAlignment="Center"
                                  Text="textblock showing Diagnosis it is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing"  
@@ -263,13 +263,13 @@
                                                           HorizontalAlignment="Center"
                                                           ToolTip="Click to set diagnosis private"/>
                                                 <Button Grid.Column="0" Grid.Row="1" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                                                    Margin="10" HorizontalAlignment="Center"
-                                                    ToolTip="Click to edit diagnosis">
+                                                    Margin="10" HorizontalAlignment="Center" Name="btnEditFinding"
+                                                    ToolTip="Click to edit diagnosis" Click="btnEditFinding_Click">
                                                     <materialDesign:PackIcon Kind="Pencil" Height="24" Width="24" />
                                                 </Button>
                                                 <Button Grid.Column="0" Grid.Row="2" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                                                    Margin="10" HorizontalAlignment="Center"
-                                                    ToolTip="Click to clear diagnosis">
+                                                    Margin="10" HorizontalAlignment="Center" Name="btnClearFinding"
+                                                    ToolTip="Click to clear diagnosis" Click="btnClearFinding_Click">
                                                     <materialDesign:PackIcon Kind="DeleteSweep" Height="24" Width="24" />
                                                 </Button>
                                             </Grid>
@@ -277,10 +277,10 @@
                                     </StackPanel>
                                     <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,0,5" 
                                 Height="30" Width="130" Grid.Column="1" Grid.Row="1" TabIndex="12"
-                                Name="PrescriptionSave" HorizontalAlignment="Right"
+                                Name="btnFindingsSave" HorizontalAlignment="Right"
                                  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14">
+                                FontSize="14" Click="btnFindingsSave_Click">
                                         Save
                                     </Button>
                                 </Grid>
