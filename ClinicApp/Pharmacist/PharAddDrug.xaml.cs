@@ -106,7 +106,7 @@ namespace ClinicApp.Pharmacist
             {
                 Drug medicine=new Drug();
                 medicine.GenericName = tbGenericName.Text;
-                medicine.brandName = tbBrandName.Text;
+                medicine.BrandName = tbBrandName.Text;
                 medicine.NumberPackInBox = Convert.ToInt32(tbNumberInBox.Text);
                 medicine.Box = Convert.ToInt32(tbNumberInPack.Text);
                 medicine.NumberinPack = Convert.ToInt32(tbBox.Text);

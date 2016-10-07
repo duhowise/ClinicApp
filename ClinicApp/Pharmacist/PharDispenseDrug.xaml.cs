@@ -48,7 +48,7 @@ namespace ClinicApp.Pharmacist
 
         private void _remainingDrugsBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-               e.Result=new DrugRepository().GetRemainingDrugs(new Drug {brandName = drugName});
+               e.Result=new DrugRepository().GetRemainingDrugs(new Drug {BrandName = drugName});
 
         }
 
@@ -108,7 +108,7 @@ namespace ClinicApp.Pharmacist
             //compute availables here
             if (!string.IsNullOrEmpty(this.DispenseDrugName.SearchText))
             {
-                LbRemainingDrugs.Text= new DrugRepository().GetRemainingDrugs(new Drug {brandName = DispenseDrugName.SearchText }).ToString();
+                LbRemainingDrugs.Text= new DrugRepository().GetRemainingDrugs(new Drug {BrandName = DispenseDrugName.SearchText }).ToString();
             }
 
         }
@@ -118,8 +118,8 @@ namespace ClinicApp.Pharmacist
             int num;
             if (!string.IsNullOrEmpty(DispenseDrugQuantity.Text))
             {
-                if (new DrugRepository().GetRemainingDrugs(new Drug {brandName = DispenseDrugName.SearchText }) > Convert.ToInt32(DispenseDrugQuantity.Text))
-                    LbRemainingDrugs.Text =Convert.ToInt32(new DrugRepository().GetRemainingDrugs(new Drug {brandName = DispenseDrugName.SearchText })) - Convert.ToInt32(DispenseDrugQuantity.Text) + "";
+                if (new DrugRepository().GetRemainingDrugs(new Drug {BrandName = DispenseDrugName.SearchText }) > Convert.ToInt32(DispenseDrugQuantity.Text))
+                    LbRemainingDrugs.Text =Convert.ToInt32(new DrugRepository().GetRemainingDrugs(new Drug {BrandName = DispenseDrugName.SearchText })) - Convert.ToInt32(DispenseDrugQuantity.Text) + "";
                 else
                 {
                         cmb.Message = "DrugsOld available is less than \nthe quantity specified";

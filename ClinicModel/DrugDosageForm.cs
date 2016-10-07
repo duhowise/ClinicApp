@@ -6,11 +6,7 @@ namespace ClinicModel
     {
         public int Id { get; set; }
         public string name { get; set; }
-       
+
     }
 
-    public class DrugDosageFormDetails : DrugDosageForm
-    {
-        public virtual ICollection<Drug> Drugs { get; set; }
-    }
 }
