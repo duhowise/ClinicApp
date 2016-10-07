@@ -23,7 +23,7 @@ namespace ClinicApp.Pharmacist
                     if (connection.State == ConnectionState.Closed)
                     {
                         connection.Open();
-                        string query = "select Name from Drugs";
+                        string query = "select GenericName from Drugs";
                         var command = new SqlCommand(query, connection);
                         var reader = command.ExecuteReader();
                         while (reader.Read())

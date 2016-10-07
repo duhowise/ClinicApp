@@ -25,6 +25,8 @@ namespace ClinicApp.Data
             }
 
         }
+
+        
         public IEnumerable<string> DrugAutoComplete()
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
