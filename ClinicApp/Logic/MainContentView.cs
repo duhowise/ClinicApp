@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Controls;
+using ClinicApp.Doctor;
 using ClinicApp.Pharmacist;
 using ViewModelBase = Package_Manager.View.ViewModelBase;
 
@@ -32,6 +33,12 @@ namespace ClinicApp.Logic
         {
             var pharPatientDetailDispensary = new PharPatientDetailsDispensary();
             navigateToView(pharPatientDetailDispensary);
+        }
+
+        public void NavigateToDocPatientDetailConsultationControl()
+        {
+            var docPatientDetailConsultation = new DocPatientDetailConsultation();
+            navigateToView(docPatientDetailConsultation);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<Window x:Class="ClinicApp.Nurse.NurAddPatient"
+﻿<controls:MetroWindow  x:Class="ClinicApp.Nurse.NurAddPatient"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,7 +8,9 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         Title="KUMASI POLYTECHNIC CLINIC APP" Height="700" Width="1200" 
-                       Icon="../media/Health-Care.png" WindowStartupLocation="CenterScreen" WindowState="Maximized" 
+                       Icon="../media/Health-Care.png" WindowStartupLocation="CenterScreen"
+                       WindowState="Maximized" Closing="MetroWindow_Closing" 
+                       ShowMaxRestoreButton="False" ShowMinButton="False"
                       >
     
     <Grid>
@@ -179,15 +181,15 @@
                                 Name="Cancel" HorizontalAlignment="Left"
                                  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14">
+                                FontSize="14" Click="Cancel_Click">
                         Cancel
                     </Button>
                     <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,10,0" 
-                                Height="30" Width="130" Grid.Column="1" Grid.Row="14" TabIndex="12"
+                                Height="30" Width="130" Grid.Column="0" Grid.Row="14" TabIndex="12"
                                 Name="Save" HorizontalAlignment="Right"
                                  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14">
+                                FontSize="14" Click="Save_Click">
                         Save
                     </Button>
 
@@ -247,6 +249,28 @@
                      BorderThickness="1"
                          controls:TextBoxHelper.UseFloatingWatermark="False" 
                                  Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
+
+                    <Label FontSize="16"
+                   Grid.Column="0" Grid.Row="3"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Left"
+                          Margin="0,10,0,0" 
+                           Foreground="{DynamicResource AccentColorBrush}">weight</Label>
+                    <TextBox Grid.Column="0" Grid.Row="4" Name="PatientWeight"
+                             TabIndex="5"
+                                 IsEnabled="False"
+                         ToolTip="Patient temperature"
+                    Margin="0,10,10,0" 
+                         Width="300"
+                         Height="35"
+                         HorizontalAlignment="Center"
+                         controls:TextBoxHelper.Watermark=""
+                         controls:TextBoxHelper.IsWaitingForData="True"
+                         controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                     BorderBrush="{DynamicResource AccentColorBrush}"
+                     BorderThickness="1"
+                         controls:TextBoxHelper.UseFloatingWatermark="False" 
+                                 Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
                     <Label FontSize="16"
                    Grid.Column="1" Grid.Row="1"
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
@@ -256,7 +280,28 @@
                     <TextBox Grid.Column="1" Grid.Row="2" Name="PatientBloodPressure" TabIndex="6"
                                  IsEnabled="False"
                          ToolTip="Patient blood pressure"
-                    Margin="0,10,10,0" 
+                    Margin="0,10,0,0" 
+                         Width="300"
+                         Height="35"
+                         HorizontalAlignment="Center"
+                         controls:TextBoxHelper.Watermark=""
+                         controls:TextBoxHelper.IsWaitingForData="True"
+                         controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                     BorderBrush="{DynamicResource AccentColorBrush}"
+                     BorderThickness="1"
+                         controls:TextBoxHelper.UseFloatingWatermark="False" 
+                                 Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
+
+                    <Label FontSize="16"
+                   Grid.Column="1" Grid.Row="3"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Right"
+                          Margin="0,10,10,0" 
+                           Foreground="{DynamicResource AccentColorBrush}">Pulse</Label>
+                    <TextBox Grid.Column="1" Grid.Row="4" Name="PatientBloodPulse" TabIndex="6"
+                                 IsEnabled="False"
+                         ToolTip="Patient blood pressure"
+                    Margin="0,10,0,0" 
                          Width="300"
                          Height="35"
                          HorizontalAlignment="Center"
@@ -273,9 +318,10 @@
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Left"
                           Margin="0,10,10,0" 
-                           Foreground="{DynamicResource AccentColorBrush}">Complaints</Label>
+                           Foreground="{DynamicResource AccentColorBrush}">Complaints/Symptoms</Label>
                     <TextBox Grid.Column="0" Grid.Row="6" Name="PatientComplaint" TabIndex="7"
-                                 IsEnabled="False"
+                                 IsEnabled="False" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalAlignment="Center"
+                                 VerticalScrollBarVisibility="Visible" TextAlignment="Left" MaxLength="700"
                          ToolTip="Patient complaint"
                     Margin="0,10,10,0" 
                          Width="300"
@@ -294,11 +340,12 @@
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Right"
                           Margin="0,10,10,0" 
-                           Foreground="{DynamicResource AccentColorBrush}">Symptoms</Label>
+                           Foreground="{DynamicResource AccentColorBrush}">Findings</Label>
                     <TextBox TabIndex="8" Name="PatientSymptoms"
-                  Grid.Column="1" Grid.Row="6"
+                  Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalAlignment="Center"
+                                 VerticalScrollBarVisibility="Visible" TextAlignment="Left" MaxLength="700"
                          ToolTip="Type patient symptoms"
-                    Margin="0,10,10,0" 
+                    Margin="0,10,0,0" 
                          Width="300"
                          Height="100"
                          HorizontalAlignment="Center"
@@ -317,6 +364,8 @@
                            Foreground="{DynamicResource AccentColorBrush}">Diagnosis</Label>
                     <TextBox TabIndex="9" Name="PatientDiagnosis"
                   Grid.Column="0" Grid.Row="10"
+                              HorizontalScrollBarVisibility="Visible" VerticalAlignment="Center"
+                                 VerticalScrollBarVisibility="Visible" TextAlignment="Left" MaxLength="700"
                          ToolTip="Type patient diagnosis"
                     Margin="0,10,10,0" 
                          Width="300"
@@ -336,9 +385,10 @@
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Prescriptions</Label>
                     <TextBox TabIndex="10" Name="PatientPrescirption"
-                  Grid.Column="1" Grid.Row="10"
+                  Grid.Column="1" Grid.Row="10" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalAlignment="Center"
+                                 VerticalScrollBarVisibility="Visible" TextAlignment="Left" MaxLength="700"
                          ToolTip="Type patient prescription"
-                    Margin="0,10,10,0" 
+                    Margin="0,10,0,0" 
                          Width="300"
                          Height="100"
                          HorizontalAlignment="Center"
@@ -351,10 +401,10 @@
                     <Rectangle Grid.Column="0" Height="42" Grid.ColumnSpan="2" Grid.Row="12"></Rectangle>
                     <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,10,0" 
                                 Height="30" Width="150" Grid.Row="13" TabIndex="12"
-                                 HorizontalAlignment="Right" Grid.Column="1"
+                                 HorizontalAlignment="Right" Grid.Column="1" Name="SaveConsultation"
                                  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14">
+                                FontSize="14" Click="SaveConsultation_Click">
                         Save Consultation
                     </Button>
                 </Grid>
@@ -362,4 +412,4 @@
         </materialDesign:Card>
 
     </Grid>
-</Window>
+</controls:MetroWindow>

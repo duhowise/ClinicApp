@@ -76,6 +76,10 @@
                             FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
                             <Label Content="Blood pressure : 120/80 mm Hg" HorizontalAlignment="Left" x:Name="PatientBloodPressure"
                             FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
+                            <Label Content="Pulse : 120 bpm" HorizontalAlignment="Left" x:Name="PatientPulse"
+                            FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
+                            <Label Content="Weight : 69 kg" HorizontalAlignment="Left" x:Name="PatientWeight"
+                            FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
                             <Label Content="Date : 12/12/02" HorizontalAlignment="Left" x:Name="PatientLastVisited"
                             FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
                         </StackPanel>
@@ -113,22 +117,6 @@
                                    Text="textblock showing Lab Findings Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic"
                             FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
                             <Separator Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}" HorizontalAlignment="Right" Width="800" Margin="0,2,0,0" VerticalAlignment="Top"/>
-
-                            <Label Content="Dispensary" Grid.Row="4" Grid.Column="0" Height="30" HorizontalAlignment="Left"
-                           Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}"/>
-                            <TextBlock Name="tbDispensary" Grid.Row="4" Grid.Column="1" Margin="5,1,1,1" TextWrapping="Wrap" Width="500"
-                                   HorizontalAlignment="Left" 
-                                   Text="textblock showing Dispensary Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum"
-                          FontSize="14" Foreground="{DynamicResource AccentColorBrush}" RenderTransformOrigin="0.5,0.5">
-                                <TextBlock.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform AngleX="1.206"/>
-                                        <RotateTransform/>
-                                        <TranslateTransform X="0.979"/>
-                                    </TransformGroup>
-                                </TextBlock.RenderTransform>
-                            </TextBlock>
                             <Separator Grid.Row="5" Grid.ColumnSpan="2" Grid.Column="0" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
                             <Label Content="Prescription" Grid.Row="6" Grid.Column="0" Height="30" HorizontalAlignment="Left"
                            Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}"/>

@@ -63,33 +63,6 @@ namespace ClinicApp.Pharmacist
             //frequentdataGrid.ItemsSource = Drug.LoadFrequentDrugs().DefaultView;
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            //ViewDrugs viewDrug = new ViewDrugs();
-            //viewDrug.ShowDialog();
-            var viewDrug=new viewDrugWin();
-            viewDrug.ShowDialog();
-
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            
-                new PharAddSupplier().ShowDialog();
-           
-        }
-
-        private void Dispense_Click(object sender, RoutedEventArgs e)
-        {
-           // new PatientDetailsForm().Show();
-            new PharSearchPatient().ShowDialog();
-
-        }
-
-        private async void LogUserOut()
-        {
-           
-        }
 
         //private void DrugHistory_Click(object sender, RoutedEventArgs e)
         //{
@@ -123,21 +96,36 @@ namespace ClinicApp.Pharmacist
 
         }
 
-        private void reporting_Click(object sender, RoutedEventArgs e)
-        {
-            stockTakingReportOne repotOne=new stockTakingReportOne();
-            //repotOne.Show();
-        }
-
-        private void btnAddDrug(object sender, RoutedEventArgs e)
-        {
-            //navigator.NavigateToAddNewDrugControl();
-            new PharAddDrug().ShowDialog();
-        }
-
+    
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void btnAddDrug_Click(object sender, RoutedEventArgs e)
+        {
+            new PharAddDrug().ShowDialog();
+        }
+
+        private void btnAddSupplier_Click(object sender, RoutedEventArgs e)
+        {
+            new PharAddSupplier().ShowDialog();
+        }
+
+        private void btnViewReport_Click(object sender, RoutedEventArgs e)
+        {
+            stockTakingReportOne repotOne = new stockTakingReportOne();
+        }
+
+        private void btnDispenseDrug_Click(object sender, RoutedEventArgs e)
+        {
+            new PharSearchPatient().ShowDialog();
+        }
+
+        private void btnViewDrug_Click(object sender, RoutedEventArgs e)
+        {
+            var viewDrug = new viewDrugWin();
+            viewDrug.ShowDialog();
         }
     }
 }

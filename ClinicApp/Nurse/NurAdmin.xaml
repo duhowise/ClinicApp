@@ -9,22 +9,40 @@
         mc:Ignorable="d"
       Title="KUMASI POLYTECHNIC CLINIC APP" Height="500" Width="1000" 
                       WindowState="Maximized" Icon="../media/Health-Care.png" 
-                      Loaded="Window_Loaded" MouseEnter="Window_MouseEnter" 
+                      Loaded="Window_Loaded" ShowCloseButton="False" ShowMaxRestoreButton="False"
                       Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="110"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="100"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-
-        <StackPanel Height="120" Grid.Column="0" Margin="0,0,0,0" Grid.Row="0" HorizontalAlignment="Stretch"
-                    Grid.ColumnSpan="3" 
+        <StackPanel Grid.Row="0" DockPanel.Dock="Top" Background="{StaticResource PrimaryColorBrush}" Height="40">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" FontSize="18" Margin="30 0 0 0" VerticalAlignment="Center"
+                      FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Left"
+                           Foreground="{DynamicResource WhiteColorBrush}">Pharmacy Department</Label>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label FontSize="16" Margin="0 0 50 0" VerticalAlignment="Center"
+                      FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="{DynamicResource WhiteColorBrush}">Welcome!</Label>
+                    <Label FontSize="16" Margin="0 0 20 0" VerticalAlignment="Center"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center" Name="LoginUserName"
+                           Foreground="{DynamicResource WhiteColorBrush}"></Label>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <StackPanel Height="120" Grid.Column="0" Margin="0,0,0,0" Grid.Row="1" HorizontalAlignment="Stretch" 
                  Background="{DynamicResource AccentColorBrush}"  >
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -69,7 +87,7 @@
                        HorizontalAlignment="Center"
                            Foreground="#CCFFFFFF">Existing patients</Label>
 
-                <Button Name="btnLogout" Width="80" Height="80" Foreground="{StaticResource WhiteColorBrush}" Grid.Column="5" Grid.Row="0" Style="{DynamicResource MetroCircleButtonStyle}">
+                <Button Name="btnLogout" Width="80" Height="80" Foreground="{StaticResource WhiteColorBrush}" Grid.Column="5" Grid.Row="0" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnLogout_Click">
                     <Rectangle Width="40" Height="40"
                                Fill="{Binding Path=Foreground,
                         RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">

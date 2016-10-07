@@ -11,9 +11,10 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-       Title="KUMASI POLYTECHNIC CLINIC APP" Height="500" Width="1000" 
-                      WindowState="Maximized" Icon="/media/Health-Care.png" 
-                      Loaded="Window_Loaded" MouseEnter="Window_MouseEnter" 
+       Title="KUMASI POLYTECHNIC CLINIC APP" Height="1000" Width="1000" 
+                      WindowState="Maximized" Icon="../media/Health-Care.png" 
+                      Loaded="Window_Loaded" MouseEnter="Window_MouseEnter"
+                      ShowCloseButton="False" ShowMaxRestoreButton="False"
                       Closing="Window_Closing">
     <Window.Resources>
         <Style x:Key="StackP"
@@ -27,10 +28,10 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -42,7 +43,10 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Pharmacy Department" FontSize="18" Grid.Column="0" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center"/>
+                <Label Grid.Column="0" FontSize="18" Margin="30 0 0 0" VerticalAlignment="Center"
+                      FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Left"
+                           Foreground="{DynamicResource WhiteColorBrush}">Pharmacy Department</Label>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Label FontSize="16" Margin="0 0 50 0" VerticalAlignment="Center"
                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
@@ -52,112 +56,107 @@
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center" Name="LoginUserName"
                            Foreground="{DynamicResource WhiteColorBrush}"></Label>
-                    
-                    <Button Name="btnLogout" ToolTip="click to Log out"
-                             FontSize="16"  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                                         Foreground="{DynamicResource AccentColorBrush}"
-                                 FontWeight="Normal"   HorizontalAlignment="Center" 
-                                 Background="{x:Null}" BorderThickness="0" SnapsToDevicePixels="False" Cursor="Hand" 
-                                 HorizontalContentAlignment="Stretch" Click="btnLogout_Click"
-                                 >
-                        <Image Source="../media/clogout.png" Height="37"/>
-                    </Button>
-                    <Label x:Name="Logout" Content="Logout" 
-                           FontSize="16" Foreground="{StaticResource WhiteColorBrush}" 
-                           VerticalAlignment="Center" FontWeight="Bold"
-                           />
                 </StackPanel>
             </Grid>
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="0">
+        <StackPanel Height="120" Grid.Column="0" Margin="0,0,0,0" Grid.Row="1" HorizontalAlignment="Stretch"
+                 Background="{DynamicResource AccentColorBrush}"  >
             <Grid>
-                <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" Orientation="Horizontal" VerticalAlignment="Stretch" Margin="-10,0,10,0">
-                    <Expander IsExpanded="True" HorizontalAlignment="Left" Width="310" ExpandDirection="Right">
-                        <Expander.Header>
-                            <TextBlock Text="Main Menu" FontSize="18" FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                                       Foreground="{DynamicResource WhiteColorBrush}"
-                                       RenderTransformOrigin=".5,.5">
-                                <TextBlock.LayoutTransform>
-                                    <RotateTransform Angle="90" />
-                                </TextBlock.LayoutTransform>
-                            </TextBlock>
-                        </Expander.Header>
-                        <StackPanel Orientation="Vertical">
-                            <Grid Height="427">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"></RowDefinition>
-                                    <RowDefinition Height="*"></RowDefinition>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="*"></RowDefinition>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="*"></RowDefinition>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="*"></RowDefinition>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Name="btnAddDrug" Foreground="{StaticResource WhiteColorBrush}" 
+                        Width="80" Height="80" Grid.Column="0" Grid.Row="0" 
+                        Style="{DynamicResource MetroCircleButtonStyle}" Click="btnAddDrug_Click">
+                    <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
+                                             Foreground="{DynamicResource WhiteColorBrush}" Kind="Pill" />
+                </Button>
+                <Label FontSize="18"
+                           Grid.Row="1" Grid.Column="0"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="#CCFFFFFF">Add Drug</Label>
 
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="50"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                               
-                                <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="32" Foreground="{DynamicResource AccentColorBrush}" 
-                                                         Grid.Row="1" Grid.Column="0" Kind="Ambulance" />
-                                <Button  Grid.Row="1" Grid.Column="1"
-                            Content="Add Supplier" FontSize="18"  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                                         Foreground="{DynamicResource AccentColorBrush}"
-                                 FontWeight="Normal" Margin="6,5,0,10"  HorizontalAlignment="Stretch" 
-                                 Background="{x:Null}" BorderThickness="0" SnapsToDevicePixels="False" Cursor="Hand" 
-                                 HorizontalContentAlignment="Stretch" Click="Button_Click_3" 
-                                 >
-                                    <Button.ContextMenu>
-                                        <ContextMenu AllowDrop="True"/>
-                                    </Button.ContextMenu>
-                                </Button>
-                                <Separator Grid.Column="1" Grid.Row="2" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
-                                
-                                <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="32" Foreground="{DynamicResource AccentColorBrush}" 
-                                                         Grid.Row="3" Grid.Column="0" Kind="Pill" />
-                                <Button Grid.Row="3" Grid.Column="1" FontWeight="Normal" Foreground="{DynamicResource AccentColorBrush}"
-                            Content="Add Drug" FontSize="18"   FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                                 Margin="5,5,0,10"  HorizontalAlignment="Stretch" Background="{x:Null}" BorderThickness="0" 
-                                 SnapsToDevicePixels="False" Cursor="Hand" HorizontalContentAlignment="Stretch" Click="btnAddDrug"
-                                 RenderTransformOrigin="0.141,0.596" 
-                                 >
-                                    <Button.ContextMenu>
-                                        <ContextMenu AllowDrop="True"/>
-                                    </Button.ContextMenu>
-                                </Button>
-                                <Separator Grid.Column="1" Grid.Row="4" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                <Button Name="btnAddSupplier" Foreground="{StaticResource WhiteColorBrush}" 
+                        Width="80" Height="80" Grid.Column="1" Grid.Row="0" 
+                        Style="{DynamicResource MetroCircleButtonStyle}" Click="btnAddSupplier_Click">
+                    <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
+                                             Foreground="{DynamicResource WhiteColorBrush}" Kind="Ambulance" />
+                </Button>
+                <Label FontSize="18"
+                           Grid.Row="1" Grid.Column="1"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="#CCFFFFFF">Add Supplier</Label>
 
-                                <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="32" Foreground="{DynamicResource AccentColorBrush}" 
-                                                         Grid.Row="5" Grid.Column="0" Kind="Binoculars" />
-                                <Button Grid.Row="5" Grid.Column="1" HorizontalContentAlignment="Stretch" FontWeight="Normal"
-                                        Foreground="{DynamicResource AccentColorBrush}" 
-                                Content="View Drug" FontSize="18"  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Margin="5,5,0,10"
-                        	Background="{x:Null}" BorderThickness="0" Cursor="Hand" Click="Button_Click_2"/>
-                                <Separator Grid.Column="1" Grid.Row="6" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                <Button Name="btnViewDrug" Foreground="{StaticResource WhiteColorBrush}" 
+                        Width="80" Height="80" Grid.Column="2" Grid.Row="0" 
+                        Style="{DynamicResource MetroCircleButtonStyle}" Click="btnViewDrug_Click">
+                    <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
+                                             Foreground="{DynamicResource WhiteColorBrush}" Kind="Binoculars" />
+                </Button>
+                <Label FontSize="18"
+                           Grid.Row="1" Grid.Column="2"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="#CCFFFFFF">Existing Drugs</Label>
 
-                                <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="32" Foreground="{DynamicResource AccentColorBrush}" 
-                                                         Grid.Row="7" Grid.Column="0" Kind="Stackoverflow" />
-                                <Button Grid.Row="7" Grid.Column="1" Name="Dispense" HorizontalContentAlignment="Stretch"
-                                        Content="Dispense Drug" FontSize="18"  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Foreground="{DynamicResource AccentColorBrush}"
-                               Background="{x:Null}" BorderThickness="0" FontWeight="Normal" Margin="5,5,0,10"  HorizontalAlignment="Stretch" Cursor="Hand" Click="Dispense_Click">
-                                </Button>
-                                <Separator Grid.Column="1" Grid.Row="8" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                <Button Name="btnDispenseDrug" Foreground="{StaticResource WhiteColorBrush}" 
+                        Width="80" Height="80" Grid.Column="3" Grid.Row="0" 
+                        Style="{DynamicResource MetroCircleButtonStyle}" Click="btnDispenseDrug_Click">
+                    <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
+                                             Foreground="{DynamicResource WhiteColorBrush}" Kind="Stackoverflow" />
+                </Button>
+                <Label FontSize="18"
+                           Grid.Row="1" Grid.Column="3"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="#CCFFFFFF">Dispense Drug</Label>
 
-                                <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="32" Foreground="{DynamicResource AccentColorBrush}" 
-                                                         Grid.Row="9" Grid.Column="0" Kind="Receipt" />
-                                <Button Grid.Row="9" Grid.Column="1" Name="reporting" HorizontalContentAlignment="Stretch"
-                                        Content="View Report" FontSize="18" FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Foreground="{DynamicResource AccentColorBrush}"
-                               Background="{x:Null}" BorderThickness="0" FontWeight="Normal" Margin="5,5,0,10"  HorizontalAlignment="Stretch" Cursor="Hand" Click="reporting_Click" >
-                                </Button>
-                            </Grid>
-                        </StackPanel>
-                    </Expander>
+                <Button Name="btnViewReport" Foreground="{StaticResource WhiteColorBrush}" 
+                        Width="80" Height="80" Grid.Column="4" Grid.Row="0" 
+                        Style="{DynamicResource MetroCircleButtonStyle}" Click="btnViewReport_Click">
+                    <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
+                                             Foreground="{DynamicResource WhiteColorBrush}" Kind="Receipt" />
+                </Button>
+                <Label FontSize="18"
+                           Grid.Row="1" Grid.Column="4"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="#CCFFFFFF">Report</Label>
+
+                <Button Width="80" Height="80" Foreground="{StaticResource WhiteColorBrush}" Name="btnLogout"
+                        Click="btnLogout_Click"
+                        Grid.Column="5" Grid.Row="0" Style="{DynamicResource MetroCircleButtonStyle}">
+                    <Rectangle Width="40" Height="40" 
+                               Fill="{Binding Path=Foreground,
+                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_user}"></VisualBrush>
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </Button>
+                <Label Name="lbLoginLogout" FontSize="18"
+                           Grid.Row="1" Grid.Column="5"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="#CCFFFFFF">Log Out</Label>
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <Grid>
+                <StackPanel Grid.Row="0" HorizontalAlignment="Center" Orientation="Horizontal"
+                            VerticalAlignment="Stretch" Margin="-10,0,10,0">
                     <controls:TransitioningContentControl Margin="40,0,0,0" Transition="Down" 
-                                                         
                                                   HorizontalAlignment="Center" VerticalAlignment="Top" 
                                                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                                               x:Name="MainArea"></controls:TransitioningContentControl>

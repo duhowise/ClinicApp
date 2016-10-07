@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace ClinicApp.Nurse
 {
@@ -14,24 +15,38 @@ namespace ClinicApp.Nurse
             InitializeComponent();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            e.Cancel = true;
+            MessageDialogResult result = await this.ShowMessageAsync("Exit Application", "Do You really want to Exit?", MessageDialogStyle.AffirmativeAndNegative);
+            if (result == MessageDialogResult.Negative)
+            {
+                e.Cancel = false;
+
+            }
+            else
+            {
+                CurrentUserLoggedInData.ClearUserData();
+                new MainWindow().Show();
+                Hide();
+            }
 
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            LoginUserName.Content = CurrentUserLoggedInData.FirstName + " " + CurrentUserLoggedInData.LastName;
         }
 
-        private void Window_MouseEnter(object sender, MouseEventArgs e)
-        {
-
-        }
 
         private void NewPatient_Click(object sender, RoutedEventArgs e)
         {
             new NurAddPatient().ShowDialog();
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

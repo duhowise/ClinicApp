@@ -227,6 +227,9 @@
     <Compile Include="Doctor\DocContextMenu.xaml.cs">
       <DependentUpon>DocContextMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Doctor\DocPatientDetailConsultation.xaml.cs">
+      <DependentUpon>DocPatientDetailConsultation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Doctor\DocPatientPrescription.xaml.cs">
       <DependentUpon>DocPatientPrescription.xaml</DependentUpon>
     </Compile>
@@ -397,6 +400,10 @@
     <Page Include="Doctor\DocContextMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Doctor\DocPatientDetailConsultation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Doctor\DocPatientPrescription.xaml">
       <Generator>MSBuild:Compile</Generator>

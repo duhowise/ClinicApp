@@ -149,7 +149,7 @@ namespace ClinicApp.Pharmacist
             PatientLastVisited.Content = $"Consultation Date: {consultation.Date.ToShortDateString()}";
             tbDiagnosis.Text = $"{consultation.Diagnosis}";
             tbLabFindings.Text = $"{consultation.Symptoms}";
-            tbDispensary.Text = $"{consultation.Prescription}";
+            
             tbPrescription.Text = $"{consultation.Prescription}";
             DispenseProvidedId.Text = patient.ProvidedId;
         }

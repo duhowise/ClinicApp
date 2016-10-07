@@ -62,7 +62,8 @@ namespace ClinicApp.Doctor
         {
             this.DataContext = new MainContentView(NavigateToView);
             navigator = new MainContentView(NavigateToView);
-            navigator.NavigateToPharPatientDetailDispensaryControl();
+            //navigator.NavigateToPharPatientDetailDispensaryControl();
+            navigator.NavigateToDocPatientDetailConsultationControl();
         }
     }
 }

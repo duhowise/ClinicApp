@@ -44,7 +44,7 @@ namespace ClinicApp.Nurse
             patient=new PatientRepository().GetPatient(PatientFirstName.Text, PatientLastName.Text);
         }
         
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private async void SaveConsultation_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(PatientTemperature.Text)||string.IsNullOrWhiteSpace(PatientBloodPressure.Text)||
                 string.IsNullOrWhiteSpace(PatientSymptoms.Text)||string.IsNullOrWhiteSpace(PatientComplaint.Text)||
@@ -77,5 +77,19 @@ namespace ClinicApp.Nurse
                    Util.Clear(this);
             }
         }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var response = MessageBox.Show("Do you really want to close the window?", "Exit",
+                 MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            if (response == MessageBoxResult.Yes)
+                Hide();
+        }
+
     }
 }
