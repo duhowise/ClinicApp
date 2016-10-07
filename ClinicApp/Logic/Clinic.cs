@@ -22,11 +22,10 @@ namespace ClinicApp.Logic
                     if (connection.State == ConnectionState.Closed)
                     {
                         connection.Open();
-                        string query = "select * from Users where username='" + @username + "' and password='" +
-                                       @password + "'";
+                        string query = "select * from Users where username=@username and password=@password";
                         var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
-                        command.Parameters.AddWithValue(@username, username);
-                        command.Parameters.AddWithValue(@password, password);
+                        command.Parameters.AddWithValue("username", username);
+                        command.Parameters.AddWithValue("password", password);
                         var reader = command.ExecuteReader();
                         while (reader.Read())
                         {

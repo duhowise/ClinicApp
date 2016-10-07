@@ -54,7 +54,7 @@ namespace ClinicApp.Pharmacist
         {
             int a, b;
             ViewPatient.cMenu = 0;
-            LoginUserName.Content = CurrentUserLoggedInData.FirstName + " " + CurrentUserLoggedInData.LastName;
+            LoginUserName.Content =MainWindow.FullName;
             //lbTotalDrugs.Content = a = drug.TotalDrugsInStock("Drugs");
             //lbDispensedDrugs.Content = b = drug.TotalDrugsInStock("PrescribedDrugs");
             //lbAvailableDrugs.Content = a - b;

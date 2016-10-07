@@ -19,7 +19,7 @@ namespace ClinicApp.Doctor
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             int a, b;
-            LoginUserName.Text = CurrentUserLoggedInData.FirstName + " " + CurrentUserLoggedInData.LastName;
+            LoginUserName.Text = MainWindow.FullName;
             lbTotalDrugs.Content = a = new DrugRepository().TotalDrugsQuantity("Drugs");
             //lbRegisteredPatients.Content = p.TotalRegisteredPatient();
                 b = new DrugRepository().TotalDrugsQuantity("DispensedDrugs");
