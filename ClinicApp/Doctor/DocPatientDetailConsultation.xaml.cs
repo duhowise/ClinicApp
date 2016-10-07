@@ -24,5 +24,18 @@ namespace ClinicApp.Doctor
         {
             InitializeComponent();
         }
+
+        private void btnEditDiagnosis_Click(object sender, RoutedEventArgs e)
+        {
+            tbDiagnosis.IsEnabled = true;
+        }
+
+        private void btnClearDiagnosis_Click(object sender, RoutedEventArgs e)
+        {
+            var response = MessageBox.Show("please be careful, you might lose data. Do you really want to clear diagnosis?", "Exit",
+                MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            if (response == MessageBoxResult.Yes)
+                tbDiagnosis.Clear();
+        }
     }
 }
