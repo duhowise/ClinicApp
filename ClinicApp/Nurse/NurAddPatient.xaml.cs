@@ -66,7 +66,7 @@ namespace ClinicApp.Nurse
                 new PatientRepository().AddNewConsultation(new Consultation
                 {
                     BloodPressure = PatientBloodPressure.Text,
-                    Complaint = PatientComplaint.Text,
+                    Signs = PatientComplaint.Text,
                     Diagnosis =  PatientDiagnosis.Text,
                     PatientId = patient.Id,
                     Prescription = PatientPrescirption.Text,
