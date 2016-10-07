@@ -110,7 +110,7 @@ namespace ClinicApp.Data
             {
                 if (connection.State == Closed)
                     connection.Open();
-                return connection.Query<int>($"select dbo.RemainingDrugs('{drug.brandName}')").First();
+                return connection.Query<int>($"select dbo.RemainingDrugs('{drug.BrandName}')").First();
 
             }
         }
@@ -125,7 +125,7 @@ namespace ClinicApp.Data
                     var query = @"INSERT INTO dbo.Drugs(GenericName,brandName,Box,NumberPackInBox,Quantity,ExpiryDate,NumberinPack,DosageFormId,DrugFormId,CategoryId,SupplierId) Values(@gen,@bn,@box,@npbx,@Qty,@exp,@npk,@df,@drf,@cid,@sid)";
                     var command = new SqlCommand(query, connection);
                     command.Parameters.Add("gen", SqlDbType.NVarChar).Value = drugs.GenericName;
-                    command.Parameters.Add("bn", SqlDbType.NVarChar).Value = drugs.brandName;
+                    command.Parameters.Add("bn", SqlDbType.NVarChar).Value = drugs.BrandName;
                     command.Parameters.Add("box", SqlDbType.Int).Value = drugs.Box;
                     command.Parameters.Add("npbx", SqlDbType.Int).Value = drugs.NumberPackInBox;
                     command.Parameters.Add("Qty", SqlDbType.Int).Value = drugs.Quantity;

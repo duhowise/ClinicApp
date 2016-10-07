@@ -1,9 +1,11 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using ClinicApp.Data;
 using ClinicApp.Doctor;
 using ClinicApp.Logic;
 using ClinicApp.Nurse;
 using ClinicApp.Pharmacist;
+using ClinicModel;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 
@@ -14,11 +16,11 @@ namespace ClinicApp
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-
+        User loggedinUser=new User();
         CMB cmb = new CMB();
         public static int Id;
         public static string fullname = null;
-        private int valid = 0;
+   
         public MainWindow()
         {
             InitializeComponent();
@@ -40,12 +42,14 @@ namespace ClinicApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            
             LogUserIn();
+
         }
 
         public async void LogUserIn()
         {
-            if (string.IsNullOrEmpty(userName.Text) || string.IsNullOrEmpty(Password.Password))
+            if (string.IsNullOrWhiteSpace(userName.Text) || string.IsNullOrWhiteSpace(Password.Password))
             {
                 await this.ShowMessageAsync("Sorry 'bou that !", "All details are required");
                 Password.Password = "";
@@ -54,29 +58,31 @@ namespace ClinicApp
             }
             else
             {
-                valid = Clinic.VerifyUser(userName.Text, Password.Password);
-                CurrentUserLoggedInData userData = new CurrentUserLoggedInData();
-                if (valid == 1)
+                var user = new User();
+                user.UserName = userName.Text;
+                user.Password = Password.Password;
+                var valid=new UserRepository().VerifyUser(user);
+                loggedinUser = new UserRepository().Login(user);
+                if (valid==1)
                 {
-                    ID = Clinic.USerType(userName.Text, Password.Password);
-
-                    FullName = Clinic.Username(userName.Text, Password.Password);
-                    PharAdmin pharmacist = new PharAdmin();
-                    DocAdmin doctor = new DocAdmin();
-                    NurAdmin nurse=new NurAdmin();
-                    if (Id == 1)
-                    { doctor.Show(); }
-                    else if (Id == 2)
+                    ID =loggedinUser.Id;
+                    FullName = loggedinUser.FirstName+" "+loggedinUser.LastName.ToUpper();
+                    if (ID == 1)
                     {
-                       nurse.Show(); 
+                        DocAdmin doctor = new DocAdmin();
+                        doctor.Show();
                     }
-                    else if (Id==3)
+                    else if (ID == 2)
                     {
+                        NurAdmin nurse = new NurAdmin();
+                        nurse.Show(); 
+                    }
+                    else if (ID == 3)
+                    {
+                        PharAdmin pharmacist = new PharAdmin();
                         pharmacist.Show();
                     }
-                  
-
-                    Hide();
+                  Hide();
                     //System.Windows.MessageBox.Show("Login Sucessful", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     Password.Password = "";

@@ -45,7 +45,7 @@ namespace ClinicApp
                 var cmd = new CMB();
                 cmd.Message = "";
                 updateDrugs.Show();
-                updateDrugs.DrugName.Text = result.brandName;
+                updateDrugs.DrugName.Text = result.BrandName;
 
                 Pharmacy.OldBoxValue = Convert.ToInt32(result.NumberPackInBox);
                 Pharmacy.OldNumberInBoxValue = Convert.ToInt32(result.NumberPackInBox);

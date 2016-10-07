@@ -82,8 +82,8 @@ namespace ClinicApp.Data
                     command.Parameters.Add("Id", SqlDbType.Int).Value = consultation.PatientId;
                     command.Parameters.Add("temp", SqlDbType.NVarChar).Value = consultation.Temperature;
                     command.Parameters.Add("blood", SqlDbType.NVarChar).Value = consultation.BloodPressure;
-                    command.Parameters.Add("comp", SqlDbType.NVarChar).Value = consultation.Complaint;
-                    command.Parameters.Add("symp", SqlDbType.NVarChar).Value = consultation.Symptoms;
+                    command.Parameters.Add("comp", SqlDbType.NVarChar).Value = consultation.Symptoms;
+                    command.Parameters.Add("symp", SqlDbType.NVarChar).Value = consultation.Signs;
                     command.Parameters.Add("diag", SqlDbType.NVarChar).Value = consultation.Diagnosis;
                     command.Parameters.Add("pres", SqlDbType.NVarChar).Value = consultation.Prescription;
                     command.ExecuteNonQuery();
