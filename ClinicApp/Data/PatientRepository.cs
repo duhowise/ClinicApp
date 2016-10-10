@@ -28,7 +28,7 @@ namespace ClinicApp.Data
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                return connection.Query<Patient>($"select * from Patient where Provided={id}").SingleOrDefault();
+                return connection.Query<Patient>($"select * from Patient where Provided=@Id",id).SingleOrDefault();
 
             }
         }
@@ -39,7 +39,6 @@ namespace ClinicApp.Data
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
                 return connection.Query<Patient>($"select * from Patient where FirstName={firstname} and LastName={lastName}" ).SingleOrDefault();
-
             }
         }
         public void AddNewPatient(Patient patient)
@@ -76,18 +75,10 @@ namespace ClinicApp.Data
                 {
                     if (connection.State == ConnectionState.Closed)
                         connection.Open();
-                    var query = @"INSERT INTO dbo.Consultation(PatientId,Temperature,BloodPressure,Complaint,Symptoms,Diagnosis,Prescription)values
-                    (@Id,@temp,@blood,@comp,@symp,@diag,@pres)";
-                    var command = new SqlCommand(query, connection);
-                    command.Parameters.Add("Id", SqlDbType.Int).Value = consultation.PatientId;
-                    command.Parameters.Add("temp", SqlDbType.NVarChar).Value = consultation.Temperature;
-                    command.Parameters.Add("blood", SqlDbType.NVarChar).Value = consultation.BloodPressure;
-                    command.Parameters.Add("comp", SqlDbType.NVarChar).Value = consultation.Symptoms;
-                    command.Parameters.Add("symp", SqlDbType.NVarChar).Value = consultation.Signs;
-                    command.Parameters.Add("diag", SqlDbType.NVarChar).Value = consultation.Diagnosis;
-                    command.Parameters.Add("pres", SqlDbType.NVarChar).Value = consultation.Prescription;
-                    command.ExecuteNonQuery();
-
+                    connection.Query(@"INSERT INTO dbo.Consultation(PatientId,Temperature,Pulse,Weight,Respiration,HeartRate,
+                                     BloodPressure,Symptoms,Signs,Diagnosis,IsSensitive,Prescription,Investigation,userId)values
+                                    (@PatientId,@Temperature,@Pulse,@Weight,@Respiration,@HeartRate,@BloodPressure,@Symptoms,@Signs
+                                    ,@Diagnosis,@IsSensitive,@Prescription,@Investigation,@UserId)", consultation);  
                 }
             }
             catch (Exception exception)
@@ -113,7 +104,7 @@ namespace ClinicApp.Data
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                return connection.Query<DispensedDrug>($"select * from Patient where id={patient.Id}");
+                return connection.Query<DispensedDrug>($"select * from DispensedDrugs where id={patient.Id}");
 
             }
 

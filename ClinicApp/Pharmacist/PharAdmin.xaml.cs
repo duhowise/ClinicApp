@@ -14,9 +14,7 @@ namespace ClinicApp.Pharmacist
     public partial class PharAdmin : MetroWindow
     {
        
-        //PharAddSupplier ps = new PharAddSupplier();
-        //PharAddDrug pd = new PharAddDrug();
-       //Drug drug = new Drug();
+        
         private MainContentView navigator;
 
 
@@ -39,10 +37,7 @@ namespace ClinicApp.Pharmacist
             MainArea.Content = view;
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+     
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -58,8 +53,6 @@ namespace ClinicApp.Pharmacist
             //lbTotalDrugs.Content = a = drug.TotalDrugsInStock("Drugs");
             //lbDispensedDrugs.Content = b = drug.TotalDrugsInStock("PrescribedDrugs");
             //lbAvailableDrugs.Content = a - b;
-
-
             //frequentdataGrid.ItemsSource = Drug.LoadFrequentDrugs().DefaultView;
         }
 
@@ -70,18 +63,12 @@ namespace ClinicApp.Pharmacist
         //}
 
 
-        private void Window_MouseEnter(object sender, MouseEventArgs e)
-        {
-            int a, b;
-            //lbTotalDrugs.Content = a = drug.TotalDrugsInStock("Drugs");
-           // lbDispensedDrugs.Content = b = drug.TotalDrugsInStock("PrescribedDrugs");
-            //lbAvailableDrugs.Content = a - b;
-        }
+     
 
         private async void Window_Closing(object sender, CancelEventArgs e)
         {
             e.Cancel = true;
-            MessageDialogResult result = await this.ShowMessageAsync("Exit Application", "Do You really want to Exit?", MessageDialogStyle.AffirmativeAndNegative);
+            MessageDialogResult result = await this.ShowMessageAsync("Log Out", "This action will end the current session \n Do you wish to proceed ?", MessageDialogStyle.AffirmativeAndNegative);
             if (result == MessageDialogResult.Negative)
             {
                 e.Cancel = false;
@@ -89,7 +76,6 @@ namespace ClinicApp.Pharmacist
             }
             else
             {
-                CurrentUserLoggedInData.ClearUserData();
                 new MainWindow().Show();
                 Hide();
             }
@@ -114,7 +100,7 @@ namespace ClinicApp.Pharmacist
 
         private void btnViewReport_Click(object sender, RoutedEventArgs e)
         {
-            stockTakingReportOne repotOne = new stockTakingReportOne();
+            //stockTakingReportOne repotOne = new stockTakingReportOne();
         }
 
         private void btnDispenseDrug_Click(object sender, RoutedEventArgs e)

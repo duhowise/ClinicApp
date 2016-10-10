@@ -23,6 +23,8 @@ namespace ClinicApp.Pharmacist
         public PharPatientDetailsDispensary()
         {
             InitializeComponent();
+            DispenseDrugName.FilterMode = AutoCompleteFilterMode.StartsWithOrdinal;
+            DispenseDrugName.ItemsSource = new DrugRepository().DrugAutoComplete();
             _remainingDrugsBackgroundWorker.WorkerSupportsCancellation = false;
             _remainingDrugsBackgroundWorker.WorkerReportsProgress = true;
             _remainingDrugsBackgroundWorker.WorkerSupportsCancellation = true;
@@ -54,6 +56,7 @@ namespace ClinicApp.Pharmacist
         private void _remainingDrugsBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             e.Result = new DrugRepository().GetRemainingDrugs(new Drug { BrandName = drugName });
+           
 
         }
 
@@ -62,7 +65,7 @@ namespace ClinicApp.Pharmacist
             int num;
             if (!string.IsNullOrEmpty(DispenseDrugQuantity.Text))
             {
-                if (new DrugRepository().GetRemainingDrugs(new Drug { BrandName = DispenseDrugName.SearchText }) > Convert.ToInt32(DispenseDrugQuantity.Text))
+                if (new DrugRepository().GetRemainingDrugs(new Drug { BrandName = DispenseDrugName.Text }) > Convert.ToInt32(DispenseDrugQuantity.Text))
                     LbRemainingDrugs.Text = Convert.ToInt32(new DrugRepository().GetRemainingDrugs(new Drug { BrandName = DispenseDrugName.SearchText })) - Convert.ToInt32(DispenseDrugQuantity.Text) + "";
                 else
                 {
@@ -76,7 +79,7 @@ namespace ClinicApp.Pharmacist
         private void DispenseDrugName_LostFocus(object sender, RoutedEventArgs e)
         {
             //compute availables here
-            if (!string.IsNullOrEmpty(this.DispenseDrugName.SearchText))
+            if (!string.IsNullOrEmpty(this.DispenseDrugName.Text))
             {
                 LbRemainingDrugs.Text = new DrugRepository().GetRemainingDrugs(new Drug { BrandName = DispenseDrugName.SearchText }).ToString();
             }
@@ -84,7 +87,7 @@ namespace ClinicApp.Pharmacist
 
         private void DispenseDrugName_SearchTextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(this.DispenseDrugName.SearchText))
+            if (!string.IsNullOrEmpty(this.DispenseDrugName.Text))
             {
                 drugName = DispenseDrugName.SearchText;
                 if (!_remainingDrugsBackgroundWorker.IsBusy)
@@ -113,7 +116,7 @@ namespace ClinicApp.Pharmacist
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             // TODO save patinent complaint
-            if (string.IsNullOrEmpty(DispenseProvidedId.Text) || string.IsNullOrEmpty(DispenseDrugName.DisplayMemberPath) || string.IsNullOrEmpty(DispenseDrugQuantity.Text))
+            if (string.IsNullOrEmpty(DispenseProvidedId.Text) || string.IsNullOrEmpty(DispenseDrugName.Text) || string.IsNullOrEmpty(DispenseDrugQuantity.Text))
             {
                 cmb.Message = "All Fields Are Required";
                 cmb.Show();
@@ -122,10 +125,10 @@ namespace ClinicApp.Pharmacist
             else
             {
 
-                new Pharmacy().DispenseDrug(DispenseProvidedId.Text, DispenseDrugName.SearchText, DispenseDrugQuantity.Text, CurrentUserLoggedInData.Id);
+                new Pharmacy().DispenseDrug(DispenseProvidedId.Text, DispenseDrugName.SearchText, DispenseDrugQuantity.Text, MainWindow.ID);
 
                 //MessageBox.Show("DrugsOld saved Saved Successfully", "Ok", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.DispenseDrugName.SearchText = "";
+                this.DispenseDrugName.Text = "";
                 this.DispenseDrugQuantity.Text = "";
 
 
