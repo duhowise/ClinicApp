@@ -257,7 +257,6 @@
     <Compile Include="Nurse\NurAdmin.xaml.cs">
       <DependentUpon>NurAdmin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pharmacist\DrugAutoCompleteData.cs" />
     <Compile Include="Pharmacist\PharAddCategory.xaml.cs">
       <DependentUpon>PharAddCategory.xaml</DependentUpon>
     </Compile>
@@ -300,7 +299,6 @@
     <Compile Include="Pharmacist\PharUpdateDrug.xaml.cs">
       <DependentUpon>PharUpdateDrug.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pharmacist\SingleDrugData.cs" />
     <Compile Include="stockTakingReportOne.xaml.cs">
       <DependentUpon>stockTakingReportOne.xaml</DependentUpon>
     </Compile>

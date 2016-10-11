@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -12,7 +13,6 @@ namespace ClinicApp.Data
 {
     public class DrugRepository
     {
-       
         public IEnumerable<Drug> GetAllDrugs()
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
@@ -24,7 +24,16 @@ namespace ClinicApp.Data
 
         }
 
-        
+        public IEnumerable<Packaging> GetAllDrugPackaging()
+        {
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == Closed)
+                    connection.Open();
+                return connection.Query<Packaging>("select * from packaging");
+            }
+
+        }
         public IEnumerable<string> DrugAutoComplete()
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
@@ -35,6 +44,7 @@ namespace ClinicApp.Data
             }
 
         }
+       
         public IEnumerable<DrugDosageForm> GetDosageForms()
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
@@ -91,7 +101,7 @@ namespace ClinicApp.Data
             {
                 if (connection.State == Closed)
                     connection.Open();
-                return connection.Query<Drug>($"select * from Drugs where brandName={name}").SingleOrDefault();
+                return connection.Query<Drug>($"select * from Drugs where brandName='{name}'").SingleOrDefault();
 
             }
         }
@@ -122,22 +132,11 @@ namespace ClinicApp.Data
                 {
                     if (connection.State == Closed)
                         connection.Open();
-                    var query = @"INSERT INTO dbo.Drugs(GenericName,brandName,Box,NumberPackInBox,Quantity,ExpiryDate,NumberinPack,DosageFormId,DrugFormId,CategoryId,SupplierId) Values(@gen,@bn,@box,@npbx,@Qty,@exp,@npk,@df,@drf,@cid,@sid)";
-                    var command = new SqlCommand(query, connection);
-                    command.Parameters.Add("gen", SqlDbType.NVarChar).Value = drugs.GenericName;
-                    command.Parameters.Add("bn", SqlDbType.NVarChar).Value = drugs.BrandName;
-                    command.Parameters.Add("box", SqlDbType.Int).Value = drugs.Box;
-                    command.Parameters.Add("npbx", SqlDbType.Int).Value = drugs.NumberPackInBox;
-                    command.Parameters.Add("Qty", SqlDbType.Int).Value = drugs.Quantity;
-                    command.Parameters.Add("exp", SqlDbType.DateTime).Value = drugs.ExpiryDate;
-                    command.Parameters.Add("npk", SqlDbType.Int).Value = drugs.NumberinPack;
-                    command.Parameters.Add("df", SqlDbType.Int).Value = drugs.DosageFormId;
-                    command.Parameters.Add("drf", SqlDbType.Int).Value = drugs.DrugFormId;
-                    command.Parameters.Add("cid", SqlDbType.Int).Value = drugs.CategoryId;
-                    command.Parameters.Add("sid", SqlDbType.Int).Value = drugs.SupplierId;
-                    command.ExecuteNonQuery();
-
+                    connection.Query(@"INSERT INTO dbo.Drugs(GenericName,brandName,Box,NumberPackInBox,Quantity,ExpiryDate,NumberinPack,
+                    DosageFormId,DrugFormId,CategoryId,PackagingId,SupplierId)Values(@GenericName,@brandName,@Box,@NumberPackInBox,@Quantity,
+                    @ExpiryDate,@NumberinPack,@DosageFormId,@DrugFormId,@CategoryId,@PackagingId,@SupplierId)", drugs);
                 }
+                
             }
             catch (Exception exception)
             {
@@ -211,7 +210,26 @@ namespace ClinicApp.Data
             {
                 if (connection.State == Closed)
                     connection.Open();
-                return connection.Query<string>($"select * from Drugs  where  brandName={brandname}");
+                return connection.Query<string>($"select * from Drugs  where  brandName=@brandName",brandname);
+            }
+        }
+
+        public void DispenseDrug(DispensedDrug dispensedDrug)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+                {
+                    if (connection.State == Closed)
+                        connection.Open();
+                    connection.Query(@"INSERT INTO dbo.DispensedDrugs(PatientId,DrugId,Quantity,UserId)Values(@PatientId,@DrugId,@Quantity,@UserId)",dispensedDrug);
+                }
+
+            }
+            catch (Exception exception)
+            {
+
+                MessageBox.Show(exception.Message);
             }
         }
         public int TotalDrugsQuantity(string tableName)
@@ -225,4 +243,6 @@ namespace ClinicApp.Data
             }
         }
     }
+
+   
 }

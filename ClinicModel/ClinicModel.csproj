@@ -68,6 +68,7 @@
     <Compile Include="DrugDosageForm.cs" />
     <Compile Include="DrugForm.cs" />
     <Compile Include="DrugStock.cs" />
+    <Compile Include="Packaging.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />

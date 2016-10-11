@@ -43,6 +43,7 @@ namespace ClinicApp.Pharmacist
             cbDosageForm.ItemsSource = result.GetDosageForms();
             cbDrugCategory.ItemsSource = result.GetDrugCategories();
             cbDrugType.ItemsSource = result.GetDrugForms();
+            cbPackaging.ItemsSource = new DrugRepository().GetAllDrugPackaging();
 
         }
 
@@ -107,18 +108,20 @@ namespace ClinicApp.Pharmacist
                 Drug medicine=new Drug();
                 medicine.GenericName = tbGenericName.Text;
                 medicine.BrandName = tbBrandName.Text;
-                medicine.NumberPackInBox = Convert.ToInt32(tbNumberInBox.Text);
                 medicine.Box = Convert.ToInt32(tbNumberInPack.Text);
+                medicine.NumberPackInBox = Convert.ToInt32(tbNumberInBox.Text);
+                medicine.Quantity = Convert.ToInt32(tbTotalQuantity.Text);
+                medicine.ExpiryDate = tbExpiringDate.DisplayDate;
                 medicine.NumberinPack = Convert.ToInt32(tbBox.Text);
                 medicine.DosageFormId = (int)cbDosageForm.SelectedValue;
                 medicine.DrugFormId = (int)cbDrugType.SelectedValue;
                 medicine.CategoryId = (int)cbDrugCategory.SelectedValue;
-                medicine.ExpiryDate = tbExpiringDate.DisplayDate;
-                medicine.SupplierId = (int) cbSupplier.SelectedValue;
-                medicine.Quantity = Convert.ToInt32(tbTotalQuantity.Text);
+                medicine.PackagingId = (int)cbPackaging.SelectedValue;
+                medicine.SupplierId = (int)cbSupplier.SelectedValue;
                 new DrugRepository().SaveDrug(medicine);
             cmb.Message = $"succefully added {tbBrandName.Text}";
             cmb.Show();
+                Util.Clear(this);
             }
         }
         private void AddNewDosageForm_Click(object sender, RoutedEventArgs e)

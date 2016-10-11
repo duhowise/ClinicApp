@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -7,6 +9,8 @@ using System.Windows.Input;
 using ClinicApp.Data;
 using ClinicApp.Logic;
 using ClinicModel;
+using MahApps.Metro.Controls.Dialogs;
+using MaterialDesignThemes.Wpf;
 
 namespace ClinicApp.Pharmacist
 {
@@ -18,6 +22,7 @@ namespace ClinicApp.Pharmacist
         BackgroundWorker _remainingDrugsBackgroundWorker = new BackgroundWorker();
        static Patient patient=new Patient();
         Consultation consultation=new Consultation();
+        Drug  drug=new Drug();
 
         CMB cmb = new CMB();
         public PharPatientDetailsDispensary()
@@ -30,12 +35,22 @@ namespace ClinicApp.Pharmacist
             _remainingDrugsBackgroundWorker.WorkerSupportsCancellation = true;
             _remainingDrugsBackgroundWorker.DoWork += _remainingDrugsBackgroundWorker_DoWork;
             _remainingDrugsBackgroundWorker.RunWorkerCompleted += _remainingDrugsBackgroundWorker_RunWorkerCompleted;
-
-            DataContext = new DrugRepository().DrugAutoComplete();
+            DispenseDrugName.SelectionChanged += DispenseDrugName_SelectionChanged;
             patient = PharSearchPatient.Patient;
             if (patient!=null)
             {
                 consultation = new PatientRepository().PatientHistory(patient);
+            }
+        }
+
+        private void DispenseDrugName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(DispenseDrugName.Text))
+            {
+                drugName = DispenseDrugName.SelectedItem.ToString();
+                drug=new DrugRepository().GetDrugByName(drugName);
+                if (!_remainingDrugsBackgroundWorker.IsBusy)
+                    _remainingDrugsBackgroundWorker.RunWorkerAsync();
             }
         }
 
@@ -59,43 +74,32 @@ namespace ClinicApp.Pharmacist
            
 
         }
+        public void GetTotalNumber()
+        {
+            
+                LbRemainingDrugs.Text = Convert.ToInt32(new DrugRepository().GetRemainingDrugs(new Drug { BrandName =drugName })) - Convert.ToInt32(DispenseDrugQuantity.Text) + "";
+        }
 
         private void DispenseDrugQuantity_TextChanged(object sender, TextChangedEventArgs e)
         {
-            int num;
+            //int num;
             if (!string.IsNullOrEmpty(DispenseDrugQuantity.Text))
             {
-                if (new DrugRepository().GetRemainingDrugs(new Drug { BrandName = DispenseDrugName.Text }) > Convert.ToInt32(DispenseDrugQuantity.Text))
-                    LbRemainingDrugs.Text = Convert.ToInt32(new DrugRepository().GetRemainingDrugs(new Drug { BrandName = DispenseDrugName.SearchText })) - Convert.ToInt32(DispenseDrugQuantity.Text) + "";
+                if (Convert.ToInt32(LbRemainingDrugs.Text) > Convert.ToInt32(DispenseDrugQuantity.Text))
+                {
+                    GetTotalNumber();
+                }
                 else
                 {
                     cmb.Message = "DrugsOld available is less than \nthe quantity specified";
                     cmb.Show();
                 }
-
             }
+            
+            
         }
 
-        private void DispenseDrugName_LostFocus(object sender, RoutedEventArgs e)
-        {
-            //compute availables here
-            if (!string.IsNullOrEmpty(this.DispenseDrugName.Text))
-            {
-                LbRemainingDrugs.Text = new DrugRepository().GetRemainingDrugs(new Drug { BrandName = DispenseDrugName.SearchText }).ToString();
-            }
-        }
-
-        private void DispenseDrugName_SearchTextChanged(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(this.DispenseDrugName.Text))
-            {
-                drugName = DispenseDrugName.SearchText;
-                if (!_remainingDrugsBackgroundWorker.IsBusy)
-                    _remainingDrugsBackgroundWorker.RunWorkerAsync();
-            }
-        }
-
-        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+       private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
@@ -110,24 +114,31 @@ namespace ClinicApp.Pharmacist
             {
               
                 _remainingDrugsBackgroundWorker.CancelAsync();
+                Util.Clear(this);
             }
         }
 
-        private void Save_Click(object sender, RoutedEventArgs e)
+        private async void Save_Click(object sender, RoutedEventArgs e)
         {
             // TODO save patinent complaint
             if (string.IsNullOrEmpty(DispenseProvidedId.Text) || string.IsNullOrEmpty(DispenseDrugName.Text) || string.IsNullOrEmpty(DispenseDrugQuantity.Text))
             {
                 cmb.Message = "All Fields Are Required";
                 cmb.Show();
-                //MessageBox.Show("All Feild Are Required", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
+                
+                new DrugRepository().DispenseDrug(new DispensedDrug
+                {
+                  DrugId = drug.Id,
+                  PatientId = patient.Id,
+                  Quantity = Convert.ToInt32(DispenseDrugQuantity.Text),
+                  UserId = MainWindow.ID
+                });
 
-                new Pharmacy().DispenseDrug(DispenseProvidedId.Text, DispenseDrugName.SearchText, DispenseDrugQuantity.Text, MainWindow.ID);
-
-                //MessageBox.Show("DrugsOld saved Saved Successfully", "Ok", MessageBoxButton.OK, MessageBoxImage.Information);
+                cmb.Message = $"{drug.BrandName} dispensed to {patient.FirstName+" "+patient.LastName}";
+                cmb.Show();
                 this.DispenseDrugName.Text = "";
                 this.DispenseDrugQuantity.Text = "";
 
@@ -140,21 +151,34 @@ namespace ClinicApp.Pharmacist
             Regex regex = new Regex("[^a-zA-Z]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-
-       
+     
 
         private void PharPatientDetailsDispensary_OnLoaded(object sender, RoutedEventArgs e)
         {
+            if (consultation.IsSensitive == 0) { tbDiagnosis.Text = $"{consultation.Diagnosis}"; }
+            else
+            {
+                tbDiagnosis.Text = @"
+                                     *****************************
+                                     *****************************
+                                     *****************************
+                                     *****************************";
+            }
             PatientName.Content = (patient.FirstName + " " + patient.LastName).ToUpper();
             PatientDesignation.Content = $"Designation: {patient.Designation}";
             PatientTemperature.Content = $"{consultation.Temperature} °C";
             PatientBloodPressure.Content = $"Blood pressure : {consultation.BloodPressure}";
             PatientLastVisited.Content = $"Consultation Date: {consultation.Date.ToShortDateString()}";
-            tbDiagnosis.Text = $"{consultation.Diagnosis}";
-            tbLabFindings.Text = $"{consultation.Symptoms}";
             
+            tbLabFindings.Text = $"{consultation.Symptoms}";
+            PatientBloodPressure.Content = $"Blood Pressure: {consultation.BloodPressure}";
             tbPrescription.Text = $"{consultation.Prescription}";
             DispenseProvidedId.Text = patient.ProvidedId;
+            PatientPulse.Content = $"Pulse :{consultation.Pulse} bpm";
+            PatientWeight.Content = $"Weight :{consultation.Weight} kg";
+
         }
     }
+ 
+
 }

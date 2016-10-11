@@ -29,7 +29,7 @@ namespace ClinicApp.Pharmacist
             _remainingDrugsBackgroundWorker.DoWork += _remainingDrugsBackgroundWorker_DoWork;
             _remainingDrugsBackgroundWorker.RunWorkerCompleted += _remainingDrugsBackgroundWorker_RunWorkerCompleted;
 
-            DataContext = new DrugRepository().DrugAutoComplete();
+            //DataContext = new DrugRepository().DrugAutoComplete();
 
         }
 
