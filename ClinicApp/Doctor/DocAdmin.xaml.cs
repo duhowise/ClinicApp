@@ -3,6 +3,8 @@ using System.Windows;
 using System.Windows.Input;
 using ClinicApp.Data;
 using ClinicApp.Logic;
+using ClinicApp.Pharmacist;
+using MahApps.Metro;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 
@@ -21,14 +23,17 @@ namespace ClinicApp.Doctor
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             int a, b;
-            LoginUserName.Content = CurrentUserLoggedInData.FirstName + " " + CurrentUserLoggedInData.LastName;
-           
+            LoginUserName.Text = CurrentUserLoggedInData.FirstName + " " + CurrentUserLoggedInData.LastName;
+            lbTotalDrugs.Content = a = new DrugRepository().TotalDrugsQuantity("Drugs");
+            //lbRegisteredPatients.Content = p.TotalRegisteredPatient();
+                b = new DrugRepository().TotalDrugsQuantity("DispensedDrugs");
+             lbAvailableDrugs.Content = a - b;
         }
 
         private async void Window_Closing(object sender, CancelEventArgs e)
         {
             e.Cancel = true;
-            MessageDialogResult result = await this.ShowMessageAsync("Exit Application", "Do You really want to Exit?", MessageDialogStyle.AffirmativeAndNegative);
+            MessageDialogResult result = await this.ShowMessageAsync("Log Out", "This action will end the current session \n Do you wish to proceed ?", MessageDialogStyle.AffirmativeAndNegative);
             if (result == MessageDialogResult.Negative)
             {
                 e.Cancel = false;
@@ -36,7 +41,6 @@ namespace ClinicApp.Doctor
             }
             else
             {
-                CurrentUserLoggedInData.ClearUserData();
                 new MainWindow().Show();
                 Hide();
             }
@@ -44,7 +48,7 @@ namespace ClinicApp.Doctor
 
         private void btnConsultation_Click(object sender, RoutedEventArgs e)
         {
-            new PatientDetailsForm().Show();
+            new PharSearchPatient().ShowDialog();
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs routedEventArgs)

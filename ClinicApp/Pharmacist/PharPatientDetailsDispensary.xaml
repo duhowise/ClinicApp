@@ -1,269 +1,256 @@
-﻿<UserControl x:Class="ClinicApp.Pharmacist.PharPatientDetailsDispensary"
+﻿<UserControl xmlns:Controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+             x:Class="ClinicApp.Pharmacist.PharPatientDetailsDispensary"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:ClinicApp.Pharmacist"
-             mc:Ignorable="d"    
+             mc:Ignorable="d"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
-             xmlns:logic="clr-namespace:ClinicApp.Logic"
-             Loaded="PharPatientDetailsDispensary_OnLoaded" Height="664" Width="1226">
-    <UserControl.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="16"></Setter>
-        </Style>
+             Loaded="PharPatientDetailsDispensary_OnLoaded" Height="682.043" Width="1226">
+    <Grid Height="664" VerticalAlignment="Top" HorizontalAlignment="Right" Width="1226">
 
-        <Style x:Key="AutoCompleteStyle" TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="Segoe UI"></Setter>
-            <Setter Property="FontSize" Value="13.333"></Setter>
-            <Setter Property="Foreground" Value="#FF0A0A0A"></Setter>
-            <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        </Style>
-        <DataTemplate x:Key="DrugsAutoComplete" DataType="local:SingleDrugData">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding DrugName}" Style="{StaticResource AutoCompleteStyle}"></TextBlock>
-            </StackPanel>
-        </DataTemplate>
-        <logic:DrugsAutoCompleteModel x:Key="DrugModel"></logic:DrugsAutoCompleteModel>
-    </UserControl.Resources>
-    <Grid DataContext="{StaticResource DrugModel}" Height="664" VerticalAlignment="Top" HorizontalAlignment="Right" Width="1226">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <ScrollViewer CanContentScroll="True" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch">
-            <WrapPanel ItemWidth="800" Margin="0 0 0 0">
-                <materialDesign:Card  Margin="4 4 0 0"  Background="{DynamicResource MaterialDesignBackground}">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
 
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Label x:Name="PatientName" FontWeight="Bold" Grid.Row="0" Content="Patient name" HorizontalAlignment="Left"
-                           Width="324" FontSize="26" Foreground="{DynamicResource AccentColorBrush}" Margin="205,2,0,0"/>
-                        <DatePicker x:Name="DatePicker" TabIndex="9"
-                                    Grid.Column="0"  Grid.Row="0"
+        <WrapPanel ItemWidth="800" Margin="0 0 0 0" Height="698"  Grid.Row="0" Grid.Column="0">
+            <materialDesign:Card Margin="10 4 0 0" Background="{DynamicResource MaterialDesignBackground}" Height="304">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label x:Name="PatientName" FontWeight="Bold" Grid.Row="0" Content="Patient name"
+                               HorizontalAlignment="Left"
+                               Width="324" FontSize="26" Foreground="{DynamicResource AccentColorBrush}"
+                               Margin="205,2,0,0" />
+                    <DatePicker x:Name="DatePicker" TabIndex="9"
+                                    Grid.Column="0" Grid.Row="0"
                                     Margin="0,10,10,0"
                                     Width="250"
                                     Height="35"
                                     HorizontalAlignment="Right"
-                                    controls:TextBoxHelper.IsWaitingForData="True"
-                                    controls:TextBoxHelper.ButtonContent=""
-                                    controls:TextBoxHelper.ButtonFontFamily="wingdings"
                                     BorderBrush="{DynamicResource PrimaryColorBrush}"
                                     BorderThickness="1"
                                     Foreground="{DynamicResource PrimaryColorBrush}" FontSize="16" />
 
-                        <Image Grid.Row="1" x:Name="PatientImage" Width="120" Height="120"
-                          Source="../media/User.png" Grid.Column="0" HorizontalAlignment="Left" />
-                        <StackPanel Grid.Column="0" Margin="130,0,0,10" Grid.Row="1">
-                            <Label Content="Basic information" HorizontalAlignment="Left"
-                           FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
-                            <Separator Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
-                            <Label Content="Designation : student" HorizontalAlignment="Left" x:Name="PatientDesignation"
-                            FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
-                            <Label Content="Temperature : 30 degrees Celsius" HorizontalAlignment="Left" x:Name="PatientTemperature"
-                            FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
-                            <Label Content="Blood pressure : 120/80 mm Hg" HorizontalAlignment="Left" x:Name="PatientBloodPressure"
-                            FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
-                            <Label Content="Pulse : 120 bpm" HorizontalAlignment="Left" x:Name="PatientPulse"
-                            FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
-                            <Label Content="Weight : 69 kg" HorizontalAlignment="Left" x:Name="PatientWeight"
-                            FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
-                            <Label Content="Date : 12/12/02" HorizontalAlignment="Left" x:Name="PatientLastVisited"
-                            FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
-                        </StackPanel>
-                    </Grid>
-                </materialDesign:Card>
-                <materialDesign:Card Margin="4 4 0 0"  Background="{DynamicResource MaterialDesignBackground}">
+                    <Image Grid.Row="1" x:Name="PatientImage"
+                              Margin="10" Width="120" Height="120"
+                               Source="../media/User.png" Grid.Column="0" HorizontalAlignment="Left" />
+                    <StackPanel Grid.Column="0" Margin="140,0,0,10" Grid.Row="1">
+                        <Label Content="Basic information" HorizontalAlignment="Left"
+                                   FontSize="14" Foreground="{DynamicResource AccentColorBrush}" />
+                        <Separator Height="2" Style="{StaticResource MaterialDesignDarkSeparator}" />
+                        <Label Content="Designation : N/A" HorizontalAlignment="Left"
+                                   x:Name="PatientDesignation"
+                                   FontSize="14" Foreground="{DynamicResource AccentColorBrush}" />
+                        <Label Content="Temperature : N/A" HorizontalAlignment="Left"
+                                   x:Name="PatientTemperature"
+                                   FontSize="14" Foreground="{DynamicResource AccentColorBrush}" />
+                        <Label Content="Blood pressure : N/A" HorizontalAlignment="Left"
+                                   x:Name="PatientBloodPressure"
+                                   FontSize="14" Foreground="{DynamicResource AccentColorBrush}" />
+                        <Label Content="Pulse : N/A" HorizontalAlignment="Left" x:Name="PatientPulse"
+                                   FontSize="14" Foreground="{DynamicResource AccentColorBrush}" />
+                        <Label Content="Weight : N/A" HorizontalAlignment="Left" x:Name="PatientWeight"
+                                   FontSize="14" Foreground="{DynamicResource AccentColorBrush}" />
+                        <Label Content="Date : 12/12/02" HorizontalAlignment="Left" x:Name="PatientLastVisited"
+                                   FontSize="14" Foreground="{DynamicResource AccentColorBrush}" />
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+        </WrapPanel>
+        <ScrollViewer CanContentScroll="True"  Grid.Column="0" HorizontalAlignment="Stretch" Margin="0,0,15,0"
+                   VerticalAlignment="Stretch" VerticalContentAlignment="Stretch"  Grid.Row="1">
+            <WrapPanel ItemWidth="800" Margin="0 0 0 0">
+                <materialDesign:Card Margin="10 4 0 0" Background="{DynamicResource MaterialDesignBackground}"
+                                     >
                     <StackPanel>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="120"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="120" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <Label Content="Diagnosis" Grid.Row="0" Grid.Column="0" Height="30" HorizontalAlignment="Left"
-                           Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}"/>
-                            <TextBlock x:Name="tbDiagnosis"  
-                                  TextWrapping="Wrap" Width="500"
-                                   Grid.Row="0" Grid.Column="1" Margin="5,1,0,10" HorizontalAlignment="Left" 
-                                   Text="textblock showing Diagnosis it is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing"
-                            FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
-                            <Separator Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                            <Label Content="Diagnosis" Grid.Row="0" Grid.Column="0" Height="30"
+                                   HorizontalAlignment="Left"
+                                   Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}" />
+                            <TextBlock x:Name="tbDiagnosis"
+                                       TextWrapping="Wrap"
+                                       Grid.Row="0" Grid.Column="1" Margin="5,1,155,10"
+                                       Text="textblock showing Diagnosis it is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing"
+                                       FontSize="14" Foreground="{DynamicResource AccentColorBrush}" />
+                            <Separator Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Height="2"
+                                       Style="{StaticResource MaterialDesignDarkSeparator}" />
 
-                            <Label Content="Lab Findings" Grid.Row="2" Grid.Column="0" Height="30" HorizontalAlignment="Left"
-                           Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}"/>
-                            <TextBlock Name="tbLabFindings" TextWrapping="Wrap" Width="500"
-                                   Grid.Row="2" Grid.Column="1" Margin="5,1,1,1" HorizontalAlignment="Left" 
-                                   Text="textblock showing Lab Findings Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic"
-                            FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
-                            <Separator Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}" HorizontalAlignment="Right" Width="800" Margin="0,2,0,0" VerticalAlignment="Top"/>
-                            <Separator Grid.Row="5" Grid.ColumnSpan="2" Grid.Column="0" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
-                            <Label Content="Prescription" Grid.Row="6" Grid.Column="0" Height="30" HorizontalAlignment="Left"
-                           Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}"/>
-                            <TextBlock Width="500" Name="tbPrescription" Grid.Row="6" Grid.Column="1" Margin="5,1,1,1" HorizontalAlignment="Left" 
-                                  TextWrapping="Wrap" 
-                                   Text="textblock showing prescription The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
-                            FontSize="14" Foreground="{DynamicResource AccentColorBrush}"/>
+                            <Label Content="Lab Findings" Grid.Row="2" Grid.Column="0" Height="30"
+                                   HorizontalAlignment="Left"
+                                   Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}" />
+                            <TextBlock Name="tbLabFindings" TextWrapping="Wrap"
+                                       Grid.Row="2" Grid.Column="1" Margin="5,1,155,1"
+                                       Text="textblock showing Lab Findings Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic"
+                                       FontSize="14" Foreground="{DynamicResource AccentColorBrush}" />
+                            <Separator Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0" Height="2"
+                                       Style="{StaticResource MaterialDesignDarkSeparator}" HorizontalAlignment="Right"
+                                       Width="800" Margin="0,2,0,0" VerticalAlignment="Top" />
+                            <Separator Grid.Row="5" Grid.ColumnSpan="2" Grid.Column="0" Height="2"
+                                       Style="{StaticResource MaterialDesignDarkSeparator}" />
+                            <Label Content="Prescription" Grid.Row="6" Grid.Column="0" Height="30"
+                                   HorizontalAlignment="Left"
+                                   Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}" />
+                            <TextBlock Name="tbPrescription" Grid.Row="6" Grid.Column="1" Margin="5,1,155,1"
+                                       TextWrapping="Wrap"
+                                       Text="textblock showing prescription The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
+                                       FontSize="14" Foreground="{DynamicResource AccentColorBrush}" />
+                            
                         </Grid>
                     </StackPanel>
                 </materialDesign:Card>
             </WrapPanel>
         </ScrollViewer>
-        <WrapPanel Grid.Column="1" ItemWidth="380" HorizontalAlignment="Stretch" Grid.Row="0">
+
+
+        <WrapPanel Grid.Column="1" ItemWidth="380" Grid.RowSpan="2" HorizontalAlignment="Stretch" Grid.Row="0">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <materialDesign:Card Margin="0 4 0 0" Padding="20"
-                                 Background="{DynamicResource MaterialDesignBackground}">
+                <materialDesign:Card Margin="0,4,0,0" Padding="20" Grid.RowSpan="2"
+                                     Background="{DynamicResource MaterialDesignBackground}"
+                                     VerticalAlignment="Stretch">
                     <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <Label FontSize="16"
-                   Grid.Column="0" Grid.Row="1"
-                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Left"
-                          Margin="0,10,0,0" 
-                           Foreground="{DynamicResource AccentColorBrush}">Patient id</Label>
+                            <Label FontSize="16" Grid.Column="0" Grid.Row="1"
+                                   FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                                   HorizontalAlignment="Left" Margin="0,10,0,0"
+                                   Foreground="{DynamicResource AccentColorBrush}">
+                                Patient id
+                            </Label>
 
                             <Grid Grid.Column="0" Grid.Row="2">
                                 <TextBox Name="DispenseProvidedId"
-                                 IsEnabled="False"
-                         ToolTip="Drug Remaining"
-                    Margin="0,10,10,0" 
-                         Width="300"
-                         Height="35"
-                         HorizontalAlignment="Center"
-                         controls:TextBoxHelper.Watermark=""
-                         controls:TextBoxHelper.IsWaitingForData="True"
-                         controls:TextBoxHelper.ButtonFontFamily="wingdings"
-                     BorderBrush="{DynamicResource AccentColorBrush}"
-                     BorderThickness="1"
-                         controls:TextBoxHelper.UseFloatingWatermark="False" 
-                                 Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
+                                         IsEnabled="False"
+                                         ToolTip="Drug Remaining"
+                                         Margin="0,10,10,0"
+                                         Width="300"
+                                         Height="35"
+                                         HorizontalAlignment="Center"
+                                         controls:TextBoxHelper.Watermark=""
+                                         controls:TextBoxHelper.IsWaitingForData="True"
+                                         controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                                         BorderBrush="{DynamicResource AccentColorBrush}"
+                                         BorderThickness="1"
+                                         controls:TextBoxHelper.UseFloatingWatermark="False"
+                                         Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"
+                                         FontSize="16" />
                             </Grid>
-                            <Label FontSize="16"
-                   Grid.Column="0" Grid.Row="3"
-                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Left"
-                          Margin="0,10,10,0" 
-                           Foreground="{DynamicResource AccentColorBrush}">Drug name</Label>
-                            <Grid Grid.Column="0" Grid.Row="4" DataContext="">
-                                <telerik:RadAutoCompleteBox x:Name="DispenseDrugName" PreviewTextInput="TextValidationTextBox"
-                                    Width="300" HorizontalAlignment="Left"
-                      VerticalAlignment="Bottom"  Height="35" 
-                                     WatermarkContent="Enter Drug name..." 
-                                                     Margin="0,10,10,0" 
-                                     TextSearchMode="Contains"
-               AutoCompleteMode="Suggest"
-                                    TextSearchPath="Name" SelectionMode="Single"
-               ItemsSource="{Binding DrugAutoCompleteList}"
-                                     DropDownItemTemplate="{StaticResource DrugsAutoComplete}"
-                                                    BorderBrush="{DynamicResource AccentColorBrush}"
-                                     BorderThickness="1"
-                         Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" LostFocus="DispenseDrugName_LostFocus" SearchTextChanged="DispenseDrugName_SearchTextChanged"/>
-                            </Grid>
-                            <Grid Grid.Row="4" Grid.Column="0" Name="dGrid" DataContext="data:DrugRepository" />
+                            <Label FontSize="16" Content="Drug name" Grid.Column="0" Grid.Row="3"
+                                   FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                                   HorizontalAlignment="Left" Margin="0,10,10,0"
+                                   Foreground="{DynamicResource AccentColorBrush}"
+                                   controls:TextBoxHelper.UseFloatingWatermark="False" />
 
-                            <Label FontSize="16"
-                   Grid.Column="0" Grid.Row="5"
-                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Left"
-                          Margin="0,10,0,0" 
-                           Foreground="{DynamicResource AccentColorBrush}">Remaining quatity</Label>
+                            <Label FontSize="16" Grid.Column="0" Grid.Row="5" Content="Remaining quatity"
+                                   FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                                   HorizontalAlignment="Left" Margin="0,10,0,0"
+                                   Foreground="{DynamicResource AccentColorBrush}" Height="31" VerticalAlignment="Top" />
+                            <Controls:AutoCompleteBox Grid.Column="0" Grid.Row="4" Width="300" Height="35"
+                                      HorizontalAlignment="Center" Name="DispenseDrugName" controls:TextBoxHelper.Watermark=""
+                                     controls:TextBoxHelper.IsWaitingForData="True" HorizontalContentAlignment="Stretch"
+                                     BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="1"
+                                     controls:TextBoxHelper.UseFloatingWatermark="False" 
+                                     Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"
+                                     FontSize="16"  />
 
                             <TextBox Name="LbRemainingDrugs"
-                  Grid.Column="0" Grid.Row="6"
-                                 IsEnabled="False"
-                         ToolTip="Drug Remaining"
-                    Margin="0,10,10,0" 
-                         Width="300"
-                         Height="35"
-                         HorizontalAlignment="Center"
-                         controls:TextBoxHelper.Watermark=""
-                         controls:TextBoxHelper.IsWaitingForData="True"
-                         controls:TextBoxHelper.ButtonFontFamily="wingdings"
-                     BorderBrush="{DynamicResource AccentColorBrush}"
-                     BorderThickness="1"
-                         controls:TextBoxHelper.UseFloatingWatermark="False" 
-                                 Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
+                                     Grid.Column="0" Grid.Row="6"
+                                     IsEnabled="False"
+                                     ToolTip="Drug Remaining"
+                                     Margin="0,10,10,0" Width="300" Height="35" HorizontalAlignment="Center"
+                                     controls:TextBoxHelper.Watermark=""
+                                     controls:TextBoxHelper.IsWaitingForData="True"
+                                     controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                                     BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="1"
+                                     controls:TextBoxHelper.UseFloatingWatermark="False"
+                                     Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"
+                                     FontSize="16" />
 
-                            <Label FontSize="16"
-                   Grid.Column="0" Grid.Row="7"
-                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Left"
-                          Margin="0,10,10,0" 
-                           Foreground="{DynamicResource AccentColorBrush}">Quantity</Label>
+                            <Label FontSize="16" Grid.Column="0" Grid.Row="7"
+                                   FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                                   HorizontalAlignment="Left" Margin="0,10,10,0"
+                                   Foreground="{DynamicResource AccentColorBrush}">
+                                Quantity
+                            </Label>
 
                             <TextBox Name="DispenseDrugQuantity" PreviewTextInput="NumberValidationTextBox"
-                  Grid.Column="0" Grid.Row="8"
-                         ToolTip="Type drug quantity"
-                    Margin="0,10,10,0" 
-                         Width="300"
-                         Height="35"
-                         HorizontalAlignment="Center"
-                         controls:TextBoxHelper.Watermark=""
-                         controls:TextBoxHelper.IsWaitingForData="True"
-                         controls:TextBoxHelper.ButtonFontFamily="wingdings"
-                     BorderBrush="{DynamicResource AccentColorBrush}"
-                     BorderThickness="1"
-                         Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" TextChanged="DispenseDrugQuantity_TextChanged"/>
+                                     Grid.Column="0" Grid.Row="8" ToolTip="Type drug quantity" Margin="0,10,10,0"
+                                     Width="300" Height="35" HorizontalAlignment="Center"
+                                     controls:TextBoxHelper.IsWaitingForData="True"
+                                     controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                                     BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="1"
+                                     Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"
+                                     FontSize="16" TextChanged="DispenseDrugQuantity_TextChanged" />
 
-                            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,0,0" 
-                                Height="30" Width="130" Grid.Column="0" Grid.Row="12" TabIndex="12"
-                                Name="Cancel" Click="Cancel_Click" HorizontalAlignment="Left"
-                                 FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
-                                Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14">
+                            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,0,0"
+                                    Height="30" Width="130" Grid.Column="0" Grid.Row="12" TabIndex="12"
+                                    Name="Cancel" Click="Cancel_Click" HorizontalAlignment="Left"
+                                    FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                                    Background="{DynamicResource PrimaryColorBrush}"
+                                    Foreground="{StaticResource WhiteColorBrush}"
+                                    controls:ButtonHelper.PreserveTextCase="True"
+                                    FontSize="14">
                                 Cancel
                             </Button>
-                            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,10,0" 
-                                Height="30" Width="130" Grid.Column="1" Grid.Row="12" TabIndex="12"
-                                Name="Save" Click="Save_Click" HorizontalAlignment="Right"
-                                 FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
-                                Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14">
+                            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,10,0"
+                                    Height="Auto" Width="130" Grid.Row="12" TabIndex="12"
+                                    Name="Save" Click="Save_Click" HorizontalAlignment="Right"
+                                    FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                                    Background="{DynamicResource PrimaryColorBrush}"
+                                    Foreground="{StaticResource WhiteColorBrush}"
+                                    controls:ButtonHelper.PreserveTextCase="True"
+                                    FontSize="14">
                                 Save
                             </Button>
 
@@ -272,5 +259,6 @@
                 </materialDesign:Card>
             </Grid>
         </WrapPanel>
+
     </Grid>
 </UserControl>

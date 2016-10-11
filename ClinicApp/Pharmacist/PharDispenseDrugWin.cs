@@ -68,7 +68,7 @@ namespace ClinicApp.Pharmacist
             else
             {
 
-                new Pharmacy().DispenseDrug(textBoxProvidedId.Text, textBoxDrugName.Text, textBoxQuantity.Text, CurrentUserLoggedInData.Id);
+                new Pharmacy().DispenseDrug(textBoxProvidedId.Text, textBoxDrugName.Text, textBoxQuantity.Text,MainWindow.ID);
 
                 //MessageBox.Show("DrugsOld saved Saved Successfully", "Ok", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.textBoxDrugName.Text = "";

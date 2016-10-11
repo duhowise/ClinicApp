@@ -18,7 +18,7 @@ namespace ClinicApp.Nurse
         private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
-            MessageDialogResult result = await this.ShowMessageAsync("Exit Application", "Do You really want to Exit?", MessageDialogStyle.AffirmativeAndNegative);
+            MessageDialogResult result = await this.ShowMessageAsync("Log Out", "This action will end the current session \n Do you wish to proceed ?", MessageDialogStyle.AffirmativeAndNegative);
             if (result == MessageDialogResult.Negative)
             {
                 e.Cancel = false;
@@ -26,7 +26,6 @@ namespace ClinicApp.Nurse
             }
             else
             {
-                CurrentUserLoggedInData.ClearUserData();
                 new MainWindow().Show();
                 Hide();
             }
@@ -35,7 +34,7 @@ namespace ClinicApp.Nurse
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            LoginUserName.Content = CurrentUserLoggedInData.FirstName + " " + CurrentUserLoggedInData.LastName;
+            LoginUserName.Content = MainWindow.FullName;
         }
 
 
