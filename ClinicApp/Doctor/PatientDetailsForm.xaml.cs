@@ -60,7 +60,7 @@ namespace ClinicApp.Doctor
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.DataContext = new MainContentView(NavigateToView);
+           // this.DataContext = new MainContentView(NavigateToView);
             navigator = new MainContentView(NavigateToView);
             if (MainWindow.ID == 3)
             {navigator.NavigateToPharPatientDetailDispensaryControl();

@@ -23,11 +23,11 @@ namespace ClinicApp.Doctor
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             int a, b;
-            LoginUserName.Text = CurrentUserLoggedInData.FirstName + " " + CurrentUserLoggedInData.LastName;
-            lbTotalDrugs.Content = a = new DrugRepository().TotalDrugsQuantity("Drugs");
-            //lbRegisteredPatients.Content = p.TotalRegisteredPatient();
-                b = new DrugRepository().TotalDrugsQuantity("DispensedDrugs");
-             lbAvailableDrugs.Content = a - b;
+            LoginUserName.Content=MainWindow.FullName;
+            //lbTotalDrugs.Content = a = new DrugRepository().TotalDrugsQuantity("Drugs");
+            ////lbRegisteredPatients.Content = p.TotalRegisteredPatient();
+            //    b = new DrugRepository().TotalDrugsQuantity("DispensedDrugs");
+            // lbAvailableDrugs.Content = a - b;
         }
 
         private async void Window_Closing(object sender, CancelEventArgs e)
