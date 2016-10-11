@@ -51,7 +51,7 @@ namespace ClinicApp.Pharmacist
                     Cmb.Message = $"Successfully Added new Dosage Form {dosageFormName.Text}";
                     Cmb.ShowDialog();
                     dosageFormName.Text = "";
-                }
+                    }
             }
         }
     }

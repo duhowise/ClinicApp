@@ -119,7 +119,6 @@ namespace ClinicApp.Pharmacist
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             SupplierName.Focus();
-            CurrentUserLoggedInData.IsLoaded = true;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

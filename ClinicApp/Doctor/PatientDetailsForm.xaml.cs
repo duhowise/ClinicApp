@@ -62,8 +62,13 @@ namespace ClinicApp.Doctor
         {
             this.DataContext = new MainContentView(NavigateToView);
             navigator = new MainContentView(NavigateToView);
-            //navigator.NavigateToPharPatientDetailDispensaryControl();
-            navigator.NavigateToDocPatientDetailConsultationControl();
+            if (MainWindow.ID == 3)
+            {navigator.NavigateToPharPatientDetailDispensaryControl();
+            }
+            else
+            {navigator.NavigateToDocPatientDetailConsultationControl(); 
+            }
+
         }
     }
 }

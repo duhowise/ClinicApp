@@ -42,7 +42,7 @@
         <TextBlock Text="Provided Id" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="124,140,0,0"/>
         <TextBox Name="ProvidedId" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,17" Width="394" Height="56" IsReadOnlyCaretVisible="True" TextChanged="ProvidedId_TextChanged" IsReadOnly="True" FontSize="16" FontWeight="Bold"/>
 
-        <TextBlock Grid.Row="2" Text="Complaint" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,5,64"/>
+        <TextBlock Grid.Row="2" Text="Complaint" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,18,63"/>
         <TextBox x:Name="Complaint" Grid.Row="2"  Grid.Column="1" Width="400" HorizontalAlignment="Left"
                      VerticalAlignment="Bottom" Margin="5,0,0,5" Height="150" VerticalScrollBarVisibility="Auto" TextChanged="Complaint_TextChanged" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap"/>
 

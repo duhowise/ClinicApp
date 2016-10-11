@@ -46,7 +46,7 @@
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Left"
                           Margin="0,10,0,0" 
-                           Foreground="{DynamicResource AccentColorBrush}">Search for patient by id</Label>
+                           Foreground="{DynamicResource AccentColorBrush}" Content="Search for patient using ID card"/>
                         <Grid Grid.Column="0" Grid.Row="1">
                             <TextBox Name="TbPatientSearch" Margin="0,10,175,0" TextChanged="TbPatientSearch_TextChanged"></TextBox>
                             <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="320,10,0,0" 
