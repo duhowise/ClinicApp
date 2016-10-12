@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="KUMASI POLYTECHNIC CLINIC APP" Height="500" Width="1000" 
                       WindowState="Maximized" Icon="../media/Health-Care.png" 
-                      Loaded="Window_Loaded" ShowCloseButton="False" ShowMaxRestoreButton="False"
+                      Loaded="Window_Loaded" ShowMinButton="False"  ShowMaxRestoreButton="False"
                       Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
@@ -30,7 +30,7 @@
                        HorizontalAlignment="Left"
                            Foreground="{DynamicResource WhiteColorBrush}">Doctor's Department</Label>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Label FontSize="16" Margin="0 0 50 0" VerticalAlignment="Center"
+                    <Label FontSize="16" Margin="0 0 5 0" VerticalAlignment="Center"
                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center"
                            Foreground="{DynamicResource WhiteColorBrush}">Welcome!</Label>

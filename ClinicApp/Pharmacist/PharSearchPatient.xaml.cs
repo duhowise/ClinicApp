@@ -63,7 +63,7 @@ namespace ClinicApp.Pharmacist
 
         }
 
-        private async void PatientsSearchList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private  void PatientsSearchList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
              Patient = PatientsSearchList.SelectedItem as Patient;
             new PatientDetailsForm().ShowDialog();
@@ -75,7 +75,9 @@ namespace ClinicApp.Pharmacist
             {
                 patientSearchWorker.RunWorkerAsync();
             }
-            PatientsSearchList.ItemsSource = patients.FindAll(p => p.ProvidedId.Contains(TbPatientSearch.Text));
+            PatientsSearchList.ItemsSource = patients.FindAll(p => p.ProvidedId.ToLower().StartsWith
+            (TbPatientSearch.Text.ToLower())||p.FulName().ToLower().StartsWith(TbPatientSearch.Text.ToLower()) 
+            ||p.FulNameR().ToLower().StartsWith(TbPatientSearch.Text.ToLower()));
 
         }
     }

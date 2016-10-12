@@ -13,5 +13,13 @@ namespace ClinicModel
         public string Designation { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime Date { get; set; }
+
+        public string FulName()
+        {
+            return FirstName + " " + LastName;
+        }public string FulNameR()
+        {
+            return LastName + " " + FirstName;
+        }
     }
 }

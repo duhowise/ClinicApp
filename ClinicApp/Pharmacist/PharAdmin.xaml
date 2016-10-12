@@ -14,7 +14,7 @@
        Title="KUMASI POLYTECHNIC CLINIC APP" Height="1000" Width="1000" 
                       WindowState="Maximized" Icon="../media/Health-Care.png" 
                       Loaded="Window_Loaded" 
-                      ShowCloseButton="False" ShowMaxRestoreButton="False"
+                      ShowMinButton="False"  ShowMaxRestoreButton="False"
                       Closing="Window_Closing">
     <Window.Resources>
         <Style x:Key="StackP"

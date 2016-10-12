@@ -47,5 +47,10 @@ namespace ClinicApp.Nurse
         {
             Close();
         }
+
+        private void btnExplorePackages_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

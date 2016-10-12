@@ -166,16 +166,15 @@ namespace ClinicApp.Pharmacist
             }
             PatientName.Content = (patient.FirstName + " " + patient.LastName).ToUpper();
             PatientDesignation.Content = $"Designation: {patient.Designation}";
-            PatientTemperature.Content = $"{consultation.Temperature} °C";
-            PatientBloodPressure.Content = $"Blood pressure : {consultation.BloodPressure}";
-            PatientLastVisited.Content = $"Consultation Date: {consultation.Date.ToShortDateString()}";
-            
-            tbLabFindings.Text = $"{consultation.Symptoms}";
-            PatientBloodPressure.Content = $"Blood Pressure: {consultation.BloodPressure}";
-            tbPrescription.Text = $"{consultation.Prescription}";
-            DispenseProvidedId.Text = patient.ProvidedId;
+            PatientTemperature.Content = $"Temperature :{consultation.Temperature} °C";
             PatientPulse.Content = $"Pulse :{consultation.Pulse} bpm";
             PatientWeight.Content = $"Weight :{consultation.Weight} kg";
+            PatientBloodPressure.Content = $"Blood pressure : {consultation.BloodPressure}";
+            PatientLastVisited.Content = $"Consultation Date: {consultation.Date.ToShortDateString()}";
+            tbLabFindings.Text = $"{consultation.Symptoms}";
+            tbPrescription.Text = $"{consultation.Prescription}";
+            DispenseProvidedId.Text = patient.ProvidedId;
+          
 
         }
     }
