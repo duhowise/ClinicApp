@@ -46,16 +46,21 @@
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Left"
                           Margin="0,10,0,0" 
-                           Foreground="{DynamicResource AccentColorBrush}">Search for patient by id</Label>
+                           Foreground="{DynamicResource AccentColorBrush}" Content="Search for patient using ID card"/>
                         <Grid Grid.Column="0" Grid.Row="1">
-                            <TextBox Name="TbPatientSearch" Margin="0,10,175,0" TextChanged="TbPatientSearch_TextChanged"></TextBox>
-                            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="320,10,0,0" 
-                                Height="30" Width="130" Grid.Column="0" Grid.Row="0" TabIndex="1"
-                                Name="Search" HorizontalAlignment="Left"
-                                 FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
+                            <TextBox Name="TbPatientSearch" Margin="0,29,175,0" TextChanged="TbPatientSearch_TextChanged"></TextBox>
+                            <Button  Margin="320,29,0,0" 
+                                 Grid.Column="0" Grid.Row="0" TabIndex="1"
+                                Name="Search" HorizontalAlignment="Left" FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14" Click="Search_Click" VerticalAlignment="Top">
-                                Search
+                                FontSize="14" Click="Search_Click" VerticalAlignment="Top" Height="33">
+                                <Rectangle Width="33" Height="23"
+                               Fill="{Binding Path=Foreground,
+                                     RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_page_search}"></VisualBrush>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
                             </Button>
                         </Grid>
                         <GroupBox Header="Search result" Grid.Column="0" Grid.Row="2"

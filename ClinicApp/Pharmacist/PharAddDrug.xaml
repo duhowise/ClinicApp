@@ -196,7 +196,7 @@
                             Packaging Type
                         </Label>
 
-                        <ComboBox TabIndex="6"
+                        <ComboBox TabIndex="6" SelectedValuePath="Id" DisplayMemberPath="name"
                                   Grid.Column="0" Grid.Row="8" Name="cbPackaging"
                                   ToolTip="Select packaging"
                                   Margin="0,10,10,0"

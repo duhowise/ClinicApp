@@ -30,36 +30,28 @@ namespace ClinicApp.Nurse
             }
             else
             {
-                new PatientRepository().AddNewPatient(new Patient
-                {
-                    FirstName = PatientFirstName.Text,
-                    LastName = PatientLastName.Text,
-                    Designation = PatientDesignation.Text,
-                    PhoneNumber = PatientPhoneNumber.Text,
-                    ProvidedId = PatientProvidedId.Text
-                });
+                        patient.FirstName = PatientFirstName.Text;
+                        patient.LastName = PatientLastName.Text;
+                        patient.Designation = PatientDesignation.Text;
+                        patient.PhoneNumber = PatientPhoneNumber.Text;
+                        patient.ProvidedId = PatientProvidedId.Text;
+                new PatientRepository().AddNewPatient(patient);
+               
                 await this.ShowMessageAsync("New patient added !", $"{PatientFirstName.Text+" "+PatientLastName.Text}");
                 Util.Clear(this);
             }
-            patient=new PatientRepository().GetPatient(PatientFirstName.Text, PatientLastName.Text);
+            //patient=new PatientRepository().GetPatient(PatientFirstName.Text, PatientLastName.Text);
         }
         
         private async void SaveConsultation_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(PatientTemperature.Text)||string.IsNullOrWhiteSpace(PatientBloodPressure.Text)||
-                string.IsNullOrWhiteSpace(PatientSymptoms.Text)||string.IsNullOrWhiteSpace(PatientComplaint.Text)||
+            if (string.IsNullOrWhiteSpace(PatientSymptoms.Text)||string.IsNullOrWhiteSpace(PatientComplaint.Text)||
                 string.IsNullOrWhiteSpace(PatientDiagnosis.Text)||string.IsNullOrWhiteSpace(PatientPrescirption.Text)||
                 string.IsNullOrWhiteSpace(PatientPrescirption.Text)
-                ){
+                )
+            {
 
-                await this.ShowMessageAsync("Sorry 'bou that !", "All details are required");
-
-                //    PatientTemperature
-                //     PatientBloodPressure
-                //PatientComplaint
-                //PatientSymptoms
-                //PatientDiagnosis
-                //PatientPrescirption
+                    await this.ShowMessageAsync("Sorry 'bou that !", "All details are required");
             }
             else
             {

@@ -78,8 +78,7 @@ namespace ClinicApp.Doctor
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            CurrentUserLoggedInData.IsLoaded = false;
-         
+           
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

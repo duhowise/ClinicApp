@@ -189,7 +189,7 @@
                                 Name="Save" HorizontalAlignment="Right"
                                  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14" Click="Save_Click">
+                                FontSize="14" Click="Save_Click" VerticalAlignment="Top">
                         Save
                     </Button>
 

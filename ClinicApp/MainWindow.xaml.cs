@@ -18,8 +18,8 @@ namespace ClinicApp
     {
         User loggedinUser=new User();
         CMB cmb = new CMB();
-        public static int Id;
-        public static string fullname = null;
+        private static int _id;
+        private static string _fullname = null;
    
         public MainWindow()
         {
@@ -30,14 +30,14 @@ namespace ClinicApp
 
         public static int ID
         {
-            get { return Id; }
-            set { Id = value; }
+            get { return _id; }
+            set { _id = value; }
         }
 
         public static string FullName
         {
-            get { return fullname; }
-            set { fullname = value; }
+            get { return _fullname; }
+            set { _fullname = value; }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

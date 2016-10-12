@@ -13,8 +13,8 @@
         mc:Ignorable="d"
        Title="KUMASI POLYTECHNIC CLINIC APP" Height="1000" Width="1000" 
                       WindowState="Maximized" Icon="../media/Health-Care.png" 
-                      Loaded="Window_Loaded" MouseEnter="Window_MouseEnter"
-                      ShowCloseButton="False" ShowMaxRestoreButton="False"
+                      Loaded="Window_Loaded" 
+                      ShowMinButton="False"  ShowMaxRestoreButton="False"
                       Closing="Window_Closing">
     <Window.Resources>
         <Style x:Key="StackP"
@@ -48,14 +48,14 @@
                        HorizontalAlignment="Left"
                            Foreground="{DynamicResource WhiteColorBrush}">Pharmacy Department</Label>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Label FontSize="16" Margin="0 0 50 0" VerticalAlignment="Center"
+                    <Label FontSize="16" Margin="0 0 10 0" VerticalAlignment="Center"
                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center"
                            Foreground="{DynamicResource WhiteColorBrush}">Welcome!</Label>
                     <Label FontSize="16" Margin="0 0 20 0" VerticalAlignment="Center"
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center" Name="LoginUserName"
-                           Foreground="{DynamicResource WhiteColorBrush}"></Label>
+                           Foreground="{DynamicResource WhiteColorBrush}" RenderTransformOrigin="-2.275,0.867"></Label>
                 </StackPanel>
             </Grid>
         </StackPanel>
@@ -100,7 +100,7 @@
 
                 <Button Name="btnViewDrug" Foreground="{StaticResource WhiteColorBrush}" 
                         Width="80" Height="80" Grid.Column="2" Grid.Row="0" 
-                        Style="{DynamicResource MetroCircleButtonStyle}" Click="btnViewDrug_Click">
+                        Style="{DynamicResource MetroCircleButtonStyle}" Click="btnViewDrug_Click" Margin="43,0" VerticalAlignment="Top">
                     <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
                                              Foreground="{DynamicResource WhiteColorBrush}" Kind="Binoculars" />
                 </Button>

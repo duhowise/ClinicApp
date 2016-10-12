@@ -1,5 +1,7 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Windows;
+using MahApps.Metro;
 
 namespace ClinicApp
 {
@@ -10,7 +12,8 @@ namespace ClinicApp
     {
         public App()
         {
-           this.InitializeComponent();
+          
+            this.InitializeComponent();
 
             Thread.Sleep(5000);
         }

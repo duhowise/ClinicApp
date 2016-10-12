@@ -26,9 +26,6 @@ namespace ClinicApp
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DrugList.ItemsSource = new DrugRepository().GetAllDrugs();
-            CurrentUserLoggedInData.IsLoaded = true;
-
-
         }
 
         private void DrugList_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
