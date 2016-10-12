@@ -3,10 +3,7 @@ using System.Windows;
 using System.Windows.Input;
 using ClinicApp.Data;
 using ClinicApp.Logic;
-using ClinicApp.Pharmacist;
-using MahApps.Metro;
 using MahApps.Metro.Controls;
-using MahApps.Metro.Controls.Dialogs;
 
 namespace ClinicApp.Doctor
 {
@@ -15,45 +12,77 @@ namespace ClinicApp.Doctor
     /// </summary>
     public partial class DocAdmin : MetroWindow
     {
-      //OldPatient p = new OldPatient();
+        OldPatient p = new OldPatient();
         public DocAdmin()
         {
             InitializeComponent();
         }
+
+        private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             int a, b;
-            LoginUserName.Content=MainWindow.FullName;
-            //lbTotalDrugs.Content = a = new DrugRepository().TotalDrugsQuantity("Drugs");
-            ////lbRegisteredPatients.Content = p.TotalRegisteredPatient();
-            //    b = new DrugRepository().TotalDrugsQuantity("DispensedDrugs");
-            // lbAvailableDrugs.Content = a - b;
+            LoginUserName.Content = MainWindow.FullName;
+
         }
 
-        private async void Window_Closing(object sender, CancelEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            e.Cancel = true;
-            MessageDialogResult result = await this.ShowMessageAsync("Log Out", "This action will end the current session \n Do you wish to proceed ?", MessageDialogStyle.AffirmativeAndNegative);
-            if (result == MessageDialogResult.Negative)
-            {
-                e.Cancel = false;
+            DocAddPatient newPatient = new DocAddPatient();
+            newPatient.ShowDialog();
+        }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            //ViewPatient viewPatient = new ViewPatient {MenuAction = "doc"};
+            //viewPatient.ShowDialog();  
+            viewPatientWin view = new viewPatientWin { MenuAction = "doc" };
+            view.ShowDialog();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            //ViewPatient viewPatient = new ViewPatient {MenuAction = "doc" };
+            //viewPatient.ShowDialog();
+            viewPatientWin view = new viewPatientWin { MenuAction = "doc" };
+            view.ShowDialog();
+        }
+
+
+        private void historyBnt_Click(object sender, RoutedEventArgs e)
+        {
+            //ViewPatient viewPatient = new ViewPatient { MenuAction = "History" };
+            //viewPatient.ShowDialog();
+            viewPatientWin view = new viewPatientWin();
+            view.ShowDialog();
+        }
+
+        private void Window_MouseEnter(object sender, MouseEventArgs e)
+        {
+            int a, b;
+           // lbTotalDrugs.Content = a = new DrugRepository().TotalDrugsQuantity("Drugs");
+          //  lbRegisteredPatients.Content = p.TotalRegisteredPatient();
+            b = new DrugRepository().TotalDrugsQuantity("PrescribedDrugs");
+           // lbAvailableDrugs.Content = a - b;
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            var response = MessageBox.Show("Please be sure to Logout first", "Exit",
+               MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+
+            if (response == MessageBoxResult.No)
+            {
+                e.Cancel = true;
             }
             else
             {
-                new MainWindow().Show();
-                Hide();
+                e.Cancel = true;
             }
-        }
-
-        private void btnConsultation_Click(object sender, RoutedEventArgs e)
-        {
-            new PharSearchPatient().ShowDialog();
-        }
-
-        private void btnLogout_Click(object sender, RoutedEventArgs routedEventArgs)
-        {
-            Close();
         }
     }
 }
