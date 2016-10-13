@@ -14,34 +14,6 @@
     <CornerRadius x:Key="ValidationTooltip_CornerRadius">0</CornerRadius>
     <ControlTemplate x:Key="ErrorTooltipTemplate" TargetType="ToolTip">
         <Grid x:Name="RootVisual" HorizontalAlignment="Right" RenderTransformOrigin="0 0" Opacity="0" Margin="5 0">
-            <VisualStateManager.VisualStateGroups>
-                <VisualStateGroup x:Name="OpenStates">
-                    <VisualStateGroup.Transitions>
-                        <VisualTransition GeneratedDuration="0"/>
-                        <VisualTransition To="Open" GeneratedDuration="0:0:0.2">
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="xform" Storyboard.TargetProperty="X" To="0" Duration="0:0:0.2">
-                                    <DoubleAnimation.EasingFunction>
-                                        <BackEase Amplitude=".3" EasingMode="EaseOut"/>
-                                    </DoubleAnimation.EasingFunction>
-                                </DoubleAnimation>
-                                <DoubleAnimation Storyboard.TargetName="RootVisual" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.2"/>
-                            </Storyboard>
-                        </VisualTransition>
-                    </VisualStateGroup.Transitions>
-                    <VisualState x:Name="Closed">
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="RootVisual" Storyboard.TargetProperty="Opacity" To="0" Duration="0"/>
-                        </Storyboard>
-                    </VisualState>
-                    <VisualState x:Name="Open">
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="xform" Storyboard.TargetProperty="X" To="0" Duration="0"/>
-                            <DoubleAnimation Storyboard.TargetName="RootVisual" Storyboard.TargetProperty="Opacity" To="1" Duration="0"/>
-                        </Storyboard>
-                    </VisualState>
-                </VisualStateGroup>
-            </VisualStateManager.VisualStateGroups>
             <Grid.RenderTransform>
                 <TranslateTransform x:Name="xform" X="-25"/>
             </Grid.RenderTransform>
@@ -504,55 +476,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
                     <Grid x:Name="RootElement" UseLayoutRounding="True" SnapsToDevicePixels="True">
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal"/>
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <DoubleAnimation Duration="0" Storyboard.TargetName="hover" Storyboard.TargetProperty="Opacity" To="1"/>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Disabled">
-                                    <Storyboard>
-                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="DisabledVisualElement"/>
-                                        <DoubleAnimation Duration="0" To="0.3" Storyboard.TargetName="PART_ContentHost" Storyboard.TargetProperty="Opacity"/>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="ReadOnly">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="FocusedVisual" Storyboard.TargetProperty="BorderBrush">
-                                            <DiscreteObjectKeyFrame KeyTime="0">
-                                                <DiscreteObjectKeyFrame.Value>
-                                                    <SolidColorBrush Color="Transparent"/>
-                                                </DiscreteObjectKeyFrame.Value>
-                                            </DiscreteObjectKeyFrame>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="Border" Storyboard.TargetProperty="BorderBrush">
-                                            <DiscreteObjectKeyFrame KeyTime="0">
-                                                <DiscreteObjectKeyFrame.Value>
-                                                    <SolidColorBrush Color="Transparent"/>
-                                                </DiscreteObjectKeyFrame.Value>
-                                            </DiscreteObjectKeyFrame>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ReadOnlyVisualElement"/>
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                            <VisualStateGroup x:Name="FocusStates">
-                                <VisualState x:Name="Focused">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FocusedVisual" Storyboard.TargetProperty="Visibility">
-                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
-                                                <DiscreteObjectKeyFrame.Value>
-                                                    <Visibility>Visible</Visibility>
-                                                </DiscreteObjectKeyFrame.Value>
-                                            </DiscreteObjectKeyFrame>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Unfocused"/>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                         <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                             <Grid>
                                 <Border x:Name="ReadOnlyVisualElement" BorderThickness="1" BorderBrush="Transparent" Background="Transparent" Opacity="0"/>

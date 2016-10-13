@@ -337,7 +337,7 @@
                         </TextBlock>
                         <TextBox Name="tbTotalQuantity"
                                  Grid.Column="1" Grid.Row="10" TabIndex="11" PreviewTextInput="NumberValidation"
-                                 Margin="-10,10,50,0"
+                                 Margin="-10,10,50,0" IsEnabled="False"
                                  Width="140"
                                  Height="35"
                                  HorizontalAlignment="Right"

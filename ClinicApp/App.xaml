@@ -24,10 +24,10 @@
             <SolidColorBrush x:Key="IdealForegroundColorBrush" Color="{DynamicResource Primary500Foreground}"/>
             <SolidColorBrush x:Key="IdealForegroundDisabledBrush" Color="{DynamicResource Primary500}" Opacity="0.4"/>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/theme/System.Windows.xaml" />
+                <!--<ResourceDictionary Source="/theme/System.Windows.xaml" />
                 <ResourceDictionary Source="/theme/Telerik.Windows.Controls.xaml" />
                 <ResourceDictionary Source="/theme/Telerik.Windows.Controls.Input.xaml" />
-                <ResourceDictionary Source="/theme/Telerik.Windows.Controls.Navigation.xaml" />
+                <ResourceDictionary Source="/theme/Telerik.Windows.Controls.Navigation.xaml" />-->
                 <ResourceDictionary Source="/theme/Telerik.ReportViewer.Wpf.xaml" />
 
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />

@@ -158,7 +158,7 @@
                             VerticalAlignment="Stretch" Margin="-10,0,10,0">
                     <controls:TransitioningContentControl Margin="40,0,0,0" Transition="Down" 
                                                   HorizontalAlignment="Center" VerticalAlignment="Top" 
-                                                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                                  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
                                               x:Name="MainArea"></controls:TransitioningContentControl>
                 </StackPanel>
             </Grid>

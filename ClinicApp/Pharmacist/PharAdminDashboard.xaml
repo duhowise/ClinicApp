@@ -12,63 +12,162 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <materialDesign:Card Grid.Row="0" Margin="0,2,0,0" HorizontalAlignment="Stretch" Grid.ColumnSpan="5"
-                  Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
-                  Padding="10">
-            <Label FontSize="20"
+        <materialDesign:Card Grid.Row="0" Margin="0,0,0,0" HorizontalAlignment="Stretch" Grid.ColumnSpan="5"
+                  Foreground="{DynamicResource PrimaryHueLightForegroundBrush}">
+            <Label FontSize="18"
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center"
                            Foreground="{DynamicResource AccentColorBrush}">DASHBOARD</Label>
         </materialDesign:Card>
-        <WrapPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0 0 8 8" ItemHeight="200" ItemWidth="300">
-        <materialDesign:Card Margin="4 4 0 0">
-           <Grid>
-               <Grid.RowDefinitions>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Label x:Name="lbTotalDrugs" Grid.Row="0" Content="10,000" Height="100" 
-                           Width="160" FontSize="50" Foreground="{DynamicResource AccentColorBrush}"/>
-                    <Separator Grid.Row="1" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
-                    <Label Grid.Row="2" HorizontalAlignment="Center" FontSize="20" Padding="2 10 2 10" VerticalAlignment="Center"
-                            materialDesign:RippleAssist.IsCentered="True">Total Number of Drugs
-                    </Label>
-                </Grid>
-        </materialDesign:Card>
-            <materialDesign:Card Margin="4 4 0 0">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Label x:Name="lbDispensedDrugs" Grid.Row="0" Content="10,000" Height="100" 
-                           Width="160" FontSize="50" Foreground="{DynamicResource AccentColorBrush}"/>
-                    <Separator Grid.Row="1" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
-                    <Label Grid.Row="2" HorizontalAlignment="Center" FontSize="20" Padding="2 10 2 10" VerticalAlignment="Center"
-                            materialDesign:RippleAssist.IsCentered="True">Total Dispensed Drugs
-                    </Label>
-                </Grid>
-            </materialDesign:Card>
-            <materialDesign:Card Margin="4 4 0 0">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Label x:Name="lbAvailableDrugs" Grid.Row="0" Content="10,000" Height="100" 
-                           Width="160" FontSize="50" Foreground="{DynamicResource AccentColorBrush}"/>
-                    <Separator Grid.Row="1" Height="2" Style="{StaticResource MaterialDesignDarkSeparator}"/>
-                    <Label Grid.Row="2" HorizontalAlignment="Center" FontSize="20" Padding="2 10 2 10" VerticalAlignment="Center"
-                            materialDesign:RippleAssist.IsCentered="True">Total Drugs Remaining
-                    </Label>
-                </Grid>
-            </materialDesign:Card>
-        </WrapPanel>
+        <StackPanel VerticalAlignment="Center" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Rectangle Stroke="{DynamicResource AccentColorBrush}" Grid.Column="1" Grid.ColumnSpan="3"
+                           Grid.RowSpan="2" StrokeThickness="1">
+
+                </Rectangle>
+                <StackPanel Grid.Column="1" Grid.Row="0" Margin="5">
+                   
+                    <Button Name="btnAddDrug" Foreground="{StaticResource WhiteColorBrush}" 
+                        Width="80" Height="80" Grid.Column="0" Grid.Row="0" 
+                        Style="{DynamicResource MetroCircleButtonStyle}">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
+                                             Foreground="{DynamicResource AccentColorBrush}" Kind="Pill" />
+                    </Button>
+                    <Label FontSize="28"
+                           Grid.Row="0" Grid.Column="0"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="{DynamicResource AccentColorBrush}">1000</Label>
+                    <Label FontSize="18"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="{DynamicResource AccentColorBrush}">Number of drugs dispensed today</Label>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="0" Margin="5">
+                    <Button Foreground="{StaticResource WhiteColorBrush}" 
+                        Width="80" Height="80" Grid.Column="0" Grid.Row="0" 
+                        Style="{DynamicResource MetroCircleButtonStyle}">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
+                                             Foreground="{DynamicResource AccentColorBrush}" Kind="ShapePlus" />
+                    </Button>
+                    <Label FontSize="28"
+                           Grid.Row="0" Grid.Column="0"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="{DynamicResource AccentColorBrush}">1000</Label>
+                    <Label FontSize="18"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="{DynamicResource AccentColorBrush}">Total number of drugs dispensed</Label>
+                </StackPanel>
+                <StackPanel Grid.Column="3" Grid.Row="0" Margin="5">
+                    <Button Foreground="{StaticResource WhiteColorBrush}" 
+                        Width="80" Height="80" Grid.Column="0" Grid.Row="0" 
+                        Style="{DynamicResource MetroCircleButtonStyle}">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
+                                             Foreground="{DynamicResource AccentColorBrush}" Kind="Pharmacy" />
+                    </Button>
+                    <Label FontSize="28"
+                           Grid.Row="0" Grid.Column="0"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="{DynamicResource AccentColorBrush}">1000</Label>
+                    <Label FontSize="18"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="{DynamicResource AccentColorBrush}">Total drugs remaining</Label>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="1" Margin="5">
+                    <Button Foreground="{StaticResource WhiteColorBrush}" 
+                        Width="80" Height="80" Grid.Column="0" Grid.Row="0" 
+                        Style="{DynamicResource MetroCircleButtonStyle}">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
+                                             Foreground="{DynamicResource AccentColorBrush}" Kind="AccountSwitch" />
+                    </Button>
+                    <Label FontSize="28"
+                           Grid.Row="0" Grid.Column="0"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="{DynamicResource AccentColorBrush}">1000</Label>
+                    <Label FontSize="18"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="{DynamicResource AccentColorBrush}">Number of pateints today</Label>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="1" Margin="5">
+                    <Button Foreground="{StaticResource WhiteColorBrush}" 
+                        Width="80" Height="80" Grid.Column="0" Grid.Row="0" 
+                        Style="{DynamicResource MetroCircleButtonStyle}">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
+                                             Foreground="{DynamicResource AccentColorBrush}" Kind="Nature" />
+                    </Button>
+                    <Label FontSize="28"
+                           Grid.Row="0" Grid.Column="0"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="{DynamicResource AccentColorBrush}">1000</Label>
+                    <Label FontSize="18"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="{DynamicResource AccentColorBrush}">Total number of drugs dispensd</Label>
+                </StackPanel>
+                <StackPanel Grid.Column="3" Grid.Row="1" Margin="5">
+                    <Button Foreground="{StaticResource WhiteColorBrush}" 
+                        Width="80" Height="80" Grid.Column="0" Grid.Row="0" 
+                        Style="{DynamicResource MetroCircleButtonStyle}">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
+                                             Foreground="{DynamicResource AccentColorBrush}" Kind="NaturePeople" />
+                    </Button>
+                    <Label FontSize="28"
+                           Grid.Row="0" Grid.Column="0"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="{DynamicResource AccentColorBrush}">1000</Label>
+                    <Label FontSize="18"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="{DynamicResource AccentColorBrush}">Total drugs remaining</Label>
+                </StackPanel>
+                <StackPanel Grid.Column="4" Grid.Row="0" Grid.RowSpan="2" Margin="5">
+                    <GroupBox Header="List of drugs approaching expiring">
+                        <ListView Name="DrugsExpiringList">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Drug"></GridViewColumn>
+                                    <GridViewColumn Header="Expiring date"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </GroupBox>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="5">
+                    <GroupBox Header="Frequently dispensed drugs">
+                        <ListView Name="DrugsFrequentList">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Drug"></GridViewColumn>
+                                    <GridViewColumn Header="Quantity"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </GroupBox>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
     </Grid>
 </UserControl>
