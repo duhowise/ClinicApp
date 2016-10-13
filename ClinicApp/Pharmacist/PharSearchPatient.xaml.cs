@@ -71,14 +71,18 @@ namespace ClinicApp.Pharmacist
 
         private void TbPatientSearch_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            if (!patientSearchWorker.IsBusy)
+            
+            if (!string.IsNullOrWhiteSpace(TbPatientSearch.Text))
             {
-                patientSearchWorker.RunWorkerAsync();
-            }
-            PatientsSearchList.ItemsSource = patients.FindAll(p => p.ProvidedId.ToLower().StartsWith
-            (TbPatientSearch.Text.ToLower())||p.FulName().ToLower().StartsWith(TbPatientSearch.Text.ToLower()) 
-            ||p.FulNameR().ToLower().StartsWith(TbPatientSearch.Text.ToLower()));
+                if (!patientSearchWorker.IsBusy)
+                {
+                    patientSearchWorker.RunWorkerAsync();
+                }
+                PatientsSearchList.ItemsSource = patients.FindAll(p => p.ProvidedId.ToLower().StartsWith
+              (TbPatientSearch.Text.ToLower()) || p.FulName().ToLower().StartsWith(TbPatientSearch.Text.ToLower())
+              || p.FulNameR().ToLower().StartsWith(TbPatientSearch.Text.ToLower()));
 
+            }
         }
     }
 }
