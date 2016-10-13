@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ClinicApp"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="1000">
     <Grid>
@@ -36,12 +37,7 @@
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Rectangle Stroke="{DynamicResource AccentColorBrush}" Grid.Column="1" Grid.ColumnSpan="3"
-                           Grid.RowSpan="2" StrokeThickness="1">
-
-                </Rectangle>
                 <StackPanel Grid.Column="1" Grid.Row="0" Margin="5">
-                   
                     <Button Name="btnAddDrug" Foreground="{StaticResource WhiteColorBrush}" 
                         Width="80" Height="80" Grid.Column="0" Grid.Row="0" 
                         Style="{DynamicResource MetroCircleButtonStyle}">
@@ -144,28 +140,24 @@
                            Foreground="{DynamicResource AccentColorBrush}">Total drugs remaining</Label>
                 </StackPanel>
                 <StackPanel Grid.Column="4" Grid.Row="0" Grid.RowSpan="2" Margin="5">
-                    <GroupBox Header="List of drugs approaching expiring">
-                        <ListView Name="DrugsExpiringList">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Drug"></GridViewColumn>
-                                    <GridViewColumn Header="Expiring date"></GridViewColumn>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                    </GroupBox>
+                    <materialDesign:Card Margin="4 4 0 0" Padding="10"
+                                 Background="{DynamicResource MaterialDesignBackground}">
+                        <Label FontSize="16"
+                           Grid.Row="0" Grid.Column="0"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="{DynamicResource AccentColorBrush}">drug name</Label>
+                    </materialDesign:Card>
                 </StackPanel>
                 <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="5">
-                    <GroupBox Header="Frequently dispensed drugs">
-                        <ListView Name="DrugsFrequentList">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Drug"></GridViewColumn>
-                                    <GridViewColumn Header="Quantity"></GridViewColumn>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                    </GroupBox>
+                    <materialDesign:Card Margin="4 4 0 0" Padding="10"
+                                 Background="{DynamicResource MaterialDesignBackground}">
+                        <Label FontSize="16"
+                           Grid.Row="0" Grid.Column="0"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="{DynamicResource AccentColorBrush}">drug name</Label>
+                    </materialDesign:Card>
                 </StackPanel>
             </Grid>
         </StackPanel>
