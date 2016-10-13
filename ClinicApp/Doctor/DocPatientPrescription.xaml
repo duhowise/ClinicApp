@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClinicApp"
         mc:Ignorable="d"
-        Title="KUMASI POLYTECHNIC CLINIC APP" Height="630" Width="650" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="media/Health-Care.png" Closing="Window_Closing" ShowInTaskbar="False" Topmost="True">
+        Title="KUMASI POLYTECHNIC CLINIC APP" Height="630" Width="650" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="../media/Health-Care.png" Closing="Window_Closing" ShowInTaskbar="False" Topmost="True">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="16"></Setter>

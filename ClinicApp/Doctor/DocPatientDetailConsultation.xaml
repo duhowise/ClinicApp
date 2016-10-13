@@ -25,7 +25,7 @@
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <materialDesign:Card Grid.Column="0" Grid.Row="0" Margin="4 4 0 0"  Background="{DynamicResource MaterialDesignBackground}">
+                    <materialDesign:Card Grid.Column="0" Grid.Row="0" Margin="4 4 0 0"  Background="{DynamicResource MaterialDesignBackground}" Loaded="Card_Loaded">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
