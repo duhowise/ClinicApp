@@ -59,7 +59,7 @@
                            Foreground="{DynamicResource AccentColorBrush}">First name</Label>
                     <TextBox Grid.Column="0" Grid.Row="3" Name="PatientFirstName"
                              TabIndex="0"
-                                 IsEnabled="False"
+                                 IsEnabled="True"
                          ToolTip="Patient first name"
                     Margin="0,10,10,0" 
                          Width="300"
@@ -79,7 +79,7 @@
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Last name</Label>
                     <TextBox Grid.Column="0" Grid.Row="5" Name="PatientLastName" TabIndex="1"
-                                 IsEnabled="False"
+                                 IsEnabled="True"
                          ToolTip="Patient last name"
                     Margin="0,10,10,0" 
                          Width="300"
@@ -121,21 +121,24 @@
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Left"
                           Margin="0,10,10,0" 
-                           Foreground="{DynamicResource AccentColorBrush}">Dependant id</Label>
-                    <TextBox TabIndex="3" Name="PatientDependantId"
-                  Grid.Column="0" Grid.Row="9" IsEnabled="False"
-                         ToolTip="Type patient dependant id if patient depends on a staff"
-                    Margin="0,10,10,0" 
-                         Width="300"
-                         Height="35"
-                         HorizontalAlignment="Center"
-                         controls:TextBoxHelper.Watermark=""
-                         controls:TextBoxHelper.IsWaitingForData="True"
-                         controls:TextBoxHelper.ButtonFontFamily="wingdings"
-                     BorderBrush="{DynamicResource AccentColorBrush}"
-                     BorderThickness="1"
-                         Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
-
+                           Foreground="{DynamicResource AccentColorBrush}">Gender</Label>
+                    <ComboBox TabIndex="3"  Name="PatientGender" 
+                                  Grid.Column="0" Grid.Row="9" 
+                                  ToolTip="Select gender"
+                                  Margin="0,10,10,0"
+                                  Width="300"
+                                  Height="35"
+                                  HorizontalAlignment="Left"
+                                  controls:TextBoxHelper.IsWaitingForData="True"
+                                  controls:TextBoxHelper.ButtonContent=""
+                                  controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                                  BorderBrush="{DynamicResource AccentColorBrush}"
+                                  BorderThickness="1"
+                                  controls:TextBoxHelper.UseFloatingWatermark="False"
+                                  Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16">
+                        <ComboBoxItem IsSelected="True">Male</ComboBoxItem>
+                        <ComboBoxItem>Female</ComboBoxItem>
+                    </ComboBox>
                     <Label FontSize="16"
                    Grid.Column="0" Grid.Row="10"
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
@@ -163,7 +166,7 @@
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Provided Id</Label>
                     <TextBox TabIndex="4" Name="PatientProvidedId"
-                  Grid.Column="0" Grid.Row="13"
+                  Grid.Column="0" Grid.Row="13" IsEnabled="True"
                          ToolTip="Type patient provided id"
                     Margin="0,10,10,0" 
                          Width="300"
@@ -236,7 +239,7 @@
                            Foreground="{DynamicResource AccentColorBrush}">Temperature</Label>
                     <TextBox Grid.Column="0" Grid.Row="2" Name="PatientTemperature"
                              TabIndex="5"
-                                 IsEnabled="False"
+                                 IsEnabled="True"
                          ToolTip="Patient temperature"
                     Margin="0,10,10,0" 
                          Width="300"
@@ -258,7 +261,7 @@
                            Foreground="{DynamicResource AccentColorBrush}">weight</Label>
                     <TextBox Grid.Column="0" Grid.Row="4" Name="PatientWeight"
                              TabIndex="5"
-                                 IsEnabled="False"
+                                 IsEnabled="True"
                          ToolTip="Patient temperature"
                     Margin="0,10,10,0" 
                          Width="300"
@@ -278,7 +281,7 @@
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Blood pressure</Label>
                     <TextBox Grid.Column="1" Grid.Row="2" Name="PatientBloodPressure" TabIndex="6"
-                                 IsEnabled="False"
+                                 IsEnabled="True"
                          ToolTip="Patient blood pressure"
                     Margin="0,10,0,0" 
                          Width="300"
@@ -299,7 +302,7 @@
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Pulse</Label>
                     <TextBox Grid.Column="1" Grid.Row="4" Name="PatientBloodPulse" TabIndex="6"
-                                 IsEnabled="False"
+                                 IsEnabled="True"
                          ToolTip="Patient blood pressure"
                     Margin="0,10,0,0" 
                          Width="300"
@@ -320,7 +323,7 @@
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Complaints/Symptoms</Label>
                     <TextBox Grid.Column="0" Grid.Row="6" Name="PatientComplaint" TabIndex="7"
-                                 IsEnabled="False" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalAlignment="Center"
+                                 IsEnabled="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalAlignment="Center"
                                  VerticalScrollBarVisibility="Visible" TextAlignment="Left" MaxLength="700"
                          ToolTip="Patient complaint"
                     Margin="0,10,10,0" 
@@ -341,7 +344,7 @@
                        HorizontalAlignment="Right"
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Findings</Label>
-                    <TextBox TabIndex="8" Name="PatientSymptoms"
+                    <TextBox TabIndex="8" Name="PatientSymptoms" IsEnabled="True"
                   Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalAlignment="Center"
                                  VerticalScrollBarVisibility="Visible" TextAlignment="Left" MaxLength="700"
                          ToolTip="Type patient symptoms"
@@ -363,7 +366,7 @@
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Diagnosis</Label>
                     <TextBox TabIndex="9" Name="PatientDiagnosis"
-                  Grid.Column="0" Grid.Row="10"
+                  Grid.Column="0" Grid.Row="10" IsEnabled="True"
                               HorizontalScrollBarVisibility="Visible" VerticalAlignment="Center"
                                  VerticalScrollBarVisibility="Visible" TextAlignment="Left" MaxLength="700"
                          ToolTip="Type patient diagnosis"
@@ -384,7 +387,7 @@
                        HorizontalAlignment="Right"
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Prescriptions</Label>
-                    <TextBox TabIndex="10" Name="PatientPrescirption"
+                    <TextBox TabIndex="10" Name="PatientPrescirption" IsEnabled="True"
                   Grid.Column="1" Grid.Row="10" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalAlignment="Center"
                                  VerticalScrollBarVisibility="Visible" TextAlignment="Left" MaxLength="700"
                          ToolTip="Type patient prescription"
