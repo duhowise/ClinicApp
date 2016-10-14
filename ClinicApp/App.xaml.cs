@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Windows;
-using MahApps.Metro;
 
 namespace ClinicApp
 {
