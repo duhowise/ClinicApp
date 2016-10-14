@@ -34,73 +34,59 @@
                 <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Label FontSize="16"
-                   Grid.Column="0" Grid.Row="0"
+                   Grid.Column="0" Grid.Row="1"
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center"
-                          Margin="0,10,0,0" 
+                          Margin="136,10,202,89" 
                            Foreground="{DynamicResource AccentColorBrush}" Content="Search for patient"/>
-                        <Grid Grid.Column="0" Grid.Row="1">
+                        <Grid Grid.Column="0" Margin="0,0,0,0" Grid.Row="1">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <TextBox Name="TbPatientSearch" Margin="0 10 10 0"
-                                     Grid.Column="0" Grid.Row="1"    Width="300"
+                            <TextBox x:Name="TbPatientSearch" Margin="0,2,95,25"
+                                     Grid.Column="0" Grid.Row="2"
                          Height="35"  BorderBrush="{DynamicResource AccentColorBrush}"
                      BorderThickness="1"
                          Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"
-                                      controls:TextBoxHelper.Watermark="using id"
-                                     TextChanged="TbPatientSearch_TextChanged"></TextBox>
-                            <Label FontSize="16"
-                   Grid.Column="1" Grid.Row="1"
-                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Center"
-                          Margin="5,10,5,0" 
-                           Foreground="{DynamicResource AccentColorBrush}" Content="or"/>
-                            <TextBox Name="TbPatientSearchName" Margin="10 10 0 0"  BorderBrush="{DynamicResource AccentColorBrush}"
-                     BorderThickness="1"
-                         Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"
-                                     Grid.Column="2" Grid.Row="1"   Width="300"
-                         Height="35"
-                                      controls:TextBoxHelper.Watermark="using name"
-                                     TextChanged="TbPatientSearch_TextChanged"></TextBox>
+                                      controls:TextBoxHelper.Watermark="Search Patient Information"
+                                     TextChanged="TbPatientSearch_TextChanged" Grid.ColumnSpan="3"/>
 
                             <Button 
-                                 Grid.Column="2" Grid.Row="2" TabIndex="1" Margin="0 10 0 0"
-                                Name="Search" HorizontalAlignment="Right" FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
+                                 Grid.Column="2" Grid.Row="2" TabIndex="1" Margin="0,2,17,0"
+                                x:Name="Search" HorizontalAlignment="Right" FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14" Click="Search_Click" VerticalAlignment="Top" Height="33">
+                                FontSize="14" Click="Search_Click" VerticalAlignment="Top" Height="33" Width="62">
                                 <Rectangle Width="33" Height="23"
-                               Fill="{Binding Path=Foreground,
-                                     RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                               Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                     <Rectangle.OpacityMask>
-                                        <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_page_search}"></VisualBrush>
+                                        <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_page_search}"/>
                                     </Rectangle.OpacityMask>
                                 </Rectangle>
                             </Button>
                         </Grid>
                         <GroupBox Header="Search result" Grid.Column="0" Grid.Row="2"
-                               Margin="0,10,0,0" >
-                            <ListView Name="PatientsSearchList" MouseDoubleClick="PatientsSearchList_MouseDoubleClick">
+                               Margin="0" >
+                            <ListView x:Name="PatientsSearchList" MouseDoubleClick="PatientsSearchList_MouseDoubleClick">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}"  Width="150"></GridViewColumn>
-                                        <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" Width="150"></GridViewColumn>
-                                        <GridViewColumn Header="Identification" DisplayMemberBinding="{Binding ProvidedId}" Width="150"></GridViewColumn>
+                                        <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}"  Width="150"/>
+                                        <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" Width="150"/>
+                                        <GridViewColumn Header="Identification" DisplayMemberBinding="{Binding ProvidedId}" Width="150"/>
                                     </GridView>
                                 </ListView.View>
                             </ListView>
