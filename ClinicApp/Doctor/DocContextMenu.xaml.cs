@@ -26,9 +26,9 @@ namespace ClinicApp.Doctor
         private void miComplaint_Click(object sender, RoutedEventArgs e)
         {   
             Close();
-            var pateintComplaint = new DocPatientPrescription();
-            pateintComplaint.ProvidedId.Text = viewPatientWin.PatientList1[2];
-            pateintComplaint.ShowDialog();
+           // var pateintComplaint = new DocPatientPrescription();
+            //pateintComplaint.ProvidedId.Text = viewPatientWin.PatientList1[2];
+            //pateintComplaint.ShowDialog();
         }
 
         private void miHistory_Click(object sender, RoutedEventArgs e)
@@ -42,8 +42,8 @@ namespace ClinicApp.Doctor
         {
             Close();
             //change to updatePatient later
-            var updatePatient = new DocUpdatePatient();
-            updatePatient.ShowDialog();
+            //var updatePatient = new DocUpdatePatient();
+            //updatePatient.ShowDialog();
           
         }
     }

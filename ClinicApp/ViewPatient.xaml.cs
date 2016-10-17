@@ -63,35 +63,35 @@ namespace ClinicApp
 
         private void RadGridView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            cmb = new CMB();
-            var item = PatientList.CurrentCell.Value;
-            if (item is string)
-            {
-                //MessageBox.Show(item.ToString());
-                PatientList1 = OldPatient.FetchPatientById(item.ToString());
+            //cmb = new CMB();
+            //var item = PatientList.CurrentCell.Value;
+            //if (item is string)
+            //{
+            //    //MessageBox.Show(item.ToString());
+            //    PatientList1 = OldPatient.FetchPatientById(item.ToString());
 
-                if (PatientList1.Count > 0)
-                {
-                    if (_MenuAction == "doc")
-                    {
-                        var c = new Doctor.DocContextMenu();
-                        c.ShowCenteredToMouse();
-                    }
-                    else if(_MenuAction == "phar")
-                    {
-                        var p = new Pharmacist.PharContextMenu();
-                        p.ShowCenteredToMouse();
-                    }
+            //    if (PatientList1.Count > 0)
+            //    {
+            //        if (_MenuAction == "doc")
+            //        {
+            //            var c = new Doctor.DocContextMenu();
+            //            c.ShowCenteredToMouse();
+            //        }
+            //        else if(_MenuAction == "phar")
+            //        {
+            //            var p = new Pharmacist.PharContextMenu();
+            //            p.ShowCenteredToMouse();
+            //        }
 
 
-                }
-                else
-                {
+            //    }
+            //    else
+            //    {
                    
-                    cmb.Message = "Select Provided Id to view Details";
-                    cmb.Show();
-                }
-            }
+            //        cmb.Message = "Select Provided Id to view Details";
+            //        cmb.Show();
+            //    }
+            //}
 
         }
 

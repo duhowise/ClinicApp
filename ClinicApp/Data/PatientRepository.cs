@@ -94,7 +94,18 @@ namespace ClinicApp.Data
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                return connection.Query<Consultation>($"select * from Consultation where patientid={patient.Id}").SingleOrDefault();
+                return connection.Query<Consultation>(@"SELECT * FROM Consultation c WHERE c.Date=(SELECT MAX(Date) 
+                FROM Consultation c1 WHERE  c.PatientId=@Id )",patient).SingleOrDefault();
+
+            }
+        }
+        public IEnumerable<Consultation>AllPatientHistory(Patient patient)
+        {
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+                return connection.Query<Consultation>($"select * from Consultation where patientid={patient.Id}");
 
             }
         }

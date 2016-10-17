@@ -219,23 +219,11 @@
     <Compile Include="Data\PatientRepository.cs" />
     <Compile Include="Data\SupplierRepository.cs" />
     <Compile Include="Data\UserRepository.cs" />
-    <Compile Include="Doctor\DocAddPatient.xaml.cs">
-      <DependentUpon>DocAddPatient.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Doctor\DocAdmin.xaml.cs">
       <DependentUpon>DocAdmin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Doctor\DocContextMenu.xaml.cs">
-      <DependentUpon>DocContextMenu.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Doctor\DocPatientDetailConsultation.xaml.cs">
       <DependentUpon>DocPatientDetailConsultation.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Doctor\DocPatientPrescription.xaml.cs">
-      <DependentUpon>DocPatientPrescription.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Doctor\DocUpdatePatient.xaml.cs">
-      <DependentUpon>DocUpdatePatient.xaml</DependentUpon>
     </Compile>
     <Compile Include="Doctor\DocViewPatientHistory.xaml.cs">
       <DependentUpon>DocViewPatientHistory.xaml</DependentUpon>
@@ -388,29 +376,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Doctor\DocAddPatient.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Doctor\DocAdmin.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Doctor\DocContextMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Doctor\DocPatientDetailConsultation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Doctor\DocPatientPrescription.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Doctor\DocUpdatePatient.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Doctor\DocViewPatientHistory.xaml">
       <Generator>MSBuild:Compile</Generator>
