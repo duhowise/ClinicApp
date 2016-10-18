@@ -222,6 +222,12 @@
     <Compile Include="Doctor\DocAdmin.xaml.cs">
       <DependentUpon>DocAdmin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Doctor\DocAdminDashboard.xaml.cs">
+      <DependentUpon>DocAdminDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor\DocEditWindow.xaml.cs">
+      <DependentUpon>DocEditWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Doctor\DocPatientDetailConsultation.xaml.cs">
       <DependentUpon>DocPatientDetailConsultation.xaml</DependentUpon>
     </Compile>
@@ -239,11 +245,20 @@
     <Compile Include="Logic\PatientIdsAutoCompleteData.cs" />
     <Compile Include="Logic\PatientIdsAutoCompleteModel.cs" />
     <Compile Include="Logic\SinglePatientId.cs" />
+    <Compile Include="Nurse\NurAddConsultation.xaml.cs">
+      <DependentUpon>NurAddConsultation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Nurse\NurAddPatient.xaml.cs">
       <DependentUpon>NurAddPatient.xaml</DependentUpon>
     </Compile>
     <Compile Include="Nurse\NurAdmin.xaml.cs">
       <DependentUpon>NurAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nurse\NurAdminDashboard.xaml.cs">
+      <DependentUpon>NurAdminDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nurse\NurUpdatePatient.xaml.cs">
+      <DependentUpon>NurUpdatePatient.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pharmacist\PharAddCategory.xaml.cs">
       <DependentUpon>PharAddCategory.xaml</DependentUpon>
@@ -380,6 +395,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Doctor\DocAdminDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Doctor\DocEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Doctor\DocPatientDetailConsultation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -396,11 +419,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Nurse\NurAddConsultation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Nurse\NurAddPatient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Nurse\NurAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nurse\NurAdminDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nurse\NurUpdatePatient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

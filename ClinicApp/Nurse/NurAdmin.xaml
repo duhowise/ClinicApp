@@ -72,20 +72,25 @@
                        HorizontalAlignment="Center"
                            Foreground="#CCFFFFFF">Admit New Patient</Label>
 
-                <Button Name="btnExplorePackages" Width="80" Foreground="{StaticResource WhiteColorBrush}" Height="80" Grid.Column="1" Grid.Row="0" Style="{DynamicResource MetroCircleButtonStyle}">
-                    <Rectangle Width="40" Height="40"
-                               Fill="{Binding Path=Foreground,
-                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                        <Rectangle.OpacityMask>
-                            <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_chromakey}"></VisualBrush>
-                        </Rectangle.OpacityMask>
-                    </Rectangle>
+                <Button Name="btNurConsulation" Width="80" Foreground="{StaticResource WhiteColorBrush}" Height="80" Grid.Column="1" Grid.Row="0" Style="{DynamicResource MetroCircleButtonStyle}" Click="btNurConsulation_Click">
+                    <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
+                                             Foreground="{DynamicResource WhiteColorBrush}" Kind="AccountStarVariant" />
                 </Button>
                 <Label FontSize="18"
                            Grid.Row="1" Grid.Column="1"
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center"
                            Foreground="#CCFFFFFF">Existing patients</Label>
+
+                <Button Name="btnNurUpdatePatient" Width="80" Foreground="{StaticResource WhiteColorBrush}" Height="80" Grid.Column="2" Grid.Row="0" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnNurUpdatePatient_Click">
+                    <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
+                                             Foreground="{DynamicResource WhiteColorBrush}" Kind="HumanGreeting" />
+                </Button>
+                <Label FontSize="18"
+                           Grid.Row="1" Grid.Column="2"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                           Foreground="#CCFFFFFF">Update patient</Label>
 
                 <Button Name="btnLogout" Width="80" Height="80" Foreground="{StaticResource WhiteColorBrush}" Grid.Column="5" Grid.Row="0" Style="{DynamicResource MetroCircleButtonStyle}" Click="btnLogout_Click">
                     <Rectangle Width="40" Height="40"
@@ -103,149 +108,14 @@
                            Foreground="#CCFFFFFF">Log Out</Label>
             </Grid>
         </StackPanel>
-        <StackPanel VerticalAlignment="Center"  Margin="0,10,0,0" Grid.Row="2">
+        <StackPanel Grid.Row="2" Grid.Column="0">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Rectangle Stroke="{DynamicResource AccentColorBrush}" Grid.Column="1" Grid.ColumnSpan="3"
-                           Grid.RowSpan="2" StrokeThickness="1">
-
-                </Rectangle>
-                <StackPanel Grid.Column="1" Grid.Row="0" Margin="5">
-
-                    <Button Name="btnAddDrug" Foreground="{StaticResource WhiteColorBrush}" 
-                        Width="80" Height="80" Grid.Column="0" Grid.Row="0" 
-                        Style="{DynamicResource MetroCircleButtonStyle}">
-                        <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
-                                             Foreground="{DynamicResource AccentColorBrush}" Kind="Hotel" />
-                    </Button>
-                    <Label FontSize="28"
-                           Grid.Row="0" Grid.Column="0"
-                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Center"
-                           Foreground="{DynamicResource AccentColorBrush}">1000</Label>
-                    <Label FontSize="18"
-                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Center"
-                           Foreground="{DynamicResource AccentColorBrush}">Number of pateints today</Label>
-                </StackPanel>
-                <StackPanel Grid.Column="2" Grid.Row="0" Margin="5">
-                    <Button Foreground="{StaticResource WhiteColorBrush}" 
-                        Width="80" Height="80" Grid.Column="0" Grid.Row="0" 
-                        Style="{DynamicResource MetroCircleButtonStyle}">
-                        <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
-                                             Foreground="{DynamicResource AccentColorBrush}" Kind="GenderMale" />
-                    </Button>
-                    <Label FontSize="28"
-                           Grid.Row="0" Grid.Column="0"
-                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Center"
-                           Foreground="{DynamicResource AccentColorBrush}">1000</Label>
-                    <Label FontSize="18"
-                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Center"
-                           Foreground="{DynamicResource AccentColorBrush}">Male patient</Label>
-                </StackPanel>
-                <StackPanel Grid.Column="3" Grid.Row="0" Margin="5">
-                    <Button Foreground="{StaticResource WhiteColorBrush}" 
-                        Width="80" Height="80" Grid.Column="0" Grid.Row="0" 
-                        Style="{DynamicResource MetroCircleButtonStyle}">
-                        <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
-                                             Foreground="{DynamicResource AccentColorBrush}" Kind="GenderFemale" />
-                    </Button>
-                    <Label FontSize="28"
-                           Grid.Row="0" Grid.Column="0"
-                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Center"
-                           Foreground="{DynamicResource AccentColorBrush}">1000</Label>
-                    <Label FontSize="18"
-                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Center"
-                           Foreground="{DynamicResource AccentColorBrush}">Female patients</Label>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Grid.Row="1" Margin="5">
-                    <Button Foreground="{StaticResource WhiteColorBrush}" 
-                        Width="80" Height="80" Grid.Column="0" Grid.Row="0" 
-                        Style="{DynamicResource MetroCircleButtonStyle}">
-                        <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
-                                             Foreground="{DynamicResource AccentColorBrush}" Kind="Needle" />
-                    </Button>
-                    <Label FontSize="28"
-                           Grid.Row="0" Grid.Column="0"
-                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Center"
-                           Foreground="{DynamicResource AccentColorBrush}">Malaria</Label>
-                    <Label FontSize="18"
-                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Center"
-                           Foreground="{DynamicResource AccentColorBrush}">Frequent illness</Label>
-                </StackPanel>
-                <StackPanel Grid.Column="2" Grid.Row="1" Margin="5">
-                    <Button Foreground="{StaticResource WhiteColorBrush}" 
-                        Width="80" Height="80" Grid.Column="0" Grid.Row="0" 
-                        Style="{DynamicResource MetroCircleButtonStyle}">
-                        <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
-                                             Foreground="{DynamicResource AccentColorBrush}" Kind="Nature" />
-                    </Button>
-                    <Label FontSize="28"
-                           Grid.Row="0" Grid.Column="0"
-                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Center"
-                           Foreground="{DynamicResource AccentColorBrush}">1000</Label>
-                    <Label FontSize="18"
-                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Center"
-                           Foreground="{DynamicResource AccentColorBrush}">Total number of drugs dispensd</Label>
-                </StackPanel>
-                <StackPanel Grid.Column="3" Grid.Row="1" Margin="5">
-                    <Button Foreground="{StaticResource WhiteColorBrush}" 
-                        Width="80" Height="80" Grid.Column="0" Grid.Row="0" 
-                        Style="{DynamicResource MetroCircleButtonStyle}">
-                        <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"
-                                             Foreground="{DynamicResource AccentColorBrush}" Kind="NaturePeople" />
-                    </Button>
-                    <Label FontSize="28"
-                           Grid.Row="0" Grid.Column="0"
-                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Center"
-                           Foreground="{DynamicResource AccentColorBrush}">1000</Label>
-                    <Label FontSize="18"
-                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Center"
-                           Foreground="{DynamicResource AccentColorBrush}">Total drugs remaining</Label>
-                </StackPanel>
-                <StackPanel Grid.Column="4" Grid.Row="0" Grid.RowSpan="2" Margin="5">
-                    <GroupBox Header="List of drugs approaching expiring">
-                        <ListView Name="DrugsExpiringList">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Drug"></GridViewColumn>
-                                    <GridViewColumn Header="Expiring date"></GridViewColumn>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                    </GroupBox>
-                </StackPanel>
-                <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="5">
-                    <GroupBox Header="Frequently dispensed drugs">
-                        <ListView Name="DrugsFrequentList">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Drug"></GridViewColumn>
-                                    <GridViewColumn Header="Quantity"></GridViewColumn>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                    </GroupBox>
+                <StackPanel Grid.Row="0" HorizontalAlignment="Center" Orientation="Horizontal"
+                            VerticalAlignment="Stretch" Margin="-10,0,10,0">
+                    <controls:TransitioningContentControl Margin="40,0,0,0" Transition="Down" 
+                                                  HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                                  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                                              x:Name="MainArea"></controls:TransitioningContentControl>
                 </StackPanel>
             </Grid>
         </StackPanel>
