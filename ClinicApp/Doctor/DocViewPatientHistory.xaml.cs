@@ -28,24 +28,6 @@ namespace ClinicApp.Doctor
         }
 
 
-        private void RadGridView_SelectionChanged(object sender, SelectionChangeEventArgs e)
-        {
-
-        }
-
-        private void RadGridView_SelectionChanging(object sender, SelectionChangingEventArgs e)
-        {
-
-        }
-
-        private void RadGridView_Sorted(object sender, GridViewSortedEventArgs e)
-        {
-
-        }
-
-        private void RadGridView_Sorting(object sender, GridViewSortingEventArgs e)
-        {
-
-        }
+      
     }
 }

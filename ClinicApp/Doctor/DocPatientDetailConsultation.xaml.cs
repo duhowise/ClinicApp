@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClinicApp.Data;
 using ClinicApp.Pharmacist;
 using ClinicModel;
 
@@ -23,24 +24,36 @@ namespace ClinicApp.Doctor
     public partial class DocPatientDetailConsultation : UserControl
     {
         static Patient patient = new Patient();
-        Consultation consultation = new Consultation();
+        Consultation _consultation = new Consultation();
 
         public DocPatientDetailConsultation()
         {
             InitializeComponent();
+            patient = PharSearchPatient.patient;
+            _consultation = new PatientRepository().PatientHistory(patient);
         }
 
         private void Card_Loaded(object sender, RoutedEventArgs e)
         {
-            patient = PharSearchPatient.patient;
             PatientName.Content = (patient.FulName()).ToUpper();
             PatientDesignation.Content = $"Designation: {patient.Designation}";
-            PatientTemperature.Content = $"Temperature :{consultation.Temperature} °C";
-            PatientPulse.Content = $"Pulse :{consultation.Pulse} bpm";
-            PatientWeight.Content = $"Weight :{consultation.Weight} kg";
-            PatientBloodPressure.Content = $"Blood pressure : {consultation.BloodPressure}";
-            PatientLastVisited.Content = $"Consultation Date: {consultation.Date.ToShortDateString()}";
+            PatientTemperature.Content = $"Temperature :{_consultation.Temperature} °C";
+            PatientPulse.Content = $"Pulse :{_consultation.Pulse} bpm";
+            tbDiagnosis.Text = _consultation.Diagnosis;
+            tbPrescriptions.Text = _consultation.Prescription;
+            tbFindings.Text = _consultation.Signs;
+            PatientWeight.Content = $"Weight :{_consultation.Weight} kg";
+            PatientBloodPressure.Content = $"Blood pressure : {_consultation.BloodPressure}";
+            PatientLastVisited.Content = $"Consultation Date: {_consultation.Date.ToShortDateString()}";
+            PatientHistoryList.ItemsSource =new PatientRepository().AllPatientHistory(patient);
+        }
 
+
+        private void PatientHistoryList_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            _consultation = null;
+            _consultation=PatientHistoryList.SelectedItem as Consultation;
+            Card_Loaded(sender,e);
         }
     }
 }

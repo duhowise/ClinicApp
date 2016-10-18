@@ -70,27 +70,27 @@ namespace ClinicApp
                 //MessageBox.Show(item.ToString());
                 //PatientList1 = Patient.FetchPatientById(item.ToString());
 
-                if (PatientList1.Count > 0)
-                {
-                    if (_MenuAction == "doc")
-                    {
-                        var c = new DocContextMenu();
-                        c.ShowCenteredToMouse();
-                    }
-                    else if (_MenuAction == "phar")
-                    {
-                        var p = new PharContextMenu();
-                        p.ShowCenteredToMouse();
-                    }
+                //if (PatientList1.Count > 0)
+                //{
+                //    if (_MenuAction == "doc")
+                //    {
+                //        var c = new DocContextMenu();
+                //        c.ShowCenteredToMouse();
+                //    }
+                //    else if (_MenuAction == "phar")
+                //    {
+                //        var p = new PharContextMenu();
+                //        p.ShowCenteredToMouse();
+                //    }
 
 
-                }
-                else
-                {
+                //}
+                //else
+                //{
 
-                    cmb.Message = "Select Provided Id to view Details";
-                    cmb.Show();
-                }
+                //    cmb.Message = "Select Provided Id to view Details";
+                //    cmb.Show();
+                //}
             }
         }
     }

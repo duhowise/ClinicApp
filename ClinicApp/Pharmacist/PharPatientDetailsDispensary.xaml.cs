@@ -21,7 +21,7 @@ namespace ClinicApp.Pharmacist
     {
         BackgroundWorker _remainingDrugsBackgroundWorker = new BackgroundWorker();
        static Patient patient=new Patient();
-        Consultation consultation=new Consultation();
+        Consultation _consultation=new Consultation();
         Drug  drug=new Drug();
 
         CMB cmb = new CMB();
@@ -39,7 +39,7 @@ namespace ClinicApp.Pharmacist
             patient = PharSearchPatient.Patient;
             if (patient!=null)
             {
-                consultation = new PatientRepository().PatientHistory(patient);
+                _consultation = new PatientRepository().PatientHistory(patient);
             }
         }
 
@@ -155,7 +155,7 @@ namespace ClinicApp.Pharmacist
 
         private void PharPatientDetailsDispensary_OnLoaded(object sender, RoutedEventArgs e)
         {
-            if (consultation.IsSensitive == 0) { tbDiagnosis.Text = $"{consultation.Diagnosis}"; }
+            if (_consultation.IsSensitive == 0) { tbDiagnosis.Text = $"{_consultation.Diagnosis}"; }
             else
             {
                 tbDiagnosis.Text = @"
@@ -166,13 +166,13 @@ namespace ClinicApp.Pharmacist
             }
             PatientName.Content = (patient.FirstName + " " + patient.LastName).ToUpper();
             PatientDesignation.Content = $"Designation: {patient.Designation}";
-            PatientTemperature.Content = $"Temperature :{consultation.Temperature} °C";
-            PatientPulse.Content = $"Pulse :{consultation.Pulse} bpm";
-            PatientWeight.Content = $"Weight :{consultation.Weight} kg";
-            PatientBloodPressure.Content = $"Blood pressure : {consultation.BloodPressure}";
-            PatientLastVisited.Content = $"Consultation Date: {consultation.Date.ToShortDateString()}";
-            tbLabFindings.Text = $"{consultation.Symptoms}";
-            tbPrescription.Text = $"{consultation.Prescription}";
+            PatientTemperature.Content = $"Temperature :{_consultation.Temperature} °C";
+            PatientPulse.Content = $"Pulse :{_consultation.Pulse} bpm";
+            PatientWeight.Content = $"Weight :{_consultation.Weight} kg";
+            PatientBloodPressure.Content = $"Blood pressure : {_consultation.BloodPressure}";
+            PatientLastVisited.Content = $"Consultation Date: {_consultation.Date.ToShortDateString()}";
+            tbLabFindings.Text = $"{_consultation.Symptoms}";
+            tbPrescription.Text = $"{_consultation.Prescription}";
             DispenseProvidedId.Text = patient.ProvidedId;
           
 
