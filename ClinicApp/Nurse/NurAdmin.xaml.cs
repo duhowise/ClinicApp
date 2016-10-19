@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using ClinicApp.Pharmacist;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 
@@ -46,6 +47,11 @@ namespace ClinicApp.Nurse
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void ExistingPatient_OnClick(object sender, RoutedEventArgs e)
+        {
+            new PharSearchPatient().ShowDialog();
         }
     }
 }

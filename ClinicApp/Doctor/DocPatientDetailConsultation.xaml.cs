@@ -35,17 +35,19 @@ namespace ClinicApp.Doctor
 
         private void Card_Loaded(object sender, RoutedEventArgs e)
         {
-            PatientName.Content = (patient.FulName()).ToUpper();
-            PatientDesignation.Content = $"Designation: {patient.Designation}";
-            PatientTemperature.Content = $"Temperature :{_consultation.Temperature} °C";
-            PatientPulse.Content = $"Pulse :{_consultation.Pulse} bpm";
-            tbDiagnosis.Text = _consultation.Diagnosis;
-            tbPrescriptions.Text = _consultation.Prescription;
-            tbFindings.Text = _consultation.Signs;
-            PatientWeight.Content = $"Weight :{_consultation.Weight} kg";
-            PatientBloodPressure.Content = $"Blood pressure : {_consultation.BloodPressure}";
-            PatientLastVisited.Content = $"Consultation Date: {_consultation.Date.ToShortDateString()}";
-            PatientHistoryList.ItemsSource =new PatientRepository().AllPatientHistory(patient);
+         
+                PatientName.Content = (patient.FulName()).ToUpper();
+                PatientDesignation.Content = $"Designation: {patient.Designation}";
+                PatientTemperature.Content = $"Temperature :{_consultation?.Temperature} °C";
+                PatientPulse.Content = $"Pulse :{_consultation?.Pulse} bpm";
+                tbDiagnosis.Text = _consultation?.Diagnosis;
+                tbPrescriptions.Text = _consultation?.Prescription;
+                tbFindings.Text = _consultation?.Signs;
+                PatientWeight.Content = $"Weight :{_consultation?.Weight} kg";
+                PatientBloodPressure.Content = $"Blood pressure : {_consultation?.BloodPressure}";
+                PatientLastVisited.Content = $"Consultation Date: {_consultation?.Date.ToShortDateString()}";
+                PatientHistoryList.ItemsSource = new PatientRepository().AllPatientHistory(patient);
+           
         }
 
 

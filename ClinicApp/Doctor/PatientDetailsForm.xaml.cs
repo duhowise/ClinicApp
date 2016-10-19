@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using ClinicApp.Data;
 using ClinicApp.Logic;
+using ClinicApp.Nurse;
 using ClinicModel;
 using MahApps.Metro.Controls;
 
@@ -65,8 +66,12 @@ namespace ClinicApp.Doctor
             if (MainWindow.ID == 3)
             {navigator.NavigateToPharPatientDetailDispensaryControl();
             }
-            else
-            {navigator.NavigateToDocPatientDetailConsultationControl(); 
+            else if (MainWindow.ID == 1)
+            {
+                navigator.NavigateToDocPatientDetailConsultationControl(); 
+            } else if (MainWindow.ID == 2)
+            {
+                new NurAddPatient().ShowDialog();
             }
 
         }

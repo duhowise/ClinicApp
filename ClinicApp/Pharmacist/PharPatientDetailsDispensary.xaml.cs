@@ -155,7 +155,7 @@ namespace ClinicApp.Pharmacist
 
         private void PharPatientDetailsDispensary_OnLoaded(object sender, RoutedEventArgs e)
         {
-            if (_consultation.IsSensitive == 0) { tbDiagnosis.Text = $"{_consultation.Diagnosis}"; }
+            if (_consultation.IsSensitive.Equals(0)) { tbDiagnosis.Text = $"{_consultation.Diagnosis}"; }
             else
             {
                 tbDiagnosis.Text = @"
@@ -164,7 +164,7 @@ namespace ClinicApp.Pharmacist
                                      *****************************
                                      *****************************";
             }
-            PatientName.Content = (patient.FirstName + " " + patient.LastName).ToUpper();
+            PatientName.Content = patient.FulName().ToUpper();
             PatientDesignation.Content = $"Designation: {patient.Designation}";
             PatientTemperature.Content = $"Temperature :{_consultation.Temperature} °C";
             PatientPulse.Content = $"Pulse :{_consultation.Pulse} bpm";
