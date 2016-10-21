@@ -45,7 +45,7 @@ namespace ClinicApp.Nurse
         
         private async void SaveConsultation_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(PatientSymptoms.Text)||string.IsNullOrWhiteSpace(PatientComplaint.Text)||
+            if (string.IsNullOrWhiteSpace(PatientSymptoms.Text)||string.IsNullOrWhiteSpace(PatientSymptoms.Text)||
                 string.IsNullOrWhiteSpace(PatientDiagnosis.Text)||string.IsNullOrWhiteSpace(PatientPrescirption.Text)||
                 string.IsNullOrWhiteSpace(PatientPrescirption.Text)
                 )
@@ -58,7 +58,7 @@ namespace ClinicApp.Nurse
                 new PatientRepository().AddNewConsultation(new Consultation
                 {
                     BloodPressure = PatientBloodPressure.Text,
-                    Signs = PatientComplaint.Text,
+                    Signs = PatientSymptoms.Text,
                     Diagnosis =  PatientDiagnosis.Text,
                     PatientId = patient.Id,
                     Prescription = PatientPrescirption.Text,
