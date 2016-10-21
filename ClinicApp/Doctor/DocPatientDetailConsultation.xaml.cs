@@ -57,5 +57,10 @@ namespace ClinicApp.Doctor
             _consultation=PatientHistoryList.SelectedItem as Consultation;
             Card_Loaded(sender,e);
         }
+
+        private void btnDocEdit_Click(object sender, RoutedEventArgs e)
+        {
+            new DocEditWindow().ShowDialog();
+        }
     }
 }

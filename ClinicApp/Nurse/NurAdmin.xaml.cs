@@ -1,6 +1,6 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
-using ClinicApp.Pharmacist;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 
@@ -11,6 +11,7 @@ namespace ClinicApp.Nurse
     /// </summary>
     public partial class NurAdmin : MetroWindow
     {
+        private MainContentView navigator;
         public NurAdmin()
         {
             InitializeComponent();
@@ -36,6 +37,13 @@ namespace ClinicApp.Nurse
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoginUserName.Content = MainWindow.FullName;
+            navigator = new MainContentView(NavigateToView);
+            navigator.NavigateToNurAdminDashboardControl();
+        }
+
+        private void NavigateToView(UserControl view)
+        {
+            MainArea.Content = view;
         }
 
 
@@ -47,11 +55,6 @@ namespace ClinicApp.Nurse
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             Close();
-        }
-
-        private void ExistingPatient_OnClick(object sender, RoutedEventArgs e)
-        {
-            new PharSearchPatient().ShowDialog();
         }
     }
 }

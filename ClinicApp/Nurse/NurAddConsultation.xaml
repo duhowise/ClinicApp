@@ -1,0 +1,231 @@
+﻿<controls:MetroWindow x:Class="ClinicApp.Nurse.NurAddConsultation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClinicApp.Nurse"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="KUMASI POLYTECHNIC CLINIC APP" Height="700" Width="700" 
+                      WindowState="Normal" Icon="../media/Health-Care.png" 
+                    
+                      ShowMinButton="False"  ShowMaxRestoreButton="False"
+                      Closing="Window_Closing">
+    <Grid>
+        <materialDesign:Card Margin="4 4 4 0" Padding="20"
+                                 Background="{DynamicResource MaterialDesignBackground}">
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Label FontSize="20"
+                   Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Center"
+                          Margin="0,10,0,0" 
+                           Foreground="{DynamicResource AccentColorBrush}">Consultation</Label>
+
+                    <Label FontSize="16"
+                   Grid.Column="0" Grid.Row="1"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Left"
+                          Margin="0,10,0,0" 
+                           Foreground="{DynamicResource AccentColorBrush}">Temperature</Label>
+                    <TextBox Grid.Column="0" Grid.Row="2" Name="PatientTemperature"
+                             TabIndex="5"
+                                 IsEnabled="True"
+                         ToolTip="Patient temperature"
+                    Margin="0,10,10,0" 
+                         Width="300"
+                         Height="35"
+                         HorizontalAlignment="Center"
+                         controls:TextBoxHelper.Watermark=""
+                         controls:TextBoxHelper.IsWaitingForData="True"
+                         controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                     BorderBrush="{DynamicResource AccentColorBrush}"
+                     BorderThickness="1"
+                         controls:TextBoxHelper.UseFloatingWatermark="False" 
+                                 Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
+
+                    <Label FontSize="16"
+                   Grid.Column="0" Grid.Row="3"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Left"
+                          Margin="0,10,0,0" 
+                           Foreground="{DynamicResource AccentColorBrush}">weight</Label>
+                    <TextBox Grid.Column="0" Grid.Row="4" Name="PatientWeight"
+                             TabIndex="5"
+                                 IsEnabled="True"
+                         ToolTip="Patient temperature"
+                    Margin="0,10,10,0" 
+                         Width="300"
+                         Height="35"
+                         HorizontalAlignment="Center"
+                         controls:TextBoxHelper.Watermark=""
+                         controls:TextBoxHelper.IsWaitingForData="True"
+                         controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                     BorderBrush="{DynamicResource AccentColorBrush}"
+                     BorderThickness="1"
+                         controls:TextBoxHelper.UseFloatingWatermark="False" 
+                                 Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
+                    <Label FontSize="16"
+                   Grid.Column="1" Grid.Row="1"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Right"
+                          Margin="0,10,10,0" 
+                           Foreground="{DynamicResource AccentColorBrush}">Blood pressure</Label>
+                    <TextBox Grid.Column="1" Grid.Row="2" Name="PatientBloodPressure" TabIndex="6"
+                                 IsEnabled="True"
+                         ToolTip="Patient blood pressure"
+                    Margin="0,10,0,0" 
+                         Width="300"
+                         Height="35"
+                         HorizontalAlignment="Center"
+                         controls:TextBoxHelper.Watermark=""
+                         controls:TextBoxHelper.IsWaitingForData="True"
+                         controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                     BorderBrush="{DynamicResource AccentColorBrush}"
+                     BorderThickness="1"
+                         controls:TextBoxHelper.UseFloatingWatermark="False" 
+                                 Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
+
+                    <Label FontSize="16"
+                   Grid.Column="1" Grid.Row="3"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Right"
+                          Margin="0,10,10,0" 
+                           Foreground="{DynamicResource AccentColorBrush}">Pulse</Label>
+                    <TextBox Grid.Column="1" Grid.Row="4" Name="PatientBloodPulse" TabIndex="6"
+                                 IsEnabled="True"
+                         ToolTip="Patient blood pressure"
+                    Margin="0,10,0,0" 
+                         Width="300"
+                         Height="35"
+                         HorizontalAlignment="Center"
+                         controls:TextBoxHelper.Watermark=""
+                         controls:TextBoxHelper.IsWaitingForData="True"
+                         controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                     BorderBrush="{DynamicResource AccentColorBrush}"
+                     BorderThickness="1"
+                         controls:TextBoxHelper.UseFloatingWatermark="False" 
+                                 Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
+
+                    <Label FontSize="16"
+                   Grid.Column="0" Grid.Row="5"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Left"
+                          Margin="0,10,10,0" 
+                           Foreground="{DynamicResource AccentColorBrush}">Complaints/Symptoms</Label>
+                    <TextBox Grid.Column="0" Grid.Row="6" Name="PatientComplaint" TabIndex="7"
+                                 IsEnabled="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalAlignment="Center"
+                                 VerticalScrollBarVisibility="Visible" TextAlignment="Left" MaxLength="700"
+                         ToolTip="Patient complaint"
+                    Margin="0,10,10,0" 
+                         Width="300"
+                         Height="100"
+                         HorizontalAlignment="Center"
+                         controls:TextBoxHelper.Watermark="type complaint seperated with commas(,)"
+                         controls:TextBoxHelper.IsWaitingForData="True"
+                         controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                     BorderBrush="{DynamicResource AccentColorBrush}"
+                     BorderThickness="1"
+                         controls:TextBoxHelper.UseFloatingWatermark="False" 
+                                 Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
+
+                    <Label FontSize="16"
+                   Grid.Column="1" Grid.Row="5"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Right"
+                          Margin="0,10,10,0" 
+                           Foreground="{DynamicResource AccentColorBrush}">Findings</Label>
+                    <TextBox TabIndex="8" Name="PatientSymptoms" IsEnabled="True"
+                  Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalAlignment="Center"
+                                 VerticalScrollBarVisibility="Visible" TextAlignment="Left" MaxLength="700"
+                         ToolTip="Type patient symptoms"
+                    Margin="0,10,0,0" 
+                         Width="300"
+                         Height="100"
+                         HorizontalAlignment="Center"
+                         controls:TextBoxHelper.Watermark="type symptoms seperated with commas(,)"
+                         controls:TextBoxHelper.IsWaitingForData="True"
+                         controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                     BorderBrush="{DynamicResource AccentColorBrush}"
+                     BorderThickness="1"
+                         Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
+
+                    <Label FontSize="16"
+                   Grid.Column="0" Grid.Row="9"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Left"
+                          Margin="0,10,10,0" 
+                           Foreground="{DynamicResource AccentColorBrush}">Diagnosis</Label>
+                    <TextBox TabIndex="9" Name="PatientDiagnosis"
+                  Grid.Column="0" Grid.Row="10" IsEnabled="True"
+                              HorizontalScrollBarVisibility="Visible" VerticalAlignment="Center"
+                                 VerticalScrollBarVisibility="Visible" TextAlignment="Left" MaxLength="700"
+                         ToolTip="Type patient diagnosis"
+                    Margin="0,10,10,0" 
+                         Width="300"
+                         Height="100"
+                         HorizontalAlignment="Center" TextWrapping="Wrap"
+                         controls:TextBoxHelper.Watermark="type diagnosis seperated with commas(,)"
+                         controls:TextBoxHelper.IsWaitingForData="True"
+                         controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                     BorderBrush="{DynamicResource AccentColorBrush}"
+                     BorderThickness="1"
+                         Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
+
+                    <Label FontSize="16"
+                   Grid.Column="1" Grid.Row="9"
+                       FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
+                       HorizontalAlignment="Right"
+                          Margin="0,10,10,0" 
+                           Foreground="{DynamicResource AccentColorBrush}">Prescriptions</Label>
+                    <TextBox TabIndex="10" Name="PatientPrescirption" IsEnabled="True"
+                  Grid.Column="1" Grid.Row="10" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalAlignment="Center"
+                                 VerticalScrollBarVisibility="Visible" TextAlignment="Left" MaxLength="700"
+                         ToolTip="Type patient prescription"
+                    Margin="0,10,0,0" 
+                         Width="300"
+                         Height="100"
+                         HorizontalAlignment="Center"
+                         controls:TextBoxHelper.Watermark="type prescriptions seperated with commas(,)"
+                         controls:TextBoxHelper.IsWaitingForData="True"
+                         controls:TextBoxHelper.ButtonFontFamily="wingdings"
+                     BorderBrush="{DynamicResource AccentColorBrush}"
+                     BorderThickness="1"
+                         Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
+                    <Rectangle Grid.Column="0" Height="42" Grid.ColumnSpan="2" Grid.Row="12"></Rectangle>
+                    <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,10,0" 
+                                Height="30" Width="150" Grid.Row="13" TabIndex="12"
+                                 HorizontalAlignment="Right" Grid.Column="1" Name="SaveConsultation"
+                                 FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
+                                Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
+                                FontSize="14" Click="SaveConsultation_Click">
+                        Save Consultation
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </materialDesign:Card>
+    </Grid>
+</controls:MetroWindow>

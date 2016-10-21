@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using ClinicApp.Data;
 using ClinicApp.Logic;
@@ -15,7 +16,8 @@ namespace ClinicApp.Doctor
     /// </summary>
     public partial class DocAdmin : MetroWindow
     {
-      //OldPatient p = new OldPatient();
+        //OldPatient p = new OldPatient();
+        private MainContentView navigator;
         public DocAdmin()
         {
             InitializeComponent();
@@ -27,7 +29,15 @@ namespace ClinicApp.Doctor
           //  lbTotalDrugs.Content = a = new DrugRepository().TotalDrugsQuantity("Drugs");
             //lbRegisteredPatients.Content = p.TotalRegisteredPatient();
                 b = new DrugRepository().TotalDrugsQuantity("DispensedDrugs");
-             //lbAvailableDrugs.Content = a - b;
+            //lbAvailableDrugs.Content = a - b;
+
+            navigator = new MainContentView(NavigateToView);
+            navigator.NavigateToDocAdminDashboardControl();
+        }
+
+        private void NavigateToView(UserControl view)
+        {
+            MainArea.Content = view;
         }
 
         private async void Window_Closing(object sender, CancelEventArgs e)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Controls;
 using ClinicApp.Doctor;
+using ClinicApp.Nurse;
 using ClinicApp.Pharmacist;
 using ViewModelBase = Package_Manager.View.ViewModelBase;
 
@@ -27,6 +28,18 @@ namespace ClinicApp.Logic
         {
             var pharAdminDashboard = new PharAdminDashboard();
             navigateToView(pharAdminDashboard);
+        }
+
+        public void NavigateToNurAdminDashboardControl()
+        {
+            var nurAdminDashboard = new NurAdminDashboard();
+            navigateToView(nurAdminDashboard);
+        }
+
+        public void NavigateToDocAdminDashboardControl()
+        {
+            var docAdminDashboard = new DocAdminDashboard();
+            navigateToView(docAdminDashboard);
         }
 
         public void NavigateToPharPatientDetailDispensaryControl()
