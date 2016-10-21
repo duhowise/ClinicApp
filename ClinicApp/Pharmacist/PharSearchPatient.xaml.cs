@@ -57,10 +57,17 @@ namespace ClinicApp.Pharmacist
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            PatientsSearchList.ItemsSource = patients.FindAll(p => p.ProvidedId.Contains(TbPatientSearch.Text));
-            
-           
+            if (!string.IsNullOrWhiteSpace(TbPatientSearch.Text))
+            {
+                if (!patientSearchWorker.IsBusy)
+                {
+                    patientSearchWorker.RunWorkerAsync();
+                }
+                PatientsSearchList.ItemsSource = patients.FindAll(p => p.ProvidedId.ToLower().StartsWith
+              (TbPatientSearch.Text.ToLower()) || p.FulName().ToLower().StartsWith(TbPatientSearch.Text.ToLower())
+              || p.FulNameR().ToLower().StartsWith(TbPatientSearch.Text.ToLower()));
 
+            }
         }
 
         private  void PatientsSearchList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
