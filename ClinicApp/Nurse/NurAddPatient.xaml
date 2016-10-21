@@ -306,7 +306,7 @@
 
                     <ComboBox TabIndex="2" Name="PatientConditionCategory" 
                                   Grid.Column="1" Grid.Row="6" 
-                                  ToolTip="Select Patient condition category"
+                                  ToolTip="Select multiple patient condition category"
                                   Margin="10,10,10,0"
                                   Width="300"
                                   Height="35"
