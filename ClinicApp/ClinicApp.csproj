@@ -257,6 +257,9 @@
     <Compile Include="Nurse\NurAdminDashboard.xaml.cs">
       <DependentUpon>NurAdminDashboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Nurse\NurSearchPatient.xaml.cs">
+      <DependentUpon>NurSearchPatient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Nurse\NurUpdatePatient.xaml.cs">
       <DependentUpon>NurUpdatePatient.xaml</DependentUpon>
     </Compile>
@@ -432,6 +435,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Nurse\NurAdminDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nurse\NurSearchPatient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
