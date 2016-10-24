@@ -72,7 +72,7 @@
                        HorizontalAlignment="Center"
                            Foreground="#CCFFFFFF">Admit New Patient</Label>
 
-                <Button Name="btnExplorePackages" Width="80" Foreground="{StaticResource WhiteColorBrush}" Height="80" Grid.Column="1" Grid.Row="0" Style="{DynamicResource MetroCircleButtonStyle}">
+                <Button Name="ExistingPatient" Click="ExistingPatient_OnClick" Width="80" Foreground="{StaticResource WhiteColorBrush}" Height="80" Grid.Column="1" Grid.Row="0" Style="{DynamicResource MetroCircleButtonStyle}">
                     <Rectangle Width="40" Height="40"
                                Fill="{Binding Path=Foreground,
                         RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">

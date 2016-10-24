@@ -57,5 +57,10 @@ namespace ClinicApp.Nurse
         {
             Close();
         }
+
+        private void ExistingPatient_OnClick(object sender, RoutedEventArgs e)
+        {
+            new NurSearchPatient().ShowDialog();
+        }
     }
 }

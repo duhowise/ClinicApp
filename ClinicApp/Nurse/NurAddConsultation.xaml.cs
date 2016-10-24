@@ -12,7 +12,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ClinicApp.Data;
+using ClinicModel;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace ClinicApp.Nurse
 {
@@ -21,9 +24,12 @@ namespace ClinicApp.Nurse
     /// </summary>
     public partial class NurAddConsultation : MetroWindow
     {
+        Patient patient=new Patient();
         public NurAddConsultation()
         {
             InitializeComponent();
+            patient = NurSearchPatient.Patient;
+            Consult.Content = $"Consultation- {patient.FulName().ToUpper()}";
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
@@ -33,9 +39,36 @@ namespace ClinicApp.Nurse
             if (response == MessageBoxResult.Yes) { Hide(); } else { e.Cancel = true; }
         }
 
-        private void SaveConsultation_Click(object sender, RoutedEventArgs e)
+        private async void SaveConsultation_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+
+            if (string.IsNullOrWhiteSpace(PatientSymptoms.Text) || string.IsNullOrWhiteSpace(PatientSigns.Text) ||
+                string.IsNullOrWhiteSpace(PatientDiagnosis.Text) || string.IsNullOrWhiteSpace(PatientPrescirption.Text) ||
+                string.IsNullOrWhiteSpace(PatientPrescirption.Text)||PatientConditionCategory.SelectedItem.ToString()!=""
+                )
+            {
+
+                await this.ShowMessageAsync(@"Sorry 'bou that !", "All feilds with asterisk(*) are required");
+            }
+            else
+            {
+                new PatientRepository().AddNewConsultation(new Consultation
+                {
+                    BloodPressure = PatientBloodPressure.Text,
+                    Signs = PatientSigns.Text,
+                    Diagnosis = PatientDiagnosis.Text,
+                    PatientId = patient.Id,
+                    Weight = PatientWeight.Text,
+                    Pulse =PatientBloodPulse.Text,
+                    ConditionCatId =(int) PatientConditionCategory.SelectedValue,
+                    Respiration =PatientRespiration.Text,
+                    Prescription = PatientPrescirption.Text,
+                    Symptoms = PatientSymptoms.Text,
+                    Temperature = PatientTemperature.Text
+                });
+                await this.ShowMessageAsync("Success!", $"Added Consultation for {patient.FirstName} {patient.LastName.ToUpper()}");
+                Util.Clear(this);
+            }
         }
     }
 }

@@ -38,7 +38,7 @@
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Label FontSize="20"
+                    <Label FontSize="20" Name="Consult"
                    Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center"

@@ -9,7 +9,7 @@
         mc:Ignorable="d"
            Title="KUMASI POLYTECHNIC CLINIC APP" 
                        GlowBrush="{DynamicResource AccentColorBrush}"
-                       Background="{DynamicResource MaterialDesignPaper}" Height="450" Width="760"
+                       Background="{DynamicResource MaterialDesignPaper}" Height="462.605" Width="760"
                       NonActiveGlowBrush="{DynamicResource PrimaryColorBrush}"
                       WindowStartupLocation="CenterScreen" ResizeMode="NoResize" 
                       Icon="../media/Health-Care.png" ShowInTaskbar="False">
@@ -74,7 +74,7 @@
                     </StackPanel>
                     <GroupBox Header="Search result" Grid.Column="0" Grid.Row="1"
                                Margin="0" >
-                        <ListView x:Name="PatientsSearchList" Height="300" MouseDoubleClick="PatientsSearchList_MouseDoubleClick">
+                        <ListView x:Name="PatientsSearchList" Height="257" MouseDoubleClick="PatientsSearchList_MouseDoubleClick" >
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}"  Width="250"/>
