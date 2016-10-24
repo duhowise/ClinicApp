@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Input;
 using ClinicApp.Data;
 using ClinicApp.Doctor;
@@ -16,16 +17,79 @@ namespace ClinicApp
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        BackgroundWorker loginBackgroundWorker=new BackgroundWorker();
+        BackgroundWorker verifyWorker=new BackgroundWorker();
         User loggedinUser=new User();
         CMB cmb = new CMB();
         private static int _id;
         private static string _fullname = null;
-   
+        private string _userName;
+        private string _pass;
+
         public MainWindow()
         {
             InitializeComponent();
-          
+            userName.Focus();
+            loginBackgroundWorker.WorkerSupportsCancellation = true;
+            verifyWorker.WorkerSupportsCancellation = true;
+            verifyWorker.RunWorkerCompleted += VerifyWorker_RunWorkerCompleted;
+            verifyWorker.DoWork += VerifyWorker_DoWork;
+            loginBackgroundWorker.RunWorkerCompleted += LoginBackgroundWorker_RunWorkerCompleted;
+            loginBackgroundWorker.DoWork += LoginBackgroundWorker_DoWork;
+        }
 
+        private void VerifyWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var user = new User();
+            user.UserName = _userName;
+            user.Password = _pass;
+            e.Result=new UserRepository().VerifyUser(user);
+
+        }
+
+        private async void VerifyWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if ((int)e.Result!=1)
+            {
+                await this.ShowMessageAsync("Please Check Username or Password", "Login Failed");
+                Password.Password = "";
+                userName.Text = "";
+                userName.Focus();
+            }
+            else
+            {
+                if (!loginBackgroundWorker.IsBusy)
+                {
+                    loginBackgroundWorker.RunWorkerAsync();
+                }
+            }
+        }
+
+        private void LoginBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+           LogUserIn();
+        }
+
+        private void LoginBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (ID == 1)
+            {
+                DocAdmin doctor = new DocAdmin();
+                doctor.Show();
+            }
+            else if (ID == 2)
+            {
+                NurAdmin nurse = new NurAdmin();
+                nurse.Show();
+            }
+            else if (ID == 3)
+            {
+                PharAdmin pharmacist = new PharAdmin();
+                pharmacist.Show();
+            }
+            Hide();
+            Password.Password = "";
+            userName.Text = "";
         }
 
         public static int ID
@@ -34,20 +98,15 @@ namespace ClinicApp
             set { _id = value; }
         }
 
+        
+
         public static string FullName
         {
             get { return _fullname; }
             set { _fullname = value; }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-            LogUserIn();
-
-        }
-
-        public async void LogUserIn()
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(userName.Text) || string.IsNullOrWhiteSpace(Password.Password))
             {
@@ -58,68 +117,32 @@ namespace ClinicApp
             }
             else
             {
-                var user = new User();
-                user.UserName = userName.Text;
-                user.Password = Password.Password;
-                var valid=new UserRepository().VerifyUser(user);
-                loggedinUser = new UserRepository().Login(user);
-                if (valid==1)
+                _userName = userName.Text;
+                _pass = Password.Password;
+                if (!verifyWorker.IsBusy)
                 {
-                    ID =loggedinUser.Id;
-                    FullName = loggedinUser.FirstName+" "+loggedinUser.LastName.ToUpper();
-                    if (ID == 1)
-                    {
-                        DocAdmin doctor = new DocAdmin();
-                        doctor.Show();
-                    }
-                    else if (ID == 2)
-                    {
-                        NurAdmin nurse = new NurAdmin();
-                        nurse.Show(); 
-                    }
-                    else if (ID == 3)
-                    {
-                        PharAdmin pharmacist = new PharAdmin();
-                        pharmacist.Show();
-                    }
-                  Hide();
-                    //System.Windows.MessageBox.Show("Login Sucessful", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                    Password.Password = "";
-                    userName.Text = "";
-                }
-                else
-                {
-                    await this.ShowMessageAsync("Please Check Username or Password", "Login Failed");
-                    Password.Password = "";
-                    userName.Text = "";
-                    userName.Focus();
+                    verifyWorker.RunWorkerAsync();
                 }
             }
 
+        }
+
+        public void LogUserIn()
+        {
+            var user = new User();
+            user.UserName = _userName;
+            user.Password = _pass;
+            loggedinUser = new UserRepository().Login(user);
+            ID = loggedinUser.Id;
+            FullName = loggedinUser.FirstName + " " + loggedinUser.LastName.ToUpper();
+             
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             userName.Focus();
         }
-
-        private void Password_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Return)
-            {
-                LogUserIn();
-            }
-        }
-
-        private void userName_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Return)
-            {
-                LogUserIn();
-            }
-        }
-
+        
         private async void btnCantLogin_Click(object sender, RoutedEventArgs routedEventArgs)
         {
             routedEventArgs.Handled = true;

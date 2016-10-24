@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using ClinicApp.Data;
 using ClinicApp.Logic;
+using ClinicApp.Nurse;
 using ClinicModel;
 using MahApps.Metro.Controls;
 
@@ -16,8 +17,8 @@ namespace ClinicApp.Doctor
     {
         private BackgroundWorker patientSearchWorker = new BackgroundWorker();
         private MainContentView navigator;
-        List<Patient> patients = new List<Patient>();
-        List<Patient> result = new List<Patient>();
+        List<Patient> _patients = new List<Patient>();
+        List<Patient> _result = new List<Patient>();
         public PatientDetailsForm()
         {
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace ClinicApp.Doctor
 
         private void PatientSearchWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            patients = (List<Patient>)e.Result;
+            _patients = (List<Patient>)e.Result;
         }
 
 
@@ -65,8 +66,12 @@ namespace ClinicApp.Doctor
             if (MainWindow.ID == 3)
             {navigator.NavigateToPharPatientDetailDispensaryControl();
             }
-            else
-            {navigator.NavigateToDocPatientDetailConsultationControl(); 
+            else if (MainWindow.ID == 1)
+            {
+                navigator.NavigateToDocPatientDetailConsultationControl(); 
+            } else if (MainWindow.ID == 2)
+            {
+                new NurAddPatient().ShowDialog();
             }
 
         }

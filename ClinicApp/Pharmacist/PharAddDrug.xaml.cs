@@ -44,7 +44,6 @@ namespace ClinicApp.Pharmacist
             cbDrugCategory.ItemsSource = result.GetDrugCategories();
             cbDrugType.ItemsSource = result.GetDrugForms();
             cbPackaging.ItemsSource = new DrugRepository().GetAllDrugPackaging();
-
         }
 
         private void PreliminaryBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -118,6 +117,7 @@ namespace ClinicApp.Pharmacist
                 medicine.CategoryId = (int)cbDrugCategory.SelectedValue;
                 medicine.PackagingId = (int)cbPackaging.SelectedValue;
                 medicine.SupplierId = (int)cbSupplier.SelectedValue;
+                medicine.PackagingId = (int)cbPackaging.SelectedValue;
                 new DrugRepository().SaveDrug(medicine);
             cmb.Message = $"succefully added {tbBrandName.Text}";
             cmb.Show();

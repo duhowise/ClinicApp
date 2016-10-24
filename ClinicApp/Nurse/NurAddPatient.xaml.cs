@@ -45,20 +45,20 @@ namespace ClinicApp.Nurse
         
         private async void SaveConsultation_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(PatientSymptoms.Text)||string.IsNullOrWhiteSpace(PatientSymptoms.Text)||
+            if (string.IsNullOrWhiteSpace(PatientSymptoms.Text)||string.IsNullOrWhiteSpace(PatientSigns.Text)||
                 string.IsNullOrWhiteSpace(PatientDiagnosis.Text)||string.IsNullOrWhiteSpace(PatientPrescirption.Text)||
                 string.IsNullOrWhiteSpace(PatientPrescirption.Text)
                 )
             {
 
-                    await this.ShowMessageAsync("Sorry 'bou that !", "All details are required");
+                    await this.ShowMessageAsync(@"Sorry 'bou that !", "All feilds with asterisk(*) are required");
             }
             else
             {
                 new PatientRepository().AddNewConsultation(new Consultation
                 {
                     BloodPressure = PatientBloodPressure.Text,
-                    Signs = PatientSymptoms.Text,
+                    Signs = PatientSigns.Text,
                     Diagnosis =  PatientDiagnosis.Text,
                     PatientId = patient.Id,
                     Prescription = PatientPrescirption.Text,

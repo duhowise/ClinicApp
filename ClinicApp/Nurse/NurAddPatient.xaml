@@ -12,7 +12,7 @@
                        WindowState="Maximized" Closing="MetroWindow_Closing" 
                        ShowMaxRestoreButton="False" ShowMinButton="False"
                       >
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -367,7 +367,7 @@
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Left"
                           Margin="0,10,10,0" 
-                           Foreground="{DynamicResource AccentColorBrush}">Symptoms</Label>
+                           Foreground="{DynamicResource AccentColorBrush}">Complaints/Symptoms</Label>
                     <TextBox Grid.Column="0" Grid.Row="8" Name="PatientSymptoms" TabIndex="7"
                                  IsEnabled="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalAlignment="Center"
                                  VerticalScrollBarVisibility="Visible" TextAlignment="Left" MaxLength="700"

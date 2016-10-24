@@ -57,15 +57,5 @@ namespace ClinicApp.Nurse
         {
             Close();
         }
-
-        private void btNurConsulation_Click(object sender, RoutedEventArgs e)
-        {
-            //load patient list here for consultation..
-        }
-
-        private void btnNurUpdatePatient_Click(object sender, RoutedEventArgs e)
-        {
-            //load patient list here for update patient.. 
-        }
     }
 }

@@ -50,21 +50,8 @@ namespace ClinicApp.Pharmacist
             int a, b;
             ViewPatient.cMenu = 0;
             LoginUserName.Content =MainWindow.FullName;
-            //lbTotalDrugs.Content = a = drug.TotalDrugsInStock("Drugs");
-            //lbDispensedDrugs.Content = b = drug.TotalDrugsInStock("PrescribedDrugs");
-            //lbAvailableDrugs.Content = a - b;
-            //frequentdataGrid.ItemsSource = Drug.LoadFrequentDrugs().DefaultView;
+            
         }
-
-
-        //private void DrugHistory_Click(object sender, RoutedEventArgs e)
-        //{
-        //    new PharViewDrugHistory().ShowDialog();
-        //}
-
-
-     
-
         private async void Window_Closing(object sender, CancelEventArgs e)
         {
             e.Cancel = true;
@@ -72,7 +59,6 @@ namespace ClinicApp.Pharmacist
             if (result == MessageDialogResult.Negative)
             {
                 e.Cancel = false;
-
             }
             else
             {
@@ -110,8 +96,7 @@ namespace ClinicApp.Pharmacist
 
         private void btnViewDrug_Click(object sender, RoutedEventArgs e)
         {
-            var viewDrug = new viewDrugWin();
-            viewDrug.ShowDialog();
+            new viewDrugWin().ShowDialog();
         }
     }
 }
