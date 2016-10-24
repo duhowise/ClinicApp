@@ -17,8 +17,8 @@ namespace ClinicApp.Doctor
     {
         private BackgroundWorker patientSearchWorker = new BackgroundWorker();
         private MainContentView navigator;
-        List<Patient> patients = new List<Patient>();
-        List<Patient> result = new List<Patient>();
+        List<Patient> _patients = new List<Patient>();
+        List<Patient> _result = new List<Patient>();
         public PatientDetailsForm()
         {
             InitializeComponent();
@@ -36,7 +36,7 @@ namespace ClinicApp.Doctor
 
         private void PatientSearchWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            patients = (List<Patient>)e.Result;
+            _patients = (List<Patient>)e.Result;
         }
 
 
