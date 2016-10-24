@@ -89,6 +89,7 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Label Content="Diagnosis" Grid.Row="0" Grid.Column="0" Height="30"
                                    HorizontalAlignment="Left"
@@ -120,6 +121,14 @@
                                        TextWrapping="Wrap"
                                        Text="textblock showing prescription The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
                                        FontSize="14" Foreground="{DynamicResource AccentColorBrush}" />
+                            <Label Content="Drugs dispensed" Grid.Row="7" Grid.Column="0" Height="30"
+                                   HorizontalAlignment="Left"
+                                   Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}" />
+                            <TextBlock Name="tbDrugsDispensed" Grid.Row="7" Grid.Column="1" Margin="5,1,155,1"
+                                       TextWrapping="Wrap"
+                                       Text="textblock showing prescription The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
+                                       FontSize="14" Foreground="{DynamicResource AccentColorBrush}" />
+
 
                         </Grid>
                     </StackPanel>
