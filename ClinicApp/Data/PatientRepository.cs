@@ -67,6 +67,25 @@ namespace ClinicApp.Data
                 MessageBox.Show(exception.Message);
             }
         }
+        public void UpdatePatient(Patient patient)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+                {
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+                    connection.Query(@"UPDATE dbo.Patient SET FirstName=@FirstName,LastName=@LastName
+                    ,Gender =@Gender,ProvidedId =@ProvidedId,Designation =@Designation,PhoneNumber =@PhoneNumber WHERE  Id = @Id",patient);
+                    
+                }
+            }
+            catch (Exception exception)
+            {
+
+                MessageBox.Show(exception.Message);
+            }
+        }
 
         public void AddNewConsultation(Consultation consultation)
         {

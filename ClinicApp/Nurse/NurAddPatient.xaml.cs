@@ -60,7 +60,7 @@ namespace ClinicApp.Nurse
                     BloodPressure = PatientBloodPressure.Text,
                     Signs = PatientSigns.Text,
                     Diagnosis =  PatientDiagnosis.Text,
-                    PatientId = patient.Id,
+                    PatientId = Convert.ToInt32(patient.Id),
                     Prescription = PatientPrescirption.Text,
                     Symptoms = PatientSymptoms.Text,
                     Temperature = PatientTemperature.Text

@@ -94,7 +94,15 @@ namespace ClinicApp.Nurse
         private void PatientsSearchList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Patient = PatientsSearchList.SelectedItem as Patient;
-            new NurAddConsultation().ShowDialog();
+            if (NurAdmin.Consult)
+            {
+                new NurAddConsultation().ShowDialog();
+
+            }
+            else if(NurAdmin.Patient)
+            {
+                new NurUpdatePatient(patient).ShowDialog();
+            }
         }
         
     }

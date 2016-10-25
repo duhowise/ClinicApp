@@ -30,8 +30,10 @@ namespace ClinicApp.Nurse
             InitializeComponent();
             patient = NurSearchPatient.Patient;
             Consult.Content = $"Consultation- {patient.FulName().ToUpper()}";
+            
         }
 
+        public static bool IsRaised { get; set; } = false;
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             var response = MessageBox.Show("Do you really want to close out of this window\n make sure your changes are saved", "Exit",
@@ -57,7 +59,7 @@ namespace ClinicApp.Nurse
                     Signs = PatientSigns.Text,
                     Diagnosis = PatientDiagnosis.Text,
                     UserId = MainWindow.ID,
-                    PatientId = patient.Id,
+                    PatientId =Convert.ToInt32(patient.Id), 
                     Weight = PatientWeight.Text,
                     Pulse =PatientBloodPulse.Text,
                     Respiration =PatientRespiration.Text,

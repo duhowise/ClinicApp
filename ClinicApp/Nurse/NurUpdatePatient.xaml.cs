@@ -24,24 +24,29 @@ namespace ClinicApp.Nurse
     /// </summary>
     public partial class NurUpdatePatient : MetroWindow
     {
+        Patient patient = new Patient();
         public NurUpdatePatient()
         {
             InitializeComponent();
-            PatientDesignation.Items.Add("Staff");
-            PatientDesignation.Items.Add("Student");
-            PatientDesignation.Items.Add("Dependant");
+            
         }
 
         public NurUpdatePatient(Patient updatepatient)
         {
             InitializeComponent();
-            //todo update patient
+            patient.Id = updatepatient.Id;
             PatientFirstName.Text = updatepatient.FirstName;
+           // PatientGender.Items.Add(updatepatient.Gender);
+            PatientDesignation.Items.Add(updatepatient.Designation);
+            PatientGender.SelectedItem = $"{updatepatient.Gender}";
             PatientLastName.Text = updatepatient.LastName;
-            PatientDesignation.Text = updatepatient.Designation;
+            PatientDesignation.SelectedItem = $"{updatepatient.Designation}";
             PatientPhoneNumber.Text = updatepatient.PhoneNumber;
             PatientProvidedId.Text = updatepatient.ProvidedId;
+          
+
         }
+        
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
@@ -52,7 +57,9 @@ namespace ClinicApp.Nurse
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           
+            PatientDesignation.Items.Add("Staff");
+            PatientDesignation.Items.Add("Student");
+            PatientDesignation.Items.Add("Dependant");
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -71,16 +78,17 @@ namespace ClinicApp.Nurse
             }
             else
             {
-                Patient patient = new Patient();
-                patient.FirstName = PatientFirstName.Text;
-                patient.LastName = PatientLastName.Text;
-                patient.Gender = PatientGender.Text;
-                patient.Designation = PatientDesignation.Text;
-                patient.PhoneNumber = PatientPhoneNumber.Text;
-                patient.ProvidedId = PatientProvidedId.Text;
-                new PatientRepository().AddNewPatient(patient);
-
-                await this.ShowMessageAsync("New patient added !", $"{PatientFirstName.Text + " " + PatientLastName.Text}");
+               
+                patient.FirstName = PatientFirstName.Text.Trim();
+                patient.LastName = PatientLastName.Text.Trim();
+                patient.Gender = PatientGender.SelectionBoxItem.ToString();
+                patient.Designation = PatientDesignation.SelectedItem.ToString().Trim();
+                patient.PhoneNumber = PatientPhoneNumber.Text.Trim();
+                patient.ProvidedId = PatientProvidedId.Text.Trim();
+                if (patient.Id==null){new PatientRepository().AddNewPatient(patient);}
+                else{new PatientRepository().UpdatePatient(patient);}
+                patient = null;
+                await this.ShowMessageAsync("Successfully saved ", $"{PatientFirstName.Text + " " + PatientLastName.Text}");
                 Util.Clear(this);
             }
         }
