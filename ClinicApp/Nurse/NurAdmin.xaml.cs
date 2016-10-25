@@ -50,7 +50,7 @@ namespace ClinicApp.Nurse
 
         private void NewPatient_Click(object sender, RoutedEventArgs e)
         {
-            new NurAddPatient().ShowDialog();
+            new NurUpdatePatient().ShowDialog();
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)

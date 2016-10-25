@@ -10,7 +10,7 @@ namespace ClinicModel
         public string Pulse { get; set; }
         public string Weight { get; set; }
         public string Respiration { get; set; }
-        public int  ConditionCatId { get; set; }
+        ///public int  ConditionCatId { get; set; }
         public string BloodPressure { get; set; }
         public string Symptoms { get; set; }
         public string Signs { get; set; }

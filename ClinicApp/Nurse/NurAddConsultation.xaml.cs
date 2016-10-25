@@ -44,8 +44,7 @@ namespace ClinicApp.Nurse
 
             if (string.IsNullOrWhiteSpace(PatientSymptoms.Text) || string.IsNullOrWhiteSpace(PatientSigns.Text) ||
                 string.IsNullOrWhiteSpace(PatientDiagnosis.Text) || string.IsNullOrWhiteSpace(PatientPrescirption.Text) ||
-                string.IsNullOrWhiteSpace(PatientPrescirption.Text)||PatientConditionCategory.SelectedItem.ToString()!=""
-                )
+                string.IsNullOrWhiteSpace(PatientPrescirption.Text))
             {
 
                 await this.ShowMessageAsync(@"Sorry 'bou that !", "All feilds with asterisk(*) are required");
@@ -57,15 +56,15 @@ namespace ClinicApp.Nurse
                     BloodPressure = PatientBloodPressure.Text,
                     Signs = PatientSigns.Text,
                     Diagnosis = PatientDiagnosis.Text,
+                    UserId = MainWindow.ID,
                     PatientId = patient.Id,
                     Weight = PatientWeight.Text,
                     Pulse =PatientBloodPulse.Text,
-                    ConditionCatId =(int) PatientConditionCategory.SelectedValue,
                     Respiration =PatientRespiration.Text,
                     Prescription = PatientPrescirption.Text,
                     Symptoms = PatientSymptoms.Text,
                     Temperature = PatientTemperature.Text
-                });
+                   });
                 await this.ShowMessageAsync("Success!", $"Added Consultation for {patient.FirstName} {patient.LastName.ToUpper()}");
                 Util.Clear(this);
             }

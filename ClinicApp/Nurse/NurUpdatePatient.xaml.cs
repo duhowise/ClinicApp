@@ -12,7 +12,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ClinicApp.Data;
+using ClinicModel;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace ClinicApp.Nurse
 {
@@ -24,6 +27,20 @@ namespace ClinicApp.Nurse
         public NurUpdatePatient()
         {
             InitializeComponent();
+            PatientDesignation.Items.Add("Staff");
+            PatientDesignation.Items.Add("Student");
+            PatientDesignation.Items.Add("Dependant");
+        }
+
+        public NurUpdatePatient(Patient updatepatient)
+        {
+            InitializeComponent();
+            //todo update patient
+            PatientFirstName.Text = updatepatient.FirstName;
+            PatientLastName.Text = updatepatient.LastName;
+            PatientDesignation.Text = updatepatient.Designation;
+            PatientPhoneNumber.Text = updatepatient.PhoneNumber;
+            PatientProvidedId.Text = updatepatient.ProvidedId;
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
@@ -40,11 +57,32 @@ namespace ClinicApp.Nurse
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            
+            Close();
         }
 
-        private void Save_Click(object sender, RoutedEventArgs e)
+        private  async void Save_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(PatientFirstName.Text) || string.IsNullOrWhiteSpace(PatientLastName.Text) ||
+                string.IsNullOrWhiteSpace(PatientDesignation.Text) || string.IsNullOrWhiteSpace(PatientPhoneNumber.Text) ||
+                string.IsNullOrWhiteSpace(PatientProvidedId.Text)
+                )
+            {
+                await this.ShowMessageAsync("Sorry 'bou that !", "All details are required");
+            }
+            else
+            {
+                Patient patient = new Patient();
+                patient.FirstName = PatientFirstName.Text;
+                patient.LastName = PatientLastName.Text;
+                patient.Gender = PatientGender.Text;
+                patient.Designation = PatientDesignation.Text;
+                patient.PhoneNumber = PatientPhoneNumber.Text;
+                patient.ProvidedId = PatientProvidedId.Text;
+                new PatientRepository().AddNewPatient(patient);
+
+                await this.ShowMessageAsync("New patient added !", $"{PatientFirstName.Text + " " + PatientLastName.Text}");
+                Util.Clear(this);
+            }
         }
     }
 }
