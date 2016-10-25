@@ -96,7 +96,7 @@ namespace ClinicApp.Pharmacist
 
         private void btnViewDrug_Click(object sender, RoutedEventArgs e)
         {
-            new viewDrugWin().ShowDialog();
+            new PharSearchDrug().ShowDialog();
         }
     }
 }
