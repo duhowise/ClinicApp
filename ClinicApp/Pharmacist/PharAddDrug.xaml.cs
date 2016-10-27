@@ -14,7 +14,8 @@ namespace ClinicApp.Pharmacist
     /// Interaction logic for PharAddDrug.xaml
     /// </summary>
     public partial class PharAddDrug : MetroWindow
-    { 
+    {
+        Drug medicine = new Drug();
         CMB cmb =new CMB();
         private int boxnumber = 1;
         private int Packnumber = 1;
@@ -33,6 +34,36 @@ namespace ClinicApp.Pharmacist
             {
                 preliminaryBackgroundWorker.RunWorkerAsync();
             }
+
+
+        }
+        public PharAddDrug(Drug updateDrug)
+        {
+            InitializeComponent();
+            this.Closing += PharAddDrug_Closing;
+            preliminaryBackgroundWorker.WorkerSupportsCancellation = false;
+            preliminaryBackgroundWorker.WorkerReportsProgress = false;
+            preliminaryBackgroundWorker.DoWork += PreliminaryBackgroundWorker_DoWork;
+            preliminaryBackgroundWorker.RunWorkerCompleted += PreliminaryBackgroundWorker_RunWorkerCompleted; ;
+            
+            if (!preliminaryBackgroundWorker.IsBusy)
+            {
+                preliminaryBackgroundWorker.RunWorkerAsync();
+            }
+             medicine.Id = updateDrug.Id;
+             tbGenericName.Text= updateDrug.GenericName;
+             tbBrandName.Text = updateDrug.BrandName;
+             tbNumberInPack.Text= updateDrug.Box.ToString();
+             tbNumberInBox.Text= updateDrug.NumberPackInBox.ToString();
+             tbTotalQuantity.Text= updateDrug.Quantity.ToString();
+             tbExpiringDate.DisplayDate= updateDrug.ExpiryDate;
+             tbBox.Text= updateDrug.NumberinPack.ToString();
+             cbDosageForm.SelectedValue= updateDrug.DosageFormId;
+             cbDrugType.SelectedValue= updateDrug.DrugFormId;
+             cbDrugCategory.SelectedValue= updateDrug.CategoryId;
+             cbPackaging.SelectedValue= updateDrug.PackagingId;
+             cbSupplier.SelectedValue= updateDrug.SupplierId;
+             cbPackaging.SelectedValue= updateDrug.PackagingId;
 
 
         }
@@ -104,7 +135,7 @@ namespace ClinicApp.Pharmacist
             }
             else
             {
-                Drug medicine=new Drug();
+                
                 medicine.GenericName = tbGenericName.Text;
                 medicine.BrandName = tbBrandName.Text;
                 medicine.Box = Convert.ToInt32(tbNumberInPack.Text);

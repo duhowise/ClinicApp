@@ -302,8 +302,8 @@
     <Compile Include="Pharmacist\PharSearchPatient.xaml.cs">
       <DependentUpon>PharSearchPatient.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pharmacist\PharUpdateDrug.xaml.cs">
-      <DependentUpon>PharUpdateDrug.xaml</DependentUpon>
+    <Compile Include="Pharmacist\PharSearchDrug.xaml.cs">
+      <DependentUpon>PharSearchDrug.xaml</DependentUpon>
     </Compile>
     <Compile Include="stockTakingReportOne.xaml.cs">
       <DependentUpon>stockTakingReportOne.xaml</DependentUpon>
@@ -490,7 +490,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pharmacist\PharUpdateDrug.xaml">
+    <Page Include="Pharmacist\PharSearchDrug.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

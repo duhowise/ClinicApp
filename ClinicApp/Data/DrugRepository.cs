@@ -232,6 +232,7 @@ namespace ClinicApp.Data
                 MessageBox.Show(exception.Message);
             }
         }
+
         public int TotalDrugsQuantity(string tableName)
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
@@ -240,6 +241,25 @@ namespace ClinicApp.Data
                     connection.Open();
                 return connection.Query<int>($"SELECT SUM(Quantity) AS TotalDrugsQuantity FROM {tableName}").First();
 
+            }
+        }
+        public void UpdateDrug(Drug drug)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+                {
+                    if (connection.State == Closed)
+                        connection.Open();
+                    connection.Query(@"UPDATE dbo.Drugs SET  GenericName =@GenericName,brandName = @brandName,Box = @Box,NumberPackInBox = @NumberPackInBox
+                    ,Quantity = @Quantity,ExpiryDate = @ExpiryDate,NumberinPack = @NumberinPack,DosageFormId = @DosageFormId,DrugFormId = @DrugFormId,
+                        CategoryId = @CategoryId,PackagingId = @PackagingId,SupplierId = @SupplierId WHERE Id = @Id",drug);
+
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
     }

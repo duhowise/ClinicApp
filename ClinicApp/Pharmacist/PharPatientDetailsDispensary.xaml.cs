@@ -136,8 +136,8 @@ namespace ClinicApp.Pharmacist
 
                 new DrugRepository().DispenseDrug(new DispensedDrug
                 {
-                    DrugId = drug.Id,
-                    PatientId = patient.Id,
+                    DrugId =Convert.ToInt32(drug.Id),
+                    PatientId =Convert.ToInt32(patient.Id),
                     Quantity = Convert.ToInt32(DispenseDrugQuantity.Text),
                     UserId = MainWindow.ID
                 });

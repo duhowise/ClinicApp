@@ -54,11 +54,11 @@ namespace ClinicApp
             {
                 //MessageBox.Show(item.ToString());
                 newInstance = (List<string>) new DrugRepository().FetchByBrandName(item.ToString());
-                var updateDrugs = new Pharmacist.PharUpdateDrug();
+                var updateDrugs = new Pharmacist.PharSearchDrug();
                 var cmd = new CMB();
                 cmd.Message = "";
-                updateDrugs.Show();
-                updateDrugs.DrugName.Text = newInstance[0];
+                //updateDrugs.Show();
+                //updateDrugs.DrugName.Text = newInstance[0];
 
                 Pharmacy.OldBoxValue = Convert.ToInt32(newInstance[1]);
                 Pharmacy.OldNumberInBoxValue = Convert.ToInt32(newInstance[2]);

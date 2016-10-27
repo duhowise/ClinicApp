@@ -1,4 +1,4 @@
-<controls:MetroWindow x:Class="ClinicApp.Nurse.NurSearchPatient"
+﻿<controls:MetroWindow x:Class="ClinicApp.Pharmacist.PharSearchDrug"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -51,7 +51,7 @@
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center"
                           Margin="136,10,202,89" 
-                           Foreground="{DynamicResource AccentColorBrush}" Content="Search for patient"/>
+                           Foreground="{DynamicResource AccentColorBrush}" Content="Search for Drug"/>
                             <Grid Grid.Column="0" Margin="0,0,0,0" Grid.Row="1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -63,19 +63,19 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
-                                <TextBox x:Name="TbPatientSearch" Margin="0,2,95,25"
+                                <TextBox x:Name="TbDrugSearch" Margin="0,2,95,25"
                                      Grid.Column="0" Grid.Row="2"
                          Height="35"  BorderBrush="{DynamicResource AccentColorBrush}"
                      BorderThickness="1"
                          Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"
-                                      controls:TextBoxHelper.Watermark="Search Patient Information"
-                                     TextChanged="TbPatientSearch_TextChanged" Grid.ColumnSpan="3"/>
+                                      controls:TextBoxHelper.Watermark="Enter drug name or brand name"
+                                     TextChanged="TbDrugSearch_OnTextChanged" Grid.ColumnSpan="3"/>
 
                                 <Button 
-                                 Grid.Column="2" Grid.Row="2" TabIndex="1" Margin="0,2,17,0"
+                                 Grid.Column="2" Grid.Row="2" TabIndex="1" Margin="0,2,33,0"
                                 x:Name="Search" HorizontalAlignment="Right" FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
-                                FontSize="14" Click="Search_Click" VerticalAlignment="Top" Height="33" Width="62">
+                                FontSize="14" Click="Search_OnClick" VerticalAlignment="Top" Height="35" Width="62">
                                     <Rectangle Width="33" Height="23"
                                Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                         <Rectangle.OpacityMask>
@@ -86,14 +86,14 @@
                             </Grid>
                         </Grid>
                     </StackPanel>
-                    <GroupBox Header="Search result" Grid.Column="0" Grid.Row="1"
+                    <GroupBox Header="Search result(s)" Grid.Column="0" Grid.Row="1"
                                Margin="0" >
-                        <ListView x:Name="PatientsSearchList" Height="300" MouseDoubleClick="PatientsSearchList_MouseDoubleClick">
+                        <ListView x:Name="DrugsSearchList" Height="300" MouseDoubleClick="DrugsSearchList_OnMouseDoubleClick">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}"  Width="250"/>
-                                    <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" Width="250"/>
-                                    <GridViewColumn Header="Identification" DisplayMemberBinding="{Binding ProvidedId}" Width="250"/>
+                                    <GridViewColumn Header="Brand Name" DisplayMemberBinding="{Binding BrandName}"  Width="250"/>
+                                    <GridViewColumn Header="Generic Name" DisplayMemberBinding="{Binding GenericName}" Width="250"/>
+                                    <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding Quantity}" Width="250"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>

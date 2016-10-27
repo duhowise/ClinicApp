@@ -49,15 +49,35 @@ namespace ClinicApp.Data
                 {
                     if (connection.State == ConnectionState.Closed)
                         connection.Open();
-                    var query = @"INSERT INTO dbo.Patient(FirstName,LastName,ProvidedId,Designation,PhoneNumber)Values(@fname,@lname,@id,@des,@phone)";
+                    var query = @"INSERT INTO dbo.Patient(FirstName,LastName,ProvidedId,Designation,Gender,PhoneNumber)Values(@fname,@lname,@id,@des,@Gender,@phone)";
                     var command = new SqlCommand(query, connection);
                     command.Parameters.Add("fname", SqlDbType.NVarChar).Value =patient.FirstName;
                     command.Parameters.Add("lname", SqlDbType.NVarChar).Value =patient.LastName;
                     command.Parameters.Add("id", SqlDbType.NVarChar).Value =patient.ProvidedId;
                     command.Parameters.Add("des", SqlDbType.NVarChar).Value =patient.Designation;
+                    command.Parameters.Add("Gender", SqlDbType.NVarChar).Value =patient.Gender;
                     command.Parameters.Add("phone", SqlDbType.NVarChar).Value =patient.PhoneNumber;
                     command.ExecuteNonQuery();
 
+                }
+            }
+            catch (Exception exception)
+            {
+
+                MessageBox.Show(exception.Message);
+            }
+        }
+        public void UpdatePatient(Patient patient)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+                {
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+                    connection.Query(@"UPDATE dbo.Patient SET FirstName=@FirstName,LastName=@LastName
+                    ,Gender =@Gender,ProvidedId =@ProvidedId,Designation =@Designation,PhoneNumber =@PhoneNumber WHERE  Id = @Id",patient);
+                    
                 }
             }
             catch (Exception exception)
@@ -75,9 +95,9 @@ namespace ClinicApp.Data
                 {
                     if (connection.State == ConnectionState.Closed)
                         connection.Open();
-                    connection.Query(@"INSERT INTO dbo.Consultation(PatientId,Temperature,Pulse,Weight,Respiration,HeartRate,
-                                     BloodPressure,Symptoms,Signs,Diagnosis,IsSensitive,Prescription,Investigation,userId)values
-                                    (@PatientId,@Temperature,@Pulse,@Weight,@Respiration,@HeartRate,@BloodPressure,@Symptoms,@Signs
+                    connection.Query(@"INSERT INTO dbo.Consultation(PatientId,Temperature,Pulse,Weight,Respiration,
+                                        BloodPressure,Symptoms,Signs,Diagnosis,IsSensitive,Prescription,Investigation,
+                                        userId)values(@PatientId,@Temperature,@Pulse,@Weight,@Respiration,@BloodPressure,@Symptoms,@Signs
                                     ,@Diagnosis,@IsSensitive,@Prescription,@Investigation,@UserId)", consultation);  
                 }
             }

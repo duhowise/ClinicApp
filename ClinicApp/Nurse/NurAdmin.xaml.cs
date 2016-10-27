@@ -18,6 +18,8 @@ namespace ClinicApp.Nurse
             InitializeComponent();
         }
 
+        public static bool Patient { get; set; } = false;
+        public static bool Consult { get; set; } = false;
         private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
@@ -50,12 +52,27 @@ namespace ClinicApp.Nurse
 
         private void NewPatient_Click(object sender, RoutedEventArgs e)
         {
-            new NurAddPatient().ShowDialog();
+            new NurUpdatePatient().ShowDialog();
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void ExistingPatient_OnClick(object sender, RoutedEventArgs e)
+        {
+            Consult = true; 
+            new NurSearchPatient().ShowDialog();
+            Consult = false;
+        }
+
+        private void BtnNurUpdatePatient_OnClick(object sender, RoutedEventArgs e)
+        {
+            Patient = true;
+            new NurSearchPatient().ShowDialog();
+            Patient = false;
+
         }
     }
 }
