@@ -97,8 +97,29 @@ namespace ClinicApp.Data
                         connection.Open();
                     connection.Query(@"INSERT INTO dbo.Consultation(PatientId,Temperature,Pulse,Weight,Respiration,
                                         BloodPressure,Symptoms,Signs,Diagnosis,IsSensitive,Prescription,Investigation,
-                                        userId)values(@PatientId,@Temperature,@Pulse,@Weight,@Respiration,@BloodPressure,@Symptoms,@Signs
-                                    ,@Diagnosis,@IsSensitive,@Prescription,@Investigation,@UserId)", consultation);  
+                                        userId)values(@PatientId,@Temperature,@Pulse,@Weight,@Respiration,@BloodPressure,
+                                        @Symptoms,@Signs,@Diagnosis,@IsSensitive,@Prescription,@Investigation,@UserId)", consultation);  
+                }
+            }
+            catch (Exception exception)
+            {
+
+                MessageBox.Show(exception.Message);
+            }
+        }
+        public void UpdateConsultation(Consultation consultation)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+                {
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+                    connection.Query(@"UPDATE dbo.Consultation SET PatientId=@PatientId,Temperature=@Temperature,
+                    Pulse =@Pulse,Weight=@Weight,Respiration=@Respiration,BloodPressure=@BloodPressure 
+                    ,Symptoms=@Symptoms,Signs=@Signs,Diagnosis=@Diagnosis,IsSensitive=@IsSensitive,Prescription=@Prescription
+                    ,Investigation=@Investigation,userId=@UserId WHERE Id = @Id",consultation);
+                  
                 }
             }
             catch (Exception exception)
@@ -114,8 +135,7 @@ namespace ClinicApp.Data
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                return connection.Query<Consultation>(@"SELECT * FROM Consultation c WHERE c.Date=(SELECT MAX(Date) 
-                FROM Consultation c1 WHERE  c.PatientId=@Id )",patient).SingleOrDefault();
+                return connection.Query<Consultation>(@"SELECT * FROM Consultation c WHERE c.Date=(SELECT MAX(Date)FROM Consultation c1 WHERE  c.PatientId=@Id )", patient).SingleOrDefault();
 
             }
         }

@@ -7,7 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
-             d:DesignHeight="1000" d:DesignWidth="1500">
+             d:DesignHeight="1000" d:DesignWidth="1500" >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -16,7 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Grid.Column="0" Margin="5">
+        <Grid Grid.Row="0" Grid.Column="0" Margin="5,5,5,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
@@ -24,7 +24,7 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <materialDesign:Card Grid.Column="0" Grid.Row="0" Margin="1 4 0 0"  Background="{DynamicResource MaterialDesignBackground}" Loaded="Card_Loaded">
+            <materialDesign:Card Grid.Column="0" Grid.Row="0" Margin="1,0,0,1"  Background="{DynamicResource MaterialDesignBackground}" Loaded="Card_Loaded" VerticalAlignment="Bottom">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -34,20 +34,7 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label x:Name="PatientName" FontWeight="Bold" Grid.Row="0" Content="Patient name" HorizontalAlignment="Left"
-                           Width="324" FontSize="26" Foreground="{DynamicResource AccentColorBrush}" Margin="205,2,0,0"/>
-                    <DatePicker x:Name="DatePicker" TabIndex="9"
-                                    Grid.Column="0"  Grid.Row="0"
-                                    Margin="0,10,10,0"
-                                    Width="250"
-                                    Height="35"
-                                    HorizontalAlignment="Right"
-                                    controls:TextBoxHelper.IsWaitingForData="True"
-                                    controls:TextBoxHelper.ButtonContent=""
-                                    controls:TextBoxHelper.ButtonFontFamily="wingdings"
-                                    BorderBrush="{DynamicResource PrimaryColorBrush}"
-                                    BorderThickness="1"
-                                    Foreground="{DynamicResource PrimaryColorBrush}" FontSize="16" />
+                    <Label x:Name="PatientName" FontWeight="Bold" Grid.Row="0" Content="Patient name" FontSize="26" Foreground="{DynamicResource AccentColorBrush}" Margin="24,0,815,2"/>
 
                     <Image Grid.Row="1" x:Name="PatientImage" Margin="10 0 0 0" Width="120" Height="120"
                           Source="../media/User.png" Grid.Column="0" HorizontalAlignment="Left" />
@@ -70,7 +57,7 @@
                     </StackPanel>
                 </Grid>
             </materialDesign:Card>
-            <ScrollViewer CanContentScroll="True" Height="400" Grid.Column="0" Grid.Row="1">
+            <ScrollViewer CanContentScroll="True" Height="400" Grid.Column="0" Grid.Row="1" Margin="0,4,0,-3">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
@@ -109,11 +96,11 @@
                                  Foreground="{DynamicResource AccentColorBrush}" FontSize="16"/>
                                 <Separator Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"/>
                                 <StackPanel HorizontalAlignment="Right"  Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
-                                    <CheckBox VerticalAlignment="Center"
-                                                          HorizontalAlignment="Center"
-                                                          ToolTip="Click to set diagnosis private"/>
+                                    <CheckBox Name="Status" VerticalAlignment="Center"
+                                                          HorizontalAlignment="Center" 
+                                                          ToolTip="Click to set diagnosis private" Checked="Status_Checked" Unchecked="Status_Unchecked"/>
                                     <Button Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                                                    Margin="10" HorizontalAlignment="Center" Name="btnDocEdit"
+                                                    Margin="10" HorizontalAlignment="Center" Name="DiagEdit"
                                                     ToolTip="Click to edit diagnosis" Click="btnDocEdit_Click">
                                         <materialDesign:PackIcon Kind="Pencil" Height="24" Width="24" />
                                     </Button>
@@ -144,22 +131,22 @@
                                 <Separator Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"/>
 
                                 <StackPanel HorizontalAlignment="Right"  Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
-                                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                                                    Margin="10" HorizontalAlignment="Center"
-                                                    ToolTip="Click to edit diagnosis">
+                                    <Button Name="PrescEdit" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                                                    Margin="10" HorizontalAlignment="Center" Click="PrescEdit_OnClick"
+                                                    ToolTip="Click to edit diagnosis" >
                                         <materialDesign:PackIcon Kind="Pencil" Height="24" Width="24" />
                                     </Button>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
                     </materialDesign:Card>
-                    <materialDesign:Card Margin="4 4 0 0" Grid.Column="0" Grid.Row="1" Background="{DynamicResource MaterialDesignBackground}">
+                    <materialDesign:Card Margin="4 4 0 0" Grid.Column="0" Grid.Row="1" Background="{DynamicResource MaterialDesignBackground}" VerticalAlignment="Stretch">
                         <StackPanel>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
-                                  
+
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
@@ -176,8 +163,8 @@
                                  Foreground="{DynamicResource AccentColorBrush}" FontSize="16"/>
                                 <Separator Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"/>
                                 <StackPanel HorizontalAlignment="Right"  Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
-                                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                                                    Margin="10" HorizontalAlignment="Center"
+                                    <Button Name="FindingsEdit" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                                                    Margin="10" HorizontalAlignment="Center" Click="FindingsEdit_OnClick"
                                                     ToolTip="Click to edit">
                                         <materialDesign:PackIcon Kind="Pencil" Height="24" Width="24" />
                                     </Button>
@@ -185,7 +172,7 @@
                             </Grid>
                         </StackPanel>
                     </materialDesign:Card>
-                    <materialDesign:Card Margin="4 4 0 0" Grid.Column="1" Grid.Row="1" Background="{DynamicResource MaterialDesignBackground}">
+                    <materialDesign:Card Margin="4 4 0 0" Grid.Column="1" Grid.Row="1" Background="{DynamicResource MaterialDesignBackground}" VerticalAlignment="Stretch">
                         <StackPanel>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -205,12 +192,7 @@
                                 <TextBlock Grid.Column="1" Grid.Row="0" Name="tbDrugsDispensed" 
                                  IsEnabled="True" TextWrapping="Wrap" HorizontalAlignment="Left"
                                  ToolTip="Patient Diagnosis"  Margin="20 2 2 2" Width="360" Height="150"
-                                 Text="Acetaminophen
-Adderall
-Alprazolam
-Amitriptyline
-Amlodipine
-Amoxicillin
+                                 Text="AcetaminophenAdderallAlprazolamAmitriptylineAmlodipineAmoxicillin
 Ativan
 Atorvastatin
 Azithromycin
@@ -239,7 +221,7 @@ Naproxen"
                                 <Separator Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"/>
 
                                 <StackPanel HorizontalAlignment="Right"  Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
-                                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                                    <Button Name="DispEdit" Click="DispEdit_OnClick" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
                                                     Margin="10" HorizontalAlignment="Center"
                                                     ToolTip="Click to edit diagnosis">
                                         <materialDesign:PackIcon Kind="Pencil" Height="24" Width="24" />
@@ -255,15 +237,15 @@ Naproxen"
         <StackPanel Margin="5" Grid.Column="1">
             <materialDesign:Card HorizontalAlignment="Right" Margin="0,4,5,0" Height="550"
                                          Background="{DynamicResource MaterialDesignBackground}" Width="310">
-                    <GroupBox HorizontalContentAlignment="Center"  Header="Previous Visits"  Width="300">
-                        <ListView Name="PatientHistoryList"  MouseDoubleClick="PatientHistoryList_OnMouseDoubleClick">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="250"></GridViewColumn>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                    </GroupBox>
+                <GroupBox HorizontalContentAlignment="Center"  Header="Previous Visits"  Width="300">
+                    <ListView Name="PatientHistoryList"  MouseDoubleClick="PatientHistoryList_OnMouseDoubleClick">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="250"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </GroupBox>
             </materialDesign:Card>
         </StackPanel>
     </Grid>

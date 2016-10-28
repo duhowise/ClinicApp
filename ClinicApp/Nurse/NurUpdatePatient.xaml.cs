@@ -85,8 +85,15 @@ namespace ClinicApp.Nurse
                 patient.Designation = PatientDesignation.SelectedItem.ToString().Trim();
                 patient.PhoneNumber = PatientPhoneNumber.Text.Trim();
                 patient.ProvidedId = PatientProvidedId.Text.Trim();
-                if (patient.Id==null){new PatientRepository().AddNewPatient(patient);}
-                else{new PatientRepository().UpdatePatient(patient);}
+                if (patient.Id.HasValue)
+                {
+                    new PatientRepository().UpdatePatient(patient);
+
+                }
+                else
+                {
+                    new PatientRepository().AddNewPatient(patient);
+                }
                 patient = null;
                 await this.ShowMessageAsync("Successfully saved ", $"{PatientFirstName.Text + " " + PatientLastName.Text}");
                 Util.Clear(this);

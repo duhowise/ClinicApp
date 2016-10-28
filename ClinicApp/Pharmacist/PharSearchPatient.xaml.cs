@@ -72,7 +72,7 @@ namespace ClinicApp.Pharmacist
 
         private  void PatientsSearchList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-             Patient = PatientsSearchList.SelectedItem as Patient;
+             patient = PatientsSearchList.SelectedItem as Patient;
             new PatientDetailsForm().ShowDialog();
         }
 

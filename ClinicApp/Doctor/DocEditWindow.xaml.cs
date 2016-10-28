@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ClinicApp.Data;
+using ClinicModel;
 using MahApps.Metro.Controls;
 
 namespace ClinicApp.Doctor
@@ -21,26 +23,74 @@ namespace ClinicApp.Doctor
     /// </summary>
     public partial class DocEditWindow : MetroWindow
     {
-        public DocEditWindow()
+        private string _editSource = string.Empty;
+        Consultation _consultation=new Consultation();
+        public DocEditWindow(string owner,Consultation consultation)
         {
             InitializeComponent();
+            _consultation = consultation;
+            heading.Content = $"Edit - {owner}";
+            _editSource = owner;
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            var response = MessageBox.Show("Do you really want to close out of this window\n make sure your changes are saved", "Exit",
-              MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-            if (response == MessageBoxResult.Yes) { Hide(); } else { e.Cancel = true; }
+           new PatientRepository().UpdateConsultation(_consultation);
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           
+            if (_editSource == "Diagnosis")
+            {
+              tbDocEdit.Text = _consultation.Diagnosis ;
+            }
+            else if (_editSource == "Findings")
+            {
+              tbDocEdit.Text = _consultation.Investigation ;
+
+            }
+            else if (_editSource == "Dispensary")
+            {
+                 tbDocEdit.Text=_consultation.Prescription;
+
+            }
+            else if (_editSource == "Prescriptions")
+            {
+                 tbDocEdit.Text= _consultation.Prescription;
+
+
+            }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            
+           new PatientRepository().UpdateConsultation(_consultation);
+            Close();
+        }
+
+        private void tbDocEdit_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (_editSource == "Diagnosis")
+            {
+                _consultation.Diagnosis = tbDocEdit.Text;
+            }
+            else if (_editSource == "Findings")
+            {
+                _consultation.Investigation = tbDocEdit.Text;
+
+            }
+            else if (_editSource == "Dispensary")
+            {
+                _consultation.Prescription = tbDocEdit.Text;
+
+            }
+            else if (_editSource == "Prescriptions")
+            {
+                _consultation.Prescription = tbDocEdit.Text;
+
+
+            }
         }
     }
 }

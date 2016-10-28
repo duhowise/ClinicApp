@@ -50,20 +50,21 @@ namespace ClinicApp.Pharmacist
             {
                 preliminaryBackgroundWorker.RunWorkerAsync();
             }
+            var stock = DrugRepository.GetDrugStock(updateDrug);
              medicine.Id = updateDrug.Id;
              tbGenericName.Text= updateDrug.GenericName;
              tbBrandName.Text = updateDrug.BrandName;
-             tbNumberInPack.Text= updateDrug.Box.ToString();
-             tbNumberInBox.Text= updateDrug.NumberPackInBox.ToString();
+             tbNumberInPack.Text= stock.Box.ToString();
+             tbNumberInBox.Text= stock.NumberPackInBox.ToString();
              tbTotalQuantity.Text= updateDrug.Quantity.ToString();
-             tbExpiringDate.DisplayDate= updateDrug.ExpiryDate;
-             tbBox.Text= updateDrug.NumberinPack.ToString();
-             cbDosageForm.SelectedValue= updateDrug.DosageFormId;
-             cbDrugType.SelectedValue= updateDrug.DrugFormId;
-             cbDrugCategory.SelectedValue= updateDrug.CategoryId;
-             cbPackaging.SelectedValue= updateDrug.PackagingId;
-             cbSupplier.SelectedValue= updateDrug.SupplierId;
-             cbPackaging.SelectedValue= updateDrug.PackagingId;
+             tbExpiringDate.DisplayDate= stock.ExpiryDate;
+             tbBox.Text= stock.NumberinPack.ToString();
+             cbDosageForm.SelectedValue= stock.DosageFormId;
+             cbDrugType.SelectedValue= stock.DrugFormId;
+             cbDrugCategory.SelectedValue= stock.CategoryId;
+             cbPackaging.SelectedValue= stock.PackagingId;
+             cbSupplier.SelectedValue= stock.SupplierId;
+             cbPackaging.SelectedValue= stock.PackagingId;
 
 
         }
@@ -135,21 +136,36 @@ namespace ClinicApp.Pharmacist
             }
             else
             {
-                
+                var stock=new DrugStock();
                 medicine.GenericName = tbGenericName.Text;
                 medicine.BrandName = tbBrandName.Text;
-                medicine.Box = Convert.ToInt32(tbNumberInPack.Text);
-                medicine.NumberPackInBox = Convert.ToInt32(tbNumberInBox.Text);
                 medicine.Quantity = Convert.ToInt32(tbTotalQuantity.Text);
-                medicine.ExpiryDate = tbExpiringDate.DisplayDate;
-                medicine.NumberinPack = Convert.ToInt32(tbBox.Text);
-                medicine.DosageFormId = (int)cbDosageForm.SelectedValue;
-                medicine.DrugFormId = (int)cbDrugType.SelectedValue;
-                medicine.CategoryId = (int)cbDrugCategory.SelectedValue;
-                medicine.PackagingId = (int)cbPackaging.SelectedValue;
-                medicine.SupplierId = (int)cbSupplier.SelectedValue;
-                medicine.PackagingId = (int)cbPackaging.SelectedValue;
-                new DrugRepository().SaveDrug(medicine);
+                stock.Box = Convert.ToInt32(tbNumberInPack.Text);
+                stock.NumberPackInBox = Convert.ToInt32(tbNumberInBox.Text);
+                stock.ExpiryDate = tbExpiringDate.DisplayDate;
+                stock.NumberinPack = Convert.ToInt32(tbBox.Text);
+                stock.DosageFormId = (int)cbDosageForm.SelectedValue;
+                stock.DrugFormId = (int)cbDrugType.SelectedValue;
+                stock.CategoryId = (int)cbDrugCategory.SelectedValue;
+                stock.PackagingId = (int)cbPackaging.SelectedValue;
+                stock.SupplierId = (int)cbSupplier.SelectedValue;
+                stock.PackagingId = (int)cbPackaging.SelectedValue;
+                stock.Quantity=Convert.ToInt32(tbTotalQuantity.Text);
+                var repo = new DrugRepository();
+
+                if (medicine.Id.HasValue)
+                {
+                    stock.DrugId = Convert.ToInt32(medicine.Id);
+                    repo.UpdateDrug(medicine);
+                    repo.AddStock(stock);
+
+                }
+                else
+                {
+                    stock.DrugId= repo.SaveDrug(medicine);
+                    repo.AddStock(stock);
+                }
+
             cmb.Message = $"succefully added {tbBrandName.Text}";
             cmb.Show();
                 Util.Clear(this);

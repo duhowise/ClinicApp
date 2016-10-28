@@ -32,10 +32,9 @@ namespace ClinicApp.Doctor
             patient = PharSearchPatient.patient;
             _consultation = new PatientRepository().PatientHistory(patient);
         }
-
         private void Card_Loaded(object sender, RoutedEventArgs e)
         {
-         
+            
                 PatientName.Content = (patient.FulName()).ToUpper();
                 PatientDesignation.Content = $"Designation: {patient.Designation}";
                 PatientTemperature.Content = $"Temperature :{_consultation?.Temperature} °C";
@@ -47,20 +46,73 @@ namespace ClinicApp.Doctor
                 PatientBloodPressure.Content = $"Blood pressure : {_consultation?.BloodPressure}";
                 PatientLastVisited.Content = $"Consultation Date: {_consultation?.Date.ToShortDateString()}";
                 PatientHistoryList.ItemsSource = new PatientRepository().AllPatientHistory(patient);
-           
+                Check();
         }
 
+        private void Check()
+        {
+            if ( _consultation.IsSensitive == 1)
+            {
+                Status.IsChecked = true;
+            }
+            else if( _consultation.IsSensitive == 0)
+            {
+                Status.IsChecked = false;
+
+
+            }
+            else
+            {
+                Status.IsChecked = false;
+            }
+        }
 
         private void PatientHistoryList_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             _consultation = null;
             _consultation=PatientHistoryList.SelectedItem as Consultation;
+            Check();
             Card_Loaded(sender,e);
         }
 
         private void btnDocEdit_Click(object sender, RoutedEventArgs e)
         {
-            new DocEditWindow().ShowDialog();
+            new DocEditWindow("Diagnosis", _consultation).ShowDialog();
+        }
+
+        private void Status_Checked(object sender, RoutedEventArgs e)
+        {
+            if (_consultation.IsSensitive == 0){_consultation.IsSensitive = 1;}
+            Check();
+            new PatientRepository().UpdateConsultation(_consultation);
+
+        }
+
+        private void Status_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (_consultation.IsSensitive == 1){_consultation.IsSensitive = 0;}
+            Check();
+           new PatientRepository().UpdateConsultation(_consultation);
+
+        }
+        
+        private void FindingsEdit_OnClick(object sender, RoutedEventArgs e)
+        {
+            var content = tbFindings.Text;
+            new DocEditWindow("Findings",_consultation).ShowDialog();
+
+        }
+
+        private void DispEdit_OnClick(object sender, RoutedEventArgs e)
+        {
+            new DocEditWindow("Dispensary", _consultation).ShowDialog();
+
+        }
+
+        private void PrescEdit_OnClick(object sender, RoutedEventArgs e)
+        {
+            new DocEditWindow("Prescriptions", _consultation).ShowDialog();
+
         }
     }
 }

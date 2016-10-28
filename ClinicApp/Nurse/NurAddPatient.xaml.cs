@@ -15,8 +15,6 @@ namespace ClinicApp.Nurse
         public NurAddPatient()
         {
             InitializeComponent();
-            PatientDesignation.Items.Add("Vice President");
-            PatientDesignation.Items.Add("Web Developer");
         }
 
         private async void Save_Click(object sender, RoutedEventArgs e)
