@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using ClinicApp.Data;
+using ClinicApp.Logic;
 using ClinicApp.Pharmacist;
 using ClinicModel;
 
@@ -15,13 +17,9 @@ namespace ClinicApp.Doctor
         static Patient patient = new Patient();
         Consultation _consultation = new Consultation();
         List<string> drugsordate = new List<string>();
-
-        public static bool Changed { get; set; } = false;
-
         public DocPatientDetailConsultation()
         {
             InitializeComponent();
-            Changed = true;
             patient = PharSearchPatient.patient;
             _consultation = new PatientRepository().PatientHistory(patient);
             //get all consultation history for patient
@@ -34,9 +32,7 @@ namespace ClinicApp.Doctor
         }
         private void Card_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Changed)
-            {
-                tbDrugsDispensed.Text = "";
+               tbDrugsDispensed.Text = "";
                 //get all drugs in the system
                 var alldrugs = (List<Drug>)new DrugRepository().GetAllDrugs();
                 PatientName.Content = (patient.FulName()).ToUpper();
@@ -63,10 +59,8 @@ namespace ClinicApp.Doctor
                     tbDrugsDispensed.Text = tbDrugsDispensed.Text + names + " ,";
                 }
                 Check();
-            }
-            Changed = false;
+           
         }
-
         private void Check()
         {
             if (_consultation!=null)
@@ -87,6 +81,23 @@ namespace ClinicApp.Doctor
                 }
             }
         }
+        public void OnEditFinished(object source, EventArgs args)
+        {
+            tbDrugsDispensed.Text = "";
+            _consultation = null;
+            if (PatientHistory.SelectedItem != null)
+            {
+                _consultation = PatientHistory.SelectedItem as Consultation;
+
+            }
+            else
+            {
+            _consultation = new PatientRepository().PatientHistory(patient);
+
+            }
+            Check();
+            Card_Loaded(source, null);
+        }
         private void PatientHistory_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             tbDrugsDispensed.Text = "";
@@ -95,20 +106,12 @@ namespace ClinicApp.Doctor
             Check();
             Card_Loaded(sender, e);
         }
-        //private void PatientHistoryList_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
-        //{
-        //    tbDrugsDispensed.Text = "";
-        //    _consultation = null;
-        //    _consultation = PatientHistory.SelectedItem as Consultation;
-        //    Check();
-        //    Card_Loaded(sender, e);
-        //}
-
         private void btnDocEdit_Click(object sender, RoutedEventArgs e)
         {
-            new DocEditWindow("Diagnosis", _consultation).ShowDialog();
+           var edit= new DocEditWindow("Diagnosis", _consultation);
+            edit.EditFinished += OnEditFinished;
+            edit.ShowDialog();
         }
-
         private void Status_Checked(object sender, RoutedEventArgs e)
         {
             if (_consultation.IsSensitive == 0){_consultation.IsSensitive = 1;}
@@ -116,7 +119,6 @@ namespace ClinicApp.Doctor
             new PatientRepository().UpdateConsultation(_consultation);
 
         }
-
         private void Status_Unchecked(object sender, RoutedEventArgs e)
         {
             if (_consultation.IsSensitive == 1){_consultation.IsSensitive = 0;}
@@ -124,17 +126,18 @@ namespace ClinicApp.Doctor
            new PatientRepository().UpdateConsultation(_consultation);
 
         }
-        
         private void FindingsEdit_OnClick(object sender, RoutedEventArgs e)
         {
-            var content = tbFindings.Text;
-            new DocEditWindow("Findings",_consultation).ShowDialog();
-
+            var edit=new DocEditWindow("Findings",_consultation);
+            edit.EditFinished += OnEditFinished;
+            edit.ShowDialog();
         }
-        
         private void PrescEdit_OnClick(object sender, RoutedEventArgs e)
         {
-            new DocEditWindow("Prescriptions", _consultation).ShowDialog();
+            var edit = new DocEditWindow("Prescriptions", _consultation);
+            edit.EditFinished += OnEditFinished;
+            edit.ShowDialog();
+
 
         }
 

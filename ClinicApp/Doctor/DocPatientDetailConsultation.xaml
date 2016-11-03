@@ -100,9 +100,8 @@
                                            HorizontalContentAlignment="Center" VerticalAlignment="Top"
                                 FontSize="16" Foreground="{DynamicResource AccentColorBrush}"/>
                                 <TextBlock Grid.Column="1" Grid.Row="0" Name="tbDiagnosis" 
-                                 IsEnabled="True" TextWrapping="Wrap" HorizontalAlignment="Left"
-                                 ToolTip="Patient Diagnosis"   Margin="20 2 2 2" Width="360" Height="150"
-                                 Text="textblock showing Diagnosis it is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing"
+                                 IsEnabled="True" TextWrapping="Wrap"
+                                 ToolTip="Patient Diagnosis"   Margin="20,2,10,2" Height="150"
                                  
                                  Foreground="{DynamicResource AccentColorBrush}" FontSize="16"/>
                                 <Separator Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"/>
@@ -135,9 +134,8 @@
                                            HorizontalContentAlignment="Left" VerticalAlignment="Top"
                                      FontSize="16" Foreground="{DynamicResource AccentColorBrush}"/>
                                 <TextBlock Grid.Column="1" Grid.Row="0" Name="tbPrescriptions" 
-                                 IsEnabled="True" TextWrapping="Wrap" HorizontalAlignment="Left"
-                                 ToolTip="Patient Diagnosis"  Margin="20 2 2 2" Width="360" Height="150"
-                                 Text="textblock showing Diagnosis it is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing" 
+                                 IsEnabled="True" TextWrapping="Wrap"
+                                 ToolTip="Patient Diagnosis"  Margin="20,2,10,2" Height="150" 
                                  Foreground="{DynamicResource AccentColorBrush}" FontSize="16"/>
                                 <Separator Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"/>
 
@@ -168,9 +166,8 @@
                                            HorizontalContentAlignment="Center" VerticalAlignment="Top"
                                  FontSize="16" Foreground="{DynamicResource AccentColorBrush}"/>
                                 <TextBlock Grid.Column="1" Grid.Row="0" Name="tbFindings" 
-                                 IsEnabled="True" TextWrapping="Wrap" HorizontalAlignment="Left"
-                                  ToolTip="Patient symptoms and findings"  Margin="20 2 2 2" Width="360" Height="150"
-                                 Text="textblock showing Diagnosis it is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing"
+                                 IsEnabled="True" TextWrapping="Wrap"
+                                  ToolTip="Patient symptoms and findings"  Margin="20,2,10,2" Height="150"
                                  Foreground="{DynamicResource AccentColorBrush}" FontSize="16"/>
                                 <Separator Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"/>
                                 <StackPanel HorizontalAlignment="Right"  Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
@@ -201,11 +198,11 @@
                                     <TextBlock Width="80" TextWrapping="Wrap">Drugs Dispensed</TextBlock>
                                 </Label>
                                 <TextBlock Grid.Column="1" Grid.Row="0" Name="tbDrugsDispensed" 
-                                 IsEnabled="True" TextWrapping="Wrap" HorizontalAlignment="Left"
-                                 ToolTip="Patient Diagnosis"  Margin="20 2 2 2" Width="360" Height="150" 
+                                 IsEnabled="True" TextWrapping="Wrap"
+                                 ToolTip="Patient Diagnosis"  Margin="20,2,10,2" Height="150" 
                                  Foreground="{DynamicResource AccentColorBrush}" FontSize="16"/>
                                 <Separator Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"/>
-                              
+
                             </Grid>
                         </StackPanel>
                     </materialDesign:Card>
