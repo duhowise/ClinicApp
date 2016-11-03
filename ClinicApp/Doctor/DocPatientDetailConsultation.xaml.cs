@@ -41,7 +41,7 @@ namespace ClinicApp.Doctor
                 PatientPulse.Content = $"Pulse :{_consultation?.Pulse} bpm";
                 tbDiagnosis.Text = _consultation?.Diagnosis;
                 tbPrescriptions.Text = _consultation?.Prescription;
-                tbFindings.Text = _consultation?.Signs;
+                tbFindings.Text = _consultation?.Investigation;
                 PatientWeight.Content = $"Weight :{_consultation?.Weight} kg";
                 PatientBloodPressure.Content = $"Blood pressure : {_consultation?.BloodPressure}";
                 PatientLastVisited.Content = $"Consultation Date: {_consultation?.Date.ToShortDateString()}";
