@@ -19,7 +19,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="60"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label FontSize="18"
+        <Label FontSize="18" Name="heading"
                            Grid.Row="0" Grid.Column="0"
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center"
@@ -37,7 +37,7 @@
                          controls:TextBoxHelper.ButtonFontFamily="wingdings"
                      BorderBrush="{DynamicResource AccentColorBrush}"
                      BorderThickness="1"
-                         Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
+                         Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" TextChanged="tbDocEdit_TextChanged"/>
         <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,10,0" 
                                 Height="30" Width="130" Grid.Column="0" Grid.Row="2" TabIndex="12"
                                 Name="Save" HorizontalAlignment="Right"

@@ -7,11 +7,11 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-       Title="KUMASI POLYTECHNIC CLINIC APP" ShowMaxRestoreButton="False" ShowMinButton="False"
-                       GlowBrush="{DynamicResource AccentColorBrush}"
+       Title="KUMASI POLYTECHNIC CLINIC APP" ShowMaxRestoreButton="False" ShowMinButton="False" 
+                      GlowBrush="{DynamicResource AccentColorBrush}"
                        Background="{DynamicResource MaterialDesignPaper}" 
                       NonActiveGlowBrush="{DynamicResource PrimaryColorBrush}"
-                      Icon="../media/Health-Care.png" ShowInTaskbar="False" WindowState="Maximized" Loaded="MetroWindow_Loaded">
+                      Icon="../media/Health-Care.png" ShowInTaskbar="True" WindowState="Maximized" Loaded="MetroWindow_Loaded">
         <DockPanel>
         <Grid>
             <Grid.ColumnDefinitions>

@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using ClinicApp.Data;
-using ClinicApp.Logic;
 using ClinicModel;
-using MahApps.Metro.Controls.Dialogs;
-using MaterialDesignThemes.Wpf;
 
 namespace ClinicApp.Pharmacist
 {
@@ -23,7 +19,7 @@ namespace ClinicApp.Pharmacist
         static Patient patient = new Patient();
         Consultation _consultation = new Consultation();
         Drug drug = new Drug();
-
+        List<string> drugsordate = new List<string>();
         CMB cmb = new CMB();
 
         public PharPatientDetailsDispensary()
@@ -31,6 +27,7 @@ namespace ClinicApp.Pharmacist
             InitializeComponent();
             DispenseDrugName.FilterMode = AutoCompleteFilterMode.StartsWithOrdinal;
             DispenseDrugName.ItemsSource = new DrugRepository().DrugAutoComplete();
+            PatientHistory.SelectionChanged += PatientHistory_SelectionChanged;
             _remainingDrugsBackgroundWorker.WorkerSupportsCancellation = false;
             _remainingDrugsBackgroundWorker.WorkerReportsProgress = true;
             _remainingDrugsBackgroundWorker.WorkerSupportsCancellation = true;
@@ -38,21 +35,47 @@ namespace ClinicApp.Pharmacist
             _remainingDrugsBackgroundWorker.RunWorkerCompleted += _remainingDrugsBackgroundWorker_RunWorkerCompleted;
             DispenseDrugName.SelectionChanged += DispenseDrugName_SelectionChanged;
             patient = PharSearchPatient.Patient;
+            List<DispensedDrug> dispensed = (List<DispensedDrug>)new PatientRepository().PatientDrugHistory(patient);
+            var alldrugs = (List<Drug>)new DrugRepository().GetAllDrugs();
+
             if (patient != null)
             {
                 _consultation = new PatientRepository().PatientHistory(patient);
+                PatientHistory.ItemsSource=new PatientRepository().AllPatientHistory(patient);
             }
+            foreach (var pill in dispensed.FindAll(d => d.ConsultationId == _consultation.Id))
+            {
+                drugsordate.Add(alldrugs.Find(d => d.Id == pill.DrugId).BrandName);
+            }
+            foreach (var names in drugsordate)
+            {
+                tbDrugsDispensed.Text+=$" {names};";
+            }
+        }
+
+        private void PatientHistory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //DateTime dateselect =Convert.ToDateTime(PatientHistory.SelectedItem.ToString());
+           var dateselect =PatientHistory.SelectedItem as Consultation;
+            List<Consultation> consultation =
+                 new PatientRepository().AllPatientHistory(patient) as List<Consultation>;
+            if (consultation != null)
+            {
+                _consultation = null;
+                _consultation = consultation.Find(p => p.Date.Date.Equals(dateselect.Date.Date));
+            }
+            PharPatientDetailsDispensary_OnLoaded(sender, e);
         }
 
         private void DispenseDrugName_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(DispenseDrugName.Text))
-            {
-                drugName = DispenseDrugName.SelectedItem.ToString();
-                drug = new DrugRepository().GetDrugByName(drugName);
-                if (!_remainingDrugsBackgroundWorker.IsBusy)
-                    _remainingDrugsBackgroundWorker.RunWorkerAsync();
-            }
+            //DrugName= DispenseDrugName.SelectedItem.ToString();
+            //if (!string.IsNullOrWhiteSpace(DrugName))
+            //{
+            //  drug = new DrugRepository().GetDrugByName(drugName);
+            //    if (!_remainingDrugsBackgroundWorker.IsBusy)
+            //        _remainingDrugsBackgroundWorker.RunWorkerAsync();
+            //}
         }
 
         private string drugName;
@@ -71,7 +94,7 @@ namespace ClinicApp.Pharmacist
 
         private void _remainingDrugsBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            e.Result = new DrugRepository().GetRemainingDrugs(new Drug {BrandName = drugName});
+            e.Result = DrugRepository.GetRemainingDrugs(new Drug {BrandName = drugName});
 
 
         }
@@ -80,7 +103,7 @@ namespace ClinicApp.Pharmacist
         {
 
             LbRemainingDrugs.Text =
-                Convert.ToInt32(new DrugRepository().GetRemainingDrugs(new Drug {BrandName = drugName})) -
+                Convert.ToInt32(DrugRepository.GetRemainingDrugs(new Drug {BrandName = drugName})) -
                 Convert.ToInt32(DispenseDrugQuantity.Text) + "";
         }
 
@@ -124,9 +147,8 @@ namespace ClinicApp.Pharmacist
 
         private async void Save_Click(object sender, RoutedEventArgs e)
         {
-            // TODO save patinent complaint
-            if (string.IsNullOrEmpty(DispenseProvidedId.Text) || string.IsNullOrEmpty(DispenseDrugName.Text) ||
-                string.IsNullOrEmpty(DispenseDrugQuantity.Text))
+            if (string.IsNullOrWhiteSpace(DispenseProvidedId.Text) || string.IsNullOrWhiteSpace(DispenseDrugName.Text) ||
+                string.IsNullOrWhiteSpace(DispenseDrugQuantity.Text))
             {
                 cmb.Message = "All Fields Are Required";
                 cmb.Show();
@@ -139,12 +161,14 @@ namespace ClinicApp.Pharmacist
                     DrugId =Convert.ToInt32(drug.Id),
                     PatientId =Convert.ToInt32(patient.Id),
                     Quantity = Convert.ToInt32(DispenseDrugQuantity.Text),
+                    ConsultationId = _consultation.Id,
                     UserId = MainWindow.ID
                 });
-
+                tbDrugsDispensed.Text += $" {drug.BrandName};";
                 cmb.Message = $"{drug.BrandName} dispensed to {patient.FirstName + " " + patient.LastName}";
                 cmb.Show();
                 this.DispenseDrugName.Text = "";
+                this.DispenseDrugQuantity.Text = "";
                 this.DispenseDrugQuantity.Text = "";
 
 
@@ -168,8 +192,6 @@ namespace ClinicApp.Pharmacist
             {
                 tbDiagnosis.Text = @"
                                      *****************************
-                                     *****************************
-                                     *****************************
                                      *****************************";
             }
             PatientName.Content = patient.FulName().ToUpper();
@@ -186,21 +208,32 @@ namespace ClinicApp.Pharmacist
 
         }
 
-        private void DatePicker_OnSelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private void DispenseDrugName_TextChanged(object sender, RoutedEventArgs e)
         {
-            if (DatePicker.SelectedDate != null)
+            DrugName = DispenseDrugName.Text;
+            if (!string.IsNullOrWhiteSpace(DrugName))
             {
-                DateTime dateselect = DatePicker.SelectedDate.Value;
-               List<Consultation> consultation =
-                    new PatientRepository().AllPatientHistory(patient) as List<Consultation>;
-                if (consultation != null)
-                {
-                    _consultation = null;
-                    _consultation = consultation.Find(p => p.Date.Date.Equals(dateselect));
-                }
-                PharPatientDetailsDispensary_OnLoaded(sender, e);
+                drug = new DrugRepository().GetDrugByName(drugName);
+                if (!_remainingDrugsBackgroundWorker.IsBusy)
+                    _remainingDrugsBackgroundWorker.RunWorkerAsync();
             }
         }
+
+        //private void DatePicker_OnSelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (DatePicker.SelectedDate != null)
+        //    {
+        //        DateTime dateselect = DatePicker.SelectedDate.Value;
+        //       List<Consultation> consultation =
+        //            new PatientRepository().AllPatientHistory(patient) as List<Consultation>;
+        //        if (consultation != null)
+        //        {
+        //            _consultation = null;
+        //            _consultation = consultation.Find(p => p.Date.Date.Equals(dateselect));
+        //        }
+        //        PharPatientDetailsDispensary_OnLoaded(sender, e);
+        //    }
+        //}
 
 
     }

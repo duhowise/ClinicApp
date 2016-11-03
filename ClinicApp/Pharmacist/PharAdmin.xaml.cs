@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using ClinicApp.Logic;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;

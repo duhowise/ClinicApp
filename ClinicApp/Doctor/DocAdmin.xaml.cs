@@ -1,11 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using ClinicApp.Data;
 using ClinicApp.Logic;
 using ClinicApp.Pharmacist;
-using MahApps.Metro;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 
@@ -28,7 +25,7 @@ namespace ClinicApp.Doctor
             LoginUserName.Content = MainWindow.FullName;
           //  lbTotalDrugs.Content = a = new DrugRepository().TotalDrugsQuantity("Drugs");
             //lbRegisteredPatients.Content = p.TotalRegisteredPatient();
-                b = new DrugRepository().TotalDrugsQuantity("DispensedDrugs");
+              //  b = new DrugRepository().TotalDrugsQuantity("DispensedDrugs");
             //lbAvailableDrugs.Content = a - b;
 
             navigator = new MainContentView(NavigateToView);

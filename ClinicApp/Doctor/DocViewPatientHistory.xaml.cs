@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using Telerik.Windows.Controls;
 
 namespace ClinicApp.Doctor
 {

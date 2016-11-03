@@ -1,5 +1,6 @@
 ﻿namespace ClinicModel
 {
+    //[ImplementPropertyChanged]
     public class DrugCategory
     {
         public int Id { get; set; }

@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-
-namespace ClinicModel
+﻿namespace ClinicModel
 {
+   // [ImplementPropertyChanged]
     public class DrugDosageForm
     {
         public int Id { get; set; }

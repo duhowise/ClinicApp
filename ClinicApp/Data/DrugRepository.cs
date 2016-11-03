@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -85,15 +84,6 @@ namespace ClinicApp.Data
             }
 
         }
-        public Drug GetDrugById(int id)
-        {
-            using (var connection = new SqlConnection(new ConnectionHelper().ConnectionString))
-            {
-                if (connection.State == Closed)
-                    connection.Open();
-                return connection.Query<Drug>($"select * from Drugs where id={id}").SingleOrDefault();
-            }
-        }
         public Drug GetDrugByName(string name)
         {
 
@@ -102,6 +92,17 @@ namespace ClinicApp.Data
                 if (connection.State == Closed)
                     connection.Open();
                 return connection.Query<Drug>($"select * from Drugs where brandName='{name}'").SingleOrDefault();
+
+            }
+        }
+        public string GetDrugById(int id)
+        {
+
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == Closed)
+                    connection.Open();
+                return connection.Query<string>($"select brandName from Drugs where id={id}").SingleOrDefault();
 
             }
         }
@@ -114,7 +115,7 @@ namespace ClinicApp.Data
                 return connection.Query<DispensedDrug>($"select * from Drugs");
             }
         }
-        public int GetRemainingDrugs(Drug drug)
+        public static int GetRemainingDrugs(Drug drug)
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
@@ -124,17 +125,17 @@ namespace ClinicApp.Data
 
             }
         }
-        public void SaveDrug(Drug drugs)
+        public int SaveDrug(Drug drugs)
         {
+            int id = 0;
             try
             {
                 using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
                 {
                     if (connection.State == Closed)
                         connection.Open();
-                    connection.Query(@"INSERT INTO dbo.Drugs(GenericName,brandName,Box,NumberPackInBox,Quantity,ExpiryDate,NumberinPack,
-                    DosageFormId,DrugFormId,CategoryId,PackagingId,SupplierId)Values(@GenericName,@brandName,@Box,@NumberPackInBox,@Quantity,
-                    @ExpiryDate,@NumberinPack,@DosageFormId,@DrugFormId,@CategoryId,@PackagingId,@SupplierId)", drugs);
+             id= connection.Query(@"INSERT INTO dbo.Drugs(GenericName,brandName,Quantity)Values(@GenericName,@brandName,@Quantity)
+                    select cast(scope_identity() as int)", drugs).First();
                 }
                 
             }
@@ -143,8 +144,29 @@ namespace ClinicApp.Data
 
                 MessageBox.Show(exception.Message);
             }
+            return id;
         }
-         public void AddNewDrugCategory(DrugCategory drugCategory)
+        public void UpdateDrug(Drug drugs)
+        {
+            
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+                {
+                    if (connection.State == Closed)
+                        connection.Open();
+                   connection.Query(@"UPDATE dbo.Drugs SET  GenericName =@GenericName ,brandName =@brandName ,Quantity =@Quantity WHERE Id =@Id", drugs);
+                }
+
+            }
+            catch (Exception exception)
+            {
+
+                MessageBox.Show(exception.Message);
+            }
+            
+        }
+        public void AddNewDrugCategory(DrugCategory drugCategory)
         {
             try
             {
@@ -213,8 +235,7 @@ namespace ClinicApp.Data
                 return connection.Query<string>($"select * from Drugs  where  brandName=@brandName",brandname);
             }
         }
-
-        public void DispenseDrug(DispensedDrug dispensedDrug)
+        public void AddStock(DrugStock drugStock)
         {
             try
             {
@@ -222,7 +243,9 @@ namespace ClinicApp.Data
                 {
                     if (connection.State == Closed)
                         connection.Open();
-                    connection.Query(@"INSERT INTO dbo.DispensedDrugs(PatientId,DrugId,Quantity,UserId)Values(@PatientId,@DrugId,@Quantity,@UserId)",dispensedDrug);
+                    connection.Query(@"INSERT INTO dbo.DrugStock(DrugId,Box,NumberPackInBox,Quantity,ExpiryDate,NumberinPack
+                    ,DosageFormId,DrugFormId,CategoryId,PackagingId,SupplierId)VALUES(@DrugId,@Box,@NumberPackInBox,
+                      @Quantity,@ExpiryDate,@NumberinPack,@DosageFormId,@DrugFormId,@CategoryId,@PackagingId,@SupplierId)",drugStock);
                 }
 
             }
@@ -232,7 +255,35 @@ namespace ClinicApp.Data
                 MessageBox.Show(exception.Message);
             }
         }
+        public static DrugStock GetDrugStock(Drug drug)
+        {
+            using (var connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == Closed)
+                    connection.Open();
+                return connection.Query<DrugStock>(@"SELECT TOP 1 Id,DrugId,Box,NumberPackInBox,Quantity,ExpiryDate
+                                        ,NumberinPack,DosageFormId,DrugFormId,CategoryId,AddedDate,PackagingId,
+                                        SupplierId FROM dbo.DrugStock WHERE DrugId=@Id",drug).SingleOrDefault();
+            }
+        }
+        public void DispenseDrug(DispensedDrug dispensedDrug)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+                {
+                    if (connection.State == Closed)
+                        connection.Open();
+                    connection.Query(@"INSERT INTO dbo.DispensedDrugs(PatientId,DrugId,Quantity,ConsultationId,UserId)Values(@PatientId,@DrugId,@Quantity,@ConsultationId,@UserId)", dispensedDrug);
+                }
 
+            }
+            catch (Exception exception)
+            {
+
+                MessageBox.Show(exception.Message);
+            }
+        }
         public int TotalDrugsQuantity(string tableName)
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
@@ -243,25 +294,25 @@ namespace ClinicApp.Data
 
             }
         }
-        public void UpdateDrug(Drug drug)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
-                {
-                    if (connection.State == Closed)
-                        connection.Open();
-                    connection.Query(@"UPDATE dbo.Drugs SET  GenericName =@GenericName,brandName = @brandName,Box = @Box,NumberPackInBox = @NumberPackInBox
-                    ,Quantity = @Quantity,ExpiryDate = @ExpiryDate,NumberinPack = @NumberinPack,DosageFormId = @DosageFormId,DrugFormId = @DrugFormId,
-                        CategoryId = @CategoryId,PackagingId = @PackagingId,SupplierId = @SupplierId WHERE Id = @Id",drug);
+        //public void UpdateDrug(Drug drug)
+        //{
+        //    try
+        //    {
+        //        using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+        //        {
+        //            if (connection.State == Closed)
+        //                connection.Open();
+        //            connection.Query(@"UPDATE dbo.Drugs SET  GenericName =@GenericName,brandName = @brandName,Box = @Box,NumberPackInBox = @NumberPackInBox
+        //            ,Quantity = @Quantity,ExpiryDate = @ExpiryDate,NumberinPack = @NumberinPack,DosageFormId = @DosageFormId,DrugFormId = @DrugFormId,
+        //                CategoryId = @CategoryId,PackagingId = @PackagingId,SupplierId = @SupplierId WHERE Id = @Id",drug);
 
-                }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
-        }
+        //        }
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        MessageBox.Show(exception.Message);
+        //    }
+        //}
     }
 
    

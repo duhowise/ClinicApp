@@ -30,7 +30,7 @@ namespace ClinicApp.Doctor
             {
                 patientSearchWorker.RunWorkerAsync();
             }
-
+            
         }
 
 

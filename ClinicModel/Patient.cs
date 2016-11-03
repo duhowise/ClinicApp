@@ -1,8 +1,8 @@
 using System;
-using System.Collections.Generic;
 
 namespace ClinicModel
 {
+   // [ImplementPropertyChanged]
     public class Patient
     {
 

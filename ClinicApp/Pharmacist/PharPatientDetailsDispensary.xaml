@@ -35,9 +35,9 @@
                                HorizontalAlignment="Left"
                                Width="324" FontSize="26" Foreground="{DynamicResource AccentColorBrush}"
                                Margin="205,2,0,0" />
-                    <DatePicker x:Name="DatePicker" TabIndex="9" SelectedDateChanged="DatePicker_OnSelectedDateChanged"
+                    <ComboBox x:Name="PatientHistory" TabIndex="9" controls:TextBoxHelper.Watermark="Patient Visits" 
                                     Grid.Column="0" Grid.Row="0"
-                                    Margin="0,10,10,0"
+                                    Margin="0,10,10,0" DisplayMemberPath="Date" 
                                     Width="250"
                                     Height="35"
                                     HorizontalAlignment="Right"
@@ -71,8 +71,8 @@
                 </Grid>
             </materialDesign:Card>
         </WrapPanel>
-        <ScrollViewer CanContentScroll="True"  Grid.Column="0" HorizontalAlignment="Stretch" Margin="0,0,15,0"
-                   VerticalAlignment="Stretch" VerticalContentAlignment="Stretch"  Grid.Row="1">
+        <ScrollViewer CanContentScroll="True"  Grid.Column="0" HorizontalAlignment="Stretch" Margin="0,322,15,10"
+                   VerticalAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.RowSpan="2">
             <WrapPanel ItemWidth="800" Margin="0 0 0 0">
                 <materialDesign:Card Margin="10 4 0 0" Background="{DynamicResource MaterialDesignBackground}">
                     <StackPanel>
@@ -91,42 +91,30 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <Label Content="Diagnosis" Grid.Row="0" Grid.Column="0" Height="30"
-                                   HorizontalAlignment="Left"
-                                   Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}" />
+                            <Label Content="Diagnosis" Grid.Row="0" Grid.Column="0" Height="30" FontSize="16" Foreground="{DynamicResource AccentColorBrush}" Grid.ColumnSpan="2" Margin="0,0,0,0" />
                             <TextBlock x:Name="tbDiagnosis"
                                        TextWrapping="Wrap"
                                        Grid.Row="0" Grid.Column="1" Margin="5,1,155,10"
-                                       Text="textblock showing Diagnosis it is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing"
                                        FontSize="14" Foreground="{DynamicResource AccentColorBrush}" />
                             <Separator Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Height="2"
                                        Style="{StaticResource MaterialDesignDarkSeparator}" />
 
-                            <Label Content="Lab Findings" Grid.Row="2" Grid.Column="0" Height="30"
-                                   HorizontalAlignment="Left"
-                                   Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}" />
-                            <TextBlock Name="tbLabFindings" TextWrapping="Wrap"
+                            <Label Content="Lab Findings" Grid.Row="2" Grid.Column="0" FontSize="16" Foreground="{DynamicResource AccentColorBrush}" Grid.ColumnSpan="2" Margin="0,0,620,0" />
+                            <TextBlock x:Name="tbLabFindings" TextWrapping="Wrap"
                                        Grid.Row="2" Grid.Column="1" Margin="5,1,155,1"
-                                       Text="textblock showing Lab Findings Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic"
                                        FontSize="14" Foreground="{DynamicResource AccentColorBrush}" />
                             <Separator Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0" Height="2"
                                        Style="{StaticResource MaterialDesignDarkSeparator}" HorizontalAlignment="Right"
                                        Width="800" Margin="0,2,0,0" VerticalAlignment="Top" />
-                            <Separator Grid.Row="5" Grid.ColumnSpan="2" Grid.Column="0" Height="2"
-                                       Style="{StaticResource MaterialDesignDarkSeparator}" />
-                            <Label Content="Prescription" Grid.Row="6" Grid.Column="0" Height="30"
-                                   HorizontalAlignment="Left"
-                                   Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}" />
-                            <TextBlock Name="tbPrescription" Grid.Row="6" Grid.Column="1" Margin="5,1,155,1"
+                            <Separator Grid.Row="6" Grid.ColumnSpan="2" Grid.Column="0" Height="2"
+                                       Style="{StaticResource MaterialDesignDarkSeparator}" Margin="-4,29,4,29" Grid.RowSpan="2" />
+                            <Label Content="Prescription" Grid.Row="6" Grid.Column="0" Height="30" FontSize="16" Foreground="{DynamicResource AccentColorBrush}" Grid.ColumnSpan="2" Margin="0,0,620,0" />
+                            <TextBlock x:Name="tbPrescription" Grid.Row="6" Grid.Column="1" Margin="5,1,155,1"
                                        TextWrapping="Wrap"
-                                       Text="textblock showing prescription The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
                                        FontSize="14" Foreground="{DynamicResource AccentColorBrush}" />
-                            <Label Content="Drugs dispensed" Grid.Row="7" Grid.Column="0" Height="30"
-                                   HorizontalAlignment="Left"
-                                   Width="160" FontSize="16" Foreground="{DynamicResource AccentColorBrush}" />
-                            <TextBlock Name="tbDrugsDispensed" Grid.Row="7" Grid.Column="1" Margin="5,1,155,1"
+                            <Label Content="Drugs dispensed" Grid.Row="7" Grid.Column="0" Height="30" FontSize="16" Foreground="{DynamicResource AccentColorBrush}" Grid.ColumnSpan="2" Margin="0,0,620,0" />
+                            <TextBlock x:Name="tbDrugsDispensed" Grid.Row="7" Grid.Column="1" Margin="5,1,0,1"
                                        TextWrapping="Wrap"
-                                       Text="textblock showing prescription The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
                                        FontSize="14" Foreground="{DynamicResource AccentColorBrush}" />
 
 
@@ -207,7 +195,7 @@
                                      BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="1"
                                      controls:TextBoxHelper.UseFloatingWatermark="False" 
                                      Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"
-                                     FontSize="16"  />
+                                     FontSize="16" TextChanged="DispenseDrugName_TextChanged"  />
 
                             <TextBox Name="LbRemainingDrugs"
                                      Grid.Column="0" Grid.Row="6"

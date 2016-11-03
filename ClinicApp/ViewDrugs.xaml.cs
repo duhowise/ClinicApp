@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using ClinicApp.Data;
 using ClinicApp.Logic;
@@ -36,17 +35,17 @@ namespace ClinicApp
 
             if (item is string)
             {
-                //MessageBox.Show(item.ToString());
-               var result= new DrugRepository().GetDrugByName(item.ToString());
-                var updateDrugs = new Pharmacist.PharSearchDrug();
-                var cmd = new CMB();
-                cmd.Message = "";
-                updateDrugs.Show();
+               // //MessageBox.Show(item.ToString());
+               //var result= new DrugRepository().GetDrugByName(item.ToString());
+               // var updateDrugs = new Pharmacist.PharSearchDrug();
+               // var cmd = new CMB();
+               // cmd.Message = "";
+                //updateDrugs.Show();
                 //updateDrugs.DrugName.Text = result.BrandName;
 
-                Pharmacy.OldBoxValue = Convert.ToInt32(result.NumberPackInBox);
-                Pharmacy.OldNumberInBoxValue = Convert.ToInt32(result.NumberPackInBox);
-                Pharmacy.OldTotalQunatityValue = Convert.ToInt32(result.Quantity);
+                //Pharmacy.OldBoxValue = Convert.ToInt32(result.NumberPackInBox);
+                //Pharmacy.OldNumberInBoxValue = Convert.ToInt32(result.NumberPackInBox);
+                //Pharmacy.OldTotalQunatityValue = Convert.ToInt32(result.Quantity);
 
                 //updateDrugs.BoxQuantity.Text = newInstance[1];
                 //updateDrugs.NumberInBox.Text = newInstance[2];

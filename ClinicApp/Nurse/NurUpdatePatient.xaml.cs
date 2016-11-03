@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ClinicApp.Data;
 using ClinicModel;
 using MahApps.Metro.Controls;
@@ -85,8 +73,15 @@ namespace ClinicApp.Nurse
                 patient.Designation = PatientDesignation.SelectedItem.ToString().Trim();
                 patient.PhoneNumber = PatientPhoneNumber.Text.Trim();
                 patient.ProvidedId = PatientProvidedId.Text.Trim();
-                if (patient.Id==null){new PatientRepository().AddNewPatient(patient);}
-                else{new PatientRepository().UpdatePatient(patient);}
+                if (patient.Id.HasValue)
+                {
+                    new PatientRepository().UpdatePatient(patient);
+
+                }
+                else
+                {
+                    new PatientRepository().AddNewPatient(patient);
+                }
                 patient = null;
                 await this.ShowMessageAsync("Successfully saved ", $"{PatientFirstName.Text + " " + PatientLastName.Text}");
                 Util.Clear(this);
