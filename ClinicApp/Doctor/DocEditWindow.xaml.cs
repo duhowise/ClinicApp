@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using ClinicApp.Data;
@@ -25,10 +26,19 @@ namespace ClinicApp.Doctor
         private void Window_Closing(object sender, CancelEventArgs e)
         {
            new PatientRepository().UpdateConsultation(_consultation);
-            DocPatientDetailConsultation.Changed = true;
+            OnEditFinished();
+        }
+        //declare delegate
+        public delegate void EditFinishedEventHandler(object source, EventArgs args);
+        //define event based on edit finished delegate
+        public event EditFinishedEventHandler EditFinished;
+        //raise finished edit delegate
+        protected virtual void OnEditFinished()
+        {
+            if (EditFinished != null)
+                EditFinished(this,EventArgs.Empty);
 
         }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             if (_editSource == "Diagnosis")
