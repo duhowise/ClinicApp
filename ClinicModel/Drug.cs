@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ClinicModel
+﻿namespace ClinicModel
 {
     public class Drug
     {

@@ -2,6 +2,7 @@
 
 namespace ClinicModel
 {
+   
     public class Consultation
     {
         public int Id { get; set; }

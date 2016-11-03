@@ -1,9 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows;
-using System.Windows.Input;
 using ClinicApp.Data;
 using ClinicApp.Doctor;
-using ClinicApp.Logic;
 using ClinicApp.Nurse;
 using ClinicApp.Pharmacist;
 using ClinicModel;

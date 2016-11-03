@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ClinicApp.Data;
 using ClinicApp.Pharmacist;
 using ClinicModel;
@@ -25,16 +14,31 @@ namespace ClinicApp.Doctor
     {
         static Patient patient = new Patient();
         Consultation _consultation = new Consultation();
+        List<string> drugsordate = new List<string>();
+
+        public static bool Changed { get; set; } = false;
 
         public DocPatientDetailConsultation()
         {
             InitializeComponent();
+            Changed = true;
             patient = PharSearchPatient.patient;
             _consultation = new PatientRepository().PatientHistory(patient);
+            //get all consultation history for patient
+            PatientHistory.ItemsSource = new PatientRepository().AllPatientHistory(patient);
+            if (patient.Designation== "Dependant")
+            {
+                OtherInfo.Content = $"Card Owner / Guardian: {PatientRepository.GetGuardian(patient).FulName()} Designation: {PatientRepository.GetGuardian(patient).Designation}";
+            }
+
         }
         private void Card_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            if (Changed)
+            {
+                tbDrugsDispensed.Text = "";
+                //get all drugs in the system
+                var alldrugs = (List<Drug>)new DrugRepository().GetAllDrugs();
                 PatientName.Content = (patient.FulName()).ToUpper();
                 PatientDesignation.Content = $"Designation: {patient.Designation}";
                 PatientTemperature.Content = $"Temperature :{_consultation?.Temperature} °C";
@@ -45,35 +49,60 @@ namespace ClinicApp.Doctor
                 PatientWeight.Content = $"Weight :{_consultation?.Weight} kg";
                 PatientBloodPressure.Content = $"Blood pressure : {_consultation?.BloodPressure}";
                 PatientLastVisited.Content = $"Consultation Date: {_consultation?.Date.ToShortDateString()}";
-                PatientHistoryList.ItemsSource = new PatientRepository().AllPatientHistory(patient);
+                //get dispensed drugs for this patient
+                List<DispensedDrug> dispensed = (List<DispensedDrug>)new PatientRepository().PatientDrugHistory(patient);
+
+                /*compare the drug ids obtained from the 
+                 * dispensed drugs to get names of dispensed drugs*/
+                foreach (var pill in dispensed.FindAll(d => d.ConsultationId == _consultation.Id))
+                {
+                    drugsordate.Add(alldrugs.Find(d => d.Id == pill.DrugId).BrandName);
+                }
+                foreach (var names in drugsordate)
+                {
+                    tbDrugsDispensed.Text = tbDrugsDispensed.Text + names + " ,";
+                }
                 Check();
+            }
+            Changed = false;
         }
 
         private void Check()
         {
-            if ( _consultation.IsSensitive == 1)
+            if (_consultation!=null)
             {
-                Status.IsChecked = true;
-            }
-            else if( _consultation.IsSensitive == 0)
-            {
-                Status.IsChecked = false;
+                if (_consultation.IsSensitive == 1)
+                {
+                    Status.IsChecked = true;
+                }
+                else if (_consultation.IsSensitive == 0)
+                {
+                    Status.IsChecked = false;
 
 
-            }
-            else
-            {
-                Status.IsChecked = false;
+                }
+                else
+                {
+                    Status.IsChecked = false;
+                }
             }
         }
-
-        private void PatientHistoryList_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void PatientHistory_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            tbDrugsDispensed.Text = "";
             _consultation = null;
-            _consultation=PatientHistoryList.SelectedItem as Consultation;
+            _consultation = PatientHistory.SelectedItem as Consultation;
             Check();
-            Card_Loaded(sender,e);
+            Card_Loaded(sender, e);
         }
+        //private void PatientHistoryList_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        //{
+        //    tbDrugsDispensed.Text = "";
+        //    _consultation = null;
+        //    _consultation = PatientHistory.SelectedItem as Consultation;
+        //    Check();
+        //    Card_Loaded(sender, e);
+        //}
 
         private void btnDocEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -102,17 +131,13 @@ namespace ClinicApp.Doctor
             new DocEditWindow("Findings",_consultation).ShowDialog();
 
         }
-
-        private void DispEdit_OnClick(object sender, RoutedEventArgs e)
-        {
-            new DocEditWindow("Dispensary", _consultation).ShowDialog();
-
-        }
-
+        
         private void PrescEdit_OnClick(object sender, RoutedEventArgs e)
         {
             new DocEditWindow("Prescriptions", _consultation).ShowDialog();
 
         }
+
+       
     }
 }

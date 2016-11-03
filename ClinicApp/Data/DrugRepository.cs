@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -96,6 +95,17 @@ namespace ClinicApp.Data
 
             }
         }
+        public string GetDrugById(int id)
+        {
+
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == Closed)
+                    connection.Open();
+                return connection.Query<string>($"select brandName from Drugs where id={id}").SingleOrDefault();
+
+            }
+        }
         public IEnumerable<DispensedDrug> GetDispensedDrugs()
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
@@ -105,7 +115,7 @@ namespace ClinicApp.Data
                 return connection.Query<DispensedDrug>($"select * from Drugs");
             }
         }
-        public int GetRemainingDrugs(Drug drug)
+        public static int GetRemainingDrugs(Drug drug)
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
@@ -145,7 +155,7 @@ namespace ClinicApp.Data
                 {
                     if (connection.State == Closed)
                         connection.Open();
-                   connection.Query(@"UPDATE dbo.Drugs SET  GenericName =@GenericName ,brandName =@brandName ,Quantity =@Quantity WHERE Id =@Id", drugs).First();
+                   connection.Query(@"UPDATE dbo.Drugs SET  GenericName =@GenericName ,brandName =@brandName ,Quantity =@Quantity WHERE Id =@Id", drugs);
                 }
 
             }
@@ -233,7 +243,9 @@ namespace ClinicApp.Data
                 {
                     if (connection.State == Closed)
                         connection.Open();
-                    connection.Query(@"");
+                    connection.Query(@"INSERT INTO dbo.DrugStock(DrugId,Box,NumberPackInBox,Quantity,ExpiryDate,NumberinPack
+                    ,DosageFormId,DrugFormId,CategoryId,PackagingId,SupplierId)VALUES(@DrugId,@Box,@NumberPackInBox,
+                      @Quantity,@ExpiryDate,@NumberinPack,@DosageFormId,@DrugFormId,@CategoryId,@PackagingId,@SupplierId)",drugStock);
                 }
 
             }
@@ -249,9 +261,9 @@ namespace ClinicApp.Data
             {
                 if (connection.State == Closed)
                     connection.Open();
-                return connection.Query<DrugStock>(@"SELECT Id,DrugId,Box,NumberPackInBox,Quantity,ExpiryDate
+                return connection.Query<DrugStock>(@"SELECT TOP 1 Id,DrugId,Box,NumberPackInBox,Quantity,ExpiryDate
                                         ,NumberinPack,DosageFormId,DrugFormId,CategoryId,AddedDate,PackagingId,
-                                        SupplierId FROM dbo.DrugStock WHERE DrugId=0").SingleOrDefault();
+                                        SupplierId FROM dbo.DrugStock WHERE DrugId=@Id",drug).SingleOrDefault();
             }
         }
         public void DispenseDrug(DispensedDrug dispensedDrug)
@@ -262,7 +274,7 @@ namespace ClinicApp.Data
                 {
                     if (connection.State == Closed)
                         connection.Open();
-                    connection.Query(@"INSERT INTO dbo.DispensedDrugs(PatientId,DrugId,Quantity,UserId)Values(@PatientId,@DrugId,@Quantity,@UserId)",dispensedDrug);
+                    connection.Query(@"INSERT INTO dbo.DispensedDrugs(PatientId,DrugId,Quantity,ConsultationId,UserId)Values(@PatientId,@DrugId,@Quantity,@ConsultationId,@UserId)", dispensedDrug);
                 }
 
             }

@@ -98,7 +98,7 @@ namespace ClinicApp.Pharmacist
             //compute availables here
             if (!string.IsNullOrEmpty(this.textBoxDrugName.Text))
             {
-                labelQuantity.Text = new DrugRepository().GetRemainingDrugs(new Drug { BrandName = textBoxDrugName.Text }) + "";
+                labelQuantity.Text =DrugRepository.GetRemainingDrugs(new Drug { BrandName = textBoxDrugName.Text }) + "";
             }
         }
 
@@ -110,10 +110,10 @@ namespace ClinicApp.Pharmacist
             {
                 if (int.TryParse(textBoxQuantity.Text, out num))
                 {
-                    if (new DrugRepository().GetRemainingDrugs(new Drug {BrandName = textBoxDrugName.Text}) > Convert.ToInt32(textBoxQuantity.Text))
+                    if (DrugRepository.GetRemainingDrugs(new Drug {BrandName = textBoxDrugName.Text}) > Convert.ToInt32(textBoxQuantity.Text))
                     {
                         labelQuantity.Text =
-                            Convert.ToInt32(new DrugRepository().GetRemainingDrugs(new Drug { BrandName = textBoxDrugName.Text })) -
+                            Convert.ToInt32(DrugRepository.GetRemainingDrugs(new Drug { BrandName = textBoxDrugName.Text })) -
                             Convert.ToInt32(textBoxQuantity.Text) + "";
                     }
                     else
@@ -131,7 +131,7 @@ namespace ClinicApp.Pharmacist
             }
             else
             {
-                labelQuantity.Text = new DrugRepository().GetRemainingDrugs(new Drug {BrandName = ""}) + "";
+                labelQuantity.Text =DrugRepository.GetRemainingDrugs(new Drug {BrandName = ""}) + "";
             }
         }
 

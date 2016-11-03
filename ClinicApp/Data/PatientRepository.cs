@@ -22,16 +22,6 @@ namespace ClinicApp.Data
             }
 
         }
-        public Patient GetPatient(int id)
-        {
-            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
-            {
-                if (connection.State == ConnectionState.Closed)
-                    connection.Open();
-                return connection.Query<Patient>($"select * from Patient where Provided=@Id",id).SingleOrDefault();
-
-            }
-        }
         public Patient GetPatient(string firstname,string lastName)
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
@@ -86,7 +76,16 @@ namespace ClinicApp.Data
                 MessageBox.Show(exception.Message);
             }
         }
+        public static Patient GetGuardian(Patient patient)
+        {
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+                return connection.Query<Patient>(@"select * from patient p where p.ProvidedId=@ProvidedId and not(p.Designation='Dependant') ", patient).SingleOrDefault();
 
+            }
+        }
         public void AddNewConsultation(Consultation consultation)
         {
             try
@@ -135,7 +134,7 @@ namespace ClinicApp.Data
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                return connection.Query<Consultation>(@"SELECT * FROM Consultation c WHERE c.Date=(SELECT MAX(Date)FROM Consultation c1 WHERE  c.PatientId=@Id )", patient).SingleOrDefault();
+                return connection.Query<Consultation>(@"SELECT * FROM Consultation c WHERE c.Date=(SELECT MAX(Date)FROM Consultation c1 WHERE  c1.PatientId=@Id )", patient).SingleOrDefault();
 
             }
         }
@@ -155,7 +154,7 @@ namespace ClinicApp.Data
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                return connection.Query<DispensedDrug>($"select * from DispensedDrugs where id={patient.Id}");
+                return connection.Query<DispensedDrug>(@"select * from DispensedDrugs d where d.PatientId=@Id",patient).AsEnumerable();
 
             }
 

@@ -57,7 +57,7 @@ namespace ClinicApp.Pharmacist
              tbNumberInPack.Text= stock.Box.ToString();
              tbNumberInBox.Text= stock.NumberPackInBox.ToString();
              tbTotalQuantity.Text= updateDrug.Quantity.ToString();
-             tbExpiringDate.DisplayDate= stock.ExpiryDate;
+             tbExpiringDate.Text= stock.ExpiryDate.ToShortDateString();
              tbBox.Text= stock.NumberinPack.ToString();
              cbDosageForm.SelectedValue= stock.DosageFormId;
              cbDrugType.SelectedValue= stock.DrugFormId;

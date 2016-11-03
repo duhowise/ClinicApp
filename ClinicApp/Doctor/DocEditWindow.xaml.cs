@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ClinicApp.Data;
 using ClinicModel;
 using MahApps.Metro.Controls;
@@ -36,6 +25,7 @@ namespace ClinicApp.Doctor
         private void Window_Closing(object sender, CancelEventArgs e)
         {
            new PatientRepository().UpdateConsultation(_consultation);
+            DocPatientDetailConsultation.Changed = true;
 
         }
 

@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Input;
 using ClinicApp.Data;
-using ClinicApp.Logic;
 
 namespace ClinicApp
 {
