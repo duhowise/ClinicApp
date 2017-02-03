@@ -28,8 +28,7 @@
                 <ResourceDictionary Source="/theme/Telerik.Windows.Controls.xaml" />
                 <ResourceDictionary Source="/theme/Telerik.Windows.Controls.Input.xaml" />
                 <ResourceDictionary Source="/theme/Telerik.Windows.Controls.Navigation.xaml" />-->
-                <ResourceDictionary Source="/theme/Telerik.ReportViewer.Wpf.xaml" />
-
+                
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />

@@ -128,66 +128,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Telerik\Reporting R2 2016\Bin\Telerik.ReportViewer.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.WinControls, Version=2016.2.503.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Telerik.WinControls.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.WinControls.GridView, Version=2016.2.503.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Telerik.WinControls.GridView.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.WinControls.UI, Version=2016.2.503.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Telerik.WinControls.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Controls, Version=2016.2.503.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Telerik.Windows.Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Controls.Data, Version=2016.2.503.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Telerik.Windows.Controls.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Controls.Diagrams, Version=2016.2.503.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Telerik.Windows.Controls.Diagrams.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Controls.Diagrams.Extensions, Version=2016.2.503.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Telerik.Windows.Controls.Diagrams.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Controls.Docking, Version=2016.2.503.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Telerik.Windows.Controls.Docking.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Controls.GridView, Version=2016.2.503.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Telerik.Windows.Controls.GridView.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Controls.Input, Version=2016.2.503.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Telerik.Windows.Controls.Input.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2016.2.503.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Telerik.Windows.Controls.Navigation.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Data, Version=2016.2.503.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Telerik.Windows.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Diagrams.Core, Version=2016.2.503.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Telerik.Windows.Diagrams.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Themes.Office2013, Version=2016.1.112.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Telerik.Windows.Themes.Office2013.dll</HintPath>
-    </Reference>
-    <Reference Include="TelerikCommon, Version=2016.2.503.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\TelerikCommon.dll</HintPath>
-    </Reference>
     <Reference Include="UIAutomationProvider" />
     <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
@@ -237,6 +177,8 @@
     <Compile Include="Doctor\PatientDetailsForm.xaml.cs">
       <DependentUpon>PatientDetailsForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Logic\Clinic.cs" />
+    <Compile Include="Logic\DoctorDashBoard.cs" />
     <Compile Include="Logic\DrugsAutoCompleteModel.cs" />
     <Compile Include="Logic\GetPatientData.cs" />
     <Compile Include="Logic\IRefreshDataGridView.cs" />
@@ -244,6 +186,7 @@
     <Compile Include="Logic\Patient.cs" />
     <Compile Include="Logic\PatientIdsAutoCompleteData.cs" />
     <Compile Include="Logic\PatientIdsAutoCompleteModel.cs" />
+    <Compile Include="Logic\Pharmacy.cs" />
     <Compile Include="Logic\SinglePatientId.cs" />
     <Compile Include="Nurse\NurAddConsultation.xaml.cs">
       <DependentUpon>NurAddConsultation.xaml</DependentUpon>
@@ -287,15 +230,6 @@
     <Compile Include="Pharmacist\PharContextMenu.xaml.cs">
       <DependentUpon>PharContextMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pharmacist\PharDispenseDrug.xaml.cs">
-      <DependentUpon>PharDispenseDrug.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pharmacist\PharDispenseDrugWin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pharmacist\PharDispenseDrugWin.Designer.cs">
-      <DependentUpon>PharDispenseDrugWin.cs</DependentUpon>
-    </Compile>
     <Compile Include="Pharmacist\PharPatientDetailsDispensary.xaml.cs">
       <DependentUpon>PharPatientDetailsDispensary.xaml</DependentUpon>
     </Compile>
@@ -309,31 +243,9 @@
       <DependentUpon>stockTakingReportOne.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util.cs" />
-    <Compile Include="ViewDrugs.xaml.cs">
-      <DependentUpon>ViewDrugs.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="viewDrugWin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="viewDrugWin.Designer.cs">
-      <DependentUpon>viewDrugWin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModelBase.cs" />
-    <Compile Include="ViewPatient.xaml.cs">
-      <DependentUpon>ViewPatient.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="viewPatientWin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="viewPatientWin.Designer.cs">
-      <DependentUpon>viewPatientWin.cs</DependentUpon>
-    </Compile>
     <Compile Include="WindowExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logic\Clinic.cs" />
-    <Compile Include="Logic\DoctorDashBoard.cs" />
-    <Compile Include="Logic\Pharmacy.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -350,19 +262,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Pharmacist\PharDispenseDrugWin.resx">
-      <DependentUpon>PharDispenseDrugWin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="viewDrugWin.resx">
-      <DependentUpon>viewDrugWin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="viewPatientWin.resx">
-      <DependentUpon>viewPatientWin.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -467,18 +369,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pharmacist\PharAdmin.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pharmacist\PharAdminDashboard.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pharmacist\PharContextMenu.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pharmacist\PharDispenseDrug.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -503,18 +401,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="stockTakingReportOne.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="theme\Telerik.ReportViewer.Wpf.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ViewDrugs.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ViewPatient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -546,10 +432,6 @@
     <ProjectReference Include="..\ClinicModel\ClinicModel.csproj">
       <Project>{bda4e455-6955-42b2-8467-513adc44dfc1}</Project>
       <Name>ClinicModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ClinicReport\ClinicReport\ClinicReport.csproj">
-      <Project>{f31cc55c-5e5b-4d6e-b3fb-d18bfeb925e4}</Project>
-      <Name>ClinicReport</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

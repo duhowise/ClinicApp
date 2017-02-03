@@ -7,6 +7,7 @@ using System.Windows.Input;
 using ClinicApp.Data;
 using ClinicModel;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using MessageBox = System.Windows.MessageBox;
 namespace ClinicApp.Pharmacist
 {
@@ -54,17 +55,17 @@ namespace ClinicApp.Pharmacist
              medicine.Id = updateDrug.Id;
              tbGenericName.Text= updateDrug.GenericName;
              tbBrandName.Text = updateDrug.BrandName;
-             tbNumberInPack.Text= stock.Box.ToString();
-             tbNumberInBox.Text= stock.NumberPackInBox.ToString();
+             tbNumberInPack.Text= stock?.Box.ToString();
+             tbNumberInBox.Text= stock?.NumberPackInBox.ToString();
              tbTotalQuantity.Text= updateDrug.Quantity.ToString();
-             tbExpiringDate.Text= stock.ExpiryDate.ToShortDateString();
-             tbBox.Text= stock.NumberinPack.ToString();
-             cbDosageForm.SelectedValue= stock.DosageFormId;
-             cbDrugType.SelectedValue= stock.DrugFormId;
-             cbDrugCategory.SelectedValue= stock.CategoryId;
-             cbPackaging.SelectedValue= stock.PackagingId;
-             cbSupplier.SelectedValue= stock.SupplierId;
-             cbPackaging.SelectedValue= stock.PackagingId;
+             tbExpiringDate.Text= stock?.ExpiryDate.ToShortDateString();
+             tbBox.Text= stock?.NumberinPack.ToString();
+             cbDosageForm.SelectedValue= stock?.DosageFormId;
+             cbDrugType.SelectedValue= stock?.DrugFormId;
+             cbDrugCategory.SelectedValue= stock?.CategoryId;
+             cbPackaging.SelectedValue= stock?.PackagingId;
+             cbSupplier.SelectedValue= stock?.SupplierId;
+             cbPackaging.SelectedValue= stock?.PackagingId;
 
 
         }
@@ -87,13 +88,33 @@ namespace ClinicApp.Pharmacist
         {
            tbTotalQuantity.Text= (boxnumber * Packnumber * NumberInPack).ToString();
         }
-        private void PharAddDrug_Closing(object sender, CancelEventArgs e)
+        private async void PharAddDrug_Closing(object sender, CancelEventArgs e)
         {
-            var response = MessageBox.Show("Do you really want to stop Adding new drug\n All your changes will be discarded", "Exit",
-                 MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-            if (response == MessageBoxResult.Yes) { Hide(); } else { e.Cancel = true; }
+
+
+            if (string.IsNullOrWhiteSpace(tbGenericName.Text) ||
+                string.IsNullOrWhiteSpace(tbBrandName.Text) ||
+               string.IsNullOrWhiteSpace(cbSupplier.SelectedItem.ToString()) ||
+                string.IsNullOrWhiteSpace(tbExpiringDate.Text)
+                || string.IsNullOrWhiteSpace(cbDosageForm.SelectedItem.ToString())
+                || string.IsNullOrWhiteSpace(cbDrugType.SelectedItem.ToString())
+                || string.IsNullOrWhiteSpace(cbDrugCategory.SelectedItem.ToString())
+                || string.IsNullOrWhiteSpace(cbSupplier.SelectedItem.ToString()))
+            {
+                Hide();
+            }
+            else
+            {
+                MessageDialogResult response = await this.ShowMessageAsync("Do you really want to stop Adding new drug\n All your changes will be discarded", "Exit", MessageDialogStyle.AffirmativeAndNegative);
+                if (response == MessageDialogResult.Affirmative)
+                {
+                    Hide();
+                }
+                else { e.Cancel = true; }
+
+            }
         }
-        
+
         private void TextValidation(object sender, TextCompositionEventArgs e)
         {
             var regex = new Regex("[^a-zA-Z]+");
@@ -117,22 +138,19 @@ namespace ClinicApp.Pharmacist
             tbGenericName.Focus();
             cbSupplier.Items.Clear();
             }
-        private void Save_Click(object sender, RoutedEventArgs e)
+        private async void Save_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(tbGenericName.Text) ||
-                string.IsNullOrWhiteSpace(tbBrandName.Text)
-                || string.IsNullOrWhiteSpace(tbNumberInBox.Text) ||
-                string.IsNullOrWhiteSpace(cbSupplier.SelectedItem.ToString()) ||
-                string.IsNullOrWhiteSpace(tbNumberInPack.Text) ||
+                string.IsNullOrWhiteSpace(tbBrandName.Text)||
+               string.IsNullOrWhiteSpace(cbSupplier.SelectedItem.ToString()) ||
                 string.IsNullOrWhiteSpace(tbExpiringDate.Text)
-                || string.IsNullOrWhiteSpace(tbBox.Text)
                 || string.IsNullOrWhiteSpace(cbDosageForm.SelectedItem.ToString())
                 || string.IsNullOrWhiteSpace(cbDrugType.SelectedItem.ToString())
                 || string.IsNullOrWhiteSpace(cbDrugCategory.SelectedItem.ToString())
                 || string.IsNullOrWhiteSpace(cbSupplier.SelectedItem.ToString()))
             {
-                cmb.Message = "All Fields Are Required";
-                cmb.Show();
+                await this.ShowMessageAsync( "Attention!", "All Fields Are Required");
+
             }
             else
             {
@@ -165,9 +183,7 @@ namespace ClinicApp.Pharmacist
                     stock.DrugId= repo.SaveDrug(medicine);
                     repo.AddStock(stock);
                 }
-
-            cmb.Message = $"succefully added {tbBrandName.Text}";
-            cmb.Show();
+                await this.ShowMessageAsync("Success!", $"successfully added {tbBrandName.Text}");
                 Util.Clear(this);
             }
         }

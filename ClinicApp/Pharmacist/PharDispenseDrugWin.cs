@@ -22,16 +22,16 @@ namespace ClinicApp.Pharmacist
         {
             var searchCollection= new AutoCompleteStringCollection();
             using (
-                SqlConnection connection =
+                SqlConnection _connection =
                     new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "select Name from DrugsOld";
-                        var command = new SqlCommand(query, connection);
+                        var command = new SqlCommand(query, _connection);
                         var datareader = command.ExecuteReader();
                         while (datareader.Read())
                         {
@@ -39,7 +39,7 @@ namespace ClinicApp.Pharmacist
                         }
                         textBoxDrugName.AutoCompleteCustomSource = searchCollection;
                         datareader.Close();
-                        connection.Close();
+                        _connection.Close();
                     }
                 }
                 catch (Exception exception)
@@ -52,7 +52,7 @@ namespace ClinicApp.Pharmacist
         }
         private void PharDispenseDrugWin_Load(object sender, EventArgs e)
         {
-            textBoxProvidedId.Text = viewPatientWin.PatientList1[2];
+           // textBoxProvidedId.Text = viewPatientWin.PatientList1[2];
            DrugAutoCompleteSource();
 
         }

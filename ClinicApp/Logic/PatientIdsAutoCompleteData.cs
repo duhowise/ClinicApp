@@ -14,16 +14,16 @@ namespace ClinicApp.Logic
         public void LoadPatientIdData()
         {
             using (
-                SqlConnection connection =
+                SqlConnection _connection =
                     new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "select ProvidedId from Patient";
-                        var command = new SqlCommand(query, connection);
+                        var command = new SqlCommand(query, _connection);
                         var reader = command.ExecuteReader();
                         while (reader.Read())
                         {
@@ -34,7 +34,7 @@ namespace ClinicApp.Logic
                             //   });
 
                         }
-                        connection.Close();
+                        _connection.Close();
                     }
                 }
                 catch (Exception exception)

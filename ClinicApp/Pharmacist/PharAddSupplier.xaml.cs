@@ -9,6 +9,7 @@ using System.Windows.Media;
 using ClinicApp.Data;
 using ClinicModel;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using MessageBox = System.Windows.MessageBox;
 
 namespace ClinicApp.Pharmacist
@@ -22,7 +23,28 @@ namespace ClinicApp.Pharmacist
         public PharAddSupplier()
         {
             InitializeComponent();
+            Closing += PharAddSupplier_Closing;
         }
+
+        private async void PharAddSupplier_Closing(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(SupplierName.Text) || string.IsNullOrWhiteSpace(Adress.Text)
+                || string.IsNullOrWhiteSpace(Email.Text) || string.IsNullOrWhiteSpace(Phone.Text))
+            {
+               Hide();
+            }
+            else
+            {
+                MessageDialogResult response = await this.ShowMessageAsync("Do you really want to stop Adding new Supplier? \n" +
+                                                                       " All your changes will be discarded", "Exit", MessageDialogStyle.AffirmativeAndNegative);
+                if (response == MessageDialogResult.Affirmative)
+                {
+                    Hide();
+                }
+                else { e.Cancel = true; }
+            }
+        }
+
         private void TextValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             var regex = new Regex("[^a-zA-Z]+");
@@ -41,13 +63,10 @@ namespace ClinicApp.Pharmacist
         {
             return new Regex(@"(?i)\b(?:p(?:ost)?\.?\s*[o0](?:ffice)?\.?\s*b(?:[o0]x)?|b[o0]x)");
         }
-        private void Window_Closing(object sender, CancelEventArgs e)
+        private async void Window_Closing(object sender, CancelEventArgs e)
         {
-            var response = MessageBox.Show("Do you really want to close the window?", "Exit",
-                 MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-            if (response == MessageBoxResult.Yes)
-                Hide();
-           
+
+            
         }
 
         public void Clear(Visual myMainWindow)
@@ -65,25 +84,26 @@ namespace ClinicApp.Pharmacist
             }
         }
 
-        private void Save_Click(object sender, RoutedEventArgs e)
+        private async void Save_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(SupplierName.Text)||string.IsNullOrWhiteSpace(Adress.Text) 
                 ||string.IsNullOrWhiteSpace(Email.Text)||string.IsNullOrWhiteSpace(Phone.Text))
             {
-                cmb.Message = "All feilds are Required";
-                cmb.Show();
+                await this.ShowMessageAsync("Attention!", "All Fields Are Required");
             }
             else
             {
                 if (!AddressValidation().IsMatch(Adress.Text))
                 {
-                    MessageBox.Show("Please check your address");
+                    await this.ShowMessageAsync("Attention!", "Please check your address \n only p.o.box formats are accepted");
+
                     Adress.Foreground = Brushes.OrangeRed;
 
                 }
                 else if(!EmailValidation().IsMatch(Email.Text))
                 {
-                    MessageBox.Show("Please check your  email");
+                    await this.ShowMessageAsync("Attention!", "Please check your email address");
+
                     Email.Foreground = Brushes.OrangeRed;
                 }
                 else
@@ -100,16 +120,18 @@ namespace ClinicApp.Pharmacist
                     if (result.Count==0)
                     {
                             new SupplierRepository().AddNewSupplier(suppplier);
-                            cmb.Message = $"Supplier {SupplierName.Text} Saved Successfully";
-                            cmb.Show();
-                            Clear(this);
+                          
+                        await this.ShowMessageAsync("Attention!", $"{SupplierName.Text} Saved Successfully");
+
+                        Clear(this);
                     
                     }
                     else
                     {
-                        MessageBox.Show($"{SupplierName.Text} already exists");
+                        await this.ShowMessageAsync("Attention!", $"{SupplierName.Text} already exists");
+
                     }
-                    
+
                 }
 
 

@@ -41,23 +41,23 @@ namespace ClinicApp.Data
             }
         }
 
-        public int VerifyUser(User user)
+        public static int VerifyUser(User user)
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                return  connection.Query<User>($"select * from Users where username=@UserName and password=@Password", user).Count();
-                          
+                return connection.Query<User>($"select * from Users where username=@UserName and password=@Password", user).Count();
+
             }
         }
-        public User Login(User user)
+        public static User Login(User user)
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                return connection.Query<User>($"select * from Users where username=@UserName and password=@Password",user).SingleOrDefault();
+                return connection.Query<User>($"select * from Users where username=@UserName and password=@Password", user).SingleOrDefault();
 
             }
         }

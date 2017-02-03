@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using ClinicApp.Data;
 using ClinicModel;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace ClinicApp.Pharmacist
 {
@@ -21,6 +24,7 @@ namespace ClinicApp.Pharmacist
         Drug drug = new Drug();
         List<string> drugsordate = new List<string>();
         CMB cmb = new CMB();
+       
 
         public PharPatientDetailsDispensary()
         {
@@ -34,23 +38,30 @@ namespace ClinicApp.Pharmacist
             _remainingDrugsBackgroundWorker.DoWork += _remainingDrugsBackgroundWorker_DoWork;
             _remainingDrugsBackgroundWorker.RunWorkerCompleted += _remainingDrugsBackgroundWorker_RunWorkerCompleted;
             DispenseDrugName.SelectionChanged += DispenseDrugName_SelectionChanged;
-            patient = PharSearchPatient.Patient;
-            List<DispensedDrug> dispensed = (List<DispensedDrug>)new PatientRepository().PatientDrugHistory(patient);
-            var alldrugs = (List<Drug>)new DrugRepository().GetAllDrugs();
+           
+            GetDispensedDrugs();
+        }
 
+        private void GetDispensedDrugs()
+        {
+            patient = PharSearchPatient.Patient;
+
+            List<DispensedDrug> dispensed;
+            List<Drug> alldrugs;
+            dispensed = (List<DispensedDrug>)new PatientRepository().PatientDrugHistory(patient);
+            alldrugs = (List<Drug>)new DrugRepository().GetAllDrugs();
             if (patient != null)
             {
                 _consultation = new PatientRepository().PatientHistory(patient);
-                PatientHistory.ItemsSource=new PatientRepository().AllPatientHistory(patient);
+                PatientHistory.ItemsSource = new PatientRepository().AllPatientHistory(patient);
             }
             foreach (var pill in dispensed.FindAll(d => d.ConsultationId == _consultation.Id))
             {
                 drugsordate.Add(alldrugs.Find(d => d.Id == pill.DrugId).BrandName);
             }
-            foreach (var names in drugsordate)
-            {
-                tbDrugsDispensed.Text+=$" {names};";
-            }
+            tbDrugsDispensed.Text = string.Join(" , ", drugsordate.ToList());
+
+
         }
 
         private void PatientHistory_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -62,9 +73,10 @@ namespace ClinicApp.Pharmacist
             if (consultation != null)
             {
                 _consultation = null;
-                _consultation = consultation.Find(p => p.Date.Date.Equals(dateselect.Date.Date));
+                _consultation = consultation.Find(p => p.Date.Date.Equals(dateselect?.Date.Date));
             }
             PharPatientDetailsDispensary_OnLoaded(sender, e);
+            //GetDispensedDrugs();
         }
 
         private void DispenseDrugName_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -147,11 +159,12 @@ namespace ClinicApp.Pharmacist
 
         private async void Save_Click(object sender, RoutedEventArgs e)
         {
+            var metrowindow = Window.GetWindow(this) as MetroWindow;
             if (string.IsNullOrWhiteSpace(DispenseProvidedId.Text) || string.IsNullOrWhiteSpace(DispenseDrugName.Text) ||
                 string.IsNullOrWhiteSpace(DispenseDrugQuantity.Text))
             {
-                cmb.Message = "All Fields Are Required";
-                cmb.Show();
+               await metrowindow.ShowMessageAsync( "Attention!", "All Fields Are Required");
+
             }
             else
             {
@@ -165,8 +178,7 @@ namespace ClinicApp.Pharmacist
                     UserId = MainWindow.ID
                 });
                 tbDrugsDispensed.Text += $" {drug.BrandName};";
-                cmb.Message = $"{drug.BrandName} dispensed to {patient.FirstName + " " + patient.LastName}";
-                cmb.Show();
+               await metrowindow.ShowMessageAsync("",$"{drug.BrandName} dispensed to {patient.FirstName + " " + patient.LastName}");
                 this.DispenseDrugName.Text = "";
                 this.DispenseDrugQuantity.Text = "";
                 this.DispenseDrugQuantity.Text = "";

@@ -24,16 +24,16 @@ namespace ClinicApp.Logic
         {
             int count = 0;
             using (
-                SqlConnection connection =
+                SqlConnection _connection =
                     new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "";
-                        var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
+                        var command = new SqlCommand(query, _connection) {CommandType = CommandType.Text};
                         command.Parameters.AddWithValue("", "");
                         command.Parameters.AddWithValue("", "");
                         var reader = command.ExecuteReader();
@@ -42,7 +42,7 @@ namespace ClinicApp.Logic
                             count = reader.GetInt32(0);
                         }
                         reader.Close();
-                        connection.Close();
+                        _connection.Close();
                     }
 
                 }
@@ -59,16 +59,16 @@ namespace ClinicApp.Logic
         {
             int count = 0;
             using (
-                SqlConnection connection =
+                SqlConnection _connection =
                     new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "";
-                        var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
+                        var command = new SqlCommand(query, _connection) {CommandType = CommandType.Text};
                         command.Parameters.AddWithValue("", "");
                         command.Parameters.AddWithValue("", "");
                         var reader = command.ExecuteReader();
@@ -77,7 +77,7 @@ namespace ClinicApp.Logic
                             count = reader.GetInt32(0);
                         }
                         reader.Close();
-                        connection.Close();
+                        _connection.Close();
                     }
 
                 }
@@ -94,16 +94,16 @@ namespace ClinicApp.Logic
         {
             int count = 0;
             using (
-                SqlConnection connection =
+                SqlConnection _connection =
                     new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "";
-                        var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
+                        var command = new SqlCommand(query, _connection) {CommandType = CommandType.Text};
                         command.Parameters.AddWithValue("", "");
                         command.Parameters.AddWithValue("", "");
                         var reader = command.ExecuteReader();
@@ -112,7 +112,7 @@ namespace ClinicApp.Logic
                             count = reader.GetInt32(0);
                         }
                         reader.Close();
-                        connection.Close();
+                        _connection.Close();
                     }
 
                 }
@@ -129,23 +129,23 @@ namespace ClinicApp.Logic
         {
             AutoCompleteStringCollection nameSource = new AutoCompleteStringCollection();
             using (
-                SqlConnection connection =
+                SqlConnection _connection =
                     new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "select name from dbo.drugs";
-                        var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
+                        var command = new SqlCommand(query, _connection) {CommandType = CommandType.Text};
                         var reader = command.ExecuteReader();
                         while (reader.Read())
                         {
                             nameSource.Add(reader.GetString(0));
                         }
                         reader.Close();
-                        connection.Close();
+                        _connection.Close();
                     }
 
                 }
@@ -163,16 +163,16 @@ namespace ClinicApp.Logic
         {
             DataTable countRecords = new DataTable();
             using (
-                SqlConnection connection =
+                SqlConnection _connection =
                     new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "select RoleId from Users where username='' and password=''";
-                        var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
+                        var command = new SqlCommand(query, _connection) {CommandType = CommandType.Text};
                         // command.Parameters.AddWithValue(@username, username);
                         // command.Parameters.AddWithValue(@password, password);
                         var reader = command.ExecuteReader();
@@ -181,7 +181,7 @@ namespace ClinicApp.Logic
                             countRecords = reader.GetSchemaTable();
                         }
                         reader.Close();
-                        connection.Close();
+                        _connection.Close();
                     }
 
                 }
@@ -201,17 +201,17 @@ namespace ClinicApp.Logic
             try
             {
                 using (
-                    SqlConnection connection =
+                    SqlConnection _connection =
                         new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query ="INSERT INTO dbo.DrugsOld(Name,Box,NumberInBox,Quantity,ExpiryDate,SupplierId)VALUES('"+drugname+"','"+boxquantity+"','"+numberinbox+"','"+totalquantity+"','"+expirydate+"',(select id from supplier where name='"+supplier+"'))";
-                        var command = new SqlCommand(query, connection) { CommandType = CommandType.Text };
+                        var command = new SqlCommand(query, _connection) { CommandType = CommandType.Text };
                         command.ExecuteNonQuery();
                         result = true;
-                        connection.Close();
+                        _connection.Close();
                     }
                 }
             }
@@ -232,19 +232,19 @@ namespace ClinicApp.Logic
             try
             {
                 using (
-                    SqlConnection connection =
+                    SqlConnection _connection =
                         new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "update dbo.DrugsOld set Box='" + (boxquantity + OldBoxValue)+ "'," +
                                        " NumberInBox='" + (numberinbox + OldNumberInBoxValue) + "'," +
                                        " Quantity='" + ((OldBoxValue+boxquantity) * (OldNumberInBoxValue+numberinbox)) + "' where " +
                                        "Name='"+drugName+"'";
-                        var command = new SqlCommand(query, connection) { CommandType = CommandType.Text };
+                        var command = new SqlCommand(query, _connection) { CommandType = CommandType.Text };
                         command.ExecuteNonQuery();
-                        connection.Close();
+                        _connection.Close();
                     }
                 }
             }
@@ -260,17 +260,17 @@ namespace ClinicApp.Logic
             try
             {
                 using (
-                    SqlConnection connection =
+                    SqlConnection _connection =
                         new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "UPDATE dbo.OldPatient SET  FirstName ='"+ firstname + "' , LastName ='"+ lastname + "'," +
                                        " Designation ='"+ designation + "', PhoneNumber ='"+ phonenumber + "'"   + " WHERE  ProvidedId ='"+providedid+"' ";
-                        var command = new SqlCommand(query, connection) { CommandType = CommandType.Text };
+                        var command = new SqlCommand(query, _connection) { CommandType = CommandType.Text };
                         command.ExecuteNonQuery();
-                        connection.Close();
+                        _connection.Close();
                     }
                 }
             }
@@ -287,16 +287,16 @@ namespace ClinicApp.Logic
         {
             bool result = false;
             using (
-               SqlConnection connection =
+               SqlConnection _connection =
                    new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = @"INSERT INTO dbo.Supplier( Name,Address,Phone)VALUES('"+suppliername.ToUpper()+"','"+address.ToUpper()+"','"+phone+"')";
-                        var command = new SqlCommand(query, connection);
+                        var command = new SqlCommand(query, _connection);
                         command.ExecuteReader();
                         result = true;
                     }
@@ -318,16 +318,16 @@ namespace ClinicApp.Logic
             try
             {
                 using (
-                    SqlConnection connection =
+                    SqlConnection _connection =
                         new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "INSERT INTO dbo.OldPatient(FirstName,LastName,ProvidedId,Designation,PhoneNumber)VALUES('"+firstname+"','"+lastname+"','"+providedid+"','"+designation+"','"+phonenumber+"')";
-                        var command = new SqlCommand(query, connection) { CommandType = CommandType.Text };
+                        var command = new SqlCommand(query, _connection) { CommandType = CommandType.Text };
                         command.ExecuteNonQuery();
-                        connection.Close();
+                        _connection.Close();
                     }
                 }
             }
@@ -344,16 +344,16 @@ namespace ClinicApp.Logic
             bool isExist = false;
 
             using (
-              SqlConnection connection =
+              SqlConnection _connection =
                   new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "select Name from DrugsOld where Name='"+drug+"'";
-                        var command = new SqlCommand(query, connection);
+                        var command = new SqlCommand(query, _connection);
                         var reader = command.ExecuteReader();
                         if(reader.Read())
                         {
@@ -363,7 +363,7 @@ namespace ClinicApp.Logic
                         {
                             isExist = false;
                         }
-                        connection.Close();
+                        _connection.Close();
                     }
                 }
                 catch (Exception exception)
@@ -383,21 +383,21 @@ namespace ClinicApp.Logic
                 try
                 {
                     using (
-                        SqlConnection connection =
+                        SqlConnection _connection =
                             new SqlConnection(
                                 ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
                     {
-                        if (connection.State == ConnectionState.Closed)
+                        if (_connection.State == ConnectionState.Closed)
                         {
-                            connection.Open();
+                            _connection.Open();
                             string query = $"INSERT INTO dbo.PrescribedDrugs(PatientId,DrugId,Quantity,UserId)VALUES((select id from patient where providedid='{patientId}' ),(select top 1 id from drugs where Name='{drugname}'),'{quantity}','{userId}')";
-                            var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
+                            var command = new SqlCommand(query, _connection) {CommandType = CommandType.Text};
                             if (command.ExecuteNonQuery() > 0)
                             {
                                 cmb.Message = "DrugsOld Dispensed Successfully";
                                 cmb.Show();
                             }
-                            connection.Close();
+                            _connection.Close();
                         }
                     }
                 }

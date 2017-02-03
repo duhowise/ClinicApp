@@ -12,18 +12,18 @@ namespace ClinicApp.Logic
         {
             var data = new DataTable();
             using (
-                SqlConnection connection =
+                SqlConnection _connection =
                     new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "select * from PatientList";
-                        var dataAdapter = new SqlDataAdapter(query, connection);
+                        var dataAdapter = new SqlDataAdapter(query, _connection);
                         dataAdapter.Fill(data);
-                        connection.Close();
+                        _connection.Close();
                     }
                 }
                 catch (Exception exception)

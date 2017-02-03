@@ -16,19 +16,19 @@ namespace ClinicApp.Data
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
                 if (connection.State == ConnectionState.Closed)
-                        connection.Open();
-                 return connection.Query<Patient>("select * from Patient");
-              
+                    connection.Open();
+                return connection.Query<Patient>("select * from Patient");
+
             }
 
         }
-        public Patient GetPatient(string firstname,string lastName)
+        public Patient GetPatient(string firstname, string lastName)
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                return connection.Query<Patient>($"select * from Patient where FirstName={firstname} and LastName={lastName}" ).SingleOrDefault();
+                return connection.Query<Patient>($"select * from Patient where FirstName={firstname} and LastName={lastName}").SingleOrDefault();
             }
         }
         public void AddNewPatient(Patient patient)
@@ -41,12 +41,12 @@ namespace ClinicApp.Data
                         connection.Open();
                     var query = @"INSERT INTO dbo.Patient(FirstName,LastName,ProvidedId,Designation,Gender,PhoneNumber)Values(@fname,@lname,@id,@des,@Gender,@phone)";
                     var command = new SqlCommand(query, connection);
-                    command.Parameters.Add("fname", SqlDbType.NVarChar).Value =patient.FirstName;
-                    command.Parameters.Add("lname", SqlDbType.NVarChar).Value =patient.LastName;
-                    command.Parameters.Add("id", SqlDbType.NVarChar).Value =patient.ProvidedId;
-                    command.Parameters.Add("des", SqlDbType.NVarChar).Value =patient.Designation;
-                    command.Parameters.Add("Gender", SqlDbType.NVarChar).Value =patient.Gender;
-                    command.Parameters.Add("phone", SqlDbType.NVarChar).Value =patient.PhoneNumber;
+                    command.Parameters.Add("fname", SqlDbType.NVarChar).Value = patient.FirstName;
+                    command.Parameters.Add("lname", SqlDbType.NVarChar).Value = patient.LastName;
+                    command.Parameters.Add("id", SqlDbType.NVarChar).Value = patient.ProvidedId;
+                    command.Parameters.Add("des", SqlDbType.NVarChar).Value = patient.Designation;
+                    command.Parameters.Add("Gender", SqlDbType.NVarChar).Value = patient.Gender;
+                    command.Parameters.Add("phone", SqlDbType.NVarChar).Value = patient.PhoneNumber;
                     command.ExecuteNonQuery();
 
                 }
@@ -66,8 +66,8 @@ namespace ClinicApp.Data
                     if (connection.State == ConnectionState.Closed)
                         connection.Open();
                     connection.Query(@"UPDATE dbo.Patient SET FirstName=@FirstName,LastName=@LastName
-                    ,Gender =@Gender,ProvidedId =@ProvidedId,Designation =@Designation,PhoneNumber =@PhoneNumber WHERE  Id = @Id",patient);
-                    
+                    ,Gender =@Gender,ProvidedId =@ProvidedId,Designation =@Designation,PhoneNumber =@PhoneNumber WHERE  Id = @Id", patient);
+
                 }
             }
             catch (Exception exception)
@@ -97,7 +97,7 @@ namespace ClinicApp.Data
                     connection.Query(@"INSERT INTO dbo.Consultation(PatientId,Temperature,Pulse,Weight,Respiration,
                                         BloodPressure,Symptoms,Signs,Diagnosis,IsSensitive,Prescription,Investigation,
                                         userId)values(@PatientId,@Temperature,@Pulse,@Weight,@Respiration,@BloodPressure,
-                                        @Symptoms,@Signs,@Diagnosis,@IsSensitive,@Prescription,@Investigation,@UserId)", consultation);  
+                                        @Symptoms,@Signs,@Diagnosis,@IsSensitive,@Prescription,@Investigation,@UserId)", consultation);
                 }
             }
             catch (Exception exception)
@@ -117,8 +117,8 @@ namespace ClinicApp.Data
                     connection.Query(@"UPDATE dbo.Consultation SET PatientId=@PatientId,Temperature=@Temperature,
                     Pulse =@Pulse,Weight=@Weight,Respiration=@Respiration,BloodPressure=@BloodPressure 
                     ,Symptoms=@Symptoms,Signs=@Signs,Diagnosis=@Diagnosis,IsSensitive=@IsSensitive,Prescription=@Prescription
-                    ,Investigation=@Investigation,userId=@UserId WHERE Id = @Id",consultation);
-                  
+                    ,Investigation=@Investigation,userId=@UserId WHERE Id = @Id", consultation);
+
                 }
             }
             catch (Exception exception)
@@ -138,7 +138,7 @@ namespace ClinicApp.Data
 
             }
         }
-        public IEnumerable<Consultation>AllPatientHistory(Patient patient)
+        public IEnumerable<Consultation> AllPatientHistory(Patient patient)
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
@@ -154,7 +154,7 @@ namespace ClinicApp.Data
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                return connection.Query<DispensedDrug>(@"select * from DispensedDrugs d where d.PatientId=@Id",patient).AsEnumerable();
+                return connection.Query<DispensedDrug>(@"select * from DispensedDrugs d where d.PatientId=@Id", patient).AsEnumerable();
 
             }
 
