@@ -16,14 +16,14 @@
 //            try
 //            {
 //                using (
-//                    SqlConnection connection =
+//                    SqlConnection _connection =
 //                        new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
 //                {
-//                    if (connection.State == ConnectionState.Closed)
+//                    if (_connection.State == ConnectionState.Closed)
 //                    {
-//                        connection.Open();
+//                        _connection.Open();
 //                        string query = "select * from Users where username=@username and password=@password";
-//                        var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
+//                        var command = new SqlCommand(query, _connection) {CommandType = CommandType.Text};
 //                        command.Parameters.AddWithValue("username", username);
 //                        command.Parameters.AddWithValue("password", password);
 //                        var reader = command.ExecuteReader();
@@ -37,7 +37,7 @@
 //                            CurrentUserLoggedInData.Role = reader.GetInt32(5);
 //                        }
 //                        reader.Close();
-//                        connection.Close();
+//                        _connection.Close();
 //                    }
 //                }
 //            }
@@ -52,17 +52,17 @@
 //        {
 //            int usertype = 0;
 //            using (
-//                SqlConnection connection =
+//                SqlConnection _connection =
 //                    new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
 //            {
 //                try
 //                {
-//                    if (connection.State == ConnectionState.Closed)
+//                    if (_connection.State == ConnectionState.Closed)
 //                    {
-//                        connection.Open();
+//                        _connection.Open();
 //                        string query = "select RoleId from Users where username='" + @username + "' and password='" +
 //                                       @password + "'";
-//                        var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
+//                        var command = new SqlCommand(query, _connection) {CommandType = CommandType.Text};
 //                        command.Parameters.AddWithValue(@username, username);
 //                        command.Parameters.AddWithValue(@password, password);
 //                        var reader = command.ExecuteReader();
@@ -71,7 +71,7 @@
 //                            usertype = reader.GetInt32(0);
 //                        }
 //                        reader.Close();
-//                        connection.Close();
+//                        _connection.Close();
 //                    }
 
 //                }
@@ -90,24 +90,24 @@
 //            try
 //            {
 //                using (
-//                    SqlConnection connection =
+//                    SqlConnection _connection =
 //                        new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
 //                {
-//                    if (connection.State == ConnectionState.Closed)
+//                    if (_connection.State == ConnectionState.Closed)
 //                    {
-//                        connection.Open();
+//                        _connection.Open();
 //                        string query =
 //                            "INSERT INTO dbo.OldPatient(FirstName , LastName , ProvidedId, Designation, PhoneNumber)values('" +
 //                            @firstname + "','" + @lastName + "','" + @providedId + "','" + @designation + "','" +
 //                            @phoneNumber + "')";
-//                        var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
+//                        var command = new SqlCommand(query, _connection) {CommandType = CommandType.Text};
 //                        command.Parameters.AddWithValue(@firstname, firstname);
 //                        command.Parameters.AddWithValue(@lastName, lastName);
 //                        command.Parameters.AddWithValue(@providedId, providedId);
 //                        command.Parameters.AddWithValue(@designation, designation);
 //                        command.Parameters.AddWithValue(@phoneNumber, phoneNumber);
 //                        command.ExecuteNonQuery();
-//                        connection.Close();
+//                        _connection.Close();
 //                    }
 //                }
 //            }
@@ -130,17 +130,17 @@
 //            string name = null;
 
 //            using (
-//                SqlConnection connection =
+//                SqlConnection _connection =
 //                    new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
 //            {
 //                try
 //                {
-//                    if (connection.State == ConnectionState.Closed)
+//                    if (_connection.State == ConnectionState.Closed)
 //                    {
-//                        connection.Open();
+//                        _connection.Open();
 //                        string query = "select firstname,lastname from Users where username='" + @username +
 //                                       "' and password='" + @password + "'";
-//                        var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
+//                        var command = new SqlCommand(query, _connection) {CommandType = CommandType.Text};
 //                        command.Parameters.AddWithValue(@username, username);
 //                        command.Parameters.AddWithValue(@password, password);
 //                        var reader = command.ExecuteReader();
@@ -151,7 +151,7 @@
 
 //                        }
 //                        reader.Close();
-//                        connection.Close();
+//                        _connection.Close();
 //                    }
 
 //                }

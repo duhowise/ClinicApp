@@ -41,7 +41,8 @@ namespace ClinicApp
             var user = new User();
             user.UserName = _userName;
             user.Password = _pass;
-            e.Result=new UserRepository().VerifyUser(user);
+           
+            e.Result=UserRepository.VerifyUser(user);
 
         }
 
@@ -65,7 +66,7 @@ namespace ClinicApp
 
         private void LoginBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-           LogUserIn();
+            LogUserIn();
         }
 
         private void LoginBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -119,7 +120,10 @@ namespace ClinicApp
                 _pass = Password.Password;
                 if (!verifyWorker.IsBusy)
                 {
-                    verifyWorker.RunWorkerAsync();
+                    //Task task=new Task(verifyWorker.RunWorkerAsync);
+                    //task.Start();
+                    //await task;
+                   verifyWorker.RunWorkerAsync();
                 }
             }
 
@@ -130,7 +134,8 @@ namespace ClinicApp
             var user = new User();
             user.UserName = _userName;
             user.Password = _pass;
-            loggedinUser = new UserRepository().Login(user);
+          //todo Task<User>task=new Task<User>();
+            loggedinUser =UserRepository.Login(user);
             ID = loggedinUser.Id;
             FullName = loggedinUser.FirstName + " " + loggedinUser.LastName.ToUpper();
              

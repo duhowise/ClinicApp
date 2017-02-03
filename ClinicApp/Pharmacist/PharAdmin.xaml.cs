@@ -47,7 +47,7 @@ namespace ClinicApp.Pharmacist
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             int a, b;
-            ViewPatient.cMenu = 0;
+            //ViewPatient.cMenu = 0;
             LoginUserName.Content =MainWindow.FullName;
             
         }

@@ -8,23 +8,23 @@ namespace ClinicApp.Logic
 {
     public class OldPatient
     {
+        private static SqlConnection _connection =
+            new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString);
         CMB cmb =new CMB();
         public DataTable RetrieveAll()
         {
             var data = new DataTable();
-            using (
-                SqlConnection connection =
-                    new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
+            using (_connection)
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "select * from PatientList";
-                        var dataAdapter = new SqlDataAdapter(query, connection);
+                        var dataAdapter = new SqlDataAdapter(query, _connection);
                         dataAdapter.Fill(data);
-                        connection.Close();
+                        _connection.Close();
                     }
                 }
                 catch (Exception exception)
@@ -41,17 +41,15 @@ namespace ClinicApp.Logic
         public int TotalRegisteredPatient()
         {
             int total = 0;
-            using (
-                SqlConnection connection =
-                    new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
+            using (_connection)
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "select count(Id) from OldPatient";
-                        var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
+                        var command = new SqlCommand(query, _connection) {CommandType = CommandType.Text};
                         var reader = command.ExecuteReader();
                         while (reader.Read())
                         {
@@ -65,7 +63,7 @@ namespace ClinicApp.Logic
                             }
                             
                         }
-                        connection.Close();
+                        _connection.Close();
                     }
                 }
                 catch (Exception exception)
@@ -81,19 +79,17 @@ namespace ClinicApp.Logic
         public DataTable RetrieveHistory(String providedId)
         {
             var data = new DataTable();
-            using (
-                SqlConnection connection =
-                    new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
+            using (_connection)
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "select Complaint,Prescription,Date from Complaint where PatientId=(select id from patient where providedid='" + providedId + "' )";
-                        var dataAdapter = new SqlDataAdapter(query, connection);
+                        var dataAdapter = new SqlDataAdapter(query, _connection);
                         dataAdapter.Fill(data);
-                        connection.Close();
+                        _connection.Close();
                     }
                 }
                 catch (Exception exception)
@@ -109,17 +105,15 @@ namespace ClinicApp.Logic
         public static List<string> FetchPatientById(string providedId)
         {
             List<string> detaiList = new List<string>();
-            using (
-                SqlConnection connection =
-                    new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
+            using (_connection)
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "select * from OldPatient  where  ProvidedId='" + providedId + "'";
-                        var command = new SqlCommand(query, connection);
+                        var command = new SqlCommand(query, _connection);
                         var reader = command.ExecuteReader();
                         while (reader.Read())
                         {
@@ -130,7 +124,7 @@ namespace ClinicApp.Logic
                             detaiList.Add(reader.GetString(5));
 
                         }
-                        connection.Close();
+                        _connection.Close();
                     }
                 }
                 catch (Exception exception)
@@ -147,17 +141,15 @@ namespace ClinicApp.Logic
         {
             try
             {
-                using (
-                    SqlConnection connection =
-                        new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
+                using (_connection)
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "INSERT INTO dbo.Complaint(PatientId,Complaint,Prescription)VALUES((select id from patient where providedid='"+patientId+"' ),'" + complaint + "','" + presciption + "')";
-                        var command = new SqlCommand(query, connection) { CommandType = CommandType.Text };
+                        var command = new SqlCommand(query, _connection) { CommandType = CommandType.Text };
                         command.ExecuteNonQuery();
-                        connection.Close();
+                        _connection.Close();
                     }
                 }
             }

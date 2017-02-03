@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using ClinicApp.Data;
-using ClinicApp.Logic;
 using ClinicApp.Pharmacist;
 using ClinicModel;
 

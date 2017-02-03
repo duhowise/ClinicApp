@@ -21,8 +21,8 @@ namespace ClinicApp.Pharmacist
         {
             Close();
 
-            var dispense= new PharDispenseDrugWin();
-            dispense.ShowDialog();
+            //var dispense= new PharDispenseDrugWin();
+            //dispense.ShowDialog();
             //var dispenseDrug = new PharDispenseDrug();
             //dispenseDrug.ShowDialog();
         }

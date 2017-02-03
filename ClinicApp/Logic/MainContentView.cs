@@ -3,11 +3,10 @@ using System.Windows.Controls;
 using ClinicApp.Doctor;
 using ClinicApp.Nurse;
 using ClinicApp.Pharmacist;
-using ViewModelBase = Package_Manager.View.ViewModelBase;
 
 namespace ClinicApp.Logic
 {
-    public class MainContentView : ViewModelBase
+    public class MainContentView 
     {
         private readonly Action<UserControl> navigateToView;
 

@@ -17,10 +17,10 @@ namespace ClinicApp
 
         private void StockTakingReportOne_Loaded(object sender, RoutedEventArgs e)
         {
-            StockTakingReport.ReportSource = new ClinicReport.ClinicReport();
-            StockTakingReport.RefreshReport();
-            StockTakingReport.ViewMode=ViewMode.PrintPreview;
-            StockTakingReport.ZoomMode=ZoomMode.PageWidth;
+            //StockTakingReport.ReportSource = new ClinicReport.ClinicReport();
+            //StockTakingReport.RefreshReport();
+            //StockTakingReport.ViewMode=ViewMode.PrintPreview;
+            //StockTakingReport.ZoomMode=ZoomMode.PageWidth;
 
         }
     }

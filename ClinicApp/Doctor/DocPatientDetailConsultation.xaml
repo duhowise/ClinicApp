@@ -38,7 +38,7 @@
                     <ComboBox x:Name="PatientHistory" TabIndex="9" controls:TextBoxHelper.Watermark="Patient Visits"
                               SelectionChanged="PatientHistory_OnSelectionChanged"
                                     Grid.Column="0" Grid.Row="0"
-                                    Margin="0,10,10,0" DisplayMemberPath="Date" 
+                                    Margin="0,10,10,0" DisplayMemberPath="DateLong" 
                                     Width="250"
                                     Height="35"
                                     HorizontalAlignment="Right"

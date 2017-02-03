@@ -12,17 +12,17 @@ namespace ClinicApp.Logic
         {
             int registered = 0;
             using (
-                SqlConnection connection =
+                SqlConnection _connection =
                     new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "select RoleId from Users where username='" + "" + "' and password='" +
                                        "" + "'";
-                        var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
+                        var command = new SqlCommand(query, _connection) {CommandType = CommandType.Text};
                         command.Parameters.AddWithValue("", "");
                         command.Parameters.AddWithValue("", "");
                         var reader = command.ExecuteReader();
@@ -31,7 +31,7 @@ namespace ClinicApp.Logic
                             registered = reader.GetInt32(0);
                         }
                         reader.Close();
-                        connection.Close();
+                        _connection.Close();
                     }
 
                 }
@@ -48,16 +48,16 @@ namespace ClinicApp.Logic
         {
             int resolved = 0;
             using (
-                SqlConnection connection =
+                SqlConnection _connection =
                     new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "";
-                        var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
+                        var command = new SqlCommand(query, _connection) {CommandType = CommandType.Text};
                         command.Parameters.AddWithValue("", "");
                         command.Parameters.AddWithValue("", "");
                         var reader = command.ExecuteReader();
@@ -66,7 +66,7 @@ namespace ClinicApp.Logic
                             resolved = reader.GetInt32(0);
                         }
                         reader.Close();
-                        connection.Close();
+                        _connection.Close();
                     }
 
                 }
@@ -83,16 +83,16 @@ namespace ClinicApp.Logic
         {
             int pending = 0;
             using (
-                SqlConnection connection =
+                SqlConnection _connection =
                     new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString))
             {
                 try
                 {
-                    if (connection.State == ConnectionState.Closed)
+                    if (_connection.State == ConnectionState.Closed)
                     {
-                        connection.Open();
+                        _connection.Open();
                         string query = "";
-                        var command = new SqlCommand(query, connection) {CommandType = CommandType.Text};
+                        var command = new SqlCommand(query, _connection) {CommandType = CommandType.Text};
                         command.Parameters.AddWithValue("", "");
                         command.Parameters.AddWithValue("", "");
                         var reader = command.ExecuteReader();
@@ -101,7 +101,7 @@ namespace ClinicApp.Logic
                             pending = reader.GetInt32(0);
                         }
                         reader.Close();
-                        connection.Close();
+                        _connection.Close();
                     }
 
                 }

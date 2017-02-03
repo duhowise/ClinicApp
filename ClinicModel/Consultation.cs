@@ -20,9 +20,28 @@ namespace ClinicModel
         public string Prescription { get; set; }
         public string Investigation { get; set; }
         public int UserId { get; set; }
+        public string DateLong => Date.ToLongDateString();
+
         public DateTime Date { get; set; }
 
 
+       
+
+        //internal string GetDate()
+        //{
+        //    string value;
+        //    if (MedicalCondition.Length < 15)
+        //    {
+        //        value = ReportingDate.ToLongDateString() + " , " + MedicalCondition?.Substring(0, MedicalCondition.Length);
+
+        //    }
+        //    else
+        //    {
+        //        value = ReportingDate.ToLongDateString() + " , " + MedicalCondition?.Substring(0, 15) + "" + "...";
+
+        //    }
+        //    return value;
+        //}
     }
 
 }

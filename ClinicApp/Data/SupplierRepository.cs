@@ -14,7 +14,7 @@ namespace ClinicApp.Data
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
-                if (connection.State ==ConnectionState.Closed)
+                if (connection.State == ConnectionState.Closed)
                     connection.Open();
                 return connection.Query<Supplier>("select * from Supplier");
             }
@@ -43,21 +43,21 @@ namespace ClinicApp.Data
             {
                 using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
                 {
-                    if (connection.State ==ConnectionState.Closed)
+                    if (connection.State == ConnectionState.Closed)
                         connection.Open();
                     var query = @"INSERT INTO dbo.Supplier(Name,Address,Email,Phone)VALUES
                         (@name,@address,@email,@phone)";
                     var command = new SqlCommand(query, connection);
-                    command.Parameters.Add("name", SqlDbType.NVarChar).Value =supplier.Name;
+                    command.Parameters.Add("name", SqlDbType.NVarChar).Value = supplier.Name;
                     command.Parameters.Add("address", SqlDbType.NVarChar).Value = supplier.Address;
                     command.Parameters.Add("email", SqlDbType.NVarChar).Value = supplier.Email;
                     command.Parameters.Add("phone", SqlDbType.NVarChar).Value = supplier.Phone;
                     command.ExecuteNonQuery();
-                    }
+                }
             }
             catch (Exception exception)
             {
-              
+
             }
         }
     }

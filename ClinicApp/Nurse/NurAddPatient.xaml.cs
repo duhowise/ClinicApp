@@ -75,10 +75,7 @@ namespace ClinicApp.Nurse
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            var response = MessageBox.Show("Do you really want to close the window?", "Exit",
-                 MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-            if (response == MessageBoxResult.Yes)
-                Hide();
+           
         }
 
     }
