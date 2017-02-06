@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ClinicApp"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         mc:Ignorable="d"
-         Title="KUMASI POLYTECHNIC CLINIC APP" Height="600"
+          Title="KUMASI TECHNICAL UNIVERSITY CLINIC SOFTWARE"  Height="600"
         Width="1000" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" ResizeMode="NoResize" Icon="../media/Health-Care.png" ShowInTaskbar="False" Topmost="True">
     <Grid>
 

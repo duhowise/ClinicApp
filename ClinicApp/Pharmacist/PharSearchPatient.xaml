@@ -9,7 +9,7 @@
         xmlns:logic="clr-namespace:ClinicApp.Logic"
         xmlns:pharmacist="clr-namespace:ClinicApp.Pharmacist"
         mc:Ignorable="d"
-        Title="KUMASI POLYTECHNIC CLINIC APP" 
+         Title="KUMASI TECHNICAL UNIVERSITY CLINIC SOFTWARE" 
                        GlowBrush="{DynamicResource AccentColorBrush}"
                        Background="{DynamicResource MaterialDesignPaper}" Height="450" Width="760"
                       NonActiveGlowBrush="{DynamicResource PrimaryColorBrush}"

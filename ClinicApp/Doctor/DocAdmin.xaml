@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ClinicApp"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="KUMASI POLYTECHNIC CLINIC APP" Height="500" Width="1000" 
+         Title="KUMASI TECHNICAL UNIVERSITY CLINIC SOFTWARE"  Height="500" Width="1000" 
                       WindowState="Maximized" Icon="../media/Health-Care.png" 
                       Loaded="Window_Loaded" ShowMinButton="False"  ShowMaxRestoreButton="False"
                       Closing="Window_Closing">

@@ -14,6 +14,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -144,6 +144,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Administrator\AdminAddRolePage.xaml.cs">
+      <DependentUpon>AdminAddRolePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AdminCreateAccountPage.xaml.cs">
+      <DependentUpon>AdminCreateAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AdminMainWindow.xaml.cs">
+      <DependentUpon>AdminMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AdminViewUsersPage.xaml.cs">
+      <DependentUpon>AdminViewUsersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -285,9 +297,22 @@
     <Resource Include="media\kpoly2.png" />
   </ItemGroup>
   <ItemGroup>
-    <SplashScreen Include="media\clinic-splaash.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Page Include="Administrator\AdminAddRolePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administrator\AdminCreateAccountPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administrator\AdminMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administrator\AdminViewUsersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CMB.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -410,6 +435,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClinicApp.csproj.DotSettings.user" />
+    <SplashScreen Include="media\clinic-splaash.png" />
+    <Resource Include="media\clinic_software_logo_650x400.png" />
     <Resource Include="media\user.png" />
     <Resource Include="media\medical-report-icon.png" />
     <Resource Include="Resources\Entypo-license.txt" />

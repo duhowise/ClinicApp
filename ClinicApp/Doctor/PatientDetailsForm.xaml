@@ -7,7 +7,7 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-       Title="KUMASI POLYTECHNIC CLINIC APP" ShowMaxRestoreButton="False" ShowMinButton="False" 
+       Title="KUMASI TECHNICAL UNIVERSITY CLINIC SOFTWARE"  ShowMaxRestoreButton="False" ShowMinButton="False" 
                       GlowBrush="{DynamicResource AccentColorBrush}"
                        Background="{DynamicResource MaterialDesignPaper}" 
                       NonActiveGlowBrush="{DynamicResource PrimaryColorBrush}"

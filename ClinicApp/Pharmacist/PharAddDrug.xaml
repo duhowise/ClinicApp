@@ -6,12 +6,13 @@
                       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       mc:Ignorable="d"
-                      Title="KUMASI POLYTECHNIC CLINIC APP" GlowBrush="{DynamicResource AccentColorBrush}"
+                      Title="KUMASI TECHNICAL UNIVERSITY CLINIC SOFTWARE"  GlowBrush="{DynamicResource AccentColorBrush}"
                       NonActiveGlowBrush="{DynamicResource PrimaryColorBrush}"
-                      WindowStartupLocation="CenterScreen"
+                      WindowStartupLocation="CenterScreen" WindowState="Maximized"
                       Background="{DynamicResource MaterialDesignPaper}"
                       ResizeMode="NoResize" Height="600" Width="800"
                       Icon="../media/Health-Care.png" Loaded="Window_Loaded" ShowInTaskbar="False" >
+    <ScrollViewer HorizontalAlignment="Center" HorizontalScrollBarVisibility="Auto">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -361,5 +362,6 @@
             </materialDesign:Card>
         </WrapPanel>
     </Grid>
+    </ScrollViewer>
 
 </controls:MetroWindow>
