@@ -7,11 +7,12 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="KUMASI POLYTECHNIC CLINIC APP" Height="700" Width="400" 
-                      WindowState="Normal" Icon="../media/Health-Care.png" 
+         Title="KUMASI TECHNICAL UNIVERSITY CLINIC SOFTWARE" 
+                      WindowState="Maximized" Icon="../media/Health-Care.png" 
                       Loaded="Window_Loaded" 
                       ShowMinButton="False"  ShowMaxRestoreButton="False"
                       Closing="Window_Closing">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto">
     <Grid>
         <materialDesign:Card Margin="4 4 4 0" Padding="20" Grid.Column="0"
                                  Background="{DynamicResource MaterialDesignBackground}">
@@ -195,4 +196,5 @@
         </materialDesign:Card>
 
     </Grid>
+    </ScrollViewer>
 </controls:MetroWindow>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ClinicApp"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="KUMASI POLYTECHNIC CLINIC APP"  GlowBrush="{DynamicResource AccentColorBrush}"
+         Title="KUMASI TECHNICAL UNIVERSITY CLINIC SOFTWARE"   GlowBrush="{DynamicResource AccentColorBrush}"
                       NonActiveGlowBrush="{DynamicResource PrimaryColorBrush}"
                       WindowStartupLocation="CenterScreen" 
                       Background="{DynamicResource MaterialDesignPaper}"

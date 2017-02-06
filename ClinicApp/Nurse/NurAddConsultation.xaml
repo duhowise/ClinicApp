@@ -7,7 +7,7 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="KUMASI POLYTECHNIC CLINIC APP" Height="780" Width="700" 
+         Title="KUMASI TECHNICAL UNIVERSITY CLINIC SOFTWARE"  Height="780" Width="700" 
                       WindowState="Normal" Icon="../media/Health-Care.png" 
                     
                       ShowMinButton="False"  ShowMaxRestoreButton="False"

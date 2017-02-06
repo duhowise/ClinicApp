@@ -3,7 +3,7 @@
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-                Title="KUMASI POLYTECHNIC CLINIC APP" Height="600" Width="525" WindowState="Maximized"
+                 Title="KUMASI TECHNICAL UNIVERSITY CLINIC SOFTWARE"  WindowState="Maximized"
                 Background="{DynamicResource WhiteColorBrush}"
                 TextElement.Foreground="{DynamicResource MaterialDesignBody}"
                 TextElement.FontWeight="Medium"
@@ -11,40 +11,36 @@
                 FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
                 VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center"
                 FontWeight="Bold" VerticalContentAlignment="Center" Icon="media/Health-Care.png" Loaded="Window_Loaded" >
-
+<DockPanel>
     <Grid>
-        <StackPanel>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-                <Image Source="media/kpoly2.png" HorizontalAlignment="Center" Width="340" Height="165" />
-
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Background="#FF00186B" Height="1">
-
-            </StackPanel>
-        </StackPanel>
-        <StackPanel MinWidth="150" MaxWidth="600" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
-            <materialDesign:Card  Margin="4 4 0 0"  Background="{DynamicResource MaterialDesignBackground}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Label FontSize="30" Grid.ColumnSpan="2"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image Source="media/clinic_software_logo_650x400.png" Height="300" Width="650" Grid.Row="0" VerticalAlignment="Top" />
+        <materialDesign:Card Grid.Row="1" Width="650" Margin="4 4 0 0"  Background="{DynamicResource MaterialDesignBackground}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label FontSize="30" Grid.ColumnSpan="2"
                    Grid.Column="0" Grid.Row="1"
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center"
                           Margin="0,10,0,0" 
                            Foreground="{DynamicResource AccentColorBrush}">STAFF-MEMBER LOGIN PANEL</Label>
-                    <StackPanel  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,5" HorizontalAlignment="Center">
-                        <Image Source="media/User-icon.png" Height="32" Width="32" Margin="20,0,10,0" HorizontalAlignment="Left"/>
-                        <TextBox Name="userName"
+                <StackPanel  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,5" HorizontalAlignment="Center">
+                    <Image Source="media/User-icon.png" Height="32" Width="32" Margin="20,0,10,0" HorizontalAlignment="Left"/>
+                    <TextBox Name="userName"
                          ToolTip="Type User name" 
                     Margin="0,10,30,10" 
                          Width="300"
@@ -56,10 +52,10 @@
                      BorderBrush="{DynamicResource AccentColorBrush}"
                      BorderThickness="1"
                          Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
-                    </StackPanel>
-                    <StackPanel  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Orientation="Horizontal" Margin="0,0,0,5" HorizontalAlignment="Center">
-                        <Image Source="media/pass.png" Height="32" Width="32" Margin="20,0,10,0" HorizontalAlignment="Left"/>
-                        <PasswordBox Name="Password"
+                </StackPanel>
+                <StackPanel  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Orientation="Horizontal" Margin="0,0,0,5" HorizontalAlignment="Center">
+                    <Image Source="media/pass.png" Height="32" Width="32" Margin="20,0,10,0" HorizontalAlignment="Left"/>
+                    <PasswordBox Name="Password"
                         ToolTip="Enter Password" Margin="0,10,30,10" Width="300"
                          Height="35"
                          HorizontalAlignment="Right"
@@ -69,36 +65,36 @@
                      BorderBrush="{DynamicResource AccentColorBrush}"
                      BorderThickness="1"
                          Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
-                    </StackPanel>
-                    <StackPanel Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="4">
-                        <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,40,10" 
+                </StackPanel>
+                <StackPanel Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="4">
+                    <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,10,160,0"
                                 Height="30" Width="130" TabIndex="12" IsDefault="True"
                                 Click="Button_Click" HorizontalAlignment="Right"
                                  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
                                 FontSize="14">
-                            Sign in
-                        </Button>
-                        
-                        <Button Name="btnCantLogin"
+                        Sign in
+                    </Button>
+
+                    <Button Name="btnCantLogin"
                             Content="Can't login? click Here." FontSize="18"  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                                          Foreground="{DynamicResource AccentColorBrush}"
                                  FontWeight="Normal" Margin="6,5,0,10"  HorizontalAlignment="Center" 
                                  Background="{x:Null}" BorderThickness="0" SnapsToDevicePixels="False" Cursor="Hand" 
                                  HorizontalContentAlignment="Stretch" Click="btnCantLogin_Click"
                                  >
-                            <Button.ContextMenu>
-                                <ContextMenu AllowDrop="True"/>
-                            </Button.ContextMenu>
-                        </Button>
-                    </StackPanel>
-                </Grid>
-            </materialDesign:Card>
-        </StackPanel>
-
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Background="#FF00186B" Height="30">
-            <TextBlock TextAlignment="Justify" HorizontalAlignment="Right" Foreground="White" FontWeight="Bold" FontSize="15" Padding="10" FontFamily="Yu Gothic UI Semibold" VerticalAlignment="Center">Powered By: Kumasi Polytechnic- ICT Directorate</TextBlock>
-        </StackPanel>
+                        <Button.ContextMenu>
+                            <ContextMenu AllowDrop="True"/>
+                        </Button.ContextMenu>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+        <StackPanel Grid.Row="2" DockPanel.Dock="Bottom" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Background="#FF00186B" Height="30">
+                <TextBlock TextAlignment="Justify" HorizontalAlignment="Right" Foreground="White" FontWeight="Bold" FontSize="14" Padding="10" 
+                           FontFamily="Yu Gothic UI Semibold" VerticalAlignment="Center">Powered By: Kumasi Technical University - ICT Directorate</TextBlock>
+            </StackPanel>
     </Grid>
+</DockPanel>
 </controls:MetroWindow>
 

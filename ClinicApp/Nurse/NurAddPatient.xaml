@@ -7,20 +7,19 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="KUMASI POLYTECHNIC CLINIC APP" Height="700" Width="1200" 
+         Title="KUMASI TECHNICAL UNIVERSITY CLINIC SOFTWARE"  Height="700" Width="1200" 
                        Icon="../media/Health-Care.png" WindowStartupLocation="CenterScreen"
                        WindowState="Maximized" Closing="MetroWindow_Closing" 
                        ShowMaxRestoreButton="False" ShowMinButton="False"
                       >
-
-    <ScrollViewer HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalScrollBarVisibility="Auto">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <materialDesign:Card Margin="4,4,4,8" Padding="20" Grid.Column="0"
-                                 Background="{DynamicResource MaterialDesignBackground}" VerticalAlignment="Stretch">
+        <materialDesign:Card Margin="4 4 4 0" Padding="20" Grid.Column="0"
+                                 Background="{DynamicResource MaterialDesignBackground}">
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -298,14 +297,13 @@
                          controls:TextBoxHelper.UseFloatingWatermark="False" 
                                  Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
 
-                    <Label FontSize="16"
+                        <Label FontSize="16"
                    Grid.Column="1" Grid.Row="5"
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Right"
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Condition category</Label>
-
-                    <ComboBox TabIndex="2" Name="PatientConditionCategory" 
+                        <ComboBox TabIndex="2" Name="PatientConditionCategory" 
                                   Grid.Column="1" Grid.Row="6" 
                                   ToolTip="Select multiple patient condition category"
                                   Margin="10,10,10,0"
