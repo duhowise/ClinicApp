@@ -147,13 +147,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="appSettings.cs" />
-    <Compile Include="CMB.xaml.cs">
-      <DependentUpon>CMB.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ConfirmBox.xaml.cs">
-      <DependentUpon>ConfirmBox.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Data\ConnectionHelper.cs" />
     <Compile Include="Data\DrugRepository.cs" />
     <Compile Include="Data\PatientRepository.cs" />
@@ -239,11 +232,7 @@
     <Compile Include="Pharmacist\PharSearchDrug.xaml.cs">
       <DependentUpon>PharSearchDrug.xaml</DependentUpon>
     </Compile>
-    <Compile Include="stockTakingReportOne.xaml.cs">
-      <DependentUpon>stockTakingReportOne.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Util.cs" />
-    <Compile Include="WindowExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindow.xaml.cs">
@@ -288,14 +277,6 @@
     <SplashScreen Include="media\clinic-splaash.png" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="CMB.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ConfirmBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Doctor\DocAdmin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -399,10 +380,6 @@
     <Page Include="Resources\IconsNonShared.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="stockTakingReportOne.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

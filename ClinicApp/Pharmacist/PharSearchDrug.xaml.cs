@@ -19,7 +19,7 @@ namespace ClinicApp.Pharmacist
         List<Drug> drugs = new List<Drug>();
         public static Drug drug = new Drug();
 
-        CMB cmb = new CMB();
+        //CMB cmb = new CMB();
         //public object DrugList { get; private set; }
 
         public PharSearchDrug()

@@ -36,11 +36,10 @@ namespace ClinicApp.Nurse
         }
         
 
-        private void Window_Closing(object sender, CancelEventArgs e)
+        private async void Window_Closing(object sender, CancelEventArgs e)
         {
-            var response = MessageBox.Show("Do you really want to close out of this window\n make sure your changes are saved", "Exit",
-               MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-            if (response == MessageBoxResult.Yes) { Hide(); } else { e.Cancel = true; }
+            var response = await this.ShowMessageAsync("Do you really want to close out of this window\n make sure your changes are saved", "Exit",MessageDialogStyle.AffirmativeAndNegative);
+            if (response == MessageDialogResult.Affirmative) { Hide(); } else { e.Cancel = true; }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

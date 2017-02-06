@@ -17,7 +17,7 @@ namespace ClinicApp.Pharmacist
     public partial class PharAddDrug : MetroWindow
     {
         Drug medicine = new Drug();
-        CMB cmb =new CMB();
+        //CMB cmb =new CMB();
         private int boxnumber = 1;
         private int Packnumber = 1;
         private int NumberInPack = 1;

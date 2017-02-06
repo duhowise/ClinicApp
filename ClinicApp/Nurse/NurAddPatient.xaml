@@ -13,13 +13,14 @@
                        ShowMaxRestoreButton="False" ShowMinButton="False"
                       >
 
+    <ScrollViewer HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalScrollBarVisibility="Auto">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <materialDesign:Card Margin="4 4 4 0" Padding="20" Grid.Column="0"
-                                 Background="{DynamicResource MaterialDesignBackground}">
+        <materialDesign:Card Margin="4,4,4,8" Padding="20" Grid.Column="0"
+                                 Background="{DynamicResource MaterialDesignBackground}" VerticalAlignment="Stretch">
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -461,4 +462,5 @@
         </materialDesign:Card>
 
     </Grid>
+    </ScrollViewer>
 </controls:MetroWindow>

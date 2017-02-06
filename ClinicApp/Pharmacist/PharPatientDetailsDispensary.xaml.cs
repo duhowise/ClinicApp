@@ -23,7 +23,7 @@ namespace ClinicApp.Pharmacist
         Consultation _consultation = new Consultation();
         Drug drug = new Drug();
         List<string> drugsordate = new List<string>();
-        CMB cmb = new CMB();
+        //CMB cmb = new CMB();
        
 
         public PharPatientDetailsDispensary()
@@ -130,8 +130,8 @@ namespace ClinicApp.Pharmacist
                 }
                 else
                 {
-                    cmb.Message = "DrugsOld available is less than \nthe quantity specified";
-                    cmb.Show();
+                    //cmb.Message = "DrugsOld available is less than \nthe quantity specified";
+                   // cmb.Show();
                 }
             }
 

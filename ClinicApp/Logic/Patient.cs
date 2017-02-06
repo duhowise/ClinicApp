@@ -10,7 +10,6 @@ namespace ClinicApp.Logic
     {
         private static SqlConnection _connection =
             new SqlConnection(ConfigurationManager.ConnectionStrings["ClinicConnection"].ConnectionString);
-        CMB cmb =new CMB();
         public DataTable RetrieveAll()
         {
             var data = new DataTable();
@@ -29,8 +28,8 @@ namespace ClinicApp.Logic
                 }
                 catch (Exception exception)
                 {
-                    cmb.Message = "exception.Message";
-                    cmb.Show();
+                   //cmb.Message = "exception.Message";
+                   // cmb.Show();
                     //MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK,MessageBoxImage.Exclamation);
                 }
                 return data;
@@ -68,8 +67,8 @@ namespace ClinicApp.Logic
                 }
                 catch (Exception exception)
                 {
-                    cmb.Message = "exception.Message";
-                    cmb.Show();
+                    //cmb.Message = "exception.Message";
+                   // cmb.Show();
                     //MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK,MessageBoxImage.Exclamation);
                 }
                 return total;
@@ -94,8 +93,8 @@ namespace ClinicApp.Logic
                 }
                 catch (Exception exception)
                 {
-                    cmb.Message = exception.Message;
-                    cmb.Show();
+                    //cmb.Message = exception.Message;
+                    //cmb.Show();
                     //MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK,MessageBoxImage.Exclamation);
                 }
                 return data;
@@ -129,8 +128,8 @@ namespace ClinicApp.Logic
                 }
                 catch (Exception exception)
                 {
-                    CMB cmb = new CMB {Message = "exception.Message"};
-                    cmb.Show();
+                    //CMB cmb = new CMB {Message = "exception.Message"};
+                    //cmb.Show();
                     //MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK,MessageBoxImage.Exclamation);
                 }
                 return detaiList;
@@ -155,8 +154,8 @@ namespace ClinicApp.Logic
             }
             catch (Exception exception)
             {
-                cmb.Message = exception.Message;
-                cmb.Show();
+              //  cmb.Message = exception.Message;
+               // cmb.Show();
                 //MessageBox.Show(exception.Message.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }

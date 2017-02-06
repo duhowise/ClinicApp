@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using ClinicApp.Data;
 using ClinicModel;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace ClinicApp.Pharmacist
 {
@@ -12,18 +14,21 @@ namespace ClinicApp.Pharmacist
     /// Interaction logic for PharAddCategory.xaml
     /// </summary>
     public partial class PharAddCategory : MetroWindow
-    { CMB Cmb=new CMB();
+    {// CMB Cmb=new CMB();
         public PharAddCategory()
         {
             InitializeComponent();
             this.Closing += PharAddCategory_Closing;
         }
 
-        private void PharAddCategory_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private async void PharAddCategory_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            var response = MessageBox.Show("Do you really want to stop Adding new Category\n All your changes will be discarded", "Exit",
-                             MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-            if (response == MessageBoxResult.Yes) { Hide(); }else{e.Cancel = true;}
+            if (!string.IsNullOrWhiteSpace(categoryName.Text))
+            {
+                var response = await this.ShowMessageAsync("Cancel", "Do you really want to stop Adding new Category\n All your changes will be discarded", MessageDialogStyle.AffirmativeAndNegative);
+                if (response == MessageDialogResult.Affirmative) { Hide(); } else { e.Cancel = true; }
+
+            }
 
         }
 
@@ -33,9 +38,9 @@ namespace ClinicApp.Pharmacist
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        private void Save_Click(object sender, System.Windows.RoutedEventArgs e)
+        private async void Save_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            List<DrugCategory> suppliers = (List<DrugCategory>)new DrugRepository().GetAllDrugs();
+            List<DrugCategory> suppliers = new DrugRepository().GetDrugCategories().ToList();
             var result = suppliers.FindAll(s => s.name.Equals(categoryName.Text));
             if (!string.IsNullOrWhiteSpace(categoryName.Text))
             {
@@ -45,8 +50,7 @@ namespace ClinicApp.Pharmacist
                     {
                         name = categoryName.Text.ToUpper()
                     });
-                    Cmb.Message = $"Successfully Added new Category {categoryName.Text}";
-                    Cmb.ShowDialog();
+                    await this.ShowMessageAsync("Success",$"Successfully Added new Category {categoryName.Text}");
                     categoryName.Text = "";
                 }
             }

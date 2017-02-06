@@ -19,7 +19,6 @@ namespace ClinicApp.Logic
         public static int OldNumberInBoxValue { get; set; }
         public static int OldTotalQunatityValue { get; set; }
 
-        CMB cmb =new CMB();
         public int DispensedDrugs()
         {
             int count = 0;
@@ -394,8 +393,8 @@ namespace ClinicApp.Logic
                             var command = new SqlCommand(query, _connection) {CommandType = CommandType.Text};
                             if (command.ExecuteNonQuery() > 0)
                             {
-                                cmb.Message = "DrugsOld Dispensed Successfully";
-                                cmb.Show();
+                              //  cmb.Message = "DrugsOld Dispensed Successfully";
+                              //  cmb.Show();
                             }
                             _connection.Close();
                         }
@@ -403,15 +402,15 @@ namespace ClinicApp.Logic
                 }
                 catch (Exception exception)
                 {
-                    cmb.Message = exception.Message;
-                    cmb.Show();
+                   // cmb.Message = exception.Message;
+                   // cmb.Show();
                     //MessageBox.Show(exception.Message.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
             }
             else
             {
-                cmb.Message = "OOPS!!! DrugsOld not found in stock";
-                cmb.Show();
+               // cmb.Message = "OOPS!!! DrugsOld not found in stock";
+                //cmb.Show();
             }
         }
     }

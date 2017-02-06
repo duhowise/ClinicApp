@@ -73,9 +73,16 @@ namespace ClinicApp.Nurse
             Close();
         }
 
-        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private async void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-           
+            if (!string.IsNullOrWhiteSpace(PatientSymptoms.Text) || !string.IsNullOrWhiteSpace(PatientSigns.Text) ||
+                 !string.IsNullOrWhiteSpace(PatientDiagnosis.Text) || !string.IsNullOrWhiteSpace(PatientPrescirption.Text) ||
+                 !string.IsNullOrWhiteSpace(PatientPrescirption.Text)
+                 )
+            {
+
+                await this.ShowMessageAsync(@"Exit !", "Are you sure you want to quit? \n unvased data will be lost");
+            }
         }
 
     }

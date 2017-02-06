@@ -62,23 +62,19 @@ namespace ClinicApp.Doctor
         }
         private void Check()
         {
-            if (_consultation!=null)
+            switch (_consultation?.IsSensitive)
             {
-                if (_consultation.IsSensitive == 1)
-                {
+                case 1:
                     Status.IsChecked = true;
-                }
-                else if (_consultation.IsSensitive == 0)
-                {
+                    break;
+                case 0:
                     Status.IsChecked = false;
-
-
-                }
-                else
-                {
+                    break;
+                default:
                     Status.IsChecked = false;
-                }
+                    break;
             }
+          
         }
         public void OnEditFinished(object source, EventArgs args)
         {

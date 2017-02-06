@@ -19,7 +19,6 @@ namespace ClinicApp.Pharmacist
     /// </summary>
     public partial class PharAddSupplier : MetroWindow
     {
-        CMB cmb = new CMB();
         public PharAddSupplier()
         {
             InitializeComponent();

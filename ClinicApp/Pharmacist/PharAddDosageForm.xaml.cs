@@ -5,6 +5,7 @@ using System.Windows.Input;
 using ClinicApp.Data;
 using ClinicModel;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace ClinicApp.Pharmacist
 {
@@ -19,11 +20,18 @@ namespace ClinicApp.Pharmacist
             this.Closing += PharAddDosageForm_Closing;
         }
 
-        private void PharAddDosageForm_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private async void PharAddDosageForm_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            var response = MessageBox.Show("Do you really want to stop Adding new Category\n All your changes will be discarded", "Exit",
-                             MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-            if (response == MessageBoxResult.Yes) { Hide(); } else { e.Cancel = true; }
+            if (!string.IsNullOrWhiteSpace(dosageFormName.Text))
+            {
+                var response = await this.ShowMessageAsync("Do you really want to stop Adding new Category\n All your changes will be discarded", "Exit", MessageDialogStyle.AffirmativeAndNegative);
+                if (response == MessageDialogResult.Affirmative) { Hide(); } else { e.Cancel = true; }
+            }
+            else
+            {
+                e.Cancel = false;
+            }
+        
         }
 
         private void Cancel_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -35,7 +43,7 @@ namespace ClinicApp.Pharmacist
             var regex = new Regex("[^a-zA-Z]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-        private void Save_Click(object sender, System.Windows.RoutedEventArgs e)
+        private async void Save_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             List<DrugDosageForm> suppliers = (List<DrugDosageForm>)new DrugRepository().GetDosageForms();
             var result = suppliers.FindAll(s => s.name.Equals(dosageFormName.Text));
@@ -47,9 +55,7 @@ namespace ClinicApp.Pharmacist
                     {
                         name = dosageFormName.Text
                     });
-                    CMB Cmb = new CMB();
-                    Cmb.Message = $"Successfully Added new Dosage Form {dosageFormName.Text}";
-                    Cmb.ShowDialog();
+                    await this.ShowMessageAsync("Success!",$"Successfully Added new Dosage Form {dosageFormName.Text}");
                     dosageFormName.Text = "";
                     }
             }

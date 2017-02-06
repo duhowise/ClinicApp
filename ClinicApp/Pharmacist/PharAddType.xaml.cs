@@ -5,6 +5,7 @@ using System.Windows.Input;
 using ClinicApp.Data;
 using ClinicModel;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace ClinicApp.Pharmacist
 {
@@ -13,18 +14,24 @@ namespace ClinicApp.Pharmacist
     /// </summary>
     public partial class PharAddType : MetroWindow
     {
-        private CMB cmb = new CMB();
+      //  private CMB cmb = new CMB();
         public PharAddType()
         {
             InitializeComponent();
             this.Closing += PharAddType_Closing;
         }
 
-        private void PharAddType_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private async void PharAddType_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            var response = MessageBox.Show("Do you really want to stop Adding new Drug Form\n All your changes will be discarded", "Exit",
-                             MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-            if (response == MessageBoxResult.Yes) { Hide(); } else { e.Cancel = true; }
+            if (!string.IsNullOrWhiteSpace(typeName.Text))
+            {
+                var response = await this.ShowMessageAsync("Do you really want to stop Adding new Drug Form\n All your changes will be discarded", "Exit", MessageDialogStyle.AffirmativeAndNegative);
+                if (response == MessageDialogResult.Affirmative) { Hide(); } else { e.Cancel = true; }
+            }
+            else
+            {
+                e.Cancel = false;
+            }
         }
 
         private void Cancel_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -32,7 +39,7 @@ namespace ClinicApp.Pharmacist
             Close();
         }
 
-        private void Save_Click(object sender, System.Windows.RoutedEventArgs e)
+        private async void Save_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             List<DrugForm> drugForms = (List<DrugForm>)new DrugRepository().GetDrugForms();
             var result = drugForms.FindAll(s => s.name.Equals(typeName.Name));
@@ -44,8 +51,7 @@ namespace ClinicApp.Pharmacist
                     {
                         name = typeName.Text
                     });
-                    cmb.Message = $"Succcessfully Added {typeName.Text}";
-                    cmb.Show();
+                    await this.ShowMessageAsync("Success!",$"Succcessfully Added {typeName.Text}");
                     typeName.Text = "";
                 }
 

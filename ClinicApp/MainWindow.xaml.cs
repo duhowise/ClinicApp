@@ -18,7 +18,7 @@ namespace ClinicApp
         BackgroundWorker loginBackgroundWorker=new BackgroundWorker();
         BackgroundWorker verifyWorker=new BackgroundWorker();
         User loggedinUser=new User();
-        CMB cmb = new CMB();
+        //CMB cmb = new CMB();
         private static int _id;
         private static string _fullname = null;
         private string _userName;
