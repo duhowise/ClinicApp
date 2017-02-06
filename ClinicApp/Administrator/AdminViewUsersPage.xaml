@@ -95,8 +95,7 @@
                         <GridView>
                             <GridViewColumn Header="First name" DisplayMemberBinding="{Binding FirstName}"  Width="300"/>
                             <GridViewColumn Header="Last name" DisplayMemberBinding="{Binding LastName}" Width="300"/>
-                            <GridViewColumn Header="Staff ID" DisplayMemberBinding="{Binding FirstName}"  Width="180"/>
-                            <GridViewColumn Header="Role" DisplayMemberBinding="{Binding LastName}" Width="180"/>
+                            <GridViewColumn Header="Role" DisplayMemberBinding="{Binding RoleName}" Width="180"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

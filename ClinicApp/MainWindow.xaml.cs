@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows;
+using ClinicApp.Administrator;
 using ClinicApp.Data;
 using ClinicApp.Doctor;
 using ClinicApp.Nurse;
@@ -68,37 +69,39 @@ namespace ClinicApp
         {
             LogUserIn();
         }
-
         private void LoginBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (ID == 1)
+            switch (ID)
             {
-                DocAdmin doctor = new DocAdmin();
-                doctor.Show();
-            }
-            else if (ID == 2)
-            {
-                NurAdmin nurse = new NurAdmin();
-                nurse.Show();
-            }
-            else if (ID == 3)
-            {
-                PharAdmin pharmacist = new PharAdmin();
-                pharmacist.Show();
+                case 1:
+                    DocAdmin doctor = new DocAdmin();
+                    doctor.Show();
+                    break;
+                case 2:
+                    NurAdmin nurse = new NurAdmin();
+                    nurse.Show();
+                    break;
+                case 3:
+                    PharAdmin pharmacist = new PharAdmin();
+                    pharmacist.Show();
+                    break;
+                case 4:
+                    AdminMainWindow adminMain = new AdminMainWindow();
+                    adminMain.Show();
+                    break;
+                default:
+                    return;
+                    
             }
             Hide();
             Password.Password = "";
             userName.Text = "";
         }
-
         public static int ID
         {
             get { return _id; }
             set { _id = value; }
         }
-
-        
-
         public static string FullName
         {
             get { return _fullname; }
@@ -136,7 +139,7 @@ namespace ClinicApp
             user.Password = _pass;
           //todo Task<User>task=new Task<User>();
             loggedinUser =UserRepository.Login(user);
-            ID = loggedinUser.Id;
+            ID = loggedinUser.RoleId;
             FullName = loggedinUser.FirstName + " " + loggedinUser.LastName.ToUpper();
              
         }

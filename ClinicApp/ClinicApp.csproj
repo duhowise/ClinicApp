@@ -144,6 +144,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Administrator\AdminAddRolePage.xaml.cs">
+      <DependentUpon>AdminAddRolePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AdminCreateAccountPage.xaml.cs">
+      <DependentUpon>AdminCreateAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AdminMainWindow.xaml.cs">
+      <DependentUpon>AdminMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AdminViewUsersPage.xaml.cs">
+      <DependentUpon>AdminViewUsersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -277,6 +289,22 @@
     <SplashScreen Include="media\clinic-splaash.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Administrator\AdminAddRolePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Administrator\AdminCreateAccountPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Administrator\AdminMainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Administrator\AdminViewUsersPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Doctor\DocAdmin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -387,6 +415,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClinicApp.csproj.DotSettings.user" />
+    <Resource Include="media\clinic_software_logo_650x400.png" />
     <Resource Include="media\user.png" />
     <Resource Include="media\medical-report-icon.png" />
     <Resource Include="Resources\Entypo-license.txt" />

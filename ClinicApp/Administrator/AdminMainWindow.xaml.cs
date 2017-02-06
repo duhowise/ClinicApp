@@ -23,6 +23,7 @@ namespace ClinicApp.Administrator
         public AdminMainWindow()
         {
             InitializeComponent();
+            LoginUserName.Content = $"{MainWindow.FullName}";
         }
 
         private void Navigate(Object page)

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 using ClinicModel;
 using Dapper;
 
@@ -9,14 +10,37 @@ namespace ClinicApp.Data
 {
     public class UserRepository
     {
-        public IEnumerable<User> GetAllUsers()
+        public static IEnumerable<Staff> GetAllUsers()
         {
             using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                return connection.Query<User>("select * from Users");
+                return connection.Query<Staff>("select * from staff");
 
+            }
+
+        }
+        public static IEnumerable<Role> GetAllRoles()
+        {
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == ConnectionState.Closed||connection.State==ConnectionState.Broken)
+                {
+                    connection.Open();
+                }
+               return connection.Query<Role>($"select * from role");
+
+            }
+
+        }
+        public static void AddUser(User user)
+        {
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+                connection.Query(@"INSERT INTO dbo.Users(FirstName,LastName ,UserName ,Password ,RoleId)VALUES(@FirstName,@LastName,@UserName,@Password,@RoleId)",user);
             }
 
         }
@@ -63,5 +87,14 @@ namespace ClinicApp.Data
         }
 
 
+        public static void AddRole(Role role)
+        {
+            using (SqlConnection connection = new SqlConnection(new ConnectionHelper().ConnectionString))
+            {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+                connection.Query(@"INSERT INTO dbo.Role( Name)VALUES(@Name)", role);
+            }
+        }
     }
 }

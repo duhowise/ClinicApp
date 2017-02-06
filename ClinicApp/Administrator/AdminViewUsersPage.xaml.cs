@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClinicApp.Data;
+using ClinicModel;
 
 namespace ClinicApp.Administrator
 {
@@ -20,9 +22,20 @@ namespace ClinicApp.Administrator
     /// </summary>
     public partial class AdminViewUsersPage : Page
     {
+        private List<Staff> _users;
+
         public AdminViewUsersPage()
         {
             InitializeComponent();
+            Loaded += AdminViewUsersPage_Loaded;
+        }
+
+        private async void AdminViewUsersPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            _users =new List<Staff>();
+             _users= UserRepository.GetAllUsers() as List<Staff>;
+
+            StaffList.ItemsSource = _users;
         }
     }
 }
