@@ -91,6 +91,13 @@
             </Menu>
             <GroupBox Header="Staff list" Grid.Row="1" Grid.Column="1" Name="StaffGroup">
                 <ListView x:Name="StaffList">
+                    <ListView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Update"
+            Command="{Binding RemoveItem}"
+            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}" />
+                        </ContextMenu>
+                    </ListView.ContextMenu>
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="First name" DisplayMemberBinding="{Binding FirstName}"  Width="300"/>

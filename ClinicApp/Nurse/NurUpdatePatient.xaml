@@ -13,12 +13,13 @@
                       ShowMinButton="False"  ShowMaxRestoreButton="False"
                       Closing="Window_Closing">
     <ScrollViewer HorizontalScrollBarVisibility="Auto">
-    <Grid>
-        <materialDesign:Card Margin="4 4 4 0" Padding="20" Grid.Column="0"
+    <Grid VerticalAlignment="Center">
+        <materialDesign:Card Margin="4 4 4 0" Padding="20" Grid.Column="0" HorizontalAlignment="Center"
                                  Background="{DynamicResource MaterialDesignBackground}">
-            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
-                <Grid>
+
+                <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -31,17 +32,10 @@
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Label FontSize="20"
-                   Grid.Column="0" Grid.Row="1"
+                    <Label FontSize="24"
+                   Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Center"
                           Margin="0,10,0,0" 
@@ -69,18 +63,18 @@
                          controls:TextBoxHelper.UseFloatingWatermark="False" 
                                  Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
                     <Label FontSize="16"
-                   Grid.Column="0" Grid.Row="4"
+                   Grid.Column="1" Grid.Row="2"
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Left"
+                       HorizontalAlignment="Right"
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Last name</Label>
-                    <TextBox Grid.Column="0" Grid.Row="5" Name="PatientLastName" TabIndex="1"
+                    <TextBox Grid.Column="1" Grid.Row="3" Name="PatientLastName" TabIndex="1"
                                  IsEnabled="True"
                          ToolTip="Patient last name"
-                    Margin="0,10,10,0" 
+                    Margin="10,10,10,0" 
                          Width="300"
                          Height="35"
-                         HorizontalAlignment="Center"
+                         HorizontalAlignment="Right"
                          controls:TextBoxHelper.Watermark=""
                          controls:TextBoxHelper.IsWaitingForData="True"
                          controls:TextBoxHelper.ButtonFontFamily="wingdings"
@@ -90,14 +84,14 @@
                                  Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
 
                     <Label FontSize="16"
-                   Grid.Column="0" Grid.Row="6"
+                   Grid.Column="0" Grid.Row="4"
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Left"
                           Margin="0,10,0,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Designation</Label>
 
                     <ComboBox TabIndex="2" Name="PatientDesignation" 
-                                  Grid.Column="0" Grid.Row="7" 
+                                  Grid.Column="0" Grid.Row="5" 
                                   ToolTip="Select designation"
                                   Margin="0,10,10,0"
                                   Width="300"
@@ -113,15 +107,15 @@
                                   Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16" />
 
                     <Label FontSize="16"
-                   Grid.Column="0" Grid.Row="8"
+                   Grid.Column="1" Grid.Row="4"
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Left"
-                          Margin="0,10,10,0" 
+                       HorizontalAlignment="Right"
+                          Margin="10,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Gender</Label>
                     <ComboBox TabIndex="3"  Name="PatientGender" 
-                                  Grid.Column="0" Grid.Row="9" 
+                                  Grid.Column="1" Grid.Row="5" 
                                   ToolTip="Select gender"
-                                  Margin="0,10,10,0"
+                                  Margin="10,10,10,0"
                                   Width="300"
                                   Height="35"
                                   HorizontalAlignment="Left"
@@ -136,13 +130,13 @@
                         <ComboBoxItem>Female</ComboBoxItem>
                     </ComboBox>
                     <Label FontSize="16"
-                   Grid.Column="0" Grid.Row="10"
+                   Grid.Column="0" Grid.Row="6"
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
                        HorizontalAlignment="Left"
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Phone numbers</Label>
                     <TextBox TabIndex="3" Name="PatientPhoneNumber"
-                  Grid.Column="0" Grid.Row="11"
+                  Grid.Column="0" Grid.Row="7"
                          ToolTip="Type patient phone number"
                     Margin="0,10,10,0" 
                          Width="300"
@@ -156,15 +150,15 @@
                          Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
 
                     <Label FontSize="16"
-                   Grid.Column="0" Grid.Row="12"
+                   Grid.Column="1" Grid.Row="6"
                        FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}"
-                       HorizontalAlignment="Left"
+                       HorizontalAlignment="Right"
                           Margin="0,10,10,0" 
                            Foreground="{DynamicResource AccentColorBrush}">Provided Id</Label>
                     <TextBox TabIndex="4" Name="PatientProvidedId"
-                  Grid.Column="0" Grid.Row="13" IsEnabled="True"
+                  Grid.Column="1" Grid.Row="7" IsEnabled="True"
                          ToolTip="Type patient provided id"
-                    Margin="0,10,10,0" 
+                    Margin="10,10,10,0" 
                          Width="300"
                          Height="35"
                          HorizontalAlignment="Center"
@@ -176,7 +170,7 @@
                          Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontSize="16"/>
 
                     <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,0,0" 
-                                Height="30" Width="130" Grid.Column="0" Grid.Row="14" TabIndex="12"
+                                Height="30" Width="130" Grid.Column="0" Grid.Row="8" TabIndex="12"
                                 Name="Cancel" HorizontalAlignment="Left"
                                  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
@@ -184,7 +178,7 @@
                         Cancel
                     </Button>
                     <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0,20,10,0" 
-                                Height="30" Width="130" Grid.Column="0" Grid.Row="14" TabIndex="12"
+                                Height="30" Width="130" Grid.Column="1" Grid.Row="8" TabIndex="12"
                                 Name="Save" HorizontalAlignment="Right"
                                  FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily}" Background="{DynamicResource PrimaryColorBrush}"
                                 Foreground="{StaticResource WhiteColorBrush}" controls:ButtonHelper.PreserveTextCase="True"
@@ -192,8 +186,7 @@
                         Save
                     </Button>
                 </Grid>
-            </StackPanel>
-        </materialDesign:Card>
+            </materialDesign:Card>
 
     </Grid>
     </ScrollViewer>
